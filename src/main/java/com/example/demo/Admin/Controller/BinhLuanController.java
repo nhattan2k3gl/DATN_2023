@@ -31,6 +31,7 @@ public class BinhLuanController {
 		model.addAttribute("BLEntity", BLEntity);
 		
 		System.out.println("gg");
+		System.out.println("123");
 
 		List<BinhLuanEntity> ListBLService = BLService.findAll();
 		model.addAttribute("BLService", ListBLService);
