@@ -1,183 +1,124 @@
 <div xmlns:th="http://www.thymeleaf.org" th:replace="~{/user/home/layout :: dynamic (~{::main})}">
-<title><s:message code="user.cart" /> | Book Co., Ltd</title>
+<title>
+ 	<th:block th:text="#{user.cart}"></th:block>
+ 	 | Book Co., Ltd
+</title>
 <!-- BEGIN MAIN -->
 <main class="main">
 
 	<!-- BEGIN CART -->
-            <div class="cart-page wrapper">
+	<div class="cart-page wrapper">
+		<div class="cart-page__cols">
+			<!-- BEGIN LEFT COLUMN -->
+			<div class="cart-page__left">
+				<div class="cart-table wishlist">
+					<th:block th:with="total=0"></th:block>
+					<div th:if="${cart.getItems().isEmpty()}" class="cart-page__left">
+					    <div class="cart-table wishlist" style="border-bottom: 0; text-align: center; margin: 50px 0">
+					        <h2 th:text="#{user.emptycart}">Empty Cart</h2>
+					    </div>
+					</div>
+					<div style="padding-top: 5px">
+						<button type="button" data-toggle="modal" data-target="#delete"> 
+							<th:block th:text="#{user.cleartext}"></th:block>
+						</button>
+					</div>
+				</div>
+			</div>
+			<!-- LEFT COLUMN END -->
 
-                <div class="cart-page__cols">
-
-                    <!-- BEGIN LEFT COLUMN -->
-                    <div class="cart-page__left">
-
-                        <div class="cart-table wishlist">
-
-                            <article class="wishlist__item js-remove">
-                                <div class="wishlist__cols">
-                                    <div class="wishlist__left">
-                                        <a class="wishlist__image-link" href="product_page.html">
-                                            <img class="wishlist__image" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" data-lazy="https://via.placeholder.com/130x140" alt="">
-                                        </a>
-                                    </div>
-                                    <div class="wishlist__right">
-                                        <div class="wishlist__top wishlist__top_cart">
-                                            <div class="wishlist__col">
-                                                <h2 class="wishlist__title">
-                                                    <a class="wishlist__link" href="product_page.html">Fashionee - catton shirt (S)</a>
-                                                </h2>
-                                            </div>
-                                            <div class="wishlist__col">
-                                                <button class="wishlist__remove remove-button js-remove-button"></button>  
-                                            </div>                                    
-                                        </div>
-                                        <div class="wishlist__bottom wishlist__bottom_cart">
-                                            <div class="wishlist__cart-col">
-                                                <span class="wishlist__old-price">$52.99</span>
-                                                <span class="wishlist__price wishlist__price_small">$35.99</span> 
-                                            </div>
-                                            <div class="wishlist__cart-col">
-                                                <div class="wishlist__count count js-count">
-                                                    <button class="count__button count__button_minus js-count-minus"></button>
-                                                    <input class="count__input js-count-input" type="text" value="1" maxlength="4">
-                                                    <button class="count__button count__button_plus js-count-plus"></button>
-                                                </div>                                    
-                                            </div>
-                                            <div class="wishlist__cart-col">
-                                                <span class="wishlist__price wishlist__price_total">$35.99</span>
-                                            </div>                                                                        
-                                        </div>
-                                    </div>   
-                                </div>                                                                 
-                            </article>
-
-                            <article class="wishlist__item js-remove">
-                                <div class="wishlist__cols">
-                                    <div class="wishlist__left">
-                                        <a class="wishlist__image-link" href="product_page.html">
-                                            <img class="wishlist__image" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" data-lazy="https://via.placeholder.com/130x140" alt="">
-                                        </a>
-                                    </div>
-                                    <div class="wishlist__right">
-                                        <div class="wishlist__top wishlist__top_cart">
-                                            <div class="wishlist__col">
-                                                <h2 class="wishlist__title">
-                                                    <a class="wishlist__link" href="product_page.html">Spray wrap skirt</a>
-                                                </h2>
-                                            </div>
-                                            <div class="wishlist__col">
-                                                <button class="wishlist__remove remove-button js-remove-button"></button>  
-                                            </div>                                    
-                                        </div>
-                                        <div class="wishlist__bottom wishlist__bottom_cart">
-                                            <div class="wishlist__cart-col">
-                                                <span class="wishlist__price wishlist__price_small">$110.99</span> 
-                                            </div>
-                                            <div class="wishlist__cart-col">
-                                                <div class="wishlist__count count js-count">
-                                                    <button class="count__button count__button_minus js-count-minus"></button>
-                                                    <input class="count__input js-count-input" type="text" value="1" maxlength="4">
-                                                    <button class="count__button count__button_plus js-count-plus"></button>
-                                                </div>                                      
-                                            </div>
-                                            <div class="wishlist__cart-col">
-                                                <span class="wishlist__price wishlist__price_total">$110.99</span>
-                                            </div>                                                                        
-                                        </div>
-                                    </div>   
-                                </div>                                                                 
-                            </article> 
-                            
-                        </div>
-
-                        <section class="promo">
-                            <div class="promo__top">
-                                <h3 class="promo__title">You have a promo&nbsp;code?</h3>
-                                <p class="promo__text">To receive up-to-date promotional codes, subscribe to us on social networks.</p>                                
-                            </div>
-                            <div class="promo-form">
-                                <div class="promo-form__left">
-                                    <input class="promo-form__input text-input" type="text" placeholder="Enter promo code">
-                                </div>
-                                <div class="promo-form__right">
-                                    <button class="promo-form__button button">
-                                        <span class="button__text">
-                                            <span class="button__arrow"></span>
-                                        </span>
-                                    </button>
-                                </div>
-                            </div>
-                        </section>
-
-                        <div class="cart-socials socials">
-                            <span class="cart-socials__text socials__text">Find us here:</span>
-                            <ul class="cart-socials__list socials__list">
-                                <li class="socials__item">
-                                    <a class="socials__link" href="#">Fb</a>
-                                </li>
-                                <li class="socials__item">
-                                    <a class="socials__link" href="#">Tw</a>
-                                </li> 
-                                <li class="socials__item">
-                                    <a class="socials__link" href="#">Ins</a>
-                                </li>
-                                <li class="socials__item">
-                                    <a class="socials__link" href="#">Pt</a>
-                                </li>                                                                           
-                            </ul>
-                        </div>                          
-                    </div>
-                    <!-- LEFT COLUMN END -->
-
-                    <!-- BEGIN RIGHT COLUMN -->
-                    <aside class="cart-page__right">
-                        <section class="your-order">
-                            <h3 class="your-order__title">Your order</h3>
-                            <ul class="your-order__list">
-                                <li class="your-order__item">
-                                    <div class="your-order__col">
-                                        <span class="your-order__text">Оrder price</span>
-                                    </div>
-                                    <div class="your-order__col">
-                                        <span class="your-order__price">$146.98</span>
-                                    </div>                                
-                                </li>
-                                <li class="your-order__item">
-                                    <div class="your-order__col">
-                                        <span class="your-order__text">Discount for promo&nbsp;code</span>
-                                    </div>
-                                    <div class="your-order__col">
-                                        <span class="your-order__text">No</span>
-                                    </div>                                
-                                </li>
-                                <li class="your-order__item">
-                                    <div class="your-order__col">
-                                        <span class="your-order__text">Delivery&nbsp;&nbsp;<span>(Aug 02 at 16:00)</span></span>
-                                    </div>
-                                    <div class="your-order__col">
-                                        <span class="your-order__price">$16</span>
-                                    </div>                                
-                                </li>                                                        
-                            </ul>
-                            <div class="your-order__bottom">
-                                <div class="your-order__col">
-                                    <span class="your-order__bottom-text">Total</span>
-                                </div>
-                                <div class="your-order__col">
-                                    <span class="your-order__bottom-price">$162.98</span>
-                                </div>                            
-                            </div>
-                            <button class="your-order__button button">
-                                <span class="button__text">Checkout</span>
-                            </button>
-                        </section>
-                    </aside>
-                    <!-- RIGHT COLUMN END -->
-
-                </div>
-
-            </div>
-            <!-- CART END -->
+			<!-- BEGIN RIGHT COLUMN -->
+			<aside class="cart-page__right">
+				<section class="your-order">
+					<h3 class="your-order__title"> 
+						<th:block th:text="#{user.yourorder}"></th:block>
+					</h3>
+					<ul class="your-order__list">
+						<li class="your-order__item">
+							<div class="your-order__col">
+								<span class="your-order__text"> 
+									<th:block th:text="#{user.subtotal}"></th:block>
+								</span>
+							</div>
+							<div class="your-order__col">
+								<span class="your-order__price">
+									<th:formatNumber pattern="#,###,###.## $" type="currency" value="${item.gia}" currencySymbol="$" />
+								</span>
+							</div>
+						</li>
+						<li class="your-order__item">
+							<div class="your-order__col">
+								<span class="your-order__text"> 
+									<th:block th:text="#{user.promotext}"></th:block>
+								</span>
+							</div>
+							<div class="your-order__col">
+								<span class="your-order__text"> 
+									<th:block th:text="#{user.no}"></th:block>
+								</span>
+							</div>
+						</li>
+						<li class="your-order__item">
+							<div class="your-order__col">
+								<span class="your-order__text"> 
+									<th:block th:text="#{user.transport}"></th:block>
+								</span>
+							</div>
+							<div class="your-order__col">
+								<span class="your-order__price">$0</span>
+							</div>
+						</li>
+					</ul>
+					<div class="your-order__bottom">
+						<div class="your-order__col">
+							<span class="your-order__bottom-text"> 
+								<th:block th:text="#{user.total}"></th:block>
+							</span>
+						</div>
+						<div class="your-order__col">
+							<span class="your-order__bottom-price">
+								<th:formatNumber pattern="#,###,###.## $" type="currency" value="${item.gia}" currencySymbol="$" />
+							</span>
+						</div>
+					</div>
+					<a href="checkout" class="your-order__button button">
+						<span class="button__text"> 
+							<th:block th:text="#{user.checkout}"></th:block>
+						</span>
+					</a>
+				</section>
+			</aside>
+			<!-- RIGHT COLUMN END -->
+		</div>
+		<!-- REMOVE ALL -->
+		<div class="modal fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="deleteLabel"
+			aria-hidden="true">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" style="padding: 0" id="deleteLabel"> 
+							<th:block th:text="#{admin.deletesure}"></th:block>
+						</h5>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body"> 
+						<th:block th:text="#{user.clearcart}"></th:block>
+					</div>
+					<div class="modal-footer">
+						<a href="cart/clear" class="btn btn-yes text-white"> 
+							<th:block th:text="#{admin.deleteyes}"></th:block>
+						</a>
+						<a class="btn btn-no text-white" data-dismiss="modal">
+							<th:block th:text="#{admin.deleteno}"></th:block>
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- CART END -->
 </main>
 <!-- MAIN END -->
 </div>

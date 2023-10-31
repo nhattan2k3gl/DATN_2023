@@ -2403,5 +2403,5 @@ a.text-dark:hover,a.text-dark:focus{color:#121416!important}
 .loaded .load-icon{display:block}
 .loaded *{-webkit-transition:none;-ms-transition:none;transition:none}
 .load-icon{width:100%;height:100%;margin:0;padding:0;display:none;z-index:99999;position:absolute;top:0;left:0;background:#fff}
-.load-icon:before{content:"";width:64px;height:64px;margin:-32px 0 0 -32px;position:absolute;top:50%;left:50%;background:url(/assets/img/loader.gif) no-repeat left top}
+.load-icon:before{content:"";width:64px;height:64px;margin:-32px 0 0 -32px;position:absolute;top:50%;left:50%;background:url(/user/assets/img/loader.gif) no-repeat left top}
 .login-form__small-text-center{margin-top:50px;text-align:center;display:block;font:14px/16px 'Be Vietnam Pro',sans-serif}

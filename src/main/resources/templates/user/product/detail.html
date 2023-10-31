@@ -82,7 +82,7 @@
 				</div>
 				<div class="product-add">
 					<div class="product-add__col">
-						<a href="#" class="product-add__button button">
+						<a th:href="@{|/cart/add/${item.id_sp}|}" class="product-add__button button">
 							<span class="button__text"> 
 								<th:block th:text="#{user.addcart}"></th:block>
 							</span>
@@ -92,7 +92,6 @@
 			</div>
 			<!-- RIGHT COLUMN END -->
 		</div>
-		<img class="product__vector" data-lazy="/user/assets/img/svg/vector-product.svg">
 	</section>
 	<!-- PRODUCT CARD END -->
 

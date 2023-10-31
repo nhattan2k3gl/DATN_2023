@@ -89,41 +89,41 @@
 									<ul class="hide-nav__list">
 										<th:if test="${empty isLogin}">
 											<li class="hide-nav__item">
-												<a class="hide-nav__link" href="login" th:text="#{user.login}">
+												<a class="hide-nav__link" th:href="@{/Admin/TaiKhoan/DangNhap}" th:text="#{user.login}">
 													 
 												</a>
 											</li>
 											<li class="hide-nav__item">
-												<a class="hide-nav__link" href="register" th:text="#{user.register}">
+												<a class="hide-nav__link" href="#" th:text="#{user.register}">
 													 
 												</a>
 											</li>
 											<li class="hide-nav__item">
-												<a class="hide-nav__link" href="forgot-password" th:text="#{user.forgot}">
+												<a class="hide-nav__link" href="#" th:text="#{user.forgot}">
 													 
 												</a>
 											</li>
 										</th:if>
 										<th:if test="${isAdmin}">
 											<li class="hide-nav__item">
-												<a class="hide-nav__link" href="admin/index" th:text="#{admin.dashboard}">
+												<a class="hide-nav__link" th:href="@{/Admin/TrangChu}" th:text="#{admin.dashboard}">
 													 
 												</a>
 											</li>
 										</th:if>
 										<th:if test="${not empty isLogin}">
 											<li class="hide-nav__item">
-												<a class="hide-nav__link" href="profile/${user.getUsername()}" th:text="#{user.profile}">
+												<a class="hide-nav__link" href="#" th:text="#{user.profile}">
 													 
 												</a>
 											</li>
 											<li class="hide-nav__item">
-												<a class="hide-nav__link" href="change-password" th:text="#{user.changepass}">
+												<a class="hide-nav__link" href="#" th:text="#{user.changepass}">
 													 
 												</a>
 											</li>
 											<li class="hide-nav__item">
-												<a class="hide-nav__link" href="logout" th:text="#{user.logout}">
+												<a class="hide-nav__link" th:href="@{/Admin/TaiKhoan/DangNhap}" th:text="#{user.logout}">
 													 
 												</a>
 											</li>
@@ -134,8 +134,7 @@
 							<li class="user-nav__item">
 								<a class="user-nav__link" th:href="@{/cart}">
 									<span class="user-nav__icon user-nav__icon_4"></span>
-									<!-- <span class="user-nav__text">[[${countcart}]]</span> -->
-									<span class="user-nav__text">0</span>
+									<span class="user-nav__text">[[${countcart}]]</span>
 								</a>
 							</li>
 						</ul>
@@ -153,7 +152,7 @@
 				<ul class="mob-nav">
 					<li class="mob-nav__item">
 						<a class="mob-nav__link" href="/index">
-							<img src="assets/img/svg/logo.svg" class="logo__nav">
+							<img th:src="@{/user/assets/img/svg/logo.svg}" class="logo__nav">
 						</a>
 					</li>
 					<li class="mob-nav__item">
