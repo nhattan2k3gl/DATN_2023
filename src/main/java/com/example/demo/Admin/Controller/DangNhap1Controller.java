@@ -76,7 +76,7 @@ public class DangNhap1Controller {
 				}
 				if (PQ.getVaitro().getId_vt().equals("VT_002")) {
 					System.out.println("Dang Nhập Thành Công Trang Nhân Viên");
-					return "redirect:/Admin/Trangchu";
+					return "redirect:/Admin/TrangChu";
 				}
 				if (PQ.getVaitro().getId_vt().equals("VT_001")) {
 					System.out.println("Dang Nhập Thành Công Trang Khách Hàng");
@@ -88,7 +88,7 @@ public class DangNhap1Controller {
 
 		}
 
-		return "redirect:/Admin/DangNhap";
+		return "redirect:/Admin/TaiKhoan/DangNhap";
 
 	}
 
