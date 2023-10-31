@@ -29,8 +29,8 @@ Version: 1.1
 }
 /* Theme Colors */
 :root {
-    --accent-color       : #C5A992;
-    --secondary-color    : #C5A992;
+    --accent-color       :white;
+    --secondary-color    :white;
     --dark-color         : #2f2f2f;
     --light-color        : #F3F2EC;
     --body-text-color    : #757575;
@@ -462,7 +462,6 @@ input[type="reset"],
 input[type="file"],
 button {
   background-image: none;
-  background: var(--accent-color);
   text-decoration: none !important;
   display: inline-block;
   position: relative;
@@ -1851,6 +1850,7 @@ footer#footer {
       /*height: 550px;*/
       object-fit: contain;
       margin: 0 auto;
+      width: 100%;
   }
   .products-grid.col-3 .product-style,
   .products-grid.col-4 .product-style,
