@@ -89,12 +89,12 @@
 									<ul class="hide-nav__list">
 										<th:if test="${empty isLogin}">
 											<li class="hide-nav__item">
-												<a class="hide-nav__link" href="login" th:text="#{user.login}">
+												<a class="hide-nav__link" th:href="@{/Admin/TaiKhoan/DangNhap}" th:text="#{user.login}">
 													 
 												</a>
 											</li>
 											<li class="hide-nav__item">
-												<a class="hide-nav__link" href="register" th:text="#{user.register}">
+												<a class="hide-nav__link" th:href="@{/Admin/DangKy}" th:text="#{user.register}">
 													 
 												</a>
 											</li>
