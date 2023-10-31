@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:fragment="dynamic(main)">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="initial-scale=1, maximum-scale=1, minimum-scale=1">
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<link rel="icon" type="image/x-icon" th:href="@{/user/assets/img/favicon.ico}">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link rel="stylesheet" type="text/css" th:href="@{/user/assets/css/main.css}">
+<link rel="stylesheet" type="text/css" th:href="@{/user/assets/style.css}">
+<link rel="stylesheet" type="text/css" th:href="@{/user/assets/css/normalize.css}">
+<link rel="stylesheet" type="text/css" th:href="@{/user/assets/icomoon/icomoon.css}">
+<link rel="stylesheet" type="text/css" th:href="@{/user/assets/css/vendor.css}">
+
+<!-- script
+		================================================== -->
+<script th:src="@{/user/assets/js/modernizr.js}"></script>
+</head>
+<body class="loaded">
+
+    <div class="load-icon"></div>
+
+    <div class="page-container">
+ 		
+        <!-- BEGIN HEADER --> <!-- MOBILE NAVIGATION -->
+        	<div th:replace="~{/user/home/header}"></div>
+        <!-- HEADER END --> <!-- MOBILE NAVIGATION END --> 
+        
+        
+        
+        
+
+        <!-- BEGIN MAIN -->
+        <main  th:replace="${main}"></main>
+        <!-- MAIN END -->
+        
+        <!-- BEGIN FOOTER -->
+        <div th:replace="~{/user/home/footer}"></div>
+        <!-- FOOTER END -->    
+
+    </div> 
+       
+
+<script th:src="@{/user/assets/js/libs/jquery-3.3.1.slim.min.js}"></script>
+<script th:src="@{/user/assets/js/components/bootstrap.min.js}"></script>
+<script th:src="@{/user/assets/js/libs/jquery-3.5.1.min.js}"></script>
+<script th:src="@{/user/assets/js/libs/jquery-migrate-1.4.1.min.js}"></script>
+<script th:src="@{/user/assets/js/components/slick.js}"></script>
+<script th:src="@{/user/assets/js/components/formstyler.js}"></script>
+<script th:src="@{/user/assets/js/components/rating.js}"></script>
+<script th:src="@{/user/assets/js/components/wnumb.js}"></script>
+<script th:src="@{/user/assets/js/components/nouislider.js}"></script>
+<script th:src="@{/user/assets/js/components/fancybox.js}"></script>
+<script th:src="@{/user/assets/js/components/syotimer.js}"></script>
+<script th:src="@{/user/assets/js/main.js}"></script>
+
+</body>
+</html>

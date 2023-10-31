@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th"http://www.thymeleaf.org">
+<head>
+	<meta charset="utf-8">
+	<title>Insert title here</title>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.9/angular.min.js"></script>
+</head>
+<body ng-app="app" ng-controller="ctrl">
+	<h3>Phân Quyền</h3>
+	<table ng-if="db" style="width: 100% " border="1">
+		<thead>
+			<tr>
+				<th></th> <!-- // cot dau tien de trong -->
+				<th ng-repeat="vaitro in db.vaitro">{{vaitro.tenvaitro}}</th> <!-- moi vai tro tao ra mot cot -->
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="taikhoan in db.taikhoan"> 
+				<th>{{taikhoan.email}}</th> 
+				<th ng-repeat="vaitro in db.vaitro">
+					<input type="checkbox"
+						ng-checked="index_of(taikhoan.email, vaitro.id_vt)>=0" 
+						ng-click="update(db.phanquyen.id_pq,taikhoan.email, taikhoan.matkhau, taikhoan.hovaten, taikhoan.anh,
+										taikhoan.diachi, vaitro.id_vt, vaitro.tenvaitro)" >
+						
+				</th>
+			</tr>
+		</tbody>
+	</table>
+	<script src="/PhanQuyen/ctrl.js"></script>
+</body>
+</html>

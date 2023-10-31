@@ -1,0 +1,124 @@
+<div xmlns:th="http://www.thymeleaf.org" th:replace="~{/Admin/Layout/Layout :: dynamic (~{::main})}">
+    <!-- Main Content -->
+    <main id="content">
+
+        <!-- Topbar -->
+        <div th:replace="~{/Admin/Layout/TopBar}"></div>
+        <!-- End of Topbar -->
+
+        <!-- Begin Page Content -->
+        <div class="container-fluid">
+
+            <!-- Page Heading -->
+            <h1 class="h3 mb-2 text-gray-800">Sản Phẩm</h1>
+
+            <ul class="nav nav-tabs">
+                <li class="nav-item">
+                    <a class="nav-link active" data-toggle="tab" href="#home">From</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="#menu1">Bảng</a>
+                </li>
+            </ul>
+
+            <!-- Tab panes -->
+            <div class="tab-content">
+                <div class="tab-pane  active" id="home">
+                    <!-- From -->
+                    <div class="my-4 ">
+                        <form th:object="${MGGEntity}" method="post">
+                            <div class="mb-3">
+                                <label for="exampleInputEmail1" class="form-label">Mã Giảm Giá</label>
+                                <input type="text" class="form-control" th:field="*{id_mgg}">
+                                <div id="" class="form-text text-danger"></div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="exampleInputEmail1" class="form-label">Email </label>
+                                <input type="text" class="form-control" id="exampleInputEmail1"
+                                    aria-describedby="emailHelp" th:field="*{taikhoan.email}">
+                                <div id="emailHelp" class="form-text text-danger"></div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="exampleInputEmail1" class="form-label">ID Sản Phẩm</label>
+                                <input type="text" class="form-control" th:field="*{sanpham.id_sp}">
+                                <div id="" class="form-text text-danger"></div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="exampleInputEmail1" class="form-label">Phần Trăm</label>
+                                <input type="text" class="form-control" th:field="*{phantram}">
+                                <div id="" class="form-text text-danger"></div>
+                            </div>
+
+
+
+                            <button class="btn btn-success mx-2"
+                                th:formaction="@{/Admin/MaGiamGia/Create}">Thêm</button>
+                            <button class="btn btn-success mx-2" th:formaction="@{/Admin/MaGiamGia/Update}">Sửa</button>
+                            <button class="btn btn-danger mx-2">Xóa</button>
+                            <button class="btn btn-info mx-2">Làm Mới</button>
+                        </form>
+                    </div>
+
+                    <!-- End From -->
+                </div>
+                <div class="tab-pane  fade" id="menu1">
+                    <!-- DataTales Example -->
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary">Bảng Dữ Liệu</h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <th>ID Giảm Giá</th>
+                                            <th>Email</th>
+                                            <th>ID Sản Phẩm</th>
+                                            <th>Phần Trăm</th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tfoot>
+                                        <tr>
+                                            <th>ID Giảm Giá</th>
+                                            <th>Email</th>
+                                            <th>ID Sản Phẩm</th>
+                                            <th>Phần Trăm</th>
+                                            <th></th>
+                                        </tr>
+                                    </tfoot>
+                                    <tbody>
+
+                                        <tr th:each="MGGService : ${MGGService}">
+                                            <td th:text="${MGGService.id_mgg}"></td>
+                                            <td>[[${MGGService.taikhoan.email}]]</td>
+                                            <td>[[${MGGService.sanpham.id_sp}]]</td>
+                                            <td>[[${MGGService.phantram}]]</td>
+                                            <td>
+                                                <a class="text-white bg-danger"
+                                                    th:href="@{|/Admin/MaGiamGia/Delete/${MGGService.id_mgg}|}">Xóa</a>
+                                                <a class="text-white  bg-info"
+                                                    th:href="@{|/Admin/MaGiamGia/Edit/${MGGService.id_mgg}|}">Sửa</a>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end Table -->
+                </div>
+
+            </div>
+
+
+
+        </div>
+        <!-- /.container-fluid -->
+
+    </main>
+    <!-- End of Main Content -->
+</div>

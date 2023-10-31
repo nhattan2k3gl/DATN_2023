@@ -1,0 +1,104 @@
+<div xmlns:th="http://www.thymeleaf.org" th:replace="~{/user/home/layout :: dynamic (~{::main})}">
+<title>
+ 	<th:block th:text="#{user.aboutus}"></th:block>
+ 	 | Book Co., Ltd
+</title>
+<main class="main">
+	<article class="about-company wrapper">
+		<div class="about-company__top">
+			<h2 class="about-company__title">Giới thiệu về công ty</h2>
+			<p class="about-company__text">Đại diện chính thức của thương hiệu sách BOOKSAW nổi tiếng thế giới
+				tại thế giới.</p>
+		</div>
+		<div class="about-company__cols">
+			<div class="about-company__col">
+				<section class="about-section">
+					<h3 class="about-section__title">Sự khởi đầu của cuộc hành trình của chúng tôi</h3>
+					<span class="about-section__year">2020</span>
+					<p class="about-section__text">
+						Năm 2020, công ty chúng tôi kỷ niệm 5 năm thành lập - đây là những năm tích lũy kinh nghiệm kinh doanh
+						trên khắp thế giới. <br> Tham gia với chúng tôi trong số các khách hàng của chúng tôi! Bạn chỉ có
+						thể mua những thứ ban đầu từ chúng tôi. Chúng tôi cung cấp các sản phẩm của các thương hiệu yêu thích
+						của bạn - các sản phẩm chất lượng cho mọi sở thích và lứa tuổi từ Châu Âu - Châu Á.
+					</p>
+				</section>
+			</div>
+			<div class="about-company__col">
+				<div class="about-stats">
+					<h3 class="collection-title">
+						<span class="collection-title__count">500</span>
+						<span class="collection-title__plus">+</span>
+						<span class="collection-title__text">
+							<th:block th:text="#{user.prodfyou}"></th:block>
+						</span>
+					</h3>
+					<img class="about-stats__vector" data-lazy="/user/assets/img/svg/vector-about.svg">
+				</div>
+			</div>
+			<div class="about-company__col">
+				<div class="about-stats about-stats_bottom">
+					<h3 class="collection-title">
+						<span class="collection-title__count">100</span>
+						<span class="collection-title__plus">+</span>
+						<span class="collection-title__text">
+							<th:block th:text="#{user.clients}"></th:block>
+						</span>
+					</h3>
+					<img class="about-stats__vector" data-lazy="/user/assets/img/svg/vector-about.svg">
+				</div>
+			</div>
+			<div class="about-company__col">
+				<section class="about-section">
+					<h3 class="about-section__title">Bây giờ chúng ta là ai?</h3>
+					<span class="about-section__year">2022</span>
+					<p class="about-section__text">
+						Hiện chúng tôi có đội ngũ hơn 100 máy móc và khoảng 27 thương hiệu sách hợp tác với chúng
+						tôi. Đặt hàng tại cửa hàng của chúng tôi giúp tiết kiệm thời gian và công sức để tìm những gì bạn cần. 
+						<br> Các chuyên gia của
+						chúng tôi sẽ giúp bạn xác định sở thích, cho bạn biết về các loại chất liệu làm nên sản phẩm.
+					</p>
+				</section>
+			</div>
+		</div>
+	</article>
+
+	<div class="brands-block wrapper">
+		<ul class="brands">
+			<li class="brands__item">
+				<a class="brands__link" href="#">
+					<span class="brands__cell">
+						<img class="brands__logo brands__logo_1" data-lazy="/user/assets/images/client-image1.png">
+					</span>
+				</a>
+			</li>
+			<li class="brands__item">
+				<a class="brands__link" href="#">
+					<span class="brands__cell">
+						<img class="brands__logo brands__logo_2" data-lazy="/user/assets/images/client-image3.png">
+					</span>
+				</a>
+			</li>
+			<li class="brands__item">
+				<a class="brands__link" href="#">
+					<span class="brands__cell">
+						<img class="brands__logo brands__logo_3" data-lazy="/user/assets/images/client-image1.png">
+					</span>
+				</a>
+			</li>
+			<li class="brands__item">
+				<a class="brands__link" href="#">
+					<span class="brands__cell">
+						<img class="brands__logo brands__logo_4" data-lazy="/user/assets/images/client-image4.png">
+					</span>
+				</a>
+			</li>
+			<li class="brands__item">
+				<a class="brands__link" href="#">
+					<span class="brands__cell">
+						<img class="brands__logo brands__logo_5" data-lazy="/user/assets/images/client-image5.png">
+					</span>
+				</a>
+			</li>
+		</ul>
+	</div>
+</main>

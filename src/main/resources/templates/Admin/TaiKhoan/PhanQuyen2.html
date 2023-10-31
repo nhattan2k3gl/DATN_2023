@@ -1,0 +1,59 @@
+
+<div xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{/Admin/Layout/Layout :: dynamic (~{::main})}">
+	<!-- Main Content -->
+	<main id="content" ng-app="app" ng-controller="ctrl">
+
+		<!-- Topbar -->
+		<div th:replace="~{/Admin/Layout/TopBar}"></div>
+		<!-- End of Topbar -->
+
+		<!-- Begin Page Content -->
+		<div class="container-fluid">
+
+			<!-- Page Heading -->
+			<h1 class="h3 mb-2 text-gray-800">Phân Quyền</h1>
+
+			<!-- DataTales Example -->
+			<div class="card shadow mb-4">
+				<div class="card-header py-3">
+					<h6 class="m-0 font-weight-bold text-primary">Bảng Phân Quyền</h6>
+				</div>
+				<div class="card-body">
+					<div class="table-responsive">
+						<table ng-if="db" class="table table-bordered" id="dataTable" width="100%"
+							cellspacing="0">
+							<thead>
+								<tr>
+									<th></th>
+									<!-- // cot dau tien de trong -->
+									<th ng-repeat="vaitro in db.vaitro">{{vaitro.tenvaitro}}</th>
+									<!-- moi vai tro tao ra mot cot -->
+								</tr>
+							</thead>
+
+							<tbody>
+
+								<tr ng-repeat="taikhoan in db.taikhoan">
+									<th>{{taikhoan.email}}</th> 
+									<th ng-repeat="vaitro in db.vaitro"><input type="checkbox"
+										ng-checked="index_of(taikhoan.email, vaitro.id_vt)>=0"
+										ng-click="update(db.phanquyen.id_pq,taikhoan.email, taikhoan.matkhau, taikhoan.hovaten, taikhoan.anh,
+										taikhoan.diachi, vaitro.id_vt, vaitro.tenvaitro)">
+
+									</th>
+								</tr>
+
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+
+		</div>
+		<!-- /.container-fluid -->
+
+	</main>
+	<!-- End of Main Content -->
+	
+</div>

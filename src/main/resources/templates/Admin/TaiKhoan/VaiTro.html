@@ -1,0 +1,86 @@
+<div xmlns:th="http://www.thymeleaf.org" th:replace="~{/Admin/Layout/Layout :: dynamic (~{::main})}">
+	<!-- Main Content -->
+            <main id="content">
+
+                <!-- Topbar -->
+                <div th:replace="~{/Admin/Layout/TopBar}"></div>
+                <!-- End of Topbar -->
+
+                <!-- Begin Page Content -->
+                <div class="container-fluid">
+
+                    <!-- Page Heading -->
+                    <h1 class="h3 mb-2 text-gray-800">Vai Trò</h1>
+
+                    <!-- From -->
+                    <div class="my-4 ">
+                        <form th:object="${VTEntity}">
+                            <div class="mb-3">
+                                <label for="exampleInputEmail1" class="form-label">ID Vai Trò</label>
+                                <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" th:field="*{id_vt}">
+                                <div id="" class="form-text text-danger" ></div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="exampleInputEmail1" class="form-label">Tên Vai Trò </label>
+                                <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" th:field="*{tenvaitro}">
+                                <div id="" class="form-text text-danger"></div>
+                            </div>
+
+                            
+    
+                            <button type="button" class="btn btn-success mx-2">Thêm</button>
+                            <button type="button" class="btn btn-success mx-2">Sửa</button>
+                            <button type="button" class="btn btn-danger mx-2">Xóa</button>
+                            <button type="button" class="btn btn-info mx-2">Làm Mới</button>
+                        </form>
+                    </div>
+                    
+                    <!-- End From -->
+
+                    <!-- DataTales Example -->
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary">Bảng Dữ Liệu</h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <th>ID Vai Trò</th>
+                                            <th>Tên Vai Trò</th>
+                                            <th></th>
+                   
+                                        </tr>
+                                    </thead>
+                                    <tfoot>
+                                        <tr>
+                                            <th>ID Vai Trò</th>
+                                            <th>Tên Vai Trò</th>
+                                            <th></th>
+                                        </tr>
+                                    </tfoot>
+                                    <tbody>
+                                        
+                                        <tr th:each="VTService : ${VTService}">
+            								<td th:text="${VTService.id_vt}"></td>
+            								<td>[[${VTService.tenvaitro}]]</td>
+            								
+            								<td>
+            									<a class="text-white bg-danger "th:href="@{|/Admin/VaiTro/Delete/${VTService.id_vt}|}" >Xóa</a>
+            									<a class="text-white  bg-info" th:href="@{|/Admin/VaiTro/Edit/${VTService.id_vt}|}">Sửa</a>
+            								</td>
+        								 </tr>
+                                        
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- /.container-fluid -->
+
+            </main>
+            <!-- End of Main Content -->
+</div>

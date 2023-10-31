@@ -1,0 +1,103 @@
+<div xmlns:th="http://www.thymeleaf.org" th:replace="~{/Admin/Layout/Layout :: dynamic (~{::main})}">
+	<!-- Main Content -->
+            <main id="content">
+
+                <!-- Topbar -->
+                <div th:replace="~{/Admin/Layout/TopBar}"></div>
+                <!-- End of Topbar -->
+
+                <!-- Begin Page Content -->
+                <div class="container-fluid">
+
+                    <!-- Page Heading -->
+                    <h1 class="h3 mb-2 text-gray-800">Hóa Đơn</h1>
+
+                    <!-- From -->
+                    <div class="my-4 ">
+                        <form th:object="${HDEntity}" method="post">
+                            <div class="mb-3">
+                                <label for="exampleInputEmail1" class="form-label">ID Hóa Đơn</label>
+                                <input type="text" class="form-control" th:field="*{id_hd}">
+                                <div id="emailHelp" class="form-text text-danger"></div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="exampleInputEmail1" class="form-label">Ngày Tạo Hóa Đơn</label>
+                                <input type="date" class="form-control" th:field="*{ngaytaohoadon}">
+                                <div id="emailHelp" class="form-text text-danger"></div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="exampleInputEmail1" class="form-label">Địa chỉ </label>
+                                <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" th:field="*{diachi}">
+                                <div id="emailHelp" class="form-text text-danger"></div>
+                            </div>
+
+                            
+
+                            <div class="mb-3">
+                                <label for="exampleInputEmail1" class="form-label">Email</label>
+                                <input type="email" class="form-control" th:field="*{email}">
+                                <div id="emailHelp" class="form-text text-danger"></div>
+                            </div>
+
+                            
+    
+                            <button  class="btn btn-success mx-2" th:formaction="@{/Admin/HoaDon/Create}">Thêm</button>
+                            <button  class="btn btn-success mx-2" th:formaction="@{/Admin/HoaDon/Update}">Sửa</button>
+                            <button  class="btn btn-danger mx-2">Xóa</button>
+                            <button  class="btn btn-info mx-2">Làm Mới</button>
+                        </form>
+                    </div>
+                    
+                    <!-- End From -->
+
+                    <!-- DataTales Example -->
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary">Bảng Dữ Liệu</h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <th>ID Hóa Đơn</th>
+                                            <th>Ngày Tạo Hóa Đơn</th>
+                                            <th>Địa Chỉ</th>
+                                            <th>Email</th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tfoot>
+                                        <tr>
+                                            <th>ID Hóa Đơn</th>
+                                            <th>Ngày Tạo Hóa Đơn</th>
+                                            <th>Địa Chỉ</th>
+                                            <th>Email</th>
+                                            <th></th>
+                                        </tr>
+                                    </tfoot>
+                                    <tbody>
+                                        
+                                        <tr th:each="HDService : ${HDService}">
+            								<td th:text="${HDService.id_hd}"></td>
+            								<td>[[${HDService.ngaytaohoadon}]]</td>
+            								<td>[[${HDService.diachi}]]</td>
+            								<td>[[${email}]]</td>
+            								<td>
+            									<a class="text-white bg-danger " th:href="@{|/Admin/HoaDon/Delete/${HDService.id_hd}|}">Xóa</a>
+            									<a class="text-white  bg-info" th:href="@{|/Admin/HoaDon/Edit/${HDService.id_hd}|}">Sửa</a>
+            								</td>
+        								 </tr>
+                                        
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- /.container-fluid -->
+
+            </main>
+            <!-- End of Main Content -->
+</div>

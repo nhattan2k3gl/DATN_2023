@@ -1,0 +1,255 @@
+
+
+
+		<!-- BEGIN HEADER -->
+		<header class="header" xmlns:th="http://www.thymeleaf.org">
+			<div class="header__main">
+				<div class="header__cols">
+					<div class="header__left">
+						<div class="header__cols">
+							<div class="header__col">
+								<a class="logo" th:href="@{/index}">
+									<img class="logo__image" th:src="@{/user/assets/images/main-logo.png}">
+								</a>
+							</div>
+							<div class="header__col header__col_hide-mob">
+								<nav class="header-nav">
+									<ul class="header-nav__list">
+										<li class="header-nav__item">
+											<a class="header-nav__link" href="/shop" th:text="#{user.shop}">
+												 
+											</a>
+										</li> 
+										<li class="header-nav__item">
+											<a class="header-nav__link" th:text="#{user.collections}">
+												 
+											</a>
+										</li>
+										<li class="header-nav__item">
+											<a class="header-nav__link" th:text="#{user.catalog}">
+												 
+											</a>
+										</li>
+										<li class="header-nav__item">
+											<a class="header-nav__link" href="/about" th:text="#{user.aboutus}">
+												 
+											</a>
+										</li>
+										<li class="header-nav__item">
+											<a class="header-nav__link" href="/contact" th:text="#{user.contact}">
+												 
+											</a>
+										</li>
+									</ul>
+								</nav>
+							</div>
+						</div>
+					</div>
+					<div class="header__right">
+						<ul class="user-nav">
+							<li class="user-nav__item">
+								<a class="user-nav__link">
+									<span class="user-nav__icon user-nav__icon_1"></span>
+								</a>
+							</li>
+							<li class="header-nav__item js-nav-item">
+								<a class="header-nav__link js-nav-button">
+									<span class="user-nav__icon user-nav__icon_5"></span>
+								</a>
+								<div class="hide-nav js-nav-hide">
+									<ul class="hide-nav__list">
+										<li class="hide-nav__item">
+											<a class="hide-nav__link footer__cols" style="border-bottom: 0" th:href="@{/index?lang=en}">
+												<span class="footer__left" th:text="#{admin.english}">
+													 
+												</span>
+												<span class="footer__right">
+													<img th:src="@{/user/assets/img/flags/us_flag.jpg}" height="16px" style="margin: 0;" />
+												</span>
+											</a>
+										</li>
+										<li class="hide-nav__item">
+											<a class="hide-nav__link footer__cols" style="border-bottom: 0" th:href="@{/index?lang=vi}">
+												<span class="footer__left" th:text="#{admin.vietnam}">
+													 
+												</span>
+												<span class="footer__right">
+													<img th:src="@{/user/assets/img/flags/vn_flag.jpg}" height="16px" style="margin: 0" />
+												</span>
+											</a>
+										</li>
+									</ul>
+								</div>
+							</li>
+							<li class="header-nav__item js-nav-item">
+								<a class="header-nav__link js-nav-button">
+									<span class="user-nav__icon user-nav__icon_2"></span>
+								</a>
+								<div class="hide-nav js-nav-hide">
+									<ul class="hide-nav__list">
+										<th:if test="${empty isLogin}">
+											<li class="hide-nav__item">
+												<a class="hide-nav__link" href="login" th:text="#{user.login}">
+													 
+												</a>
+											</li>
+											<li class="hide-nav__item">
+												<a class="hide-nav__link" href="register" th:text="#{user.register}">
+													 
+												</a>
+											</li>
+											<li class="hide-nav__item">
+												<a class="hide-nav__link" href="forgot-password" th:text="#{user.forgot}">
+													 
+												</a>
+											</li>
+										</th:if>
+										<th:if test="${isAdmin}">
+											<li class="hide-nav__item">
+												<a class="hide-nav__link" href="admin/index" th:text="#{admin.dashboard}">
+													 
+												</a>
+											</li>
+										</th:if>
+										<th:if test="${not empty isLogin}">
+											<li class="hide-nav__item">
+												<a class="hide-nav__link" href="profile/${user.getUsername()}" th:text="#{user.profile}">
+													 
+												</a>
+											</li>
+											<li class="hide-nav__item">
+												<a class="hide-nav__link" href="change-password" th:text="#{user.changepass}">
+													 
+												</a>
+											</li>
+											<li class="hide-nav__item">
+												<a class="hide-nav__link" href="logout" th:text="#{user.logout}">
+													 
+												</a>
+											</li>
+										</th:if>
+									</ul>
+								</div>
+							</li>
+							<li class="user-nav__item">
+								<a class="user-nav__link" th:href="@{/cart}">
+									<span class="user-nav__icon user-nav__icon_4"></span>
+									<!-- <span class="user-nav__text">[[${countcart}]]</span> -->
+									<span class="user-nav__text">0</span>
+								</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</header>
+		<!-- HEADER END -->
+
+		<!-- MOBILE NAVIGATION -->
+		<div class="hide-mob js-mob-hide">
+			<div class="hide-mob__bg">
+				<button class="hide-mob__close close-button js-mob-close"></button>
+				<div class="hide-mob__mask js-mob-close"></div>
+				<ul class="mob-nav">
+					<li class="mob-nav__item">
+						<a class="mob-nav__link" href="/index">
+							<img src="assets/img/svg/logo.svg" class="logo__nav">
+						</a>
+					</li>
+					<li class="mob-nav__item">
+						<a class="mob-nav__link" href="/shop" th:text="#{user.shop}">
+							 
+						</a>
+					</li>
+					<li class="mob-nav__item js-slidedown">
+						<a class="mob-nav__link js-slidedown-button">
+							<span class="mob-nav__arrow" th:text="#{user.account}">
+								 
+							</span>
+						</a>
+						<div class="slide-nav js-slidedown-hide">
+							<ul class="slide-nav__list">
+								<th:if test="${empty isLogin}">
+									<li class="slide-nav__item">
+										<a class="slide-nav__link" href="login" th:text="#{user.login}">
+											 
+										</a>
+									</li>
+									<li class="slide-nav__item">
+										<a class="slide-nav__link" href="register" th:text="#{user.register}">
+											 
+										</a>
+									</li>
+									<li class="slide-nav__item">
+										<a class="slide-nav__link" href="fogot-password" th:text="#{user.forgot}">
+											 
+										</a>
+									</li>
+								</th:if>
+								<th:if test="${not empty isAdmin}">
+									<li class="slide-nav__item">
+										<a class="slide-nav__link" href="admin/index" th:text="#{admin.dashboard}">
+											 
+										</a>
+									</li>
+								</th:if>
+								<th:if test="${not empty isLogin}">
+									<li class="slide-nav__item">
+										<a class="slide-nav__link" href="profile" th:text="#{user.profile}">
+											 
+										</a>
+									</li>
+									<li class="slide-nav__item">
+										<a class="slide-nav__link" href="change-password" th:text="#{user.changepass}">
+											 
+										</a>
+									</li>
+									<li class="slide-nav__item">
+										<a class="slide-nav__link" href="logout" th:text="#{user.logout}">
+											 
+										</a>
+									</li>
+								</th:if>
+							</ul>
+						</div>
+					</li>
+					<li class="mob-nav__item">
+						<a class="mob-nav__link" th:text="#{user.collections}">
+							 
+						</a>
+					</li>
+					<li class="mob-nav__item">
+						<a class="mob-nav__link" th:text="#{user.catalog}">
+							 
+						</a>
+					</li>
+					<li class="mob-nav__item">
+						<a class="mob-nav__link" href="/about" th:text="#{user.aboutus}">
+							 
+						</a>
+					</li>
+					<li class="mob-nav__item">
+						<a class="mob-nav__link" href="/contact" th:text="#{user.contact}">
+							 
+						</a>
+					</li>
+				</ul>
+				<div class="hide-mob__socials">
+					<ul class="socials__list socials__list_center">
+						<li class="socials__item">
+							<a class="socials__link">Fb</a>
+						</li>
+						<li class="socials__item">
+							<a class="socials__link">Tw</a>
+						</li>
+						<li class="socials__item">
+							<a class="socials__link">Ins</a>
+						</li>
+						<li class="socials__item">
+							<a class="socials__link">Pt</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<!-- MOBILE NAVIGATION END -->
