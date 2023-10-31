@@ -155,11 +155,16 @@ select * from TheLoai
 	
 
 insert into SanPham values
-	('SP_001',N'Cây Cam Ngọt Của Tôi',134.00,'2003/2/2','AnhSach1.jsp',12,'TL_001' ),
-	('SP_002',N'Địa đàng trần gian',134.00,'2003/2/2','AnhSach2.jsp' ,20,'TL_007' ),
-	('SP_003',N'RANH GIỚI ĐỊNH MỆNH',134.00,'2003/2/2','AnhSach3.sp',22,'TL_007' ),
-	('SP_004',N'Biệt Thự LONGBOURN',134.00,'2003/2/2','AnhSach4.jsp',9,'TL_002' ),
-	('SP_005',N'Hoa Vẫn Nở Mỗi Ngày',134.00,'2003/2/2','AnhSach5.jsp',2,'TL_001' )
+	('SP_001',N'Cây Cam Ngọt Của Tôi',134.00, CAST('2023-04-30' AS Date),'AnhSach1.jsp',12,'TL_001' ),
+	('SP_002',N'Địa đàng trần gian',134.00, CAST('2023-04-30' AS Date),'AnhSach2.jsp' ,20,'TL_007' ),
+	('SP_003',N'RANH GIỚI ĐỊNH MỆNH',134.00, CAST('2023-04-30' AS Date),'AnhSach3.sp',22,'TL_007' ),
+	('SP_004',N'Biệt Thự LONGBOURN',134.00, CAST('2023-04-30' AS Date),'AnhSach4.jsp',9,'TL_002' ),
+	('SP_005',N'Hoa Vẫn Nở Mỗi Ngày',134.00, CAST('2023-04-30' AS Date),'AnhSach5.jsp',2,'TL_001' ),
+	('SP_006', N'Portrait Photography', 19.39, CAST('2023-04-30' AS Date), 'product-item1.jpg', 1,'TL_001'),
+	('SP_007', N'Great Travel At Desert', 35.13, CAST('2023-04-30' AS Date), 'product-item2.jpg', 4,'TL_003'),
+	('SP_008', N'The Lady Beauty Scarlett', 11.55, CAST('2023-02-25' AS Date), 'product-item3.jpg', 3,'TL_005'),
+	('SP_009', N'Once Upon A Time', 36.78, CAST('2023-05-19' AS Date), 'product-item4.jpg', 7,'TL_006'),
+	('SP_0010', N'Way Of Happiness', 32.51, CAST('2023-05-19' AS Date), 'product-item5.jpg', 6,'TL_002')
 select * from SanPham
 
 insert into HoaDonChiTiet values
