@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.demo.Entity.SanPhamEntity;
 import com.example.demo.Service.SanPhamService; 
@@ -88,4 +89,5 @@ public class SanPhamController {
 //
 //		return "redirect:/Admin/SanPham";
 //	}
+
 }
