@@ -27,6 +27,7 @@ public class BinhLuanController {
 		BinhLuanEntity BLEntity = new BinhLuanEntity();
 		model.addAttribute("BLEntity", BLEntity);
 		
+		System.out.println("heloo nhat ttan");
 
 		List<BinhLuanEntity> ListBLService = BLService.findAll();
 		model.addAttribute("BLService", ListBLService);
