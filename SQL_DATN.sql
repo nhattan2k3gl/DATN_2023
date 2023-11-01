@@ -188,3 +188,4 @@ insert into MaGiamGia values
 	('anhkhoa@gmail.com','SP_001',0.1),
 	('hoainam@gmail.com','SP_001',0.1)
 select * from MaGiamGia
+select * from taikhoan
