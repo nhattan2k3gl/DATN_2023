@@ -27,13 +27,14 @@ public class I18NConfig implements WebMvcConfigurer{
 		return ms;
 	}
 	
+	@SuppressWarnings("deprecation")
 	@Bean("localeResolver")
 	public LocaleResolver getLocaleResolver() {
 		CookieLocaleResolver cookie = new CookieLocaleResolver();
 		cookie.setDefaultLocale(new Locale("vi"));
 		cookie.setCookiePath("/");
 		cookie.setCookieMaxAge(10*24*60*60);
-		return  cookie;
+		return cookie;
 	}
 	
 	@Override
