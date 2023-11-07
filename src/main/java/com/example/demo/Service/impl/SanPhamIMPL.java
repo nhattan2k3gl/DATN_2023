@@ -78,4 +78,13 @@ public class SanPhamIMPL implements SanPhamService{
 		Pageable pageable = PageRequest.of(page, limit);
 		return SPDao.findAll(pageable);
 	}
+
+//	@Override
+//	public List<SanPhamEntity> findProductsByName(String search) {
+//		// TODO Auto-generated method stub
+//		return null;
+//	}
+
+
+
 }

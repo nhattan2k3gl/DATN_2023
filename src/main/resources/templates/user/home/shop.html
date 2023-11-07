@@ -1,109 +1,112 @@
 <div xmlns:th="http://www.thymeleaf.org" th:replace="~{/user/home/layout :: dynamic (~{::main})}">
 
-<title>
- 	<th:block th:text="#{user.shop}"></th:block>
- 	 | Book Co., Ltd
-</title>
-<!-- BEGIN MAIN -->
-<main class="main">
+	<title>
+		<th:block th:text="#{user.shop}"></th:block>
+		| Book Co., Ltd
+	</title>
+	<!-- BEGIN MAIN -->
+	<main class="main">
 
-	<!-- BEGIN SHOP -->
-	<div class="shop wrapper">
-		<div class="shop__cols">
-			<!-- BEGIN LEFT COLUMN -->
-			<aside class="shop__left">
-				<form action="shop/search" method="post">
-					<div class="search-form">
-						<input class="search-form__input" type="text" name="keywords" th:placeholder="#{user.searchph}">
-						<button class="search-form__button" type="submit"></button>
-				
-					</div>
-				</form>
-				<div class="filters">
-					<section class="widget js-slidedown">
-						<h2 class="widget__title widget__title_hide-mob">
-							<th:block th:text="#{user.category}"></th:block>
-						</h2>
-						<a class="widget__button js-slidedown-button" href="javascript:void(0);">
-							<th:block th:text="#{user.category}"></th:block>
-						</a>
-						<div class="widget__hide js-slidedown-hide">
-							<ul class="side-nav">
-								<th:block th:each="item : ${list}">
-									<li class="side-nav__item">
-										<a class="side-nav__link" href="#">[[${item.tentheloai}]]</a>
-									</li>
-								</th:block>
-							</ul>
+		<!-- BEGIN SHOP -->
+		<div class="shop wrapper">
+			<div class="shop__cols">
+				<!-- BEGIN LEFT COLUMN -->
+				<aside class="shop__left">
+					<form action="/shop/search" method="get">
+						<div class="search-form">
+							<input class="search-form__input" type="text" name="search"
+								th:placeholder="#{user.searchph}">
+							<button class="search-form__button" type="submit">Tìm kiếm</button>
 						</div>
-					</section>
-					<form>
+					</form>
+
+
+					<div class="filters">
 						<section class="widget js-slidedown">
-							<!-- <input class="text-input" type="number" name="min" value="${param.min}" placeholder="Min">
-                        	<input class="text-input" type="number" name="max" value="${param.max}" placeholder="Max"> -->
-							<h3 class="widget__title widget__title_hide-mob">
-								<th:block th:text="#{user.price}"></th:block>
-							</h3>
+							<h2 class="widget__title widget__title_hide-mob">
+								<th:block th:text="#{user.category}"></th:block>
+							</h2>
+							<a class="widget__button js-slidedown-button" href="javascript:void(0);">
+								<th:block th:text="#{user.category}"></th:block>
+							</a>
 							<div class="widget__hide js-slidedown-hide">
-								<div class="range">
-									<div class="range__slider" id="range-slider"></div>
-								</div>
+								<ul class="side-nav">
+									<th:block th:each="item : ${list}">
+										<li class="side-nav__item">
+											<a class="side-nav__link" href="#">[[${item.tentheloai}]]</a>
+										</li>
+									</th:block>
+								</ul>
 							</div>
 						</section>
-						<button class="apply-button button">
-							<span class="button__text">
-								<th:block th:text="#{user.apply}"></th:block>
-							</span>
-						</button>
-					</form>
-				</div>
-				<div class="desktop-items js-from-2">
-					<div class="side-items js-content-2">
-						<article class="sale-banner">
-							<div class="sale-banner__all">
-								<div class="sale-banner__row">
-									<div class="sale-banner__cell">
-										<div class="sale-banner__content">
-											<h4 class="sale-banner__title">
-												Season
-												<span>sale</span>
-											</h4>
-											<p class="sale-banner__text">Non aliqua reprehenderit reprehenderit culpa laboris nulla</p>
-											<a class="sale-banner__more read-more">
-												<th:block th:text="#{user.shopnow}"></th:block> 
-											</a>
+						<form>
+							<section class="widget js-slidedown">
+								<!-- <input class="text-input" type="number" name="min" value="${param.min}" placeholder="Min">
+                        	<input class="text-input" type="number" name="max" value="${param.max}" placeholder="Max"> -->
+								<h3 class="widget__title widget__title_hide-mob">
+									<th:block th:text="#{user.price}"></th:block>
+								</h3>
+								<div class="widget__hide js-slidedown-hide">
+									<div class="range">
+										<div class="range__slider" id="range-slider"></div>
+									</div>
+								</div>
+							</section>
+							<button class="apply-button button">
+								<span class="button__text">
+									<th:block th:text="#{user.apply}"></th:block>
+								</span>
+							</button>
+						</form>
+					</div>
+					<div class="desktop-items js-from-2">
+						<div class="side-items js-content-2">
+							<article class="sale-banner">
+								<div class="sale-banner__all">
+									<div class="sale-banner__row">
+										<div class="sale-banner__cell">
+											<div class="sale-banner__content">
+												<h4 class="sale-banner__title">
+													Season
+													<span>sale</span>
+												</h4>
+												<p class="sale-banner__text">Non aliqua reprehenderit reprehenderit
+													culpa laboris nulla</p>
+												<a class="sale-banner__more read-more">
+													<th:block th:text="#{user.shopnow}"></th:block>
+												</a>
+											</div>
 										</div>
 									</div>
 								</div>
-							</div>
-							<div class="sale-banner__border"></div>
-							<div class="sale-banner__image" data-bg="assets/images/main-banner1.jpg"></div>
-							<a class="sale-banner__link"></a>
-						</article>
+								<div class="sale-banner__border"></div>
+								<div class="sale-banner__image" data-bg="assets/images/main-banner1.jpg"></div>
+								<a class="sale-banner__link"></a>
+							</article>
+						</div>
 					</div>
-				</div>
-			</aside>
-			<!-- LEFT COLUMN END -->
+				</aside>
+				<!-- LEFT COLUMN END -->
 
-			<!-- BEGIN RIGHT COLUMN -->
-			<div class="shop__right">
+				<!-- BEGIN RIGHT COLUMN -->
+				<div class="shop__right">
 
-				<div class="shop-panel">
-					<div class="shop-panel__left">
-						<span class="shop-panel__text">
-							<th:block th:text="#{user.shoptext}"></th:block> 
-							<b>[[${product}]]</b>
-							<th:block th:text="#{user.shoptext1}"></th:block> 
-						</span>
-					</div>
-					<div class="shop-panel__right">
-						<div class="shop-panel__select select select_1">
-							<select class="js-formstyler"
-								onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value);">
-								<option value="">
-									<th:block th:text="#{user.sortby}"></th:block> 
-								</option>
-								<!-- <option value="shop?field=id">
+					<div class="shop-panel">
+						<div class="shop-panel__left">
+							<span class="shop-panel__text">
+								<th:block th:text="#{user.shoptext}"></th:block>
+								<b>[[${product}]]</b>
+								<th:block th:text="#{user.shoptext1}"></th:block>
+							</span>
+						</div>
+						<div class="shop-panel__right">
+							<div class="shop-panel__select select select_1">
+								<select class="js-formstyler"
+									onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value);">
+									<option value="">
+										<th:block th:text="#{user.sortby}"></th:block>
+									</option>
+									<!-- <option value="shop?field=id">
 									<th:block th:text="#{user.byid}"></th:block> 
 								</option>
 								<option value="shop?field=name">
@@ -112,66 +115,69 @@
 								<option value="shop?field=price">
 									<th:block th:text="#{user.byprice}"></th:block> 
 								</option> -->
-								<option value="">
-									<th:block th:text="#{user.byid}"></th:block> 
-								</option>
-								<option value="">
-									<th:block th:text="#{user.byname}"></th:block> 
-								</option>
-								<option value="">
-									<th:block th:text="#{user.byprice}"></th:block> 
-								</option>
-							</select>
+									<option value="">
+										<th:block th:text="#{user.byid}"></th:block>
+									</option>
+									<option value="">
+										<th:block th:text="#{user.byname}"></th:block>
+									</option>
+									<option value="">
+										<th:block th:text="#{user.byprice}"></th:block>
+									</option>
+								</select>
+							</div>
+						</div>
+					</div>
+
+					<div class="inner-catalog">
+						<th:block th:each="item : ${items}">
+							<article class="short-item">
+								<div class="short-item__all">
+									<a class="short-item__image-bg" th:href="@{|/detail/${item.id_sp}|}">
+										<th:block th:if="${item.anh == null}">
+											<img class="short-item__image" th:src="@{|/user/img/products/noavt.png|}">
+										</th:block>
+										<th:block th:if="${item.anh != null}">
+											<img class="short-item__image" th:src="@{|/user/img/products/${item.anh}|}">
+										</th:block>
+									</a>
+									<div class="short-item__top">
+										<div class="short-item__cols">
+											<div class="short-item__col">
+												<span class="item-tag item-tag_green">New</span>
+											</div>
+											<div class="short-item__col">
+												<button class="heart-button js-toggle-active"></button>
+											</div>
+										</div>
+									</div>
+									<h4 class="short-item__title">
+										<a class="short-item__link"
+											th:href="@{|/detail/${item.id_sp}|}">[[${item.ten}]]</a>
+									</h4>
+									<span class="short-item__price">
+										$[[${item.gia}]]
+									</span>
+								</div>
+							</article>
+						</th:block>
+					</div>
+					<div class="page-nav">
+						<div class="page-nav__col">
+							<a class="page-nav__button prev-button" th:href="@{shop(page=${items.number - 1})}"
+								th:unless="${items.first}"></a>
+						</div>
+						<div class="page-nav__col">
+							<a class="page-nav__button next-button" th:href="@{shop(page=${items.number + 1})}"
+								th:unless="${items.last}"></a>
 						</div>
 					</div>
 				</div>
-
-				<div class="inner-catalog">
-					<th:block th:each="item : ${items}">
-						<article class="short-item">
-							<div class="short-item__all">
-								<a class="short-item__image-bg" th:href="@{|/detail/${item.id_sp}|}">
-									<th:block th:if="${item.anh == null}">
-										<img class="short-item__image" th:src="@{|/user/img/products/noavt.png|}">
-									</th:block>
-									<th:block th:if="${item.anh != null}">
-										<img class="short-item__image" th:src="@{|/user/img/products/${item.anh}|}">
-									</th:block>
-								</a>
-								<div class="short-item__top">
-									<div class="short-item__cols">
-										<div class="short-item__col">
-											<span class="item-tag item-tag_green">New</span>
-										</div>
-										<div class="short-item__col">
-											<button class="heart-button js-toggle-active"></button>
-										</div>
-									</div>
-								</div>
-								<h4 class="short-item__title">
-									<a class="short-item__link" th:href="@{|/detail/${item.id_sp}|}">[[${item.ten}]]</a>
-								</h4>
-								<span class="short-item__price">
-									$[[${item.gia}]]
-								</span>
-							</div>
-						</article>
-					</th:block>
-				</div>
-				<div class="page-nav">
-					<div class="page-nav__col">
-					    <a class="page-nav__button prev-button" th:href="@{shop(page=${items.number - 1})}" th:unless="${items.first}"></a>
-					</div>
-					<div class="page-nav__col">
-					    <a class="page-nav__button next-button" th:href="@{shop(page=${items.number + 1})}" th:unless="${items.last}"></a>
-					</div>
-				</div>
+				<!-- RIGHT COLUMN END -->
 			</div>
-			<!-- RIGHT COLUMN END -->
+			<div class="mob-items js-to-2"></div>
 		</div>
-		<div class="mob-items js-to-2"></div>
-	</div>
-	<!-- SHOP END -->
-</main>
-<!-- MAIN END -->
+		<!-- SHOP END -->
+	</main>
+	<!-- MAIN END -->
 </div>

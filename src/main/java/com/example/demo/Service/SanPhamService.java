@@ -2,12 +2,18 @@ package com.example.demo.Service;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 
-import com.example.demo.Entity.SanPhamEntity; 
+import com.example.demo.Dao.SanPhamDao;
+import com.example.demo.Entity.SanPhamEntity;
+
+
 
 
 public interface SanPhamService {
+	
+	
 	public List<SanPhamEntity> findAll();
 
 	public SanPhamEntity findById(String id);
@@ -19,4 +25,9 @@ public interface SanPhamService {
 	Page<SanPhamEntity> findAll(Integer page, Integer limit);
 	
 	public void delete(String id);
+	
+//	public List<SanPhamEntity> findProductsByName(String search);
+
+	
+	
 }

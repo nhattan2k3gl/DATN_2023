@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.demo.Dao.TheLoaiDao;
+import com.example.demo.Entity.SanPhamEntity;
 import com.example.demo.Entity.TheLoaiEntity;
 import com.example.demo.Service.SanPhamService;
 import com.example.demo.Service.TheLoaiService;
@@ -67,6 +68,13 @@ public class HomeController {
 		model.addAttribute("product", sanPhamService.countAllProduct());
 		return "user/home/shop";
 	}
-	
+//	@GetMapping("/shop/search")
+//    public String searchProductsByName(Model model, @RequestParam(name = "search") String search) {
+//        List<SanPhamEntity> searchResults = sanPhamService.findProductsByName(search);
+//
+//        model.addAttribute("items", searchResults);
+//
+//        return "user/home/shop"; // Trả về trang kết quả tìm kiếm sản phẩm
+//    }
 	
 }

@@ -23,7 +23,8 @@ public class UploadServiceImpl implements UploadService{
 	
 	@Override
 	public File save(MultipartFile file, String folder) {
-		File dir = new File(app.getRealPath("/"+folder));
+		File dir = new File(app.getRealPath("C:\\Users\\ADMIN\\Documents\\GitHub\\DATN_2023\\src\\main\\resources\\static\\user\\img\\products\\"+folder));
+		System.out.println("");
 		if(!dir.exists()) {
 			dir.mkdirs();
 		}
@@ -31,6 +32,7 @@ public class UploadServiceImpl implements UploadService{
 		String name = Integer.toHexString(s.hashCode())+s.substring(s.lastIndexOf("."));
 		try {
 			File savedFile = new File(dir,name);
+			System.out.println(savedFile);
 			file.transferTo(savedFile);
 			System.out.println(savedFile.getAbsolutePath());
 			return savedFile;
