@@ -1,156 +1,162 @@
 <div xmlns:th="http://www.thymeleaf.org" th:replace="~{/Admin/Layout/Layout :: dynamic (~{::main})}">
-    <!-- Main Content -->
-    <main id="content">
+	<!-- Main Content -->
+	<main id="content">
 
-        <!-- Topbar -->
-        <div th:replace="~{/Admin/Layout/TopBar}"></div>
-        <!-- End of Topbar -->
+		<!-- Topbar -->
+		<div th:replace="~{/Admin/Layout/TopBar}"></div>
+		<!-- End of Topbar -->
 
-        <!-- Begin Page Content -->
-        <div class="container-fluid">
+		<!-- Begin Page Content -->
+		<div class="container-fluid">
 
-            <!-- Page Heading -->
-            <h1 class="h3 mb-2 text-gray-800">Sản Phẩm</h1>
+			<!-- Page Heading -->
+			<h1 class="h3 mb-2 text-gray-800">Sản Phẩm</h1>
 
-            <ul class="nav nav-tabs">
-                <li class="nav-item">
-                    <a class="nav-link active" data-toggle="tab" href="#home">From</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" data-toggle="tab" href="#menu1">Bảng</a>
-                </li>
-            </ul>
+			<ul class="nav nav-tabs">
+				<li class="nav-item">
+					<a class="nav-link active" data-toggle="tab" href="#home">From</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" data-toggle="tab" href="#menu1">Bảng</a>
+				</li>
+			</ul>
 
-            <!-- Tab panes -->
-            <div class="tab-content">
-                <div class="tab-pane  active" id="home">
-                    <!-- From -->
-                    <div class="my-4 ">
-                        <form th:object="${SPEntity}" method="post">
-                            <div class="mb-3">
-                                <label for="exampleInputEmail1" class="form-label">ID Sản Phẩm </label>
-                                <input type="text" class="form-control" id="" aria-describedby="emailHelp"
-                                    th:field="*{id_sp}" >
-                                <div id="" class="form-text text-danger" th:errors="*{id_sp}" ></div>
-                            </div>
+			<!-- Tab panes -->
+			<div class="tab-content">
+				<div class="tab-pane  active" id="home">
+					<!-- From -->
+					<div class="my-4 ">
+						<form th:object="${SPEntity}" method="post">
+							<div class="mb-3">
+								<label for="exampleInputEmail1" class="form-label">ID Sản Phẩm </label>
+								<input type="text" class="form-control" id="" aria-describedby="emailHelp"
+									th:field="*{id_sp}">
+								<div id="" class="form-text text-danger" th:errors="*{id_sp}"></div>
+							</div>
 
-                            <div class="mb-3">
-                                <label for="exampleInputEmail1" class="form-label">Tên</label>
-                                <input type="text" class="form-control" th:field="*{ten}">
-                                <div id="" class="form-text text-danger" th:errors="*{ten}" ></div>
-                            </div>
+							<div class="mb-3">
+								<label for="exampleInputEmail1" class="form-label">Tên</label>
+								<input type="text" class="form-control" th:field="*{ten}">
+								<div id="" class="form-text text-danger" th:errors="*{ten}"></div>
+							</div>
 
-                            <div class="mb-3">
-                                <label for="exampleInputEmail1" class="form-label">Giá</label>
-                                <input type="text" class="form-control" th:field="*{gia}">
-                                <div id="" class="form-text text-danger" th:errors="*{gia}" ></div>
-                            </div>
+							<div class="mb-3">
+								<label for="exampleInputEmail1" class="form-label">Giá</label>
+								<input type="text" class="form-control" th:field="*{gia}">
+								<div id="" class="form-text text-danger" th:errors="*{gia}"></div>
+							</div>
 
-                            <div class="mb-3">
-                                <label for="exampleInputEmail1" class="form-label">Ngày Xuất Bản</label>
-                                <input type="text" class="form-control" th:field="*{ngayxuatban}">
-                                <div id="" class="form-text text-danger" th:errors="*{ngayxuatban}" ></div>
-                            </div>
-
-                            <div class="mb-3">
+							<div class="mb-3">
+								<label for="exampleInputEmail1" class="form-label">Ngày Xuất Bản</label>
+								<input type="text" class="form-control" th:field="*{ngayxuatban}">
+								<div id="" class="form-text text-danger" th:errors="*{ngayxuatban}"></div>
+							</div>
+							<div class="mb-3">
+								<label>Image</label>
+								<input type="file" class="form-control" id="image" th:field="*{anh}"
+									onchange="angular.element(this).scope().imageChanged(this.files)">
+							</div>
+							<!--<div class="mb-3">
                                 <label for="exampleInputEmail1" class="form-label">Ảnh</label>
                                 <input type="text" class="form-control" th:field="*{anh}">
                                 <div id="" class="form-text text-danger" th:errors="*{anh}" ></div>
-                            </div>
-                            <div class="mb-3">
-                                <label for="exampleInputEmail1" class="form-label">Số Lượng Sản Phẩm</label>
-                                <input type="text" class="form-control" th:field="*{soluongsp}">
-                                <div id="" class="form-text text-danger" th:errors="*{soluongsp}" ></div>
-                            </div>
-                            <div class="mb-3">
-                                <label for="exampleInputEmail1" class="form-label">ID Thể Loại</label>
-                                <input type="text" class="form-control" th:field="*{theloai.id_tl}">
-                                <div id="" class="form-text text-danger"></div>
-                            </div>
-                            <div class="mb-3" style="display: none">
-                                <label for="exampleInputEmail1" class="form-label">Tên Thể Loại</label>
-                                <input type="text" class="form-control" th:field="*{theloai.tentheloai}">
-                                <div id="" class="form-text text-danger"></div>
-                            </div>
+                            </div>-->
+							<div class="mb-3">
+								<label for="exampleInputEmail1" class="form-label">Số Lượng Sản Phẩm</label>
+								<input type="text" class="form-control" th:field="*{soluongsp}">
+								<div id="" class="form-text text-danger" th:errors="*{soluongsp}"></div>
+							</div>
+							<div class="mb-3">
+								<label for="exampleInputEmail1" class="form-label">ID Thể Loại</label>
+								<input type="text" class="form-control" th:field="*{theloai.id_tl}">
+								<div id="" class="form-text text-danger"></div>
+							</div>
+							<div class="mb-3" style="display: none">
+								<label for="exampleInputEmail1" class="form-label">Tên Thể Loại</label>
+								<input type="text" class="form-control" th:field="*{theloai.tentheloai}">
+								<div id="" class="form-text text-danger"></div>
+							</div>
 
 
-                            <button class="btn btn-success mx-2" th:formaction="@{/Admin/SanPham/Create}">Thêm</button>
-                            <button class="btn btn-success mx-2" th:formaction="@{/Admin/SanPham/Create}">Cập Nhật</button>
-                            <a class="btn btn-info mx-2" th:href="@{/Admin/SanPham}">Làm Mới</a>
-                        </form>
-                    </div>
+							<button class="btn btn-success mx-2" th:formaction="@{/Admin/SanPham/Create}">Thêm</button>
+							<button class="btn btn-success mx-2" th:formaction="@{/Admin/SanPham/Create}">Cập
+								Nhật</button>
+							<a class="btn btn-info mx-2" th:href="@{/Admin/SanPham}">Làm Mới</a>
+						</form>
+					</div>
 
-                    <!-- End From -->
-                </div>
-                <div class="tab-pane  fade" id="menu1">
-                    <!-- DataTales Example -->
-                    <div class="card shadow mb-4">
-                        <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">Bảng Dữ Liệu</h6>
-                        </div>
-                        <div class="card-body">
-                            <div class="table-responsive">
-                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                    <thead>
-                                        <tr>
-                                            <th>ID Sản Phẩm</th>
-                                            <th>Tên</th>
-                                            <th>Giá</th>
-                                            <th>Ngày Xuất Bản </th>
-                                            <th>Ảnh </th>
-                                            <th>Số Lượng Sản Phẩm</th>
+					<!-- End From -->
+				</div>
+				<div class="tab-pane  fade" id="menu1">
+					<!-- DataTales Example -->
+					<div class="card shadow mb-4">
+						<div class="card-header py-3">
+							<h6 class="m-0 font-weight-bold text-primary">Bảng Dữ Liệu</h6>
+						</div>
+						<div class="card-body">
+							<div class="table-responsive">
+								<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+									<thead>
+										<tr>
+											<th>ID Sản Phẩm</th>
+											<th>Tên</th>
+											<th>Giá</th>
+											<th>Ngày Xuất Bản </th>
+											<th>Ảnh </th>
+											<th>Số Lượng Sản Phẩm</th>
 
-                                            <th>ID Thể Loại</th>
-                                            <th></th>
-                                        </tr>
-                                    </thead>
-                                    <tfoot>
-                                        <tr>
-                                            <th>ID Sản Phẩm</th>
-                                            <th>Tên</th>
-                                            <th>Giá</th>
-                                            <th>Ngày Xuất Bản </th>
-                                            <th>Ảnh </th>
-                                            <th>Số Lượng Sản Phẩm</th>
+											<th>ID Thể Loại</th>
+											<th></th>
+										</tr>
+									</thead>
+									<tfoot>
+										<tr>
+											<th>ID Sản Phẩm</th>
+											<th>Tên</th>
+											<th>Giá</th>
+											<th>Ngày Xuất Bản </th>
+											<th>Ảnh </th>
+											<th>Số Lượng Sản Phẩm</th>
 
-                                            <th>ID Thể Loại</th>
-                                            <th></th>
-                                        </tr>
-                                    </tfoot>
-                                    <tbody>
+											<th>ID Thể Loại</th>
+											<th></th>
+										</tr>
+									</tfoot>
+									<tbody>
 
-                                        <tr th:each="SPService : ${SPService}">
-                                            <td th:text="${SPService.id_sp}"></td>
-                                            <td>[[${SPService.ten}]]</td>
-                                            <td>[[${SPService.gia}]]</td>
-                                            <td>[[${SPService.ngayxuatban}]]</td>
-                                            <td><img th:src="@{|/user/img/products/${SPService.anh}|}" alt=""
-                                                    width="50px" height="50px"></td>
-                                            <td>[[${SPService.soluongsp}]]</td>
-                                            <td>[[${SPService.theloai.id_tl}]]</td>
+										<tr th:each="SPService : ${SPService}">
+											<td th:text="${SPService.id_sp}"></td>
+											<td>[[${SPService.ten}]]</td>
+											<td>[[${SPService.gia}]]</td>
+											<td>[[${SPService.ngayxuatban}]]</td>
+											<td><img th:src="@{|/user/img/products/${SPService.anh}|}" alt=""
+													width="50px" height="50px"></td>
+											<td>[[${SPService.soluongsp}]]</td>
+											<td>[[${SPService.theloai.id_tl}]]</td>
 
-                                            <td>
-                                                <a class="text-white bg-danger"
-                                                    th:href="@{|/Admin/SanPham/Delete/${SPService.id_sp}|}">Xóa</a>
-                                                <a class="text-white  bg-info"
-                                                    th:href="@{|/Admin/SanPham/Edit/${SPService.id_sp}|}">Sửa</a>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- end Table -->
-                </div>
+											<td>
+												<a class="text-white bg-danger"
+													th:href="@{|/Admin/SanPham/Delete/${SPService.id_sp}|}">Xóa</a>
+												<a class="text-white  bg-info"
+													th:href="@{|/Admin/SanPham/Edit/${SPService.id_sp}|}">Sửa</a>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+					<!-- end Table -->
+				</div>
 
-            </div>
+			</div>
 
 
 
-        </div>
-        <!-- /.container-fluid -->
+		</div>
+		<!-- /.container-fluid -->
 
-    </main>
-    <!-- End of Main Content -->
+	</main>
+	<!-- End of Main Content -->
 </div>
+<script src="/Admin/validation/taikhoan/phanquyen.js"></script>
