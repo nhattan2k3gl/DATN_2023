@@ -51,10 +51,15 @@
 								<div id="" class="form-text text-danger" th:errors="*{taikhoan.hovaten}"></div>
 							</div>
 
-							<div class="mb-3">
+							<!--<div class="mb-3">
 								<label for="exampleInputEmail1" class="form-label">Ảnh</label> <input type="text"
 									class="form-control" th:field="*{taikhoan.anh}" id="anh" name="anh" required>
 								<div id="" class="form-text text-danger" th:errors="*{taikhoan.anh}"></div>
+							</div>-->
+							<div class="mb-3">
+								<label>Image</label>
+								<input type="file" class="form-control" id="image" th:field="*{taikhoan.anh}"
+									onchange="angular.element(this).scope().imageChanged(this.files)">
 							</div>
 
 							<div class="mb-3">
@@ -130,7 +135,9 @@
 											<td>[[${PQService.taikhoan.email}]]</td>
 											<td>[[${PQService.taikhoan.matkhau}]]</td>
 											<td>[[${PQService.taikhoan.hovaten}]]</td>
-											<td>[[${PQService.taikhoan.anh}]]</td>
+											<td><img th:src="@{|/user/img/products/${PQService.taikhoan.anh}|}" alt=""
+													width="50px" height="50px"></td>
+											
 											<td>[[${PQService.taikhoan.diachi}]]</td>
 											<td>[[${PQService.vaitro.tenvaitro}]]</td>
 
