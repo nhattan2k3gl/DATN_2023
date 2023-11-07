@@ -1,115 +1,119 @@
 <div xmlns:th="http://www.thymeleaf.org" th:replace="~{/Admin/Layout/Layout :: dynamic (~{::main})}">
-	<!-- Main Content -->
-            <main id="content">
+    <!-- Main Content -->
+    <main>
 
-                <!-- Topbar -->
-                <div th:replace="~{/Admin/Layout/TopBar}"></div>
-                <!-- End of Topbar -->
+        <!-- Topbar -->
+        <div th:replace="~{/Admin/Layout/TopBar}"></div>
+        <!-- End of Topbar -->
 
-                <!-- Begin Page Content -->
-                <div class="container-fluid">
+        <!-- Begin Page Content -->
+        <div class="container-fluid">
 
-                    <!-- Page Heading -->
-                    <h1 class="h3 mb-2 text-gray-800">Tài Khoản</h1>
+            <!-- Page Heading -->
+            <h1 class="h3 mb-2 text-gray-800">Tài Khoản</h1>
 
-                    <!-- From -->
-                    <div class="my-4 ">
-                        <form th:object="${TKEntity}"  method="post" >
-                        
-                            <div class="mb-3">
-                                <label for="exampleInputEmail1" class="form-label">Email </label>
-                                <input type="text" class="form-control" id="exampleInputEmail1"  th:field="*{email}" readonly>
-                                <div id="emailHelp" class="form-text text-danger"  th:errors="*{email}"></div>
-                            </div>
-
-                           <div class="mb-3">
-                                <label for="exampleInputEmail1" class="form-label">Mật Khẩu</label>
-                                	<input type="password" class="form-control" id="password" readonly >
-                                 	
-        							<input type="hidden" id="hiddenPassword" th:field="*{matkhau}"/>
-                                	<div id="emailHelp" class="form-text text-danger" th:errors="*{matkhau}" ></div>
-                            </div>
-
-                            <div class="mb-3">
-                                <label for="exampleInputEmail1" class="form-label">Họ Và Tên</label>
-                                <input type="text" class="form-control" th:field="*{hovaten}" >
-                                <div id="emailHelp" class="form-text text-danger" th:errors="*{hovaten}" ></div>
-                            </div>
-
-                            <div class="mb-3 ">
-                                <label for="exampleInputEmail1" class="form-label">Ảnh</label>
-                                <input type="text" class="form-control" th:field="*{anh}" >
-                                <div id="emailHelp" class="form-text text-danger" th:errors="*{anh}" ></div>
-                            </div>
-
-                            <div class="mb-3">
-                                <label for="exampleInputEmail1" class="form-label">Địa Chỉ</label>
-                                <input type="text" class="form-control" th:field="*{diachi}" >
-                                <div id="emailHelp" class="form-text text-danger" th:errors="*{diachi}" ></div>
-                            </div>
-    
-                            <button class="btn btn-success mx-2" th:formaction="@{/Admin/TaiKhoan/Create}" >Thêm</button>
-                            <button class="btn btn-success mx-2" th:formaction="@{/Admin/TaiKhoan/Update}">Chỉnh sửa</button>
-                            <button class="btn btn-info mx-2" th:formaction="@{/Admin/TaiKhoan/Reset}">Làm Mới</button>
-                            
-                        </form>
-                    </div>
-                    
-                    <!-- End From -->
-
-                    <!-- DataTales Example -->
-                    <div class="card shadow mb-4">
-                        <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
-                        </div>
-                        <div class="card-body">
-                            <div class="table-responsive">
-                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                    <thead>
-                                        <tr>
-                                            <th>Email</th>
-                                         
-                                            <th>Họ Và Tên</th>
-                                            <th>Ảnh</th>
-                                            <th>Địa Chỉ</th>
-                                            <th>Vai Trò</th>
-                                            <th></th>
-                                        </tr>
-                                    </thead>
-                                    <tfoot>
-                                        <tr>
-                                            <th>Email</th>
-                                            <th>Họ Và Tên</th>
-                                            <th>Ảnh</th>
-                                            <th>Địa Chỉ</th>
-                                            <th>Vai Trò</th>
-                                            <th></th>
-                                        </tr>
-                                    </tfoot>
-                                    <tbody>
-                                        
-                                         <tr th:each="TKService : ${TKService}">
-            								<td th:text="${TKService.email}"></td>
-            								
-            								<td>[[${TKService.hovaten}]]</td>
-            								<td><img th:src="@{|/Admin/img/admin/${TKService.anh}|}"  alt="" width="60px" height="60px"></td>
-            								<td>[[${TKService.diachi}]]</td>
-            								<td>
-            									<a class="text-white bg-danger" th:href="@{/Admin/TaiKhoan/Delete/{id}(id=${TKService.email})}" > Xóa</a>
-            									<a class="text-white  bg-info" th:href="@{/Admin/TaiKhoan/Edit/{id}(id=${TKService.email})}" >Sửa</a>
-            								</td>
-            								
-        								 </tr>
-                                        
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
+            <!-- From -->
+            <div class="my-4 ">
+                <form th:object="${TKEntity}" method="post" id="FormTK">
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email </label>
+                        <input type="text" class="form-control" th:field="*{email}" id="email" name="email" required>
+                        <div class="form-text text-danger" id="email-error" name="email-error"></div>
                     </div>
 
+                     <div class="mb-3">
+                        <label for="matkhau" class="form-label">Mật Khẩu</label>
+                        <input type="password" class="form-control" id="matkhauInput" name="matkhauInput" required>
+                        <input type="hidden" id="hiddenMatKhau" th:field="*{matkhau}" />
+                        <div class="form-text text-danger" id="matkhau-error"></div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="hovaten" class="form-label">Họ Và Tên</label>
+                        <input type="text" class="form-control" th:field="*{hovaten}" id="hovaten" name="hovaten"
+                            required>
+                        <div class="form-text text-danger" id="hovaten-error"></div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="anh" class="form-label">Ảnh</label>
+                        <input type="text" class="form-control" th:field="*{anh}" id="anh" name="anh" required>
+                        <div class="form-text text-danger" id="anh-error"></div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="diachi" class="form-label">Địa Chỉ</label>
+                        <input type="text" class="form-control" th:field="*{diachi}" id="diachi" name="diachi" required>
+                        <div class="form-text text-danger" id="diachi-error"></div>
+                    </div>
+
+                    <button class="btn btn-success mx-2" th:formaction="@{/Admin/TaiKhoan/Create}">Thêm</button>
+                    <button class="btn btn-success mx-2" th:formaction="@{/Admin/TaiKhoan/Update}">Chỉnh sửa</button>
+                    <button class="btn btn-info mx-2" th:formaction="@{/Admin/TaiKhoan/Reset}">Làm Mới</button>
+
+                </form>
+            </div>
+
+            <!-- End From -->
+
+            <!-- DataTales Example -->
+            <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
                 </div>
-                <!-- /.container-fluid -->
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                            <thead>
+                                <tr>
+                                    <th>Email</th>
 
-            </main>
-            <!-- End of Main Content -->
+                                    <th>Họ Và Tên</th>
+                                    <th>Ảnh</th>
+                                    <th>Địa Chỉ</th>
+                                    <th>Vai Trò</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tfoot>
+                                <tr>
+                                    <th>Email</th>
+                                    <th>Họ Và Tên</th>
+                                    <th>Ảnh</th>
+                                    <th>Địa Chỉ</th>
+                                    <th>Vai Trò</th>
+                                    <th></th>
+                                </tr>
+                            </tfoot>
+                            <tbody>
+
+                                <tr th:each="TKService : ${TKService}">
+                                    <td th:text="${TKService.email}"></td>
+
+                                    <td>[[${TKService.hovaten}]]</td>
+                                    <td><img th:src="@{|/Admin/img/admin/${TKService.anh}|}" alt="" width="60px"
+                                            height="60px"></td>
+                                    <td>[[${TKService.diachi}]]</td>
+                                    <td>
+                                        <a class="text-white bg-danger"
+                                            th:href="@{/Admin/TaiKhoan/Delete/{id}(id=${TKService.email})}"> Xóa</a>
+                                        <a class="text-white  bg-info"
+                                            th:href="@{/Admin/TaiKhoan/Edit/{id}(id=${TKService.email})}">Sửa</a>
+                                    </td>
+
+                                </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <!-- /.container-fluid -->
+
+    </main>
+    <!-- End of Main Content -->
 </div>
+
+<script src="/Admin/validation/taikhoan/taikhoan.js"></script>

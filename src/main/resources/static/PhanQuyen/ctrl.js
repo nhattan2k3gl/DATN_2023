@@ -1,5 +1,5 @@
-var app = angular.module("app",[])
-app.controller("ctrl",function($scope,$http){
+var app = angular.module("appPQ",[])
+app.controller("ctrlPQ",function($scope,$http){
 	
 	$http.get("/Rest/PhanQuyen").then(resp=> {
 		$scope.db = resp.data;
