@@ -82,7 +82,7 @@
 				</div>
 				<div class="product-add">
 				    <div class="product-add__col">
-				        <a th:attr="ng-click=@{|cart.add('${item.id_sp}')|}" class="product-add__button button">
+				        <a th:attr="ng-click=@{|cart.add('${item.id_sp}')|}" th:href="@{|/cart|}" class="product-add__button button">
 				            <span class="button__text">
 				                <th:block th:text="#{user.addcart}"></th:block>
 				            </span>
