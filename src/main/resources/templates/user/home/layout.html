@@ -12,11 +12,18 @@
 <link rel="stylesheet" type="text/css" th:href="@{/user/assets/icomoon/icomoon.css}">
 <link rel="stylesheet" type="text/css" th:href="@{/user/assets/css/vendor.css}">
 
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+
+
+
 <!-- script
 		================================================== -->
 <script th:src="@{/user/assets/js/modernizr.js}"></script>
 </head>
-<body class="loaded">
+<body class="loaded" ng-app="app" ng-controller="cart-ctrl">
 
     <div class="load-icon"></div>
 
@@ -53,6 +60,8 @@
 <script th:src="@{/user/assets/js/components/fancybox.js}"></script>
 <script th:src="@{/user/assets/js/components/syotimer.js}"></script>
 <script th:src="@{/user/assets/js/main.js}"></script>
+
+<script th:src="@{/user/assets/js/shopping-cart-app.js}"></script>
 
 </body>
 </html>
