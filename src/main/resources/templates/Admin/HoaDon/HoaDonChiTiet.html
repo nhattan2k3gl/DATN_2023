@@ -54,7 +54,7 @@
                             </div>
                             <div class="mb-3">
                                 <label for="exampleInputEmail1" class="form-label"> Địa Chỉ </label>
-                                <input type="text" class="form-control" th:field="*{hoadon.diachi}">
+                                <input type="text" class="form-control" th:field="*{hoadon.diachi}" required>
                                 <div id="" class="form-text text-danger"></div>
                             </div>
                             
@@ -96,7 +96,7 @@
                             
                             <div class="mb-3">
                                 <label for="exampleInputEmail1" class="form-label">Số Lượng</label>
-                                <input type="text" class="form-control" th:field="*{soluong}" >
+                                <input type="text" class="form-control" th:field="*{soluong}" readonly>
                                 <div id="" class="form-text text-danger" th:errors="*{soluong}"></div>
                             </div>
                             
@@ -108,15 +108,10 @@
                             
                             <div class="mb-3" style="display: none">
                                 <label  for="exampleInputEmail1" class="form-label">ID  Thể Loại</label>
-                                <input type="text" class="form-control" th:field="*{sanpham.theloai.id_tl}">
+                                <input type="text" class="form-control" th:field="*{sanpham.theloai.id_tl}" readonly>
                                 <div id="" class="form-text text-danger"></div>
                             </div>
-                            
-                            
 
-
-
-                            
                             <button class="btn btn-success mx-2"
                                 th:formaction="@{/Admin/HoaDonChiTiet/Create}">Cập Nhật</button>
                              <a class="btn btn-info mx-2" th:href="@{|/Admin/HoaDonChiTiet|}" >Làm Mới</a> 

@@ -39,10 +39,10 @@ $(document).ready(function() {
 	var matkhau = document.getElementById("matkhauInput");
 	matkhau.value = hiddenPasswordElement;
 	// Thay đổi thông báo này tùy theo kịch bản của bạn
-	Swal.fire({
+	/*Swal.fire({
 		icon: 'success',
 		title: 'Thành công!',
 		text: 'Form đã được gửi thành công.',
 		confirmButtonText: 'OK'
-	});
+	});*/
 });
