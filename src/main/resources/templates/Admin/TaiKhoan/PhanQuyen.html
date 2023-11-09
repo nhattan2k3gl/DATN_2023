@@ -13,7 +13,7 @@
 			<h1 class="h3 mb-2 text-gray-800">Tài Khoản</h1>
 
 			<ul class="nav nav-tabs">
-				<li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#home">From</a></li>
+				<li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#home">Chỉnh Sửa</a></li>
 				<li class="nav-item"><a class="nav-link" data-toggle="tab" href="#menu1">Bảng</a></li>
 			</ul>
 
@@ -57,7 +57,7 @@
 								<div id="" class="form-text text-danger" th:errors="*{taikhoan.anh}"></div>
 							</div>-->
 							<div class="mb-3">
-								<label>Image</label>
+								<label>Ảnh</label>
 								<input type="file" class="form-control" id="image" th:field="*{taikhoan.anh}"
 									onchange="angular.element(this).scope().imageChanged(this.files)">
 							</div>
