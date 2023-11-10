@@ -23,7 +23,7 @@ import lombok.Data;
 public class VaiTroEntity implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	String id_vt;
+	int id_vt;
 	
 	@NotBlank
 	String tenvaitro;

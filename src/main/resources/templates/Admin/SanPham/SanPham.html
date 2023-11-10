@@ -71,7 +71,7 @@
 								<input type="text" class="form-control" th:field="*{theloai.id_tl}">
 								<div id="" class="form-text text-danger"></div>
 							</div>
-							<div class="mb-3" style="display: none">
+							<div class="mb-3" >
 								<label for="exampleInputEmail1" class="form-label">Tên Thể Loại</label>
 								<input type="text" class="form-control" th:field="*{theloai.tentheloai}">
 								<div id="" class="form-text text-danger"></div>
@@ -103,6 +103,8 @@
 											<th>Giá</th>
 											<th>Ngày Xuất Bản </th>
 											<th>Ảnh </th>
+											<th>Ảnh </th>
+											<th>Ảnh </th>
 											<th>Số Lượng Sản Phẩm</th>
 
 											<th>ID Thể Loại</th>
@@ -118,7 +120,8 @@
 											<th>Ảnh </th>
 											<th>Số Lượng Sản Phẩm</th>
 
-											<th>ID Thể Loại</th>
+											<th>Tên Thể Loại</th>
+											<th></th>
 											<th></th>
 										</tr>
 									</tfoot>
@@ -131,8 +134,12 @@
 											<td>[[${SPService.ngayxuatban}]]</td>
 											<td><img th:src="@{|/user/img/products/${SPService.anh}|}" alt=""
 													width="50px" height="50px"></td>
+											<td><img th:src="@{|/user/img/products/${SPService.anh1}|}" alt=""
+													width="50px" height="50px"></td>
+											<td><img th:src="@{|/user/img/products/${SPService.anh2}|}" alt=""
+													width="50px" height="50px"></td>
 											<td>[[${SPService.soluongsp}]]</td>
-											<td>[[${SPService.theloai.id_tl}]]</td>
+											<td>[[${SPService.theloai.tentheloai}]]</td>
 
 											<td>
 												<a class="text-white bg-danger"

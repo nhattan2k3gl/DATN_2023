@@ -10,6 +10,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 
 @SuppressWarnings("serial")
@@ -19,8 +20,8 @@ import lombok.Data;
 public class MaGiamGiaEntity implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@NotBlank
-	String id_mgg;
+	@NotNull
+	int id_mgg;
 	
 	@NotBlank
 	float phantram;

@@ -10,6 +10,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 
 @SuppressWarnings("serial")
@@ -18,8 +19,8 @@ import lombok.Data;
 @Table(name = "theloai")
 public class TheLoaiEntity implements Serializable{
 	@Id
-	@NotBlank
-	String id_tl;
+	@NotNull
+	int id_tl;
 	
 	@NotBlank
 	String tentheloai;

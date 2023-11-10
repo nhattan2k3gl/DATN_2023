@@ -18,6 +18,7 @@ import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 
 @SuppressWarnings("serial")
@@ -26,8 +27,8 @@ import lombok.Data;
 @Table(name = "hoadon")
 public class HoaDonEntity implements Serializable{
 	@Id
-	@NotBlank
-	String id_hd;
+	@NotNull
+	int id_hd;
 	
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	@Temporal(TemporalType.DATE)

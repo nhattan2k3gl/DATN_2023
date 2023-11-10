@@ -68,16 +68,16 @@ public class DangNhap1Controller {
 				response.addCookie(ckiMatKhau);
 				
 				
-				if (PQ.getVaitro().getId_vt().equals("VT_003")) {
+				if (PQ.getVaitro().getId_vt()==3) {
 					
 					System.out.println("Dang Nhập Thành Công Trang Admin");
 					return "redirect:/Admin/TrangChu";
 				}
-				if (PQ.getVaitro().getId_vt().equals("VT_002")) {
+				if (PQ.getVaitro().getId_vt()==2) {
 					System.out.println("Dang Nhập Thành Công Trang Nhân Viên");
 					return "redirect:/Admin/TrangChu";
 				}
-				if (PQ.getVaitro().getId_vt().equals("VT_001")) {
+				if (PQ.getVaitro().getId_vt()==1) {
 					System.out.println("Dang Nhập Thành Công Trang Khách Hàng");
 					return "redirect:/index";
 				}

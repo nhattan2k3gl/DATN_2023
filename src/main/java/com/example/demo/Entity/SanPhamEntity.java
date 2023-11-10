@@ -27,8 +27,8 @@ import lombok.Data;
 @Table(name = "sanpham")
 public class SanPhamEntity implements Serializable{
 	@Id
-	@NotBlank
-	String id_sp;
+	@NotNull
+	int id_sp;
 	
 	@NotBlank
 	String ten;
@@ -45,9 +45,17 @@ public class SanPhamEntity implements Serializable{
 	
 	@NotBlank
 	String anh;
+	@NotBlank
+	String anh1;
+	@NotBlank
+	String anh2;
+	
 	
 	@NotNull
 	int soluongsp;
+	
+	@NotBlank
+	String mota;
 	
 //	String id_tl;
 	@ManyToOne

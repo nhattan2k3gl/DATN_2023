@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class GioHang {
-	private String id_sp;
+	private int id_sp;
 	private String ten;
 	private String anh;
 	private double gia;
