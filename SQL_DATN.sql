@@ -128,11 +128,9 @@ insert into TaiKhoan values
 	('anhhao@gmail.com','123',N'Nguyễn Anh Hào','khoa.png',N'1072 Lê Đức Thọ'),
 	('hoainam@gmail.com','123',N'Nguyễn Hoài Nam','nam.png',N'1072 Lê Đức Thọ')
 
-<<<<<<< HEAD
+
 insert into TaiKhoan values
 	('nguyenhoainam@gmail.com','$2a$10$2n/7KPuN4OJtOuE0IKxu2eaJPmRgi8icWNgIJvzK2Ahop7ZbxJSqK',N'Nguyễn Hoài Nam','nam.png',N'1072 Lê Đức Thọ')
-=======
->>>>>>> 505cf56bc7787b1fabac75f5b6a83d83ce305088
 select * from TaiKhoan
 
 insert into VaiTro values
