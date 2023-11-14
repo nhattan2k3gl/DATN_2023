@@ -54,10 +54,26 @@ public class PhanQuyenController {
 
 	@GetMapping("/Admin/PhanQuyen/Delete/{id}")
 	public String PhanQuyenDeleteId(Model model, @PathVariable("id") String id) {
+		try {
+		    model.addAttribute("message", "ThanhCong");
+		    PQService.delete(id);
+		    TKService.delete(id);
+		} catch (Exception e) {
+		    
+		    if (e.getMessage().contains("The DELETE statement conflicted with the REFERENCE constraint")) {
+		    	model.addAttribute("message", "LoiFK");
+		    } else {
+		    	model.addAttribute("message", "Loi");
+		    }
+		}
 
-		PQService.delete(id);
+		List<PhanQuyenEntity> ListPQService = PQService.findAll();
+		model.addAttribute("PQService", ListPQService);
+		PhanQuyenEntity PQEntity = new PhanQuyenEntity();
+		model.addAttribute("PQEntity", PQEntity);
 
-		return "redirect:/Admin/PhanQuyen";
+
+		return "Admin/TaiKhoan/PhanQuyen";
 	}
 
 	@PostMapping("/Admin/PhanQuyen/Create")

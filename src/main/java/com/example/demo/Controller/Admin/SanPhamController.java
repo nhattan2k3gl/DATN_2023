@@ -53,6 +53,7 @@ public class SanPhamController {
 	@PostMapping("/Admin/SanPham/Create")
 	public String SanPhamCreate(@Validated @ModelAttribute("SPEntity") SanPhamEntity SPEntity, Errors errors,
 			Model model) throws Exception{
+		
 		if (errors.hasErrors()) {
 
 			model.addAttribute("SPEntity", SPEntity);

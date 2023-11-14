@@ -51,16 +51,34 @@
 								<input type="text" class="form-control" th:field="*{ngayxuatban}">
 								<div id="" class="form-text text-danger" th:errors="*{ngayxuatban}"></div>
 							</div>
+
+							<!--<div class="mb-3">
+								<label>Ảnh</label>
+								<input type="file" class="form-control" id="image" th:field="*{anh1}"
+									onchange="angular.element(this).scope().imageChanged(this.files)">
+							</div>-->
+							<div class="mb-3">
+								<label>Image</label>
+								<input type="file" class="form-control" id="image"
+									onchange="angular.element(this).scope().imageChanged(this.files)" th:field="*{anh}">
+							</div>
 							<div class="mb-3">
 								<label>Ảnh</label>
-								<input type="file" class="form-control" id="image" th:field="*{anh}"
+								<input type="file" class="form-control" id="image" th:field="*{anh1}"
 									onchange="angular.element(this).scope().imageChanged(this.files)">
 							</div>
+							<div class="mb-3">
+								<label>Ảnh</label>
+								<input type="file" class="form-control" id="image" th:field="*{anh2}"
+									onchange="angular.element(this).scope().imageChanged(this.files)">
+							</div>
+
 							<!--<div class="mb-3">
-                                <label for="exampleInputEmail1" class="form-label">Ảnh</label>
-                                <input type="text" class="form-control" th:field="*{anh}">
-                                <div id="" class="form-text text-danger" th:errors="*{anh}" ></div>
-                            </div>-->
+								<label for="exampleInputEmail1" class="form-label">Ảnh</label>
+								<input type="text" class="form-control" th:field="*{anh}">
+								<div id="" class="form-text text-danger" th:errors="*{anh}"></div>
+							</div>-->
+
 							<div class="mb-3">
 								<label for="exampleInputEmail1" class="form-label">Số Lượng Sản Phẩm</label>
 								<input type="text" class="form-control" th:field="*{soluongsp}">
@@ -71,11 +89,17 @@
 								<input type="text" class="form-control" th:field="*{theloai.id_tl}">
 								<div id="" class="form-text text-danger"></div>
 							</div>
-							<div class="mb-3" >
+							<div class="mb-3">
 								<label for="exampleInputEmail1" class="form-label">Tên Thể Loại</label>
 								<input type="text" class="form-control" th:field="*{theloai.tentheloai}">
 								<div id="" class="form-text text-danger"></div>
 							</div>
+							<div class="mb-3">
+								<label for="exampleInputEmail1" class="form-label">Mô Tả</label>
+								<textarea class="form-control" th:field="*{mota}" style="height: 200px;"></textarea>
+								<div id="" class="form-text text-danger"></div>
+							</div>
+
 
 
 							<button class="btn btn-success mx-2" th:formaction="@{/Admin/SanPham/Create}">Thêm</button>
@@ -166,4 +190,4 @@
 	</main>
 	<!-- End of Main Content -->
 </div>
-<script src="/Admin/validation/taikhoan/phanquyen.js"></script>
+<script src="/Admin/validation/SanPham/SanPham.js"></script>

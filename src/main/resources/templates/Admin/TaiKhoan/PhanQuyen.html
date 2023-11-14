@@ -12,151 +12,63 @@
 			<!-- Page Heading -->
 			<h1 class="h3 mb-2 text-gray-800">Tài Khoản</h1>
 
-			<ul class="nav nav-tabs">
-				<li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#home">Chỉnh Sửa</a></li>
-				<li class="nav-item"><a class="nav-link" data-toggle="tab" href="#menu1">Bảng</a></li>
-			</ul>
-
-			<!-- Tab panes -->
-			<div class="tab-content">
-				<div class="tab-pane  active" id="home">
-					<!-- From -->
-					<div class="my-4 ">
-						<form th:object="${PQEntity}" method="post" id="FromPQ">
-							<div class="mb-3" style="display: none">
-								<label for="exampleInputEmail1" class="form-label">ID
-									Phân Quyền </label> <input type="text" class="form-control"
-									aria-describedby="emailHelp" th:field="*{id_pq}" id="id_pq" name="id_pq" readonly
-									required>
-								<div id="emailHelp" class="form-text text-danger" th:errors="*{id_pq}"></div>
-							</div>
-
-							<div class="mb-3">
-								<label for="exampleInputEmail1" class="form-label">Email</label>
-								<input type="email" class="form-control" th:field="*{taikhoan.email}" readonly
-									id="email" name="email" required>
-								<div id="" class="form-text text-danger" th:errors="*{taikhoan.email}"></div>
-							</div>
-
-							<div class="mb-3">
-								<label for="matkhau" class="form-label">Mật Khẩu</label> <input type="password"
-									class="form-control" id="matkhauInput" name="matkhauInput" required> <input
-									type="hidden" id="hiddenMatKhau" th:field="*{taikhoan.matkhau}" />
-								<div class="form-text text-danger" id="matkhau-error"></div>
-							</div>
-							<div class="mb-3">
-								<label for="exampleInputEmail1" class="form-label">Họ Và
-									Tên</label> <input type="text" class="form-control" th:field="*{taikhoan.hovaten}"
-									id="hovaten" name="hovaten" required>
-								<div id="" class="form-text text-danger" th:errors="*{taikhoan.hovaten}"></div>
-							</div>
-
-							<!--<div class="mb-3">
-								<label for="exampleInputEmail1" class="form-label">Ảnh</label> <input type="text"
-									class="form-control" th:field="*{taikhoan.anh}" id="anh" name="anh" required>
-								<div id="" class="form-text text-danger" th:errors="*{taikhoan.anh}"></div>
-							</div>-->
-							<div class="mb-3">
-								<label>Ảnh</label>
-								<input type="file" class="form-control" id="image" th:field="*{taikhoan.anh}"
-									onchange="angular.element(this).scope().imageChanged(this.files)">
-							</div>
-
-							<div class="mb-3">
-								<label for="exampleInputEmail1" class="form-label">Địa
-									Chỉ</label> <input type="text" class="form-control" th:field="*{taikhoan.diachi}"
-									id="diachi" name="diachi" required>
-								<div id="" class="form-text text-danger" th:errors="*{taikhoan.diachi}"></div>
-							</div>
-
-
-
-							<div class="mb-3" style="display: none">
-								<label for="exampleInputEmail1" class="form-label">ID
-									Vai Trò</label> <input type="text" class="form-control" th:field="*{vaitro.id_vt}"
-									readonly id="id_vt" name="id_vt" required>
-								<div class="form-text text-danger" th:errors="*{vaitro.id_vt}"></div>
-							</div>
-
-							<div class="mb-3">
-								<label for="exampleInputEmail1" class="form-label">Tên
-									Vai Trò</label> <input type="text" class="form-control"
-									th:field="*{vaitro.tenvaitro}" readonly id="tenvaitro" name="tenvaitro" required>
-								<div id="" class="form-text text-danger" th:errors="*{vaitro.tenvaitro}"></div>
-							</div>
-
-
-							<!-- <button class="btn btn-success mx-2"
-                                th:formaction="@{|/Admin/PhanQuyen/Create|}">Thêm</button> -->
-							<button class="btn btn-success mx-2" th:formaction="@{/Admin/PhanQuyen/Create}">Cập
-								Nhật</button>
-							<button class="btn btn-info mx-2" th:formaction="@{/Admin/PhanQuyen/Rest}">Làm Mới</button>
-						</form>
-					</div>
-
-					<!-- End From -->
+			<p style="display: none">Giá trị của "TC" là: <span th:text="${message}" id="TB"></span></p>
+			<!-- DataTales Example -->
+			<div class="card shadow mb-4">
+				<div class="card-header py-3">
+					<h6 class="m-0 font-weight-bold text-primary">Bảng Dữ Liệu</h6>
 				</div>
-				<div class="tab-pane  fade" id="menu1">
-					<!-- DataTales Example -->
-					<div class="card shadow mb-4">
-						<div class="card-header py-3">
-							<h6 class="m-0 font-weight-bold text-primary">Bảng Dữ Liệu</h6>
-						</div>
-						<div class="card-body">
-							<div class="table-responsive">
-								<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-									<thead>
-										<tr>
+				<div class="card-body">
+					<div class="table-responsive">
+						<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+							<thead>
+								<tr>
 
-											<th>Email</th>
-											<th>Mật Khẩu</th>
-											<th>Họ Và Tên</th>
-											<th>Ảnh</th>
-											<th>Địa Chỉ</th>
-											<th>Vai Trò</th>
-											<th></th>
-										</tr>
-									</thead>
-									<tfoot>
-										<tr>
-											<th>Email</th>
-											<th>Mật Khẩu</th>
-											<th>Họ Và Tên</th>
-											<th>Ảnh</th>
-											<th>Địa Chỉ</th>
-											<th>Vai Trò</th>
-											<th></th>
-										</tr>
-									</tfoot>
-									<tbody>
+									<th>Email</th>
 
-										<tr th:each="PQService : ${PQService}">
-											<!-- <td th:text="${PQService.id_pq}"></td> -->
-											<td>[[${PQService.taikhoan.email}]]</td>
-											<td>[[${PQService.taikhoan.matkhau}]]</td>
-											<td>[[${PQService.taikhoan.hovaten}]]</td>
-											<td><img th:src="@{|/user/img/products/${PQService.taikhoan.anh}|}" alt=""
-													width="50px" height="50px"></td>
-											
-											<td>[[${PQService.taikhoan.diachi}]]</td>
-											<td>[[${PQService.vaitro.tenvaitro}]]</td>
+									<th>Họ Và Tên</th>
+									<th>Ảnh</th>
+									<th>Địa Chỉ</th>
+									<th>Vai Trò</th>
+									<th></th>
+								</tr>
+							</thead>
+							<tfoot>
+								<tr>
+									<th>Email</th>
 
-											<td><a class="text-white bg-danger"
-													th:href="@{|/Admin/PhanQuyen/Delete/${PQService.id_pq}|}">Xóa</a>
-												<a class="text-white  bg-info"
-													th:href="@{|/Admin/PhanQuyen/Edit/${PQService.id_pq}|}">Sửa</a>
-											</td>
-										</tr>
+									<th>Họ Và Tên</th>
+									<th>Ảnh</th>
+									<th>Địa Chỉ</th>
+									<th>Vai Trò</th>
+									<th></th>
+								</tr>
+							</tfoot>
+							<tbody>
 
-									</tbody>
-								</table>
-							</div>
-						</div>
+								<tr th:each="PQService : ${PQService}">
+									<!-- <td th:text="${PQService.id_pq}"></td> -->
+									<td>[[${PQService.taikhoan.email}]]</td>
+
+									<td>[[${PQService.taikhoan.hovaten}]]</td>
+									<td><img th:src="@{|/user/img/products/${PQService.taikhoan.anh}|}" alt=""
+											width="50px" height="50px"></td>
+
+									<td>[[${PQService.taikhoan.diachi}]]</td>
+									<td>[[${PQService.vaitro.tenvaitro}]]</td>
+
+									<td><a class="text-white bg-danger"
+											th:href="@{|/Admin/PhanQuyen/Delete/${PQService.id_pq}|}">Xóa</a>
+
+									</td>
+								</tr>
+
+							</tbody>
+						</table>
 					</div>
-					<!--end  -->
 				</div>
-
 			</div>
+			<!--end  -->
 
 
 
@@ -166,4 +78,4 @@
 	</main>
 	<!-- End of Main Content -->
 </div>
-<script th:src="@{/Admin/validation/taikhoan/phanquyen.js}"></script>
+<script src="/Admin/js/taikhoan/taikhoan.js"></script>

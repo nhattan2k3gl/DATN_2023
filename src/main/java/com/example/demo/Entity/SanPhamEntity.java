@@ -43,11 +43,11 @@ public class SanPhamEntity implements Serializable{
 	
 	
 	
-	@NotBlank
+	
 	String anh;
-	@NotBlank
+	
 	String anh1;
-	@NotBlank
+	
 	String anh2;
 	
 	

@@ -17,12 +17,12 @@
                         <form th:object="${VTEntity}">
                             <div class="mb-3">
                                 <label for="exampleInputEmail1" class="form-label">ID Vai Trò</label>
-                                <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" th:field="*{id_vt}">
+                                <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" th:field="*{id_vt}" required>
                                 <div id="" class="form-text text-danger" ></div>
                             </div>
                             <div class="mb-3">
                                 <label for="exampleInputEmail1" class="form-label">Tên Vai Trò </label>
-                                <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" th:field="*{tenvaitro}">
+                                <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" th:field="*{tenvaitro}" required>
                                 <div id="" class="form-text text-danger"></div>
                             </div>
 
@@ -84,4 +84,3 @@
             </main>
             <!-- End of Main Content -->
 </div>
-<script src="/Admin/validation/taikhoan/phanquyen.js"></script>

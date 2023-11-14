@@ -26,8 +26,8 @@ public class UploadRestController {
 
 	@PostMapping("/rest/upload/{folder}")
 	public JsonNode upload(@PathParam("file") MultipartFile file, @PathVariable("folder") String folder) {
+		
 		File savedFile = uploadService.save(file, folder);
-
 		ObjectMapper mapper = new ObjectMapper();
 		ObjectNode node = mapper.createObjectNode();
 		node.put("name", savedFile.getName());

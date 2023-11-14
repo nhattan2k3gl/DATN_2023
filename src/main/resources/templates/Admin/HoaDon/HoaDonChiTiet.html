@@ -12,116 +12,8 @@
             <!-- Page Heading -->
             <h1 class="h3 mb-2 text-gray-800">Hóa Đơn</h1>
 
-            <ul class="nav nav-tabs">
-                <li class="nav-item">
-                    <a class="nav-link active" data-toggle="tab" href="#home">From</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" data-toggle="tab" href="#menu1">Bảng</a>
-                </li>
-            </ul>
-
-            <!-- Tab panes -->
-            <div class="tab-content">
-                <div class="tab-pane  active" id="home">
-                    <!-- From -->
-                    <div class="my-4 ">
-                        <form th:object="${HDCTEntity}" method="post">
-
-
-                            <div class="mb-3" >
-                                <label  for="exampleInputEmail1" class="form-label">ID Hóa Đơn Chi Tiết</label>
-                                <input type="text" class="form-control" th:field="*{id_hdct}" readonly >
-                                <div id="" class="form-text text-danger" th:errors="*{id_hdct}"></div>
-                            </div>
-                            
-                            <div class="mb-3">
-                                <label for="exampleInputEmail1" class="form-label">ID Hóa Đơn</label>
-                                <input type="text" class="form-control" th:field="*{hoadon.id_hd}" readonly>
-                                <div id="" class="form-text text-danger"></div>
-                            </div>
-                            
-                            <div class="mb-3">
-                                <label for="exampleInputEmail1" class="form-label">Ngày Tạo Hóa Đơn </label>
-                                <input type="text" class="form-control" th:field="*{hoadon.ngaytaohoadon}" readonly>
-                                <div id="" class="form-text text-danger"></div>
-                            </div>
-                            
-                            <div class="mb-3">
-                                <label for="exampleInputEmail1" class="form-label">Email </label>
-                                <input type="text" class="form-control" th:field="*{hoadon.email}" readonly>
-                                <div id="" class="form-text text-danger"></div>
-                            </div>
-                            <div class="mb-3">
-                                <label for="exampleInputEmail1" class="form-label"> Địa Chỉ </label>
-                                <input type="text" class="form-control" th:field="*{hoadon.diachi}" required>
-                                <div id="" class="form-text text-danger"></div>
-                            </div>
-                            
-                            <div class="mb-3" style="display: none">
-                                <label   for="exampleInputEmail1" class="form-label">ID Sản Phẩm</label>
-                                <input type="text" class="form-control" th:field="*{sanpham.id_sp}" readonly>
-                                <div id="" class="form-text text-danger"></div>
-                            </div>
-                            
-                            <div class="mb-3">
-                                <label for="exampleInputEmail1" class="form-label">Tên Sản Phẩm</label>
-                                <input type="text" class="form-control" th:field="*{sanpham.ten}" readonly>
-                                <div id="" class="form-text text-danger"></div>
-                            </div>
-                            
-                            <div class="mb-3">
-                                <label for="exampleInputEmail1" class="form-label">Giá</label>
-                                <input type="text" class="form-control" th:field="*{sanpham.gia}" readonly>
-                                <div id="" class="form-text text-danger"></div>
-                            </div>
-                            
-                            <div class="mb-3" style="display: none">
-                                <label  for="exampleInputEmail1" class="form-label">Ngày Xuất Bản</label>
-                                <input type="date" class="form-control" th:field="*{sanpham.ngayxuatban}" readonly>
-                                <div id="" class="form-text text-danger"></div>
-                            </div>
-                            
-                            <div class="mb-3" style="display: none">
-                                <label for="exampleInputEmail1" class="form-label">Ảnh</label>
-                                <input  type="text" class="form-control" th:field="*{sanpham.anh}" readonly>
-                                <div id="" class="form-text text-danger"></div>
-                            </div>
-                            
-                            <div class="mb-3" style="display: none">
-                                <label for="exampleInputEmail1" class="form-label">Số Lượng Sản Phẩm</label>
-                                <input  type="text" class="form-control" th:field="*{sanpham.soluongsp}" readonly>
-                                <div id="" class="form-text text-danger"></div>
-                            </div>
-                            
-                            <div class="mb-3">
-                                <label for="exampleInputEmail1" class="form-label">Số Lượng</label>
-                                <input type="text" class="form-control" th:field="*{soluong}" readonly>
-                                <div id="" class="form-text text-danger" th:errors="*{soluong}"></div>
-                            </div>
-                            
-                            <div class="mb-3" >
-                                <label  for="exampleInputEmail1" class="form-label">Tên Thể Loại</label>
-                                <input type="text" class="form-control" th:field="*{sanpham.theloai.tentheloai}" readonly>
-                                <div id="" class="form-text text-danger"></div>
-                            </div>
-                            
-                            <div class="mb-3" style="display: none">
-                                <label  for="exampleInputEmail1" class="form-label">ID  Thể Loại</label>
-                                <input type="text" class="form-control" th:field="*{sanpham.theloai.id_tl}" readonly>
-                                <div id="" class="form-text text-danger"></div>
-                            </div>
-
-                            <button class="btn btn-success mx-2"
-                                th:formaction="@{/Admin/HoaDonChiTiet/Create}">Cập Nhật</button>
-                             <a class="btn btn-info mx-2" th:href="@{|/Admin/HoaDonChiTiet|}" >Làm Mới</a> 
-                        </form>
-                    </div>
-
-                    <!-- End From -->
-                </div>
-                <div class="tab-pane  fade" id="menu1">
-                    <!-- DataTales Example -->
+            
+             <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
                             <h6 class="m-0 font-weight-bold text-primary">Bảng Dữ Liệu</h6>
@@ -131,7 +23,7 @@
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
-                                        	<th>ID Hóa Đơn Chi Tiết</th>
+                                        	
                                             <th>ID Hóa Đơn</th>
                                             <th>Ngày Tạo Hóa Đơn</th>
                                             <th>Địa Chỉ</th>
@@ -140,13 +32,13 @@
                                             <th>Giá</th>
                                             <th>Số Lượng</th>
                                             <th>Tổng Tiền</th>
-                                            <th></th>
+                                            
 
                                         </tr>
                                     </thead>
                                    <tfoot>
                                         <tr>
-                                        	<th>ID Hóa Đơn Chi Tiết</th>
+                                        	
                                             <th>ID Hóa Đơn</th>
                                             <th>Ngày Tạo Hóa Đơn</th>
                                             <th>Địa Chỉ</th>
@@ -155,14 +47,14 @@
                                             <th>Giá</th>
                                             <th>Số Lượng</th>
                                             <th>Tổng Tiền</th>
-                                            <th></th>
+                                            
 
                                         </tr>
                                     </tfoot>
                                     <tbody>
 
                                         <tr th:each="HDCTService : ${HDCTService}">
-                                            <td>[[${HDCTService.id_hdct}]]</td>
+                                            
                                             <td>[[${HDCTService.hoadon.id_hd}]]</td>
                                             <td>[[${HDCTService.hoadon.ngaytaohoadon}]]</td>
                                             <td>[[${HDCTService.hoadon.diachi}]]</td>
@@ -171,12 +63,12 @@
                                             <td>[[${HDCTService.sanpham.gia}]]</td>
                                             <td>[[${HDCTService.soluong}]]</td>
                                             <td>[[${HDCTService.soluong * HDCTService.sanpham.gia}]]</td>
-                                            <td>
+                                            <!-- <td>
                                                 <a class="text-white bg-danger"
                                                     th:href="@{|/Admin/HoaDonChiTiet/Delete/${HDCTService.id_hdct}|}">Xóa</a>
                                                 <a class="text-white  bg-info"
                                                     th:href="@{|/Admin/HoaDonChiTiet/Edit/${HDCTService.id_hdct}|}" >Sửa</a>
-                                            </td>
+                                            </td> -->
                                         </tr>
 
                                     </tbody>
@@ -185,9 +77,8 @@
                         </div>
                     </div>
                     <!-- end -->
-                </div>
 
-            </div>
+            
 
 
 
