@@ -21,9 +21,9 @@
                         <div class="form-text text-danger" id="email-error" name="email-error"></div>
                     </div>
 
-                     <div class="mb-3">
+                     <div class="mb-3" style="display: none">
                         <label for="matkhau" class="form-label">Mật Khẩu</label>
-                        <input type="password" class="form-control" id="matkhauInput" name="matkhauInput" required >
+                        <input type="password" class="form-control" id="matkhauInput" name="matkhauInput" 	 >
                         <input type="hidden" id="hiddenMatKhau" th:field="*{matkhau}" required />
                         <div class="form-text text-danger" id="matkhau-error"></div>
                     </div>
@@ -47,7 +47,7 @@
                         <div class="form-text text-danger" id="diachi-error"></div>
                     </div>
                     
-                    <p>Giá trị của "TC" là: <span th:text="${TC}"></span></p>
+                    <p style="display: none">Giá trị của "TC" là: <span th:text="${message}" id ="TB"></span></p>
                     
                     <button class="btn btn-success mx-2" th:formaction="@{/Admin/TaiKhoan/Create}">Thêm</button>
                     <button class="btn btn-success mx-2" th:formaction="@{/Admin/TaiKhoan/Update}">Chỉnh sửa</button>
@@ -117,3 +117,5 @@
     </main>
     <!-- End of Main Content -->
 </div>
+
+<script src="/Admin/js/taikhoan/taikhoan.js"></script>
