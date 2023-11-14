@@ -17,33 +17,33 @@
                 <form th:object="${TKEntity}" method="post" id="FormTK">
                     <div class="mb-3">
                         <label for="email" class="form-label">Email </label>
-                        <input type="text" class="form-control" th:field="*{email}" id="email" name="email" required>
+                        <input type="text" class="form-control" th:field="*{email}" id="email" name="email" >
                         <div class="form-text text-danger" id="email-error" name="email-error"></div>
                     </div>
 
                      <div class="mb-3">
                         <label for="matkhau" class="form-label">Mật Khẩu</label>
-                        <input type="password" class="form-control" id="matkhauInput" name="matkhauInput" required>
-                        <input type="hidden" id="hiddenMatKhau" th:field="*{taikhoan.matkhau}" />
+                        <input type="password" class="form-control" id="matkhauInput" name="matkhauInput" >
+                        <input type="hidden" id="hiddenMatKhau" th:field="*{matkhau}" />
                         <div class="form-text text-danger" id="matkhau-error"></div>
                     </div>
 
                     <div class="mb-3">
                         <label for="hovaten" class="form-label">Họ Và Tên</label>
                         <input type="text" class="form-control" th:field="*{hovaten}" id="hovaten" name="hovaten"
-                            required>
+                            >
                         <div class="form-text text-danger" id="hovaten-error"></div>
                     </div>
 
                     <div class="mb-3">
                         <label for="anh" class="form-label">Ảnh</label>
-                        <input type="text" class="form-control" th:field="*{anh}" id="anh" name="anh" required>
+                        <input type="text" class="form-control" th:field="*{anh}" id="anh" name="anh" >
                         <div class="form-text text-danger" id="anh-error"></div>
                     </div>
 
                     <div class="mb-3">
                         <label for="diachi" class="form-label">Địa Chỉ</label>
-                        <input type="text" class="form-control" th:field="*{diachi}" id="diachi" name="diachi" required>
+                        <input type="text" class="form-control" th:field="*{diachi}" id="diachi" name="diachi" >
                         <div class="form-text text-danger" id="diachi-error"></div>
                     </div>
 
@@ -116,4 +116,3 @@
     <!-- End of Main Content -->
 </div>
 
-<script src="/Admin/validation/taikhoan/taikhoan.js"></script>

@@ -51,16 +51,20 @@
 								<input type="text" class="form-control" th:field="*{ngayxuatban}">
 								<div id="" class="form-text text-danger" th:errors="*{ngayxuatban}"></div>
 							</div>
-							<div class="mb-3">
+
+							<div class="mb-3" ng-app="admin-app" ng-controller="product-ctrl">
 								<label>Ảnh</label>
-								<input type="file" class="form-control" id="image" th:field="*{anh}"
-									onchange="angular.element(this).scope().imageChanged(this.files)">
+								<input type="file" class="form-control" id="image"  name="image"
+									onchange="angular.element(this).scope().imageChanged(this)">
+								<span ng-if="form.image">Đường dẫn ảnh: {{ form.image }}</span>
 							</div>
-							<!--<div class="mb-3">
-                                <label for="exampleInputEmail1" class="form-label">Ảnh</label>
-                                <input type="text" class="form-control" th:field="*{anh}">
-                                <div id="" class="form-text text-danger" th:errors="*{anh}" ></div>
-                            </div>-->
+
+							<div class="mb-3">
+								<label for="exampleInputEmail1" class="form-label">Ảnh</label>
+								<input type="text" class="form-control" th:field="*{anh}">
+								<div id="" class="form-text text-danger" th:errors="*{anh}"></div>
+							</div>
+
 							<div class="mb-3">
 								<label for="exampleInputEmail1" class="form-label">Số Lượng Sản Phẩm</label>
 								<input type="text" class="form-control" th:field="*{soluongsp}">
@@ -71,7 +75,7 @@
 								<input type="text" class="form-control" th:field="*{theloai.id_tl}">
 								<div id="" class="form-text text-danger"></div>
 							</div>
-							<div class="mb-3" >
+							<div class="mb-3">
 								<label for="exampleInputEmail1" class="form-label">Tên Thể Loại</label>
 								<input type="text" class="form-control" th:field="*{theloai.tentheloai}">
 								<div id="" class="form-text text-danger"></div>
@@ -166,4 +170,4 @@
 	</main>
 	<!-- End of Main Content -->
 </div>
-<script src="/Admin/validation/taikhoan/phanquyen.js"></script>
+<script src="/Admin/validation/SanPham/SanPham.js"></script>
