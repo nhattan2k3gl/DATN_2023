@@ -40,14 +40,14 @@
 
 							<div class="mb-3">
 								<label for="matkhau" class="form-label">Mật Khẩu</label> <input type="password"
-									class="form-control" id="matkhauInput" name="matkhauInput" required> <input
+									class="form-control" id="matkhauInput" name="matkhauInput" title="không bỏ trống mật khẩu" required> <input
 									type="hidden" id="hiddenMatKhau" th:field="*{taikhoan.matkhau}" />
 								<div class="form-text text-danger" id="matkhau-error"></div>
 							</div>
 							<div class="mb-3">
 								<label for="exampleInputEmail1" class="form-label">Họ Và
 									Tên</label> <input type="text" class="form-control" th:field="*{taikhoan.hovaten}"
-									id="hovaten" name="hovaten" required>
+									id="hovaten" name="hovaten"  title="không bỏ trống họ và tên" required>
 								<div id="" class="form-text text-danger" th:errors="*{taikhoan.hovaten}"></div>
 							</div>
 
@@ -59,7 +59,7 @@
 							<div class="mb-3">
 								<label>Ảnh</label>
 								<input type="file" class="form-control" id="image" th:field="*{taikhoan.anh}"
-									onchange="angular.element(this).scope().imageChanged(this.files)">
+									onchange="angular.element(this).scope().imageChanged(this.files)" title="không bỏ trống ảnh" required >
 							</div>
 
 							<div class="mb-3">
