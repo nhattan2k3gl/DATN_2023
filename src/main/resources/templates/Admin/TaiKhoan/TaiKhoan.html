@@ -46,7 +46,9 @@
                         <input type="text" class="form-control" th:field="*{diachi}" id="diachi" name="diachi" required >
                         <div class="form-text text-danger" id="diachi-error"></div>
                     </div>
-
+                    
+                    <p>Giá trị của "TC" là: <span th:text="${TC}"></span></p>
+                    
                     <button class="btn btn-success mx-2" th:formaction="@{/Admin/TaiKhoan/Create}">Thêm</button>
                     <button class="btn btn-success mx-2" th:formaction="@{/Admin/TaiKhoan/Update}">Chỉnh sửa</button>
                     <button class="btn btn-info mx-2" th:formaction="@{/Admin/TaiKhoan/Reset}">Làm Mới</button>
@@ -115,4 +117,3 @@
     </main>
     <!-- End of Main Content -->
 </div>
-

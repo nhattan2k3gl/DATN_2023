@@ -49,10 +49,21 @@ public class TaiKhoanController {
 
 	@GetMapping("/Admin/TaiKhoan/Delete/{id}")
 	public String TaiKhoanDeleteId(Model model, @PathVariable("id") String id) {
+		try {
+			model.addAttribute("TC","TC");
+			
+			
+//			TKService.delete(id);
+		} catch (Exception e) {
+			// TODO: handle exception
+			model.addAttribute("LR","LR");
+		}
+		TaiKhoanEntity TKEntity = new TaiKhoanEntity();
+		model.addAttribute("TKEntity", TKEntity);
+		List<TaiKhoanEntity> ListTKService = TKService.findAll();
+		model.addAttribute("TKService", ListTKService);
 
-		TKService.delete(id);
-
-		return "redirect:/Admin/TaiKhoan";
+		return "Admin/TaiKhoan/TaiKhoan";
 	}
 
 	@PostMapping("/Admin/TaiKhoan/Create")
