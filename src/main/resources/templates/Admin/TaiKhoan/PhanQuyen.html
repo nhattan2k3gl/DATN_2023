@@ -26,7 +26,7 @@
 							<div class="mb-3" style="display: none">
 								<label for="exampleInputEmail1" class="form-label">ID
 									Phân Quyền </label> <input type="text" class="form-control"
-									aria-describedby="emailHelp" th:field="*{id_pq}" id="id_pq" name="id_pq" readonly
+									aria-describedby="emailHelp" th:field="*{id_pq}" id="id_pq" name="id_pq" readonly  
 									required>
 								<div id="emailHelp" class="form-text text-danger" th:errors="*{id_pq}"></div>
 							</div>
@@ -59,7 +59,7 @@
 							<div class="mb-3">
 								<label>Ảnh</label>
 								<input type="file" class="form-control" id="image" th:field="*{taikhoan.anh}"
-									onchange="angular.element(this).scope().imageChanged(this.files)" title="không bỏ trống ảnh" required >
+									onchange="angular.element(this).scope().imageChanged(this.files)"   >
 							</div>
 
 							<div class="mb-3">

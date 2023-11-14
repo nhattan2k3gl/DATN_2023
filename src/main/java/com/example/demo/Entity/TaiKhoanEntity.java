@@ -39,7 +39,6 @@ public class TaiKhoanEntity implements Serializable {
 	@NotBlank
 	String hovaten;
 
-	@NotBlank
 	String anh;
 	
 	@NotBlank
