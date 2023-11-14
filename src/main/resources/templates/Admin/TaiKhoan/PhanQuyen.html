@@ -11,63 +11,64 @@
 
 			<!-- Page Heading -->
 			<h1 class="h3 mb-2 text-gray-800">Tài Khoản</h1>
-			<p style="display: none">Giá trị của "TC" là: <span th:text="${message}" id ="TB"></span></p>
+
+			<p style="display: none">Giá trị của "TC" là: <span th:text="${message}" id="TB"></span></p>
 			<!-- DataTales Example -->
-					<div class="card shadow mb-4">
-						<div class="card-header py-3">
-							<h6 class="m-0 font-weight-bold text-primary">Bảng Dữ Liệu</h6>
-						</div>
-						<div class="card-body">
-							<div class="table-responsive">
-								<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-									<thead>
-										<tr>
+			<div class="card shadow mb-4">
+				<div class="card-header py-3">
+					<h6 class="m-0 font-weight-bold text-primary">Bảng Dữ Liệu</h6>
+				</div>
+				<div class="card-body">
+					<div class="table-responsive">
+						<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+							<thead>
+								<tr>
 
-											<th>Email</th>
-											
-											<th>Họ Và Tên</th>
-											<th>Ảnh</th>
-											<th>Địa Chỉ</th>
-											<th>Vai Trò</th>
-											<th></th>
-										</tr>
-									</thead>
-									<tfoot>
-										<tr>
-											<th>Email</th>
-											
-											<th>Họ Và Tên</th>
-											<th>Ảnh</th>
-											<th>Địa Chỉ</th>
-											<th>Vai Trò</th>
-											<th></th>
-										</tr>
-									</tfoot>
-									<tbody>
+									<th>Email</th>
 
-										<tr th:each="PQService : ${PQService}">
-											<!-- <td th:text="${PQService.id_pq}"></td> -->
-											<td>[[${PQService.taikhoan.email}]]</td>
-											
-											<td>[[${PQService.taikhoan.hovaten}]]</td>
-											<td><img th:src="@{|/user/img/products/${PQService.taikhoan.anh}|}" alt=""
-													width="50px" height="50px"></td>
-											
-											<td>[[${PQService.taikhoan.diachi}]]</td>
-											<td>[[${PQService.vaitro.tenvaitro}]]</td>
+									<th>Họ Và Tên</th>
+									<th>Ảnh</th>
+									<th>Địa Chỉ</th>
+									<th>Vai Trò</th>
+									<th></th>
+								</tr>
+							</thead>
+							<tfoot>
+								<tr>
+									<th>Email</th>
 
-											<td><a class="text-white bg-danger"
-													th:href="@{|/Admin/PhanQuyen/Delete/${PQService.id_pq}|}">Xóa</a>
-												
-											</td>
-										</tr>
+									<th>Họ Và Tên</th>
+									<th>Ảnh</th>
+									<th>Địa Chỉ</th>
+									<th>Vai Trò</th>
+									<th></th>
+								</tr>
+							</tfoot>
+							<tbody>
 
-									</tbody>
-								</table>
-							</div>
-						</div>
+								<tr th:each="PQService : ${PQService}">
+									<!-- <td th:text="${PQService.id_pq}"></td> -->
+									<td>[[${PQService.taikhoan.email}]]</td>
+
+									<td>[[${PQService.taikhoan.hovaten}]]</td>
+									<td><img th:src="@{|/user/img/products/${PQService.taikhoan.anh}|}" alt=""
+											width="50px" height="50px"></td>
+
+									<td>[[${PQService.taikhoan.diachi}]]</td>
+									<td>[[${PQService.vaitro.tenvaitro}]]</td>
+
+									<td><a class="text-white bg-danger"
+											th:href="@{|/Admin/PhanQuyen/Delete/${PQService.id_pq}|}">Xóa</a>
+
+									</td>
+								</tr>
+
+							</tbody>
+						</table>
 					</div>
-					<!--end  -->
+				</div>
+			</div>
+			<!--end  -->
 
 
 

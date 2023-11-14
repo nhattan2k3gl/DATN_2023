@@ -52,18 +52,32 @@
 								<div id="" class="form-text text-danger" th:errors="*{ngayxuatban}"></div>
 							</div>
 
-							<div class="mb-3" ng-app="admin-app" ng-controller="product-ctrl">
+							<!--<div class="mb-3">
 								<label>Ảnh</label>
-								<input type="file" class="form-control" id="image"  name="image"
-									onchange="angular.element(this).scope().imageChanged(this)">
-								<span ng-if="form.image">Đường dẫn ảnh: {{ form.image }}</span>
+								<input type="file" class="form-control" id="image" th:field="*{anh1}"
+									onchange="angular.element(this).scope().imageChanged(this.files)">
+							</div>-->
+							<div class="mb-3">
+								<label>Image</label>
+								<input type="file" class="form-control" id="image"
+									onchange="angular.element(this).scope().imageChanged(this.files)" th:field="*{anh}">
+							</div>
+							<div class="mb-3">
+								<label>Ảnh</label>
+								<input type="file" class="form-control" id="image" th:field="*{anh1}"
+									onchange="angular.element(this).scope().imageChanged(this.files)">
+							</div>
+							<div class="mb-3">
+								<label>Ảnh</label>
+								<input type="file" class="form-control" id="image" th:field="*{anh2}"
+									onchange="angular.element(this).scope().imageChanged(this.files)">
 							</div>
 
-							<div class="mb-3">
+							<!--<div class="mb-3">
 								<label for="exampleInputEmail1" class="form-label">Ảnh</label>
 								<input type="text" class="form-control" th:field="*{anh}">
 								<div id="" class="form-text text-danger" th:errors="*{anh}"></div>
-							</div>
+							</div>-->
 
 							<div class="mb-3">
 								<label for="exampleInputEmail1" class="form-label">Số Lượng Sản Phẩm</label>
@@ -80,6 +94,12 @@
 								<input type="text" class="form-control" th:field="*{theloai.tentheloai}">
 								<div id="" class="form-text text-danger"></div>
 							</div>
+							<div class="mb-3">
+								<label for="exampleInputEmail1" class="form-label">Mô Tả</label>
+								<textarea class="form-control" th:field="*{mota}" style="height: 200px;"></textarea>
+								<div id="" class="form-text text-danger"></div>
+							</div>
+
 
 
 							<button class="btn btn-success mx-2" th:formaction="@{/Admin/SanPham/Create}">Thêm</button>
