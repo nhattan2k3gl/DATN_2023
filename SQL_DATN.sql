@@ -123,6 +123,7 @@ insert into TaiKhoan values
 	('toanthang@gmail.com','123',N'Trương Toàn Thắng','thang.png',N'134 Nguyễn Văn Quá'),
 	('anhhao@gmail.com','123',N'Nguyễn Anh Hào','khoa.png',N'1072 Lê Đức Thọ'),
 	('hoainam@gmail.com','123',N'Nguyễn Hoài Nam','nam.png',N'1072 Lê Đức Thọ')
+
 select * from TaiKhoan
 
 insert into VaiTro values
