@@ -124,6 +124,7 @@ insert into TaiKhoan values
 	('anhhao@gmail.com','123',N'Nguyễn Anh Hào','khoa.png',N'1072 Lê Đức Thọ'),
 	('hoainam@gmail.com','123',N'Nguyễn Hoài Nam','nam.png',N'1072 Lê Đức Thọ')
 
+	insert into taikhoan values('anhhao@gmail.com','123',N'Nguyễn Anh Hào','khoa.png',N'1072 Lê Đức Thọ')
 select * from TaiKhoan
 
 insert into VaiTro values
@@ -137,8 +138,8 @@ Insert into PhanQuyen values
 	('anhhao@gmail.com',1),
 	('anhkhoa@gmail.com',2),
 	('hoainam@gmail.com',2)
-select * from PhanQuyen
-
+select * from PhanQuyen 
+insert into phanquyen values('anhhao@gmail.com',1)
 Insert into HoaDon values 
 	('2023/1/1',N'123 Lê Đức Thọ','nhattan@gmail.com'),
 	('2022/2/2',N'123 Nguyễn Văn Quá','anhkhoa@gmail.com'),
@@ -170,8 +171,8 @@ insert into SanPham values
 	(N'Hoa Vẫn Nở Mỗi Ngày',321.00, CAST('2021-06-20' AS Date),'hoavan.png','hoavan1.png','hoavan2.png',120,1,N'Violette Toussaint sống mà như chết. Người phụ nữ ấy bị mẹ đẻ bỏ rơi ngay khi vừa lọt lòng, tới lượt cô con gái nhỏ mà cô yêu thương nhất lại bỏ cô mà đi trong một tai nạn thảm khốc, rồi cả đến người chồng một ngày kia cũng không còn ở lại bên cô. Cuộc đời của một nhân viên gác chắn nơi ga xép với những chuyến tàu nhỏ mỗi ngày đến rồi đi ' ),
 	( N'Tết Ở Làng Địa Ngục', 253.39, CAST('2009-07-21' AS Date), 'tet.png','tet1.png','tet2.png',123,9,N'Ngôi làng ấy vốn dĩ không có tên, nhưng những người nơi đây mặc định chốn này là địa ngục. Dân trong làng không ai dám tự ý băng rừng thoát khỏi làng, càng không biết thế giới bên ngoài rộng lớn như thế nào, bởi lẽ họ sợ người khác sẽ biết rằng bản thân mình vốn là hậu duệ của băng cướp khét tiếng ở truông nhà Hồ dưới thời chúa Nguyễn ở Đàng Trong.'),
 	( N'Sói Già Phố WALL', 55.13, CAST('2008-04-30' AS Date), 'soigia.png','soigia1.png','soigia2.png', 600,10,N'Sói già phố wall bao gồm 2 phần, nội dung đều nói về quá trình Jordan Belfort từ một kẻ vô danh trở thành huyền thoại trong ngành môi giới chứng khoán cũng như câu chuyện đằng sau của cuộc khủng hoảng tín dụng ở Mỹ. Jordan - con sói già khủng khiếp nhất đội lốt cừu, đây cũng có lẽ là biệt danh xứng đáng nhất được gắn anh. Một gã đàn ông chỉ ba mươi mốt tuổi nhưng luôn mang suy nghĩ của ông lão 60 tuổi.'),
-	( N'Kiểm Thử Phần Mềm', 66.55, CAST('2015-02-28' AS Date), 'KTPM.png', 'KTPM1.png','KTPM2.png',250,10,N'Kiểm thử phần mềm là phương pháp kiểm tra xem sản phẩm phần mềm đó trên thực tế có phù hợp với các yêu cầu đã đặt ra hay không, và đảm bảo rằng không có lỗi hay khiếm khuyết. Nó bao gồm việc kiểm tra, phân tích, quan sát và đánh giá các khía cạnh khác nhau của sản phẩm. Người kiểm thử phần mềm (Tester) sử dụng kết hợp các công cụ thủ công và tự động. Sau khi tiến hành kiểm thử, Tester báo cáo kết quả cho team phát triển. Mục đích là xác định các lỗi, khiếm khuyết hoặc các yêu cầu còn thiếu so với yêu cầu thực tế.'),
-	( N'Oan Hồn Quỷ Có Độc',76.78, CAST('2013-05-19' AS Date), 'quycodoc.png','quycodoc2.png','quycodoc3.png', 150,9,N'ในหมู่บ้านเล็กๆ ท่านศิลาในเขตเทือกเขาของประเทศไทย มีสะพานโบราณทำจากไม้ที่เชื่อมต่อระหว่างฝั่งสองของลำน้ำที่งดงาม. ชาวบ้านมักเล่าเรื่องสยองขวัญเกี่ยวกับสะพานนี้.ตามตำนาน, ในคืนที่มีแสงจันทร์สว่าง วิญญาณผีที่ลึกลับจะปรากฏที่สะพานนี้. เขาคือวิญญาณของหญิงสาวสวยที่สูญหายไปหลายปีที่ผ่านมา. เขาถูกบอกว่าตายจากการจมน้ำที่นี่หลังจากการทะเลาะวิวาทร้ายแรงกับคู่สาว.')
+	( N'Kiểm Thử Phần Mềm', 66.55, CAST('2015-02-28' AS Date), 'KTPM.png', 'KTPM1.png','KTPM2.png',250,10,N'Kiểm thử phần mềm là phương pháp kiểm tra xem sản phẩm phần mềm đó trên thực tế có phù hợp với các yêu cầu đã đặt ra hay không, và đảm bảo rằng không có lỗi hay khiếm khuyết. Nó bao gồm việc kiểm tra, phân tích, quan sát và đánh giá các khía cạnh khác nhau của sản phẩm. Người kiểm thử phần mềm (Tester) sử dụng kết hợp các công cụ thủ công và tự động. Sau khi tiến hành kiểm thử, Tester báo cáo kết quả cho team phát triển. Mục đích là xác định các lỗi, khiếm khuyết hoặc các yêu cầu còn thiếu so với yêu cầu thực tế.')
+insert into sanpham values 	( N'Oan Hồn Quỷ Có Độc',76.78, CAST('2013-05-19' AS Date), 'quycodoc.png','quycodoc2.png','quycodoc3.png', 150,9,N'ในหมู่บ้านเล็กๆ ท่านศิลาในเขตเทือกเขาของประเทศไทย มีสะพานโบราณทำจากไม้ที่เชื่อมต่อระหว่างฝั่งสองของลำน้ำที่งดงาม. ชาวบ้านมักเล่าเรื่องสยองขวัญเกี่ยวกับสะพานนี้.ตามตำนาน, ในคืนที่มีแสงจันทร์สว่าง วิญญาณผีที่ลึกลับจะปรากฏที่สะพานนี้. เขาคือวิญญาณของหญิงสาวสวยที่สูญหายไปหลายปีที่ผ่านมา. เขาถูกบอกว่าตายจากการจมน้ำที่นี่หลังจากการทะเลาะวิวาทร้ายแรงกับคู่สาว.')
 
 select * from SanPham
 
@@ -200,3 +201,12 @@ insert into MaGiamGia values
 	('anhkhoa@gmail.com',2,0.1),
 	('hoainam@gmail.com',3,0.1)
 select * from MaGiamGia
+
+select *
+ from HoaDonChiTiet
+
+
+ select SUM(sanpham.gia*HoaDonChiTiet.SoLuong) as N'Tổng Tiền'
+ from HoaDonChiTiet join SanPham on HoaDonChiTiet.ID_HD=sanpham.ID_SP
+
+ select SUm()
