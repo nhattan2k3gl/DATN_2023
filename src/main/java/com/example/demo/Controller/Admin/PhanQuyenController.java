@@ -57,7 +57,7 @@ public class PhanQuyenController {
 		try {
 		    model.addAttribute("message", "ThanhCong");
 		    PQService.delete(id);
-		    TKService.delete(id);
+		    
 		} catch (Exception e) {
 		    
 		    if (e.getMessage().contains("The DELETE statement conflicted with the REFERENCE constraint")) {
