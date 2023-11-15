@@ -2,13 +2,12 @@
 go
 use DATN_2023_SQL
 go
-drop database DATN_2023_SQL
+
 create table VaiTro(
 	ID_VT int PRIMARY KEY IDENTITY(1,1),
 	TenVaiTro varchar(50) not null
 )
 create table PhanQuyen(
-	ID_PQ int PRIMARY KEY IDENTITY(1,1),
 	Email varchar(50) not null, 
 	ID_VT int not null
 )
@@ -19,6 +18,11 @@ create table TaiKhoan(
 	Anh varchar(100),
 	DiaChi nvarchar(200)
 )
+
+ALTER TABLE TaiKhoan
+ALTER COLUMN MatKhau varchar(200) not null;
+
+
 create table HoaDon(
 	ID_HD int PRIMARY KEY IDENTITY(1,1),
 	NgayTaoHoaDon date not null,
@@ -124,13 +128,16 @@ insert into TaiKhoan values
 	('anhhao@gmail.com','123',N'Nguyễn Anh Hào','khoa.png',N'1072 Lê Đức Thọ'),
 	('hoainam@gmail.com','123',N'Nguyễn Hoài Nam','nam.png',N'1072 Lê Đức Thọ')
 
-	insert into taikhoan values('anhhao@gmail.com','123',N'Nguyễn Anh Hào','khoa.png',N'1072 Lê Đức Thọ')
+
+insert into TaiKhoan values
+	('nguyenhoainam@gmail.com','$2a$10$2n/7KPuN4OJtOuE0IKxu2eaJPmRgi8icWNgIJvzK2Ahop7ZbxJSqK',N'Nguyễn Hoài Nam','nam.png',N'1072 Lê Đức Thọ')
+
 select * from TaiKhoan
 
 insert into VaiTro values
-	('KhachHang'),
-	('NhanVien'),
-	('QuanLy')
+	('ADMIN'),
+	('USER'),
+	('GUEST')
 select * from VaiTro
 
 Insert into PhanQuyen values
@@ -138,14 +145,19 @@ Insert into PhanQuyen values
 	('anhhao@gmail.com',1),
 	('anhkhoa@gmail.com',2),
 	('hoainam@gmail.com',2)
-select * from PhanQuyen 
-insert into phanquyen values('anhhao@gmail.com',1)
+
+
+Insert into PhanQuyen values
+	('nguyenhoainam@gmail.com',1)
+select * from PhanQuyen
+
+
 Insert into HoaDon values 
-	('2023/1/1',N'123 Lê Đức Thọ','nhattan@gmail.com'),
-	('2022/2/2',N'123 Nguyễn Văn Quá','anhkhoa@gmail.com'),
-	('2021/3/1',N'188 Dương Thị Mười','anhhao@gmail.com'),
-	('2013/3/1',N'2 Thống Nhất','hoainam@gmail.com'),
-	('2021/1/8',N'3 Đình Quá','toanthang@gmail.com')
+	(CAST('2023-1-1' AS Date),N'123 Lê Đức Thọ','nhattan@gmail.com'),
+	(CAST('2023-2-1' AS Date),N'123 Nguyễn Văn Quá','anhkhoa@gmail.com'),
+	(CAST('2023-3-1' AS Date),N'188 Dương Thị Mười','anhhao@gmail.com'),
+	(CAST('2023-4-1' AS Date),N'2 Thống Nhất','hoainam@gmail.com'),
+	(CAST('2023-5-1' AS Date),N'3 Đình Quá','toanthang@gmail.com')
 select * from HoaDon
 
 insert into TheLoai values

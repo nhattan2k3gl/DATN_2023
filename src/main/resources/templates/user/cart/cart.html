@@ -25,7 +25,7 @@
                                         <div class="wishlist__top wishlist__top_cart">
                                             <div class="wishlist__col">
                                                 <h2 class="wishlist__title">
-                                                    <a class="wishlist__link" href="product_page.html">{{item.ten}}</a>
+                                                    <a class="wishlist__link" th:href="@{|/detail/{{item.id_sp}}|}">{{item.ten}}</a>
                                                 </h2>
                                             </div>
                                             <div class="wishlist__col">
@@ -125,7 +125,7 @@
 							</span>
 						</div>
 					</div>
-					<a href="#" class="your-order__button button">
+					<a th:href="@{|/checkout|}" class="your-order__button button">
 						<span class="button__text"> 
 							<th:block th:text="#{user.checkout}"></th:block>
 						</span>

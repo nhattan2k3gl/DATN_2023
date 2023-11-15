@@ -7,6 +7,9 @@ import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.Dao.BinhLuanDao;
@@ -89,5 +92,11 @@ public class BinhLuanIMPL implements BinhLuanService{
 	public void delete(String id) {
 		// TODO Auto-generated method stub
 		BLDao.deleteById(id);
+	}
+
+	@Override
+	public Page<BinhLuanEntity> findAllCmt(Integer page, Integer limit) {
+		Pageable pageable = PageRequest.of(page, limit);
+		return BLDao.findAll(pageable);
 	}
 }

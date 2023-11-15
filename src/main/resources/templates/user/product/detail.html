@@ -160,23 +160,25 @@
 				<!-- BEGIN REVIEWS -->
 				<div class="product-tab__left">
 					<div class="reviews">
-						<article class="review">
+						<article class="review" th:each="comment : ${comment}">
 							<div class="review__top">
 								<div class="review__left">
 									<div class="review__cols">
 										<div class="review__col">
-											<h5 class="review__author">Melissa Johnson</h5>
+											<h5 class="review__author">[[${comment.taikhoan.hovaten}]]</h5>
 										</div>
 										<div class="review__col">
-											<span class="review__date">Aug 02, 2022</span>
+											<span class="review__date">Oct 15, 2023</span>
 										</div>
 										<div class="review__col">
 											<div class="review__rating rating rating_small">
-												<input class="star" name="review-rating-1" type="radio" disabled>
-												<input class="star" name="review-rating-1" type="radio" disabled>
-												<input class="star" name="review-rating-1" type="radio" disabled>
-												<input class="star" name="review-rating-1" type="radio" disabled>
-												<input class="star" name="review-rating-1" type="radio" checked disabled>
+												<!-- <div>
+												    <input class="star" name="review-rating-1" type="radio" checked>
+												    <input class="star" name="review-rating-1" type="radio" disabled>
+													<input class="star" name="review-rating-1" type="radio" disabled>
+													<input class="star" name="review-rating-1" type="radio" disabled>
+													<input class="star" name="review-rating-1" type="radio" disabled>
+												</div> -->
 											</div>
 										</div>
 									</div>
@@ -185,38 +187,7 @@
 									<a class="review__button reply-button"></a>
 								</div>
 							</div>
-							<p class="review__text">Proident voluptate adipisicing ullamco veniam incididunt laboris nulla elit
-								et anim tempor duis dolor nostrud. Ad eiusmod laborum deserunt id eiusmod. Eiusmod ea aute ex et nisi
-								exercitation eu fugiat.</p>
-						</article>
-						<article class="review">
-							<div class="review__top">
-								<div class="review__left">
-									<div class="review__cols">
-										<div class="review__col">
-											<h5 class="review__author">Oliver Jenkins</h5>
-										</div>
-										<div class="review__col">
-											<span class="review__date">May 15, 2022</span>
-										</div>
-										<div class="review__col">
-											<div class="review__rating rating rating_small">
-												<input class="star" name="review-rating-3" type="radio" disabled>
-												<input class="star" name="review-rating-3" type="radio" disabled>
-												<input class="star" name="review-rating-3" type="radio" disabled>
-												<input class="star" name="review-rating-3" type="radio" disabled>
-												<input class="star" name="review-rating-3" type="radio" checked disabled>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="review__right">
-									<a class="review__button reply-button"></a>
-								</div>
-							</div>
-							<p class="review__text">Proident voluptate adipisicing ullamco veniam incididunt laboris nulla elit
-								et anim tempor duis dolor nostrud. Ad eiusmod laborum deserunt id eiusmod. Eiusmod ea aute ex et nisi
-								exercitation eu fugiat.</p>
+							<p class="review__text">[[${comment.binhluan}]]</p>
 						</article>
 					</div>
 				</div>

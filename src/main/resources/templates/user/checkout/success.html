@@ -1,0 +1,37 @@
+<div xmlns:th="http://www.thymeleaf.org" th:replace="~{/user/home/layout :: dynamic (~{::main})}">
+<title>
+ 	<th:block th:text="#{user.finish}"></th:block>
+ 	 | Book Co., Ltd
+</title>
+<!-- BEGIN MAIN -->
+<main class="main">
+
+    <!-- BEGIN CHECKOUT -->
+    <div class="checkout-page wrapper">
+        <div class="checkout-nav">
+            <div class="checkout-nav__item active">
+                <span class="checkout-nav__text"> <th:block th:text="#{user.orderdetail}"></th:block></span>
+            </div>
+            <div class="checkout-nav__item active current">
+                <span class="checkout-nav__text"><th:block th:text="#{user.finish}"></th:block></span>
+            </div>
+        </div>
+        <div class="checkout-page__cols">
+            <!-- BEGIN LEFT COLUMN -->
+            <div class="checkout-page__left">
+                <section class="thanks">
+                    <div class="thanks__top">
+                        <h2 class="thanks__title"><th:block th:text="#{user.finishtitle}"></th:block></h2>
+                        <p class="thanks__top-text"><th:block th:text="#{user.finishtext}"></th:block></p>
+                    </div>
+                    <div class="thanks__top-text"><th:block th:text="#{user.countdown}"></th:block> <span id="time"></span></div>
+                </section>
+
+            </div>
+            <!-- LEFT COLUMN END -->
+        </div>
+    </div>
+    <!-- CHECKOUT END -->
+</main>
+<!-- MAIN END -->
+</div>

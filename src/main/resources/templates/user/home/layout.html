@@ -47,6 +47,26 @@
 
     </div> 
        
+<script>
+var time = 5;
+setInterval(function() {
+  var seconds = time % 60;
+  var minutes = (time - seconds) / 60;
+  if (seconds.toString().length == 1) {
+    seconds = "0" + seconds;
+  }
+  if (minutes.toString().length == 1) {
+    minutes = "0" + minutes;
+  }
+  document.getElementById("time").innerHTML = minutes + ":" + seconds + "s";
+  time--;
+  if (time == 0) {
+    window.location.href = "/index";
+  }
+}, 1000);
+</script>
+
+
 
 <script th:src="@{/user/assets/js/libs/jquery-3.3.1.slim.min.js}"></script>
 <script th:src="@{/user/assets/js/components/bootstrap.min.js}"></script>
