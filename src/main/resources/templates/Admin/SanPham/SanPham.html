@@ -99,22 +99,24 @@
 										<input type="date" class="form-control" th:field="*{ngayxuatban}">
 										<div id="" class="form-text text-danger" th:errors="*{ngayxuatban}"></div>
 									</div>
-									
-									<div class="mb-3">
-										<label>Ảnh 1</label>
-										<input type="file" class="form-control" id="image"
-											onchange="angular.element(this).scope().imageChanged(this.files)">
+									<div ng-app="appSP" ng-controller="ctrlSP">
+										<div class="mb-3">
+											<label>Ảnh 1</label>
+											<input type="file" class="form-control" id="image"
+												onchange="angular.element(this).scope().imageChanged(this.files)">
+										</div>
+										<!-- <div class="mb-3">
+											<label>Ảnh 2</label>
+											<input type="file" class="form-control" id="image1"
+												onchange="angular.element(this).scope().imageChanged(this.files)">
+										</div>
+										<div class="mb-3">
+											<label>Ảnh 3</label>
+											<input type="file" class="form-control" id="image2"
+												onchange="angular.element(this).scope().imageChanged(this.files)">
+										</div> -->
 									</div>
-									<div class="mb-3">
-										<label>Ảnh 2</label>
-										<input type="file" class="form-control" id="image1"
-											onchange="angular.element(this).scope().imageChanged(this.files)">
-									</div>
-									<div class="mb-3">
-										<label>Ảnh 3</label>
-										<input type="file" class="form-control" id="image2"
-											onchange="angular.element(this).scope().imageChanged(this.files)">
-									</div>
+
 
 									<div class="mb-3">
 										<label for="exampleInputEmail1" class="form-label">Số Lượng Sản Phẩm</label>
@@ -232,4 +234,4 @@
 	</main>
 	<!-- End of Main Content -->
 </div>
-<script src="/Admin/validation/SanPham/SanPham.js"></script>
+<script src="/Admin/js/sanpham/sanpham.js"></script>
