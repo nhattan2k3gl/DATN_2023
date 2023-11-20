@@ -18,6 +18,8 @@ public class CartController {
 
 	@RequestMapping("/cart")
 	public String cartProduct(Model model) {
+		int a = 100;
+		model.addAttribute("a", a);
 		model.addAttribute("cart", gioHangService);
 		model.addAttribute("countcart", gioHangService.getCount());
 		return "user/cart/cart";

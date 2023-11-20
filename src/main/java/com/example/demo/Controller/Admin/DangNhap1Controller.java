@@ -52,6 +52,7 @@ public class DangNhap1Controller {
 		List<PhanQuyenEntity> PQEntity = PQService.findByEmail(email);
 		
 		for (PhanQuyenEntity PQ : PQEntity) {
+			System.out.println(PQ.getId_pq());
 
 			if (email.equals(PQ.getTaikhoan().getEmail()) && matkhau.equals(PQ.getTaikhoan().getMatkhau())) {
 				
