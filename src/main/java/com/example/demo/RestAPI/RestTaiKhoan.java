@@ -35,7 +35,7 @@ public class RestTaiKhoan {
 	public ResponseEntity<TaiKhoanEntity> getOne(@PathVariable("email") String email){
 		
 		System.out.println(email);
-		return ResponseEntity.ok(TKService.findById(email));
+		return ResponseEntity.ok(TKService.findByUsername(email));
 	}
 	@PostMapping("/Rest/TaiKhoan")
 	public ResponseEntity<TaiKhoanEntity> post(@RequestBody TaiKhoanEntity TaiKhoanEntity){

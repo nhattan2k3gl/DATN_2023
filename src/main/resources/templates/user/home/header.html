@@ -20,6 +20,7 @@
 												 
 											</a>
 										</li> 
+										<th:block th:if="${request.getRemoteUser()}">
 										<li class="header-nav__item">
 											<a class="header-nav__link" th:text="#{user.collections}">
 												 
@@ -30,6 +31,7 @@
 												 
 											</a>
 										</li>
+										</th:block>
 										<li class="header-nav__item">
 											<a class="header-nav__link" href="/about" th:text="#{user.aboutus}">
 												 
@@ -87,14 +89,15 @@
 								</a>
 								<div class="hide-nav js-nav-hide">
 									<ul class="hide-nav__list">
-										<th:if test="${empty isLogin}">
+										
+										<th:block th:unless="${request.getRemoteUser()}">
 											<li class="hide-nav__item">
-												<a class="hide-nav__link" th:href="@{/Admin/TaiKhoan/DangNhap}" th:text="#{user.login}">
+												<a class="hide-nav__link" th:href="@{/login}" th:text="#{user.login}">
 													 
 												</a>
 											</li>
 											<li class="hide-nav__item">
-												<a class="hide-nav__link" href="#" th:text="#{user.register}">
+												<a class="hide-nav__link" th:href="@{/register}" th:text="#{user.register}">
 													 
 												</a>
 											</li>
@@ -103,31 +106,31 @@
 													 
 												</a>
 											</li>
-										</th:if>
-										<th:if test="${isAdmin}">
+										</th:block>
+										<th:block th:if="${request.isUserInRole('ADMIN')}">
 											<li class="hide-nav__item">
 												<a class="hide-nav__link" th:href="@{/Admin/TrangChu}" th:text="#{admin.dashboard}">
 													 
 												</a>
 											</li>
-										</th:if>
-										<th:if test="${not empty isLogin}">
+										</th:block>
+										<th:block th:if="${request.getRemoteUser()}">
 											<li class="hide-nav__item">
-												<a class="hide-nav__link" href="#" th:text="#{user.profile}">
+												<a class="hide-nav__link" href="#">
+													 [[${request.getRemoteUser()}]]
+												</a>
+											</li>
+											<li class="hide-nav__item">
+												<a class="hide-nav__link" th:href="@{/login}" th:text="#{user.changepass}">
 													 
 												</a>
 											</li>
 											<li class="hide-nav__item">
-												<a class="hide-nav__link" th:href="@{/Admin/TaiKhoan/doimatkhau}" th:text="#{user.changepass}">
+												<a class="hide-nav__link" th:href="@{/logoff}" th:text="#{user.logout}">
 													 
 												</a>
 											</li>
-											<li class="hide-nav__item">
-												<a class="hide-nav__link" th:href="@{/Admin/TaiKhoan/DangNhap}" th:text="#{user.logout}">
-													 
-												</a>
-											</li>
-										</th:if>
+										</th:block>
 									</ul>
 								</div>
 							</li>
