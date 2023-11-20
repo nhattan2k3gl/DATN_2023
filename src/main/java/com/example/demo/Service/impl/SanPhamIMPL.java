@@ -47,8 +47,11 @@ public class SanPhamIMPL implements SanPhamService{
 		String formattedDateAsString = dateFormat.format(SPEntity.getNgayxuatban());
 		Date formattedDateAsDate = dateFormat.parse(formattedDateAsString);
 		SPEntity.setNgayxuatban(formattedDateAsDate);
+//		TLService.create(SPEntity.getTheloai());
+		System.out.println(SPEntity.getTheloai().getId_tl());
+		System.out.println(SPEntity.getTheloai().getTentheloai());
+		SPEntity.setTheloai(SPEntity.getTheloai());
 		
-		TLService.create(SPEntity.getTheloai());
 		
 		return SPDao.save(SPEntity);
 	}

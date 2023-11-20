@@ -23,12 +23,7 @@ public class SanPhamController {
 
 	@GetMapping("/Admin/SanPham")
 	public String SanPhamGet(Model model) {
-		SanPhamEntity SPEntity = new SanPhamEntity();
-		model.addAttribute("SPEntity", SPEntity);
-
-		List<SanPhamEntity> ListSPService = SPService.findAll();
-		model.addAttribute("SPService", ListSPService);
-
+		
 		return "Admin/SanPham/SanPham";
 	}
 
