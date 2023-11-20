@@ -50,7 +50,7 @@ public class TaiKhoanController {
 		    }
 		}
 		
-		model.addAttribute("TKEntity", TKService.findById(id));
+		model.addAttribute("TKEntity", TKService.findByUsername(id));
 		List<TaiKhoanEntity> ListTKService = TKService.findAll();
 		model.addAttribute("TKService", ListTKService);
 		return "Admin/TaiKhoan/TaiKhoan";

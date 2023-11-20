@@ -8,6 +8,7 @@ create table VaiTro(
 	TenVaiTro varchar(50) not null
 )
 create table PhanQuyen(
+	ID_PQ int PRIMARY KEY IDENTITY(1,1),
 	Email varchar(50) not null, 
 	ID_VT int not null
 )
@@ -122,11 +123,11 @@ FOREIGN KEY (ID_SP)
 REFERENCES  SanPham(ID_SP);
 
 insert into TaiKhoan values
-	('nhattan@gmail.com','123',N'Đoàn Nhât Tân','tan.png',N'333 Lê Văn Sĩ'),
-	('anhkhoa@gmail.com','123',N'Bùi Anh Khoa','khoa.png',N'1072 Lê Đức Thọ'),
-	('toanthang@gmail.com','123',N'Trương Toàn Thắng','thang.png',N'134 Nguyễn Văn Quá'),
-	('anhhao@gmail.com','123',N'Nguyễn Anh Hào','khoa.png',N'1072 Lê Đức Thọ'),
-	('hoainam@gmail.com','123',N'Nguyễn Hoài Nam','nam.png',N'1072 Lê Đức Thọ')
+	('nhattan@gmail.com','$2a$10$2n/7KPuN4OJtOuE0IKxu2eaJPmRgi8icWNgIJvzK2Ahop7ZbxJSqK',N'Đoàn Nhât Tân','tan.png',N'333 Lê Văn Sĩ'),
+	('anhkhoa@gmail.com','$2a$10$2n/7KPuN4OJtOuE0IKxu2eaJPmRgi8icWNgIJvzK2Ahop7ZbxJSqK',N'Bùi Anh Khoa','khoa.png',N'1072 Lê Đức Thọ'),
+	('toanthang@gmail.com','$2a$10$2n/7KPuN4OJtOuE0IKxu2eaJPmRgi8icWNgIJvzK2Ahop7ZbxJSqK',N'Trương Toàn Thắng','thang.png',N'134 Nguyễn Văn Quá'),
+	('anhhao@gmail.com','$2a$10$2n/7KPuN4OJtOuE0IKxu2eaJPmRgi8icWNgIJvzK2Ahop7ZbxJSqK',N'Nguyễn Anh Hào','khoa.png',N'1072 Lê Đức Thọ'),
+	('hoainam@gmail.com','$2a$10$2n/7KPuN4OJtOuE0IKxu2eaJPmRgi8icWNgIJvzK2Ahop7ZbxJSqK',N'Nguyễn Hoài Nam','nam.png',N'1072 Lê Đức Thọ')
 
 
 insert into TaiKhoan values

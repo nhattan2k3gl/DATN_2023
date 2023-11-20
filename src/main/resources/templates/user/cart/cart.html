@@ -34,7 +34,7 @@
                                         </div>
                                         <div class="wishlist__bottom wishlist__bottom_cart">
                                             <div class="wishlist__cart-col">
-                                                <!-- <span class="wishlist__old-price">$52.99</span> -->
+                                                <span class="wishlist__old-price">$52.99</span>
                                                 <span class="wishlist__price wishlist__price_small">${{item.gia | number : 2}}</span> 
                                                 
                                             </div>
@@ -125,7 +125,7 @@
 							</span>
 						</div>
 					</div>
-					<a th:href="@{|/checkout|}" class="your-order__button button">
+					<a th:href="@{|/order/view|}" class="your-order__button button">
 						<span class="button__text"> 
 							<th:block th:text="#{user.checkout}"></th:block>
 						</span>

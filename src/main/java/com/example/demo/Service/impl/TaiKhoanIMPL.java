@@ -22,7 +22,7 @@ public class TaiKhoanIMPL implements TaiKhoanService{
 	}
 
 	@Override
-	public TaiKhoanEntity findById(String id) {
+	public TaiKhoanEntity findByUsername(String id) {
 		// TODO Auto-generated method stub
 		return TKDao.findById(id).get();
 	}

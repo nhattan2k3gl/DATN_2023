@@ -33,14 +33,10 @@ public class PhanQuyenEntity implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	int id_pq;
 	
-//	String email;
-	
 	@ManyToOne
 	@JoinColumn(name="email")
 	
 	TaiKhoanEntity taikhoan;
-	
-//	String id_vt;
 	
 	@ManyToOne
 	@JoinColumn(name="id_vt")
