@@ -3,6 +3,7 @@ package com.example.demo.Entity;
 
 
 import java.io.Serializable;
+import java.util.Collection;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -11,6 +12,9 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.Email;
@@ -45,9 +49,13 @@ public class TaiKhoanEntity implements Serializable {
 	String diachi;
 	
 	
-	@JsonIgnore
-	@OneToMany(mappedBy = "taikhoan")
-	List<PhanQuyenEntity> phanquyen;
+	@ManyToMany
+    @JoinTable(
+            name = "phanquyen",
+            joinColumns = @JoinColumn(name = "Email"),
+            inverseJoinColumns = @JoinColumn(name = "ID_VT")
+    )
+    Collection<VaiTroEntity> vaitro;
 	
 //	@JsonIgnore
 //	@OneToMany(mappedBy = "taikhoan")

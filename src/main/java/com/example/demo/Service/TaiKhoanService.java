@@ -9,7 +9,7 @@ import com.example.demo.Entity.TaiKhoanEntity;
 public interface TaiKhoanService {
 	public List<TaiKhoanEntity> findAll();
 
-	public TaiKhoanEntity findById(String id);
+	public TaiKhoanEntity findByUsername(String id);
 
 
 	public TaiKhoanEntity create(TaiKhoanEntity TKEntity);

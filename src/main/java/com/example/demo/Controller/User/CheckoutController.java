@@ -18,6 +18,8 @@ import com.example.demo.Entity.TaiKhoanEntity;
 import com.example.demo.Service.GioHangService;
 import com.example.demo.Service.SessionService;
 
+import jakarta.servlet.http.HttpServletRequest;
+
 
 @Controller
 public class CheckoutController {
@@ -37,23 +39,25 @@ public class CheckoutController {
 	@Autowired
 	SessionService session;
 
-	@RequestMapping("/checkout")
-	public String index(Model model) {
-		return "user/checkout/checkout";
+	@RequestMapping("/order/view")
+	public String index(Model model, HttpServletRequest request) {
+		model.addAttribute("request", request);
+		return "user/order/checkout";
 	}
 	
-	@GetMapping("/checkout/a")
-	public String hiiii(Model model) {
-		return "user/checkout/success";
+	@GetMapping("/order/success")
+	public String hiiii(Model model, HttpServletRequest request) {
+		model.addAttribute("request", request);
+		return "user/order/success";
 	}
 
-	@PostMapping("/checkout")
-	public String success(Model model, @RequestParam("address") String address) {
-		HoaDonEntity order = new HoaDonEntity();
-		order.setNgaytaohoadon(new Date());
-		order.setDiachi(address);
-		dao.save(order);
-		cart.getItems().clear();
-		return "user/success";
-	}
+//	@PostMapping("/order/success")
+//	public String success(Model model, @RequestParam("address") String address) {
+//		HoaDonEntity order = new HoaDonEntity();
+//		order.setNgaytaohoadon(new Date());
+//		order.setDiachi(address);
+//		dao.save(order);
+//		cart.getItems().clear();
+//		return "user/order/success";
+//	}
 }

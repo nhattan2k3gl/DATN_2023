@@ -16,6 +16,7 @@ public interface SanPhamService {
 	public SanPhamEntity create(SanPhamEntity SPEntity) throws Exception;
 	
 	Integer countAllProduct();
+	
 	Page<SanPhamEntity> findAll(Integer page, Integer limit);
 	
 	public void delete(String id);

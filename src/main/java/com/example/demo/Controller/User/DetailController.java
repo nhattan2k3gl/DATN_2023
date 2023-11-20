@@ -14,7 +14,9 @@ import com.example.demo.Dao.SanPhamDao;
 import com.example.demo.Entity.BinhLuanEntity;
 import com.example.demo.Entity.SanPhamEntity;
 import com.example.demo.Service.BinhLuanService;
-import com.example.demo.Service.SanPhamService; 
+import com.example.demo.Service.SanPhamService;
+
+import jakarta.servlet.http.HttpServletRequest; 
 
 
 
@@ -36,9 +38,10 @@ public class DetailController {
 	}
 
 	@GetMapping("/detail/{id_sp}")
-	public String details(Model model, @PathVariable("id_sp") String id_sp,
+	public String details(Model model, HttpServletRequest request, @PathVariable("id_sp") String id_sp,
 						@RequestParam(name = "page") Optional<Integer> page) {
 		SanPhamEntity item = sanPhamDao.findById(id_sp).get();
+		model.addAttribute("request", request);
 		model.addAttribute("item", item);
 		model.addAttribute("comment", binhLuanService.findAllCmt(page.orElse(0), 2));
 		return "user/product/detail";
