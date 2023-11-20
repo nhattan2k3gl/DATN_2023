@@ -144,7 +144,7 @@ select * from VaiTro
 Insert into PhanQuyen values
 	('nhattan@gmail.com',3),
 	('anhhao@gmail.com',1),
-	('anhkhoa@gmail.com',2),
+	('anhkhoa@gmail.com',3),
 	('hoainam@gmail.com',2)
 
 
@@ -221,5 +221,3 @@ select *
 
  select SUM(sanpham.gia*HoaDonChiTiet.SoLuong) as N'Tổng Tiền'
  from HoaDonChiTiet join SanPham on HoaDonChiTiet.ID_HD=sanpham.ID_SP
-
- select SUm()
