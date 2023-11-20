@@ -10,6 +10,7 @@ app.controller("ctrlSP",function($scope,$http){
             $scope.items = resp.data;
             console.log(resp.data);
             $scope.items.forEach(item => {
+				console.log(item.ngayxuatban)
                 item.ngayxuatban = new Date(item.ngayxuatban)
             })
         });
@@ -30,7 +31,8 @@ app.controller("ctrlSP",function($scope,$http){
     //hien thi len form
     $scope.edit = function(item){
         $scope.form = angular.copy(item);
-        $(".nav-tabs a:eq(0)").tab('show');
+        console.log(item)
+        $('#edit-tab').tab('show');
     }
     //them sp moi
     $scope.create = function(){
@@ -79,7 +81,7 @@ app.controller("ctrlSP",function($scope,$http){
             transformRequest: angular.identity,
             headers: {'Content-Type':undefined}
         }).then(resp => {
-            $scope.form.image = resp.data.name;
+            $scope.form.anh = resp.data.name;
         }).catch(error => {
             alert("Upload Image False!");
             console.log("Error",error);
