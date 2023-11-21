@@ -1,92 +1,186 @@
-var app = angular.module("appSP",[])
-app.controller("ctrlSP",function($scope,$http){
-    $scope.items = [];
-    $scope.cates = [];
-    $scope.form = {};
-    
-    $scope.initialize = function(){
-        //load product
-        $http.get("/rest/sanpham").then(resp => {
-            $scope.items = resp.data;
-            console.log(resp.data);
-            $scope.items.forEach(item => {
-				console.log(item.ngayxuatban)
-                item.ngayxuatban = new Date(item.ngayxuatban)
-            })
-        });
-        
-    }
-    //khoi dau
-    $scope.initialize();
-    console.log("day la angular js")
+var app = angular.module("appSP", [])
+app.controller("ctrlSP", function($scope, $http) {
+	$scope.items = [];
+	$scope.cates = [];
+	$scope.form = {};
 
-    //xoa form
-    $scope.reset= function(){
+	$scope.initialize = function() {
+		//load product
+		$http.get("/rest/sanpham").then(resp => {
+			$scope.items = resp.data;
+			console.log(resp.data);
+			$scope.items.forEach(item => {
+				console.log(item.ngayxuatban)
+				item.ngayxuatban = new Date(item.ngayxuatban)
+			})
+		});
+
+	}
+	//khoi dau
+	$scope.initialize();
+	console.log("day la angular js")
+
+	//xoa form
+	$scope.reset = function() {
 		$scope.form = {
-		createDate:new Date(),
-		image:'cloud-upload.jpg',
-		ivailable:true,
+			createDate: new Date(),
+			image: 'cloud-upload.jpg',
+			ivailable: true,
 		};
-    }
-    //hien thi len form
-    $scope.edit = function(item){
-        $scope.form = angular.copy(item);
-        console.log(item)
-        $('#edit-tab').tab('show');
-    }
-    //them sp moi
-    $scope.create = function(){
-	    var item = angular.copy($scope.form);
-        $http.post(`/rest/sanpham`,item).then(resp => {
-            resp.data.createDate = new Date(resp.data.createDate)
-            $scope.items.push(resp.data);
-            $scope.reset();
-            alert("Thêm mới thành công!");
-        }).catch(error => {
-            alert("Lỗi thêm mới sản phẩm!");
-            console.log("Error",error);
-        });
-    }
-    //cap nhat sp
-    $scope.update = function(){
-	    var item = angular.copy($scope.form);
-        $http.put(`/rest/sanpham/${item.id}`,item).then(resp => {
-            var index = $scope.items.findIndex(p => p.id == item.id);
-            $scope.items[index] = item;
-            $scope.reset();
-            alert("Cập nhật sản phẩm thành công!");
-        }).catch(error => {
-            alert("Lỗi cập nhật sản phẩm!");
-            console.log("Error",error);
-        });
-    }
-    //xoa sp
-    $scope.delete = function(item){
-        $http.delete(`/rest/sanpham/${item.id}`).then(resp => {
-            var index = $scope.items.findIndex(p => p.id == item.id);
-            $scope.items.splice(index,1);
-            $scope.reset();
-            alert("Xóa sản phẩm thành công!");
-        }).catch(error => {
-            alert("Lỗi xóa sản phẩm!");
-            console.log("Error",error);
-        });
-    }
-    
-    //upload hinh
-    $scope.imageChanged = function(files){
+	}
+	//hien thi len form
+	$scope.edit = function(item) {
+		$scope.form = angular.copy(item);
+		console.log(item)
+		$('#edit-tab').tab('show');
+	}
+	
+	$scope.updateTable = function(updatedItem) {
+        // Find the index of the updated item in the $scope.items array
+        var index = $scope.items.findIndex(item => item.id_sp === updatedItem.id_sp);
+        // If the item is found, update it
+        if (index !== -1) {
+            $scope.items[index] = updatedItem;
+        } else {
+            // If the item is not found, it's a new item, so push it to the array
+            $scope.items.push(updatedItem);
+        }
+    };
+	//them sp moi
+	$scope.create = function() {
+        var item = angular.copy($scope.form);
+        // Perform validation before submitting the data
+        if ($scope.validation(item)) {
+            $http.post(`/rest/sanpham`, item).then(resp => {
+                resp.data.createDate = new Date(resp.data.ngayxuatban);
+                // Update the table
+                $scope.updateTable(resp.data);
+                $scope.reset();
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Thành công!',
+                    text: 'Thêm mới thành công!',
+                });
+                
+            }).catch(error => {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Thất bại!',
+                    text: 'Lỗi thêm mới sản phẩm!',
+                });
+                console.log("Error", error);
+            });
+        } else {
+            // Show an error message or handle validation error
+            console.log("Validation failed");
+        }
+    };
+
+    // Function to perform validation
+    $scope.validation = function(item) {
+        // Check if required fields are filled in
+        if (!item.ten || !item.gia || !item.ngayxuatban || !item.theloai.id_tl || !item.soluong) {
+            // You can customize this to display specific error messages or highlight fields
+            
+            return false;
+        }
+
+        // Additional validation logic can be added here
+
+        // If all validations pass
+        return true;
+    };
+	//cap nhat sp
+	$scope.update = function() {
+		var item = angular.copy($scope.form);
+        // Perform validation before submitting the data
+        if ($scope.validation(item)) {
+            $http.post(`/rest/sanpham`, item).then(resp => {
+                resp.data.createDate = new Date(resp.data.ngayxuatban);
+
+                var existingItemIndex = $scope.items.findIndex(item => item.id_sp === resp.data.id_sp);
+
+                if (existingItemIndex !== -1) {
+                    $scope.items[existingItemIndex] = resp.data;
+                } else {
+                    $scope.items.push(resp.data);
+                }
+
+                $scope.reset();
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Thành công!',
+                    text: 'Cập nhật thành công!',
+                });
+            }).catch(error => {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Thất bại!',
+                    text: 'Lỗi cập nhật sản phẩm!',
+                });
+                console.log("Error", error);
+            });
+        } else {
+            // Show an error message or handle validation error
+            console.log("Validation failed");
+        }
+	}
+	//xoa sp
+	$scope.delete = function(item) {
+		$http.delete(`/rest/sanpham/${item.id}`).then(resp => {
+			var index = $scope.items.findIndex(p => p.id == item.id);
+			$scope.items.splice(index, 1);
+			$scope.reset();
+			alert("Xóa sản phẩm thành công!");
+		}).catch(error => {
+			alert("Lỗi xóa sản phẩm!");
+			console.log("Error", error);
+		});
+	}
+
+	//upload hinh
+	$scope.imageChanged = function(files) {
 		var data = new FormData();
-		data.append('file',files[0]);
-		$http.post('/rest/upload/products',data,{
-            transformRequest: angular.identity,
-            headers: {'Content-Type':undefined}
-        }).then(resp => {
-            $scope.form.anh = resp.data.name;
-        }).catch(error => {
-            alert("Upload Image False!");
-            console.log("Error",error);
-        })
-    }
-    
+		data.append('file', files[0]);
+		$http.post('/rest/upload/products', data, {
+			transformRequest: angular.identity,
+			headers: { 'Content-Type': undefined }
+		}).then(resp => {
+			$scope.form.anh = resp.data.name;
+		}).catch(error => {
+			alert("Upload Image False!");
+			console.log("Error", error);
+		})
+	}
+	//upload hinh1
+	$scope.imageChanged1 = function(files) {
+		var data = new FormData();
+		data.append('file', files[0]);
+		$http.post('/rest/upload/products', data, {
+			transformRequest: angular.identity,
+			headers: { 'Content-Type': undefined }
+		}).then(resp => {
+			$scope.form.anh1 = resp.data.name;
+		}).catch(error => {
+			alert("Upload Image False!");
+			console.log("Error", error);
+		})
+	}
+	//upload hinh 2
+	$scope.imageChanged2 = function(files) {
+		var data = new FormData();
+		data.append('file', files[0]);
+		$http.post('/rest/upload/products', data, {
+			transformRequest: angular.identity,
+			headers: { 'Content-Type': undefined }
+		}).then(resp => {
+			$scope.form.anh2 = resp.data.name;
+		}).catch(error => {
+			alert("Upload Image False!");
+			console.log("Error", error);
+		})
+	}
+
+
 });
 
