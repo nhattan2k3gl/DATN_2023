@@ -1,6 +1,6 @@
 <div xmlns:th="http://www.thymeleaf.org" th:replace="~{/Admin/Layout/Layout :: dynamic (~{::main})}">
 	<!-- Main Content -->
-	<main id="content">
+	<main id="content" ng-app="appPQ" ng-controller="ctrlPQ">
 
 		<!-- Topbar -->
 		<div th:replace="~{/Admin/Layout/TopBar}"></div>
@@ -25,7 +25,6 @@
 								<tr>
 
 									<th>Email</th>
-
 									<th>Họ Và Tên</th>
 									<th>Ảnh</th>
 									<th>Địa Chỉ</th>
@@ -44,25 +43,17 @@
 									<th></th>
 								</tr>
 							</tfoot>
-							<tbody>
-
-								<tr th:each="PQService : ${PQService}">
-									<!-- <td th:text="${PQService.id_pq}"></td> -->
-									<td>[[${PQService.taikhoan.email}]]</td>
-
-									<td>[[${PQService.taikhoan.hovaten}]]</td>
-									<td><img th:src="@{|/user/img/products/${PQService.taikhoan.anh}|}" alt=""
-											width="50px" height="50px"></td>
-
-									<td>[[${PQService.taikhoan.diachi}]]</td>
-									<td>[[${PQService.vaitro.tenvaitro}]]</td>
-
-									<td><a class="text-white bg-danger"
-											th:href="@{|/Admin/PhanQuyen/Delete/${PQService.id_pq}|}">Xóa</a>
-
-									</td>
+							<tbody ng-repeat="item in items">
+								<tr >
+									<td>{{item.taikhoan.email}}</td>
+									<td>{{item.taikhoan.hovaten}}</td>
+									<td class="text-center"><img ng-src="{{'/assets/products/'+item.taikhoan.anh}}" alt="" width="50px"
+													height="50px"></td>
+									<td>{{item.taikhoan.diachi}}</td>
+									<td>{{item.vaitro.tenvaitro}}</td>
+									<td><a class="text-white bg-danger" ng-click="delete(item)" >Xóa</a></td>
 								</tr>
-
+								<tr></tr>
 							</tbody>
 						</table>
 					</div>
@@ -78,4 +69,4 @@
 	</main>
 	<!-- End of Main Content -->
 </div>
-<script src="/Admin/js/taikhoan/taikhoan.js"></script>
+<script src="/Admin/js/taikhoan/phanquyen.js"></script>

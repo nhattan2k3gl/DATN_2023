@@ -27,7 +27,6 @@ public class TheLoaiController {
 	{
 		TheLoaiEntity TLEntity=new TheLoaiEntity();
 		model.addAttribute("TLEntity",TLEntity);
-		
 		List<TheLoaiEntity> ListTLService = TLService.findAll();
 		model.addAttribute("TLService", ListTLService);
 		
@@ -69,6 +68,8 @@ public class TheLoaiController {
 			return "Admin/SanPham/TheLoai";
 		}
 		else {
+			
+			
 			TLService.create(TLEntity);
 		}
 		

@@ -27,11 +27,11 @@ public class PhanQuyenController {
 
 	@GetMapping("/Admin/PhanQuyen")
 	public String PhanQuyenGet(Model model) {
-		PhanQuyenEntity PQEntity = new PhanQuyenEntity();
-		model.addAttribute("PQEntity", PQEntity);
-
-		List<PhanQuyenEntity> ListPQService = PQService.findAll();
-		model.addAttribute("PQService", ListPQService);
+//		PhanQuyenEntity PQEntity = new PhanQuyenEntity();
+//		model.addAttribute("PQEntity", PQEntity);
+//
+//		List<PhanQuyenEntity> ListPQService = PQService.findAll();
+//		model.addAttribute("PQService", ListPQService);
 
 		return "Admin/TaiKhoan/PhanQuyen";
 	}

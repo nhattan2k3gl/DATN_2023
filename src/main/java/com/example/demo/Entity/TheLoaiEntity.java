@@ -21,9 +21,8 @@ import lombok.Data;
 @Table(name = "theloai")
 public class TheLoaiEntity implements Serializable{
 	@Id
-	@NotNull
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	int id_tl;
+	Integer id_tl;
 	
 	@NotBlank
 	String tentheloai;
