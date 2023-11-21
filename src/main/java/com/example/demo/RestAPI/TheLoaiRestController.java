@@ -40,7 +40,7 @@ public class TheLoaiRestController {
 		TLService.create(theloaientity);
 		return ResponseEntity.ok(theloaientity);
 	}
-	@DeleteMapping("/rest/theloai/{id}")
+	@DeleteMapping("/rest/theloai/delete/{id}")
 	public ResponseEntity<Void>delete (@PathVariable("id") String id)
 	{
 		TLService.delete(id);

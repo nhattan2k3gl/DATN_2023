@@ -10,11 +10,11 @@
         <div class="container-fluid">
 
             <!-- Page Heading -->
-            <h1 class="h3 mb-2 text-gray-800">Sản Phẩm</h1>
+            <h1 class="h3 mb-2 text-gray-800">Thể Loại</h1>
 
             <ul class="nav nav-tabs">
                 <li class="nav-item">
-                    <a class="nav-link active" data-toggle="tab" href="#home">Chỉnh Sửa</a>
+                    <a class="nav-link active" data-toggle="tab" id="edit-tab"  href="#home">Chỉnh Sửa</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" data-toggle="tab" href="#menu1">Bảng</a>
@@ -29,21 +29,21 @@
                         <form  method="post">
                             <div class="mb-3">
                                 <label for="exampleInputEmail1" class="form-label">ID Thể Loại </label>
-                                <input type="text" class="form-control" id=""  aria-describedby="emailHelp" ng-model="id_tl">
+                                <input type="text" class="form-control" id=""  aria-describedby="emailHelp" ng-model="form.id_tl" disabled>
                                 <div id="emailHelp" class="form-text text-danger"> </div>
                             </div>
 
                             <div class="mb-3">
                                 <label for="exampleInputEmail1" class="form-label">Tên Thể Loại</label>
-                                <input type="text" class="form-control" ng-model="tentheloai">
+                                <input type="text" class="form-control" ng-model="form.tentheloai" required>
                                 <div id="emailHelp" class="form-text text-danger" ></div>
                             </div>
 
                             
     
-                            <button  class="btn btn-success mx-2" >Thêm</button>
-                            <button  class="btn btn-success mx-2" >Cập Nhật</button>
-                            <a  class="btn btn-info mx-2" >Làm Mới</a>
+                            <button  class="btn btn-success mx-2" ng-click="create()">Thêm</button>
+                            <button  class="btn btn-success mx-2"  ng-click="update()">Cập Nhật</button>
+                            <a  class="btn btn-info mx-2"th:href="@{/Admin/TheLoai}" >Làm Mới</a>
                         </form>
                     </div>
 
@@ -73,15 +73,15 @@
                                             <th></th>
                                         </tr>
                                     </tfoot>
-                                    <tbody>
+                                    <tbody ng-repeat="item in items">
                                         
                                         <tr >
-            								<td></td>
-            								<td></td>
+            								<td>{{item.id_tl}}</td>
+            								<td>{{item.tentheloai}}</td>
             								
             								<td>
-            									<a class="text-white bg-danger" >Xóa</a>
-            									<a class="text-white  bg-info" >Sửa</a>
+            									<a class="text-white bg-danger" ng-click="delete(item)" >Xóa</a>
+            									<a class="text-white  bg-info" ng-click="edit(item)" >Sửa</a>
             								</td>
         								 </tr>
                                     </tbody>
