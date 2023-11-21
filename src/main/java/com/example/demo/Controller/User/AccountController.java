@@ -81,19 +81,12 @@ public class AccountController {
 //		return "user/taikhoa/";
 //	}
 //	
-//	@PostMapping("/register")
-//	public String save(ModelMap model, @Valid @ModelAttribute TaiKhoanEntity tk, BindingResult br,
-//			HttpServletResponse response) {
-//		if (br.hasErrors()) {
-//			model.addAttribute("message", "Please correct the errors below !");
-//		} else {
-//			tk.setAnh("noavt.png");
-//			taiKhoanDao.save(tk);
-//			model.addAttribute("message", "You have successfully registered an account!");
-//			response.addHeader("refresh", "3;url=/login");
-//		}
-//		return "user/register";
-//	}
+	@PostMapping("/register")
+	public String save(ModelMap model, @Valid @ModelAttribute TaiKhoanEntity tk, BindingResult br,
+			HttpServletResponse response) {
+		
+		return "user/register";
+	}
 
 
 }
