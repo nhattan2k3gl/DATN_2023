@@ -53,7 +53,7 @@
 										<img class="short-item__image" th:src="@{/user/img/products/noavt.png}">
 									</th:block>
 									<th:block th:if="${item.anh != null}">
-										<img class="short-item__image" th:src="@{|/user/img/products/${item.anh}|}">
+										<img class="short-item__image" th:src="@{|/assets/products/${item.anh}|}">
 									</th:block>
 								</a>
 								<div class="short-item__top">
@@ -175,10 +175,10 @@
 							<div class="short-item__all">
 								<a class="short-item__image-bg" th:href="@{|/detail/${item.id_sp}|}">
 									<th:block th:if="${item.anh == null}">
-										<img class="short-item__image" th:src="@{/user/img/products/noavt.png}">
+										<img class="short-item__image" th:src="@{/assets/products/noavt.png}">
 									</th:block>
 									<th:block th:if="${item.anh != null}">
-										<img class="short-item__image" th:src="@{|/user/img/products/${item.anh}|}">
+										<img class="short-item__image" th:src="@{|/assets/products/${item.anh}|}">
 									</th:block>
 								</a>
 								<div class="short-item__top">
