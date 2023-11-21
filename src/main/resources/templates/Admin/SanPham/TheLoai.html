@@ -1,6 +1,6 @@
 <div xmlns:th="http://www.thymeleaf.org" th:replace="~{/Admin/Layout/Layout :: dynamic (~{::main})}">
     <!-- Main Content -->
-    <main id="content">
+    <main id="content" ng-app="appTL" ng-controller="ctlTL">
 
         <!-- Topbar -->
         <div th:replace="~{/Admin/Layout/TopBar}"></div>
@@ -26,24 +26,24 @@
                 <div class="tab-pane  active" id="home">
                     <!-- From -->
                     <div class="my-4 ">
-                        <form th:object="${TLEntity}" method="post">
+                        <form  method="post">
                             <div class="mb-3">
                                 <label for="exampleInputEmail1" class="form-label">ID Thể Loại </label>
-                                <input type="text" class="form-control" id=""  aria-describedby="emailHelp" th:field="*{id_tl}">
-                                <div id="emailHelp" class="form-text text-danger" th:errors="*{id_tl}"> </div>
+                                <input type="text" class="form-control" id=""  aria-describedby="emailHelp" ng-model="id_tl">
+                                <div id="emailHelp" class="form-text text-danger"> </div>
                             </div>
 
                             <div class="mb-3">
                                 <label for="exampleInputEmail1" class="form-label">Tên Thể Loại</label>
-                                <input type="text" class="form-control" th:field="*{tentheloai}">
-                                <div id="emailHelp" class="form-text text-danger" th:errors="*{tentheloai}"></div>
+                                <input type="text" class="form-control" ng-model="tentheloai">
+                                <div id="emailHelp" class="form-text text-danger" ></div>
                             </div>
 
                             
     
-                            <button  class="btn btn-success mx-2" th:formaction="@{/Admin/TheLoai/Create}">Thêm</button>
-                            <button  class="btn btn-success mx-2" th:formaction="@{/Admin/TheLoai/Create}">Cập Nhật</button>
-                            <a  class="btn btn-info mx-2" th:href="@{/Admin/TheLoai}" >Làm Mới</a>
+                            <button  class="btn btn-success mx-2" >Thêm</button>
+                            <button  class="btn btn-success mx-2" >Cập Nhật</button>
+                            <a  class="btn btn-info mx-2" >Làm Mới</a>
                         </form>
                     </div>
 
@@ -75,13 +75,13 @@
                                     </tfoot>
                                     <tbody>
                                         
-                                        <tr th:each="TLService : ${TLService}">
-            								<td th:text="${TLService.id_tl}"></td>
-            								<td>[[${TLService.tentheloai}]]</td>
+                                        <tr >
+            								<td></td>
+            								<td></td>
             								
             								<td>
-            									<a class="text-white bg-danger " th:href="@{|/Admin/TheLoai/Delete/${TLService.id_tl}|}">Xóa</a>
-            									<a class="text-white  bg-info" th:href="@{|/Admin/TheLoai/Edit/${TLService.id_tl}|}">Sửa</a>
+            									<a class="text-white bg-danger" >Xóa</a>
+            									<a class="text-white  bg-info" >Sửa</a>
             								</td>
         								 </tr>
                                     </tbody>
@@ -102,4 +102,4 @@
     </main>
     <!-- End of Main Content -->
 </div>
-<script src="/Admin/validation/taikhoan/phanquyen.js"></script>
+<script src="/Admin/js/sanpham/theloai.js"></script>
