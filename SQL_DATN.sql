@@ -146,7 +146,7 @@ Insert into PhanQuyen values
 	('anhhao@gmail.com',1),
 	('anhkhoa@gmail.com',3),
 	('hoainam@gmail.com',2)
-
+	select * from phanquyen
 
 Insert into PhanQuyen values
 	('nguyenhoainam@gmail.com',1)

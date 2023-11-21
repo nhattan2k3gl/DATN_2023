@@ -82,7 +82,7 @@ app.controller("ctrlSP", function($scope, $http) {
         if (!item.ten || !item.gia || !item.ngayxuatban || !item.theloai.id_tl || !item.soluong) {
             // You can customize this to display specific error messages or highlight fields
             
-            return false;
+            return true;
         }
 
         // Additional validation logic can be added here
