@@ -132,7 +132,7 @@
 									<div class="mb-3">
 										<label for="exampleInputEmail1" class="form-label">Mô Tả</label>
 										<textarea class="form-control" ng-model="form.mota"
-											style="height: 200px;" ></textarea>
+											style="height: 200px;" required></textarea>
 										<div id="" class="form-text text-danger"></div>
 									</div>
 									<button class="btn btn-success mx-2"
@@ -196,7 +196,7 @@
 										<tr ng-repeat="item in items">
 											<td>{{item.id_sp}}</td>
 											<td>{{item.ten}}</td>
-											<td>{{item.gia}}vnđ</td>
+											<td>{{item.gia}} VNĐ</td>
 											<td>{{item.ngayxuatban | date:'dd-MM-yyyy'}}</td>
 											<td class="text-center"><img ng-src="{{'/assets/products/'+item.anh}}" alt="" width="50px"
 													height="50px"></td>
@@ -207,7 +207,7 @@
 											<td>{{item.soluongsp}}</td>
 											<td>{{item.theloai.id_tl}}</td>
 											<td>
-												<a class="text-white bg-danger" >Xóa</a>
+												<a class="text-white bg-danger" ng-click="delete(item)" >Xóa</a>
 												<a class="text-white  bg-info" ng-click="edit(item)">Sửa</a>
 											</td>
 										</tr>
