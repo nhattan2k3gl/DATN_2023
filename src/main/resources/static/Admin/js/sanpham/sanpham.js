@@ -34,96 +34,95 @@ app.controller("ctrlSP", function($scope, $http) {
 		console.log(item)
 		$('#edit-tab').tab('show');
 	}
-	
+
 	$scope.updateTable = function(updatedItem) {
-        // Find the index of the updated item in the $scope.items array
-        var index = $scope.items.findIndex(item => item.id_sp === updatedItem.id_sp);
-        // If the item is found, update it
-        if (index !== -1) {
-            $scope.items[index] = updatedItem;
-        } else {
-            // If the item is not found, it's a new item, so push it to the array
-            $scope.items.push(updatedItem);
-        }
-    };
+		// Find the index of the updated item in the $scope.items array
+		var index = $scope.items.findIndex(item => item.id_sp === updatedItem.id_sp);
+		// If the item is found, update it
+		if (index !== -1) {
+			$scope.items[index] = updatedItem;
+		} else {
+			// If the item is not found, it's a new item, so push it to the array
+			$scope.items.push(updatedItem);
+		}
+	};
 	//them sp moi
 	$scope.create = function() {
-        var item = angular.copy($scope.form);
-        // Perform validation before submitting the data
-        if ($scope.validation(item)) {
-            $http.post(`/rest/sanpham`, item).then(resp => {
-                resp.data.createDate = new Date(resp.data.ngayxuatban);
-                // Update the table
-                $scope.updateTable(resp.data);
-                $scope.reset();
-                Swal.fire({
-                    icon: 'success',
-                    title: 'Thành công!',
-                    text: 'Thêm mới thành công!',
-                });
-                
-            }).catch(error => {
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Thất bại!',
-                    text: 'Lỗi thêm mới sản phẩm!',
-                });
-                console.log("Error", error);
-            });
-        } else {
-            // Show an error message or handle validation error
-            console.log("Validation failed");
-        }
-    };
+		var item = angular.copy($scope.form);
+		// Perform validation before submitting the data
+		if ($scope.validation(item)) {
+			$http.post(`/rest/sanpham`, item).then(resp => {
+				resp.data.createDate = new Date(resp.data.ngayxuatban);
+				// Update the table
+				$scope.updateTable(resp.data);
+				$scope.reset();
+				Swal.fire({
+					icon: 'success',
+					title: 'Thành công!',
+					text: 'Thêm mới thành công!',
+				});
 
-    // Function to perform validation
-    $scope.validation = function(item) {
-        // Check if required fields are filled in
-        if (!item.ten || !item.gia || !item.ngayxuatban || !item.theloai.id_tl || !item.soluong) {
-            // You can customize this to display specific error messages or highlight fields
-            
-            return false;
-        }
+			}).catch(error => {
+				Swal.fire({
+					icon: 'error',
+					title: 'Thất bại!',
+					text: 'Lỗi thêm mới sản phẩm!',
+				});
+				console.log("Error", error);
+			});
+		} else {
+			// Show an error message or handle validation error
+			console.log("Validation failed");
+		}
+	};
 
-        // Additional validation logic can be added here
+	// Function to perform validation
+	$scope.validation = function(item) {
+		// Kiểm tra xem các trường bắt buộc đã được điền đầy đủ chưa
+		console.log(item.mota)
+		if (!item.ten || !item.gia || !item.theloai || !item.theloai.id_tl || !item.soluongsp || !item.mota) {
+			// Hiển thị thông báo lỗi
+			Swal.fire({
+				icon: 'error',
+				title: 'Thất bại!',
+				text: 'Vui lòng điền đầy đủ thông tin cho các trường bắt buộc.',
+			});
+			return false; // Trả về false khi có lỗi
+		}
 
-        // If all validations pass
-        return true;
-    };
+		// Có thể thêm logic kiểm tra bổ sung ở đây
+
+		// Nếu tất cả các kiểm tra hợp lệ
+		return true; // Trả về true khi không có lỗi
+	};
 	//cap nhat sp
 	$scope.update = function() {
 		var item = angular.copy($scope.form);
-        // Perform validation before submitting the data
-        if ($scope.validation(item)) {
-            $http.post(`/rest/sanpham`, item).then(resp => {
-                resp.data.createDate = new Date(resp.data.ngayxuatban);
-
-                var existingItemIndex = $scope.items.findIndex(item => item.id_sp === resp.data.id_sp);
-
-                if (existingItemIndex !== -1) {
-                    $scope.items[existingItemIndex] = resp.data;
-                } else {
-                    $scope.items.push(resp.data);
-                }
-
-                $scope.reset();
-                Swal.fire({
-                    icon: 'success',
-                    title: 'Thành công!',
-                    text: 'Cập nhật thành công!',
-                });
-            }).catch(error => {
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Thất bại!',
-                    text: 'Lỗi cập nhật sản phẩm!',
-                });
-                console.log("Error", error);
-            });
-        } else {
-            // Show an error message or handle validation error
-            console.log("Validation failed");
-        }
+		// Perform validation before submitting the data
+		if ($scope.validation(item)) {
+			$http.post(`/rest/sanpham`, item).then(resp => {
+				resp.data.createDate = new Date(resp.data.ngayxuatban);
+				
+				$scope.updateTable(resp.data);
+				$scope.reset();
+				
+				Swal.fire({
+					icon: 'success',
+					title: 'Thành công!',
+					text: 'Cập nhật thành công!',
+				});
+			}).catch(error => {
+				Swal.fire({
+					icon: 'error',
+					title: 'Thất bại!',
+					text: 'Lỗi cập nhật sản phẩm!',
+				});
+				console.log("Error", error);
+			});
+		} else {
+			// Show an error message or handle validation error
+			console.log("Validation failed");
+		}
 	}
 	//xoa sp
 	$scope.delete = function(item) {
