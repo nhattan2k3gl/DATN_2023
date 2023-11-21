@@ -24,23 +24,33 @@
 		<div class="checkout-page__cols">
 			<!-- BEGIN LEFT COLUMN -->
 			<div class="checkout-page__left">
-				<form th:action="@{/order/success}" method="get">
+				<form>
 					<section class="checkout-form">
 						<h2 class="checkout-form__title"> 
 							<th:block th:text="#{user.receiver}"></th:block>
 						</h2>
 						<span class="login-form__label"> 
+							Email:
+						</span>
+						<input class="text-input" type="text" id="email" name="email" th:value="${request.remoteUser}" ng-readonly="true" required>
+						<!-- <span class="login-form__label"> 
 							<th:block th:text="#{user.phone}"></th:block>
 							*
 						</span>
-						<input class="text-input" type="number" name="phone" placeholder="0123456789"
-							required>
+						<input class="text-input" type="text" name="phone" placeholder="0876796123"
+							required> -->
+						<span class="login-form__label"> 
+							<th:block th:text="#{user.dateOrder}"></th:block>
+							:
+						</span>
+						<input class="text-input" type="text" name="date" ng-model="order.ngaytaohoadon | date : 'yyyy-MM-dd'" ng-readonly="true" required>
+
 						<span class="login-form__label"> 
 							<th:block th:text="#{user.address}"></th:block>
 							*
 						</span>
-						<textarea class="checkout-form__textarea textarea" name="address"
-							placeholder="Mặt trăng" required></textarea>
+						<textarea class="checkout-form__textarea textarea" name="address" ng-model="order.diachi"
+							placeholder="123 Vo Thi Sau, District 1, Ho Chi Minh City" required></textarea>
 						<div class="checkout-form__buttons">
 							<div class="checkout-form__button-col">
 								<a th:href="@{|/cart|}" class="checkout-form__back back-button"> 
@@ -48,7 +58,7 @@
 								</a>
 							</div>
 							<div class="checkout-form__button-col">
-								<button class="checkout-form__button button" ng-click="cart.clear()">
+								<button class="checkout-form__button button" ng-click="order.purchase()">
 									<span class="button__text"> 
 										<th:block th:text="#{user.confirm}"></th:block>
 									</span>

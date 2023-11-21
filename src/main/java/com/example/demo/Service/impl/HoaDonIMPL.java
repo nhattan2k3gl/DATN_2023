@@ -4,18 +4,27 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.example.demo.Dao.HoaDonChiTietDao;
 import com.example.demo.Dao.HoaDonDao;
+import com.example.demo.Entity.HoaDonChiTietEntity;
 import com.example.demo.Entity.HoaDonEntity;
-import com.example.demo.Service.HoaDonService; 
+import com.example.demo.Service.HoaDonService;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Service
 public class HoaDonIMPL implements HoaDonService{
 	@Autowired
 	HoaDonDao HDDao;
+	
+	@Autowired
+	HoaDonChiTietDao HDCTDao;
 
 	@Override
 	public List<HoaDonEntity> findAll() {
@@ -58,6 +67,22 @@ public class HoaDonIMPL implements HoaDonService{
 		// TODO Auto-generated method stub
 		HDDao.deleteById(id);
 	}
+
+	@Override
+	public HoaDonEntity crt(JsonNode orderData) {
+		ObjectMapper mapper = new ObjectMapper();
+
+		HoaDonEntity order = mapper.convertValue(orderData, HoaDonEntity.class);
+		HDDao.save(order);
+
+		TypeReference<List<HoaDonChiTietEntity>> type = new TypeReference<List<HoaDonChiTietEntity>>() {};
+		List<HoaDonChiTietEntity> details = mapper.convertValue(orderData.get("hoadonchitiet"), type).stream()
+				.peek(d -> d.setHoadon(order)).collect(Collectors.toList());
+		HDCTDao.saveAll(details);
+
+		return order;
+	}
+
 	
 	
 }

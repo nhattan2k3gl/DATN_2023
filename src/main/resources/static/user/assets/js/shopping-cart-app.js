@@ -1,5 +1,14 @@
 const app = angular.module("app", []);
 
+app.run(function($http, $rootScope){
+    $http.get(`/rest/security/authentication`).then(resp => {
+    	if(resp.data){
+    		$auth = $rootScope.$auth = resp.data;
+        	$http.defaults.headers.common["Authorization"] = $auth.token;
+    	}
+    });
+})
+
 
 app.controller("cart-ctrl", function($scope, $http){
 	// quản lý giỏ hàng
@@ -59,17 +68,15 @@ app.controller("cart-ctrl", function($scope, $http){
 	
 	// Đặt hàng
 	$scope.order = {
-			get account(){
-				return {username: $auth.user.username}
-			},
-			createDate: new Date(),
-			address: "",
-			get orderDetails(){
+			taikhoan : {email: $("#email").text()},
+			ngaytaohoadon: new Date(),
+			diachi: "",
+			get hoadonchitiet(){
 				return $cart.items.map(item => {
 					return {
-						product:{id_sp: item.id_sp},
+						sanpham:{id_sp: item.id_sp},
 						gia: item.gia,
-						quantity: item.soluongsp
+						soluong: item.soluongsp
 					}
 				});
 			},
@@ -79,7 +86,7 @@ app.controller("cart-ctrl", function($scope, $http){
 				$http.post("/rest/orders", order).then(resp => {
 					alert("Đặt hàng thành công!");
 					$cart.clear();
-					location.href = "/order/detail/" + resp.data.id_sp;
+					location.href = "/order/success";
 				}).catch(error => {
 					alert("Đặt hàng lỗi!")
 					console.log(error)

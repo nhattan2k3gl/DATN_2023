@@ -66,7 +66,7 @@ public class AccountController {
 	
 	@CrossOrigin("*")
 	@ResponseBody
-	@RequestMapping("/rest/login/authentication")
+	@RequestMapping("/rest/security/authentication")
 	public Object getAuthentication(HttpSession session) {
 		return session.getAttribute("authentication");
 	}

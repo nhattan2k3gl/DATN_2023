@@ -50,7 +50,7 @@
 
     </div> 
        
-<script>
+<!-- <script>
 var time = 5;
 setInterval(function() {
   var seconds = time % 60;
@@ -61,13 +61,18 @@ setInterval(function() {
   if (minutes.toString().length == 1) {
     minutes = "0" + minutes;
   }
-  document.getElementById("time").innerHTML = minutes + ":" + seconds + "s";
-  time--;
+  var myElement = document.getElementById("time");
+  if (myElement) {
+	  myElement.innerHTML = minutes + ":" + seconds + "s";
+	  time--;
+	}else {
+	    console.error('Không tìm thấy phần tử');
+	}
   if (time == 0) {
     window.location.href = "/index";
   }
 }, 1000);
-</script>
+</script> -->
 
 
 

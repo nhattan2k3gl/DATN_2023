@@ -161,6 +161,7 @@ Insert into HoaDon values
 	(CAST('2023-5-1' AS Date),N'3 Đình Quá','toanthang@gmail.com')
 select * from HoaDon
 
+
 insert into TheLoai values
 	(N'Học Thuật'),
 	(N'Văn học'),
