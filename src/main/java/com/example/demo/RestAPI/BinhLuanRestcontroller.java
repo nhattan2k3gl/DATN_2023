@@ -39,7 +39,7 @@ public class BinhLuanRestcontroller {
 		return ResponseEntity.ok(BinhLuanEntity);
 	}
 	
-	@DeleteMapping("/rest/binhluan/{id}")
+	@DeleteMapping("/rest/binhluan/delete/{id}")
 	public ResponseEntity<Void> delete(@PathVariable("id") String id){
 		
 		BLSerVice.delete(id);

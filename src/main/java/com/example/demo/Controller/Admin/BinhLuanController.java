@@ -24,12 +24,7 @@ public class BinhLuanController {
 
 	@GetMapping("/Admin/BinhLuan")
 	public String BinhLuanGet(Model model) {
-		BinhLuanEntity BLEntity = new BinhLuanEntity();
-		model.addAttribute("BLEntity", BLEntity);
 		
-
-		List<BinhLuanEntity> ListBLService = BLService.findAll();
-		model.addAttribute("BLService", ListBLService);
 
 		return "Admin/BinhLuan/BinhLuan";
 	}
