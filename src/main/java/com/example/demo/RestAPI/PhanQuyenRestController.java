@@ -1,9 +1,11 @@
 package com.example.demo.RestAPI;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -39,7 +41,13 @@ public class PhanQuyenRestController {
 		data.put("taikhoan", TKService.findAll());
 		return data;
 	}
-
+	
+	@GetMapping("/Rest/PhanQuyen1")
+	public ResponseEntity<List<PhanQuyenEntity>> getAuthorities1() {
+		
+		return ResponseEntity.ok(PQService.findAll());
+	}
+	
 	@PostMapping("/Rest/PhanQuyen/Create")
 	public PhanQuyenEntity create(@RequestBody PhanQuyenEntity PQEnitty) {
 		return PQService.create(PQEnitty);

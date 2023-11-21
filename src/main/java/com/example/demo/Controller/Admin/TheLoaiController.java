@@ -25,11 +25,10 @@ public class TheLoaiController {
 	@GetMapping("/Admin/TheLoai")
 	public String TheLoaiGet(Model model)
 	{
-		TheLoaiEntity TLEntity=new TheLoaiEntity();
-		model.addAttribute("TLEntity",TLEntity);
-		
-		List<TheLoaiEntity> ListTLService = TLService.findAll();
-		model.addAttribute("TLService", ListTLService);
+//		TheLoaiEntity TLEntity=new TheLoaiEntity();
+//		model.addAttribute("TLEntity",TLEntity);
+//		List<TheLoaiEntity> ListTLService = TLService.findAll();
+//		model.addAttribute("TLService", ListTLService);
 		
 		return "Admin/SanPham/TheLoai";
 	}
@@ -69,6 +68,8 @@ public class TheLoaiController {
 			return "Admin/SanPham/TheLoai";
 		}
 		else {
+			
+			
 			TLService.create(TLEntity);
 		}
 		

@@ -47,25 +47,25 @@
 									<div class="carousel-inner">
 										<div class="item active">
 											<a class="product-slider__link"
-												 th:href="@{|/user/img/products/${item.anh}|}" data-fancybox="gallery">
+												 th:href="@{|/assets/products/${item.anh}|}" data-fancybox="gallery">
 												<img class="product-slider__image"
-													 th:src="@{|/user/img/products/${item.anh}|}" style="height: 100%;">
+													 th:src="@{|/assets/products/${item.anh}|}" style="height: 100%;">
 											</a>
 										</div>
 
 										<div class="item">
 											<a class="product-slider__link"
-												th:href="@{|/user/img/products/${item.anh1}|}" data-fancybox="gallery">
+												th:href="@{|/assets/products/${item.anh1}|}" data-fancybox="gallery">
 												<img class="product-slider__image"
-													th:src="@{|/user/img/products/${item.anh1}|}" style="height: 100%;">
+													th:src="@{|/assets/products/${item.anh1}|}" style="height: 100%;">
 											</a>
 										</div>
 
 										<div class="item">
 											<a class="product-slider__link"
-												th:href="@{|/user/img/products/${item.anh2}|}" data-fancybox="gallery">
+												th:href="@{|/assets/products/${item.anh2}|}" data-fancybox="gallery">
 												<img class="product-slider__image"
-													th:src="@{|/user/img/products/${item.anh2}|}" style="height: 100%;">
+													th:src="@{|/assets/products/${item.anh2}|}" style="height: 100%;">
 											</a>
 										</div>
 									</div>
@@ -118,7 +118,7 @@
 					</ul>
 					<div class="product__prices">
 						<span class="product__price">
-							$[[${item.gia}]]
+							[[${item.gia}]]vnđ
 						</span>
 					</div>
 				</div>

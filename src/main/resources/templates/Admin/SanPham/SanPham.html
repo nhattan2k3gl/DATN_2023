@@ -1,6 +1,6 @@
 <div xmlns:th="http://www.thymeleaf.org" th:replace="~{/Admin/Layout/Layout :: dynamic (~{::main})}">
 	<!-- Main Content -->
-	<main id="content">
+	<main id="content" ng-app="appSP" ng-controller="ctrlSP">
 
 		<!-- Topbar -->
 		<div th:replace="~{/Admin/Layout/TopBar}"></div>
@@ -14,7 +14,7 @@
 
 			<ul class="nav nav-tabs">
 				<li class="nav-item">
-					<a class="nav-link active" data-toggle="tab" href="#home">Chỉnh Sửa</a>
+					<a class="nav-link active" data-toggle="tab" id="edit-tab" href="#home">Chỉnh Sửa</a>
 				</li>
 				<li class="nav-item">
 					<a class="nav-link" data-toggle="tab" href="#menu1">Bảng</a>
@@ -24,7 +24,7 @@
 			<!-- Tab panes -->
 			<div class="tab-content">
 				<div class="tab-pane  active" id="home">
-					<form th:object="${SPEntity}" method="post">
+					<form>
 						<div class="row">
 
 							<!-- Left form -->
@@ -44,16 +44,16 @@
 										<!-- The slideshow -->
 										<div class="carousel-inner mx-auto">
 											<div class="carousel-item active ">
-												<img th:src="@{|/user/img/products/${SPEntity.anh}|}" alt="Ảnh 1 trống"
-													th:field="*{anh}" width="100%" height="400px">
+												<img ng-src="{{'/assets/products/' +form.anh}}" alt="Ảnh 1 trống"
+													 width="100%" height="400px">
 											</div>
 											<div class="carousel-item">
-												<img th:src="@{|/user/img/products/${SPEntity.anh1}|}" alt="Ảnh2 trống"
-													th:field="*{anh1}" width="100%" height="400px">
+												<img ng-src="{{'/assets/products/'+form.anh1}}" alt="Ảnh2 trống"
+													 width="100%" height="400px">
 											</div>
 											<div class="carousel-item">
-												<img th:src="@{|/user/img/products/${SPEntity.anh2}|}" alt="Ảnh 3 trống"
-													th:field="*{anh2}" width="100%" height="400px">
+												<img ng-src="{{'/assets/products/'+form.anh2}}" alt="Ảnh 3 trống"
+													 width="100%" height="400px">
 											</div>
 										</div>
 
@@ -78,70 +78,66 @@
 									<div class="mb-3">
 										<label for="exampleInputEmail1" class="form-label">ID Sản Phẩm </label>
 										<input type="text" class="form-control" id="" aria-describedby="emailHelp"
-											th:field="*{id_sp}">
-										<div id="" class="form-text text-danger" th:errors="*{id_sp}"></div>
+											ng-model="form.id_sp" disabled>
+										<div class="form-text text-danger" ng-show="yourFormName.id_sp.$error.required">ID Sản Phẩm is required.</div>
 									</div>
 
 									<div class="mb-3">
 										<label for="exampleInputEmail1" class="form-label">Tên</label>
-										<input type="text" class="form-control" th:field="*{ten}">
-										<div id="" class="form-text text-danger" th:errors="*{ten}"></div>
+										<input type="text" class="form-control" ng-model="form.ten" required>
+										<div id="" class="form-text text-danger"></div>
 									</div>
 
 									<div class="mb-3">
 										<label for="exampleInputEmail1" class="form-label">Giá</label>
-										<input type="text" class="form-control" th:field="*{gia}">
-										<div id="" class="form-text text-danger" th:errors="*{gia}"></div>
+										<input type="text" class="form-control" ng-model="form.gia" required>
+										<div id="" class="form-text text-danger"></div>
 									</div>
 
 									<div class="mb-3">
 										<label for="exampleInputEmail1" class="form-label">Ngày Xuất Bản</label>
-										<input type="date" class="form-control" th:field="*{ngayxuatban}">
-										<div id="" class="form-text text-danger" th:errors="*{ngayxuatban}"></div>
+										<input type="date" class="form-control" ng-model="form.ngayxuatban" required>
+										<div id="" class="form-text text-danger"></div>
 									</div>
-									<div ng-app="appSP" ng-controller="ctrlSP">
+									<div>
 										<div class="mb-3">
 											<label>Ảnh 1</label>
-											<input type="file" class="form-control" id="image"
+											<input type="file" class="form-control" id="image" 
 												onchange="angular.element(this).scope().imageChanged(this.files)">
 										</div>
-										<!-- <div class="mb-3">
+										<div class="mb-3">
 											<label>Ảnh 2</label>
 											<input type="file" class="form-control" id="image1"
-												onchange="angular.element(this).scope().imageChanged(this.files)">
+												onchange="angular.element(this).scope().imageChanged1(this.files)">
 										</div>
 										<div class="mb-3">
 											<label>Ảnh 3</label>
 											<input type="file" class="form-control" id="image2"
-												onchange="angular.element(this).scope().imageChanged(this.files)">
-										</div> -->
+												onchange="angular.element(this).scope().imageChanged2(this.files)">
+										</div> 
 									</div>
 
 
 									<div class="mb-3">
 										<label for="exampleInputEmail1" class="form-label">Số Lượng Sản Phẩm</label>
-										<input type="text" class="form-control" th:field="*{soluongsp}">
-										<div id="" class="form-text text-danger" th:errors="*{soluongsp}"></div>
+										<input type="text" class="form-control" ng-model="form.soluongsp" required>
+										<div id="" class="form-text text-danger"></div>
 									</div>
 									<div class="mb-3">
 										<label for="exampleInputEmail1" class="form-label">ID Thể Loại</label>
-										<input type="text" class="form-control" th:field="*{theloai.id_tl}">
+										<input type="text" class="form-control" ng-model="form.theloai.id_tl" required>
 										<div id="" class="form-text text-danger"></div>
 									</div>
-									<div class="mb-3">
-										<label for="exampleInputEmail1" class="form-label">Tên Thể Loại</label>
-										<input type="text" class="form-control" th:field="*{theloai.tentheloai}">
-										<div id="" class="form-text text-danger"></div>
-									</div>
+									
 									<div class="mb-3">
 										<label for="exampleInputEmail1" class="form-label">Mô Tả</label>
-										<textarea class="form-control" th:field="*{mota}"
-											style="height: 200px;"></textarea>
+										<textarea class="form-control" ng-model="form.mota"
+											style="height: 200px;" required></textarea>
 										<div id="" class="form-text text-danger"></div>
 									</div>
 									<button class="btn btn-success mx-2"
-										th:formaction="@{/Admin/SanPham/Create}">Thêm</button>
-									<button class="btn btn-success mx-2" th:formaction="@{/Admin/SanPham/Create}">Cập
+										ng-click="create()">Thêm</button>
+									<button class="btn btn-success mx-2" ng-click="update()">Cập
 										Nhật</button>
 									<a class="btn btn-info mx-2" th:href="@{/Admin/SanPham}">Làm Mới</a>
 
@@ -176,6 +172,7 @@
 											<th>Số Lượng Sản Phẩm</th>
 
 											<th>ID Thể Loại</th>
+
 											<th></th>
 										</tr>
 									</thead>
@@ -189,33 +186,32 @@
 											<th>Số Lượng Sản Phẩm</th>
 
 											<th>Tên Thể Loại</th>
+
 											<th></th>
 											<th></th>
 										</tr>
 									</tfoot>
 									<tbody>
 
-										<tr th:each="SPService : ${SPService}">
-											<td th:text="${SPService.id_sp}"></td>
-											<td>[[${SPService.ten}]]</td>
-											<td>[[${SPService.gia}]]</td>
-											<td>[[${SPService.ngayxuatban}]]</td>
-											<td><img th:src="@{|/user/img/products/${SPService.anh}|}" alt=""
-													width="50px" height="50px"></td>
-											<td><img th:src="@{|/user/img/products/${SPService.anh1}|}" alt=""
-													width="50px" height="50px"></td>
-											<td><img th:src="@{|/user/img/products/${SPService.anh2}|}" alt=""
-													width="50px" height="50px"></td>
-											<td>[[${SPService.soluongsp}]]</td>
-											<td>[[${SPService.theloai.tentheloai}]]</td>
-
+										<tr ng-repeat="item in items">
+											<td>{{item.id_sp}}</td>
+											<td>{{item.ten}}</td>
+											<td>{{item.gia}} VNĐ</td>
+											<td>{{item.ngayxuatban | date:'dd-MM-yyyy'}}</td>
+											<td class="text-center"><img ng-src="{{'/assets/products/'+item.anh}}" alt="" width="50px"
+													height="50px"></td>
+											<td class="text-center"><img ng-src="{{'/assets/products/'+item.anh1}}" alt="" width="50px"
+													height="50px"></td>
+											<td class="text-center"> <img ng-src="{{'/assets/products/'+item.anh2}}" alt="" width="50px"
+													height="50px"></td>
+											<td>{{item.soluongsp}}</td>
+											<td>{{item.theloai.id_tl}}</td>
 											<td>
-												<a class="text-white bg-danger"
-													th:href="@{|/Admin/SanPham/Delete/${SPService.id_sp}|}">Xóa</a>
-												<a class="text-white  bg-info"
-													th:href="@{|/Admin/SanPham/Edit/${SPService.id_sp}|}">Sửa</a>
+												<a class="text-white bg-danger" ng-click="delete(item)" >Xóa</a>
+												<a class="text-white  bg-info" ng-click="edit(item)">Sửa</a>
 											</td>
 										</tr>
+										<tr></tr>
 									</tbody>
 								</table>
 							</div>
