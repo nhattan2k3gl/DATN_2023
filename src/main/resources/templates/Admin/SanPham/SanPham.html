@@ -48,11 +48,11 @@
 													 width="100%" height="400px">
 											</div>
 											<div class="carousel-item">
-												<img ng-src="{{'/user/img/products/'+form.anh1}}" alt="Ảnh2 trống"
+												<img ng-src="{{'/assets/products/'+form.anh1}}" alt="Ảnh2 trống"
 													 width="100%" height="400px">
 											</div>
 											<div class="carousel-item">
-												<img ng-src="{{'/user/img/products/'+form.anh2}}" alt="Ảnh 3 trống"
+												<img ng-src="{{'/assets/products/'+form.anh2}}" alt="Ảnh 3 trống"
 													 width="100%" height="400px">
 											</div>
 										</div>
@@ -78,25 +78,25 @@
 									<div class="mb-3">
 										<label for="exampleInputEmail1" class="form-label">ID Sản Phẩm </label>
 										<input type="text" class="form-control" id="" aria-describedby="emailHelp"
-											ng-model="form.id_sp">
-										<div id="" class="form-text text-danger"></div>
+											ng-model="form.id_sp" disabled>
+										<div class="form-text text-danger" ng-show="yourFormName.id_sp.$error.required">ID Sản Phẩm is required.</div>
 									</div>
 
 									<div class="mb-3">
 										<label for="exampleInputEmail1" class="form-label">Tên</label>
-										<input type="text" class="form-control" ng-model="form.ten">
+										<input type="text" class="form-control" ng-model="form.ten" required>
 										<div id="" class="form-text text-danger"></div>
 									</div>
 
 									<div class="mb-3">
 										<label for="exampleInputEmail1" class="form-label">Giá</label>
-										<input type="text" class="form-control" ng-model="form.gia">
+										<input type="text" class="form-control" ng-model="form.gia" required>
 										<div id="" class="form-text text-danger"></div>
 									</div>
 
 									<div class="mb-3">
 										<label for="exampleInputEmail1" class="form-label">Ngày Xuất Bản</label>
-										<input type="date" class="form-control" ng-model="form.ngayxuatban">
+										<input type="date" class="form-control" ng-model="form.ngayxuatban" required>
 										<div id="" class="form-text text-danger"></div>
 									</div>
 									<div>
@@ -108,40 +108,36 @@
 										<div class="mb-3">
 											<label>Ảnh 2</label>
 											<input type="file" class="form-control" id="image1"
-												onchange="angular.element(this).scope().imageChanged(this.files)">
+												onchange="angular.element(this).scope().imageChanged1(this.files)">
 										</div>
 										<div class="mb-3">
 											<label>Ảnh 3</label>
 											<input type="file" class="form-control" id="image2"
-												onchange="angular.element(this).scope().imageChanged(this.files)">
-										</div> -->
+												onchange="angular.element(this).scope().imageChanged2(this.files)">
+										</div> 
 									</div>
 
 
 									<div class="mb-3">
 										<label for="exampleInputEmail1" class="form-label">Số Lượng Sản Phẩm</label>
-										<input type="text" class="form-control" ng-model="form.soluongsp">
+										<input type="text" class="form-control" ng-model="form.soluongsp" required>
 										<div id="" class="form-text text-danger"></div>
 									</div>
 									<div class="mb-3">
 										<label for="exampleInputEmail1" class="form-label">ID Thể Loại</label>
-										<input type="text" class="form-control" ng-model="form.theloai.id_tl">
+										<input type="text" class="form-control" ng-model="form.theloai.id_tl" required>
 										<div id="" class="form-text text-danger"></div>
 									</div>
-									<div class="mb-3">
-										<label for="exampleInputEmail1" class="form-label">Tên Thể Loại</label>
-										<input type="text" class="form-control" ng-model="form.theloai.tentheloai">
-										<div id="" class="form-text text-danger"></div>
-									</div>
+									
 									<div class="mb-3">
 										<label for="exampleInputEmail1" class="form-label">Mô Tả</label>
 										<textarea class="form-control" ng-model="form.mota"
-											style="height: 200px;"></textarea>
+											style="height: 200px;" ></textarea>
 										<div id="" class="form-text text-danger"></div>
 									</div>
 									<button class="btn btn-success mx-2"
-										th:formaction="@{/Admin/SanPham/Create}">Thêm</button>
-									<button class="btn btn-success mx-2" th:formaction="@{/Admin/SanPham/Create}">Cập
+										ng-click="create()">Thêm</button>
+									<button class="btn btn-success mx-2" ng-click="update()">Cập
 										Nhật</button>
 									<a class="btn btn-info mx-2" th:href="@{/Admin/SanPham}">Làm Mới</a>
 
@@ -202,14 +198,14 @@
 											<td>{{item.ten}}</td>
 											<td>{{item.gia}}</td>
 											<td>{{item.ngayxuatban | date:'dd-MM-yyyy'}}</td>
-											<td class="text-center"><img ng-src="{{'/user/img/products/'+item.anh}}" alt="" width="50px"
+											<td class="text-center"><img ng-src="{{'/assets/products/'+item.anh}}" alt="" width="50px"
 													height="50px"></td>
-											<td class="text-center"><img ng-src="{{'/user/img/products/'+item.anh1}}" alt="" width="50px"
+											<td class="text-center"><img ng-src="{{'/assets/products/'+item.anh1}}" alt="" width="50px"
 													height="50px"></td>
-											<td class="text-center"> <img ng-src="{{'/user/img/products/'+item.anh2}}" alt="" width="50px"
+											<td class="text-center"> <img ng-src="{{'/assets/products/'+item.anh2}}" alt="" width="50px"
 													height="50px"></td>
 											<td>{{item.soluongsp}}</td>
-											<td>{{item.theloai.tentheloai}}</td>
+											<td>{{item.theloai.id_tl}}</td>
 											<td>
 												<a class="text-white bg-danger" >Xóa</a>
 												<a class="text-white  bg-info" ng-click="edit(item)">Sửa</a>
