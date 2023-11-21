@@ -38,8 +38,8 @@
 									<th>{{taikhoan.email}}</th> 
 									<th ng-repeat="vaitro in db.vaitro"><input type="checkbox"
 										ng-checked="index_of(taikhoan.email, vaitro.id_vt)>=0"
-										ng-click="update(db.phanquyen.id_pq,taikhoan.email, taikhoan.matkhau, taikhoan.hovaten, taikhoan.anh,
-										taikhoan.diachi, vaitro.id_vt, vaitro.tenvaitro)">
+										ng-click="update(db.phanquyen.id_pq,taikhoan.email, taikhoan.matkhau, taikhoan.hovaten, taikhoan.diachi, taikhoan.anh,
+										 vaitro.id_vt, vaitro.tenvaitro)">
 
 									</th>
 								</tr>

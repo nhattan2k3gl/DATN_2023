@@ -35,7 +35,7 @@ public class AuthConfig{
 		http.csrf(csrf -> csrf.disable())
 				.authorizeHttpRequests(authz -> authz
 						.requestMatchers("/Admin/**").hasRole("ADMIN")
-						.requestMatchers("/order/**").authenticated()
+						.requestMatchers("/order/**").hasAnyRole("USER","GUEST")
 						.anyRequest().permitAll())
 				
 				.formLogin(login -> login.loginPage("/login").loginProcessingUrl("/login/form")
