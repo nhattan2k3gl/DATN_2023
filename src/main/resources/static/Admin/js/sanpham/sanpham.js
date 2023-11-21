@@ -102,10 +102,10 @@ app.controller("ctrlSP", function($scope, $http) {
 		if ($scope.validation(item)) {
 			$http.post(`/rest/sanpham`, item).then(resp => {
 				resp.data.createDate = new Date(resp.data.ngayxuatban);
-				
+
 				$scope.updateTable(resp.data);
 				$scope.reset();
-				
+
 				Swal.fire({
 					icon: 'success',
 					title: 'Thành công!',
@@ -126,16 +126,39 @@ app.controller("ctrlSP", function($scope, $http) {
 	}
 	//xoa sp
 	$scope.delete = function(item) {
-		$http.delete(`/rest/sanpham/${item.id}`).then(resp => {
-			var index = $scope.items.findIndex(p => p.id == item.id);
-			$scope.items.splice(index, 1);
-			$scope.reset();
-			alert("Xóa sản phẩm thành công!");
-		}).catch(error => {
-			alert("Lỗi xóa sản phẩm!");
-			console.log("Error", error);
+		// Hiển thị thông báo xác nhận với SweetAlert2
+		Swal.fire({
+			title: 'Xác nhận xóa',
+			text: 'Bạn có chắc muốn xóa sản phẩm này?',
+			icon: 'warning',
+			showCancelButton: true,
+			confirmButtonText: 'Xóa',
+			cancelButtonText: 'Hủy bỏ'
+		}).then((result) => {
+			if (result.isConfirmed) {
+				// Nếu người dùng xác nhận xóa, thực hiện yêu cầu DELETE
+				$http.delete(`/rest/sanpham/${item.id_sp}`).then(resp => {
+					var index = $scope.items.findIndex(p => p.id_sp == item.id_sp);
+					$scope.items.splice(index, 1);
+					$scope.reset();
+					// Hiển thị thông báo xóa thành công
+					Swal.fire({
+						icon: 'success',
+						title: 'Thành công!',
+						text: 'Xóa sản phẩm thành công!'
+					});
+				}).catch(error => {
+					// Hiển thị thông báo lỗi khi xóa
+					Swal.fire({
+						icon: 'error',
+						title: 'Lỗi!',
+						text: 'Lỗi xóa sản phẩm!'
+					});
+					console.log("Error", error);
+				});
+			}
 		});
-	}
+	};
 
 	//upload hinh
 	$scope.imageChanged = function(files) {
