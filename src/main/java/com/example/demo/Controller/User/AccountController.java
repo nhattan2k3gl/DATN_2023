@@ -1,6 +1,8 @@
 package com.example.demo.Controller.User;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import org.aspectj.apache.bcel.classfile.Module.Require;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +10,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.Errors;
+import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,8 +23,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.example.demo.Dao.TaiKhoanDao;
 import com.example.demo.Entity.PhanQuyenEntity;
+import com.example.demo.Entity.SanPhamEntity;
 import com.example.demo.Entity.TaiKhoanEntity;
+import com.example.demo.Entity.VaiTroEntity;
 import com.example.demo.Service.PhanQuyenService;
+import com.example.demo.Service.TaiKhoanService;
 
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServlet;
@@ -35,6 +42,8 @@ public class AccountController {
 	
 	@Autowired
 	TaiKhoanDao taiKhoanDao;
+	@Autowired
+	TaiKhoanService TKService;
 
 	@GetMapping("/login")
 	public String formlogin() {
@@ -72,20 +81,30 @@ public class AccountController {
 	}
 	
 	@GetMapping("/register")
-	public String register() {
+	public String register(Model  model) {
+		
+		TaiKhoanEntity TKEntity = new TaiKhoanEntity();
+		model.addAttribute("TKEntity", TKEntity);
+		
 		return "user/taikhoan/dangky";
 	}
 	
-//	@GetMapping("/forgot-password")
-//	public String forgot(Model model) {
-//		return "user/taikhoa/";
-//	}
-//	
+	@GetMapping("/forgot-password")
+	public String forgot(Model model) {
+		return "user/taikhoan/dangky";
+	}
+	
 	@PostMapping("/register")
-	public String save(ModelMap model, @Valid @ModelAttribute TaiKhoanEntity tk, BindingResult br,
-			HttpServletResponse response) {
+	public String save(ModelMap model, @Valid @ModelAttribute TaiKhoanEntity TKEntity, BindingResult br,
+			HttpServletResponse response, Errors errors) {
+		if (errors.hasErrors()) {
+			model.addAttribute("TKEntity", TKEntity);
+			model.addAttribute("message","Lỗi Tạo Tài Khoản");
+			return "user/taikhoan/dangky";
+		} 
 		
-		return "user/register";
+		TKService.create(TKEntity);
+		return "redirect:/login";
 	}
 
 
