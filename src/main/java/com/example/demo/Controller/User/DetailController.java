@@ -38,7 +38,7 @@ public class DetailController {
 	}
 
 	@GetMapping("/detail/{id_sp}")
-	public String details(Model model, HttpServletRequest request, @PathVariable("id_sp") String id_sp,
+	public String details(Model model, HttpServletRequest request, @PathVariable("id_sp") int id_sp,
 						@RequestParam(name = "page") Optional<Integer> page) {
 		SanPhamEntity item = sanPhamDao.findById(id_sp).get();
 		model.addAttribute("request", request);

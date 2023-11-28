@@ -92,20 +92,4 @@ public class HomeController {
 		return "user/home/shop";
 	}
 	
-	@PostMapping("/shop/search")
-	public String search(Model model, HttpServletRequest request
-			, @RequestParam("keywords") Optional<String> kw,
-			@RequestParam("page") Optional<Integer> page) {
-		Pageable pageable = PageRequest.of(page.orElse(0), 9);
-		String kwords = kw.orElse(session.get("keywords", ""));
-		Page<SanPhamEntity> items = sanPhamDao.findAllByNameLike("%" + kwords + "%", pageable);
-		List<TheLoaiEntity> list = theLoaiService.findAll();
-		model.addAttribute("request", request);
-		model.addAttribute("list", list);
-		model.addAttribute("items", items);
-		model.addAttribute("product", sanPhamService.countAllProduct());
-		return "user/home/shop";
-	}
-	
-	
 }

@@ -9,8 +9,6 @@ import java.util.List;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
@@ -19,8 +17,6 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotEmpty;
-import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -70,7 +66,13 @@ public class TaiKhoanEntity implements Serializable {
 	@JsonIgnore
 	@OneToMany(mappedBy = "taikhoan")
 	List<MaGiamGiaEntity> magiamgia ;
-	
+
+
+	public TaiKhoanEntity(@Email @NotBlank String email) {
+		super();
+		this.email = email;
+	}
+
 	
 	
 }

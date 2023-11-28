@@ -19,7 +19,7 @@ public class CartRestController {
 	SanPhamService sanPhamService;
 	
 	@GetMapping("{id_sp}")
-	public SanPhamEntity getById(@PathVariable("id_sp") String id_sp) {
+	public SanPhamEntity getById(@PathVariable("id_sp") int id_sp) {
 		return sanPhamService.findById(id_sp);
 	}
 

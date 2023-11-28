@@ -1,5 +1,6 @@
 package com.example.demo.Service;
 
+import java.util.List;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +28,9 @@ public class UserService implements UserDetailsService{
 	
 	@Autowired
 	VaiTroDao vaiTroDao;
+	
+	@Autowired
+	VaiTroService vaiTroService;
 	
 	@Autowired
 	BCryptPasswordEncoder pe;
@@ -59,6 +63,7 @@ public class UserService implements UserDetailsService{
 	        throw new UsernameNotFoundException(username + " not found");
 	    }
 	}
+	
 
 }
 

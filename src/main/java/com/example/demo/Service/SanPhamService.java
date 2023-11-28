@@ -3,6 +3,7 @@ package com.example.demo.Service;
 import java.util.List;
 
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 import com.example.demo.Entity.SanPhamEntity; 
 
@@ -10,7 +11,7 @@ import com.example.demo.Entity.SanPhamEntity;
 public interface SanPhamService {
 	public List<SanPhamEntity> findAll();
 
-	public SanPhamEntity findById(String id);
+	public SanPhamEntity findById(int id);
 
 
 	public SanPhamEntity create(SanPhamEntity SPEntity) throws Exception;
@@ -19,5 +20,7 @@ public interface SanPhamService {
 	
 	Page<SanPhamEntity> findAll(Integer page, Integer limit);
 	
-	public void delete(String id);
+	public void delete(int id);
+
+	List<SanPhamEntity> findAllByTentheLoai(String categoryName);
 }

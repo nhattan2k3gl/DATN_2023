@@ -37,7 +37,7 @@ public class SanPhamEntity implements Serializable{
 	String ten;
 	
 	@NotNull
-	double gia;
+	Double gia;
 	
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	@Temporal(TemporalType.DATE)

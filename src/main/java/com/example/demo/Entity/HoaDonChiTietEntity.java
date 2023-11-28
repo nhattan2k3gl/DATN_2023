@@ -25,18 +25,20 @@ public class HoaDonChiTietEntity implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	int id_hdct;
 	
-//	String id_hd;
+	@NotNull
+	int soluong;
+	
+	@NotNull
+	Double gia;
+	
 	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name="id_hd")
 	HoaDonEntity hoadon;
 	
-//	String id_sp;
-	
 	@ManyToOne
 	@JoinColumn(name="id_sp")
 	SanPhamEntity sanpham;
 	
-	@NotNull
-	int soluong;
+	
 }

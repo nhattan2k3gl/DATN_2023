@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class GioHang {
+public class Item {
 	private int id_sp;
 	private String ten;
 	private String anh;

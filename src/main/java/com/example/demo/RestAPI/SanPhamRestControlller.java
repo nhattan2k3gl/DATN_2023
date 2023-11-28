@@ -31,7 +31,7 @@ public class SanPhamRestControlller {
 		return ResponseEntity.ok(SPDao.findAll());
 	}
 	@GetMapping("/rest/sanpham/{id}")
-	public ResponseEntity<SanPhamEntity> getById(@PathVariable("id") String id){
+	public ResponseEntity<SanPhamEntity> getById(@PathVariable("id") int id){
 		
 		return ResponseEntity.ok(SPDao.findById(id));
 	}
@@ -43,7 +43,7 @@ public class SanPhamRestControlller {
 	}
 	
 	@DeleteMapping("/rest/sanpham/{id}")
-	public ResponseEntity<Void> delete(@PathVariable("id") String id){
+	public ResponseEntity<Void> delete(@PathVariable("id") int id){
 		
 		SPDao.delete(id);
 		return ResponseEntity.ok().build();

@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.example.demo.Dao.HoaDonChiTietDao;
 import com.example.demo.Dao.HoaDonDao;
 import com.example.demo.Dao.SanPhamDao;
-import com.example.demo.Entity.GioHang;
+import com.example.demo.Entity.Item;
 import com.example.demo.Entity.HoaDonChiTietEntity;
 import com.example.demo.Entity.HoaDonEntity;
 import com.example.demo.Entity.SanPhamEntity;
@@ -58,19 +58,6 @@ public class CheckoutController {
 		model.addAttribute("request", request);
 		return "user/order/success";
 	}
-	
-
-//	@PostMapping("/order/success")
-//	public String success(Model model, @RequestParam("address") String address) {
-//		TaiKhoanEntity user = (TaiKhoanEntity) session.get("email");
-//		HoaDonEntity hoadon = new HoaDonEntity();
-//		hoadon.setNgaytaohoadon(new Date());
-//		hoadon.setDiachi(address);
-//		hoadon.setTaikhoan(user);
-//		dao.save(hoadon);
-//		cart.getItems().clear();
-//		return "user/order/success";
-//	}
 	
 	
 }

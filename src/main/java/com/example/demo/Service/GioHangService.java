@@ -4,18 +4,11 @@ import java.util.Collection;
 
 import org.springframework.stereotype.Service;
 
-import com.example.demo.Entity.GioHang;
+import com.example.demo.Entity.Item;
 
 public interface GioHangService {
-	GioHang add(String id);
-
-	void remove(String id);
-
-	GioHang update(String id, int qty);
-
-	void clear();
 	
-	Collection<GioHang> getItems();
+	Collection<Item> getItems();
 
 	int getCount();
 

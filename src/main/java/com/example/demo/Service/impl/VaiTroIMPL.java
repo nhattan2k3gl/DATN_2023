@@ -44,4 +44,10 @@ public class VaiTroIMPL implements VaiTroService{
 		VTDao.deleteById(id);
 	}
 
+	@Override
+	public VaiTroEntity findByName() {
+		// TODO Auto-generated method stub
+		return VTDao.findByTenvaitro("USER");
+	}
+
 }

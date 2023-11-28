@@ -33,7 +33,7 @@ public class TheLoaiController {
 		return "Admin/SanPham/TheLoai";
 	}
 	@GetMapping("/Admin/TheLoai/Edit/{id}")
-	public String TheLoaiEdit(Model model, @PathVariable("id") String id)
+	public String TheLoaiEdit(Model model, @PathVariable("id") int id)
 	{
 		model.addAttribute("TLEntity", TLService.findById(id));
 		
@@ -43,7 +43,7 @@ public class TheLoaiController {
 		return "Admin/SanPham/TheLoai";
 	}
 	@GetMapping("/Admin/TheLoai/Delete/{id}")
-	public String TheLoaiDeleteId(Model model, @PathVariable("id") String id)
+	public String TheLoaiDeleteId(Model model, @PathVariable("id") int id)
 	{
 		
 		TLService.delete(id);

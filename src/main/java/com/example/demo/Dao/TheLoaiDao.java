@@ -4,6 +4,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.example.demo.Entity.TheLoaiEntity; 
 
-public interface TheLoaiDao extends JpaRepository<TheLoaiEntity, String>  {
+public interface TheLoaiDao extends JpaRepository<TheLoaiEntity, Integer>  {
 
 }

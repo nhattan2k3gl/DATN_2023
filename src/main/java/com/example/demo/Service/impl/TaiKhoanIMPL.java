@@ -3,6 +3,7 @@ package com.example.demo.Service.impl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.Dao.TaiKhoanDao;
@@ -35,7 +36,13 @@ public class TaiKhoanIMPL implements TaiKhoanService{
 
 	@Override
 	public TaiKhoanEntity update(TaiKhoanEntity TKEntity) {
-		// TODO Auto-generated method stub
+		TaiKhoanEntity existingTKEntity = TKDao.findById(TKEntity.getEmail()).orElse(null);
+		System.out.println(existingTKEntity.getEmail());
+		TKEntity.setEmail(existingTKEntity.getEmail());
+		TKEntity.setHovaten(existingTKEntity.getHovaten());
+		TKEntity.setMatkhau(new BCryptPasswordEncoder().encode(TKEntity.getMatkhau()));
+		TKEntity.setDiachi(TKEntity.getDiachi());
+		TKEntity.setVaitro(existingTKEntity.getVaitro());
 		return TKDao.save(TKEntity);
 	}
 

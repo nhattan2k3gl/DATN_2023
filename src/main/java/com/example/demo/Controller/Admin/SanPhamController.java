@@ -28,7 +28,7 @@ public class SanPhamController {
 	}
 
 	@GetMapping("/Admin/SanPham/Edit/{id}")
-	public String BinhLuanEdit(Model model, @PathVariable("id") String id) {
+	public String BinhLuanEdit(Model model, @PathVariable("id") int id) {
 		model.addAttribute("SPEntity", SPService.findById(id));
 
 		List<SanPhamEntity> ListSPService = SPService.findAll();
@@ -38,7 +38,7 @@ public class SanPhamController {
 	}
 
 	@GetMapping("/Admin/SanPham/Delete/{id}")
-	public String SanPhamDeleteId(Model model, @PathVariable("id") String id) {
+	public String SanPhamDeleteId(Model model, @PathVariable("id") int id) {
 
 		SPService.delete(id);
 

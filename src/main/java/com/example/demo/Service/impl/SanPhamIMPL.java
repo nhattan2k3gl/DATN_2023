@@ -4,6 +4,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -31,7 +32,7 @@ public class SanPhamIMPL implements SanPhamService{
 	}
 
 	@Override
-	public SanPhamEntity findById(String id) {
+	public SanPhamEntity findById(int id) {
 		// TODO Auto-generated method stub
 		return SPDao.findById(id).get();
 	}
@@ -65,7 +66,7 @@ public class SanPhamIMPL implements SanPhamService{
 //	}
 
 	@Override
-	public void delete(String id) {
+	public void delete(int id) {
 		// TODO Auto-generated method stub
 		SPDao.deleteById(id);
 	}
@@ -80,5 +81,10 @@ public class SanPhamIMPL implements SanPhamService{
 	public Page<SanPhamEntity> findAll(Integer page, Integer limit) {
 		Pageable pageable = PageRequest.of(page, limit);
 		return SPDao.findAll(pageable);
+	}
+
+	@Override
+	public List<SanPhamEntity> findAllByTentheLoai(String categoryName) {
+		return SPDao.findAllByTentheLoai(categoryName);
 	}
 }

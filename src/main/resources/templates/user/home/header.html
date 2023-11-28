@@ -116,12 +116,7 @@
 										</th:block>
 										<th:block th:if="${request.getRemoteUser()}">
 											<li class="hide-nav__item">
-												<a class="hide-nav__link" href="#">
-													 [[${request.getRemoteUser()}]]
-												</a>
-											</li>
-											<li class="hide-nav__item">
-												<a class="hide-nav__link" th:href="@{/login}" th:text="#{user.changepass}">
+												<a class="hide-nav__link" th:href="@{|/profile|}" th:text="#{user.profile}">
 													 
 												</a>
 											</li>

@@ -6,4 +6,6 @@ import com.example.demo.Entity.VaiTroEntity;
 
 public interface VaiTroDao extends JpaRepository<VaiTroEntity, String> {
 
+	VaiTroEntity findByTenvaitro(String tenvaitro);
+
 }

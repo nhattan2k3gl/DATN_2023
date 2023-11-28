@@ -1,13 +1,4 @@
-const app = angular.module("app", []);
-
-app.run(function($http, $rootScope){
-    $http.get(`/rest/security/authentication`).then(resp => {
-    	if(resp.data){
-    		$auth = $rootScope.$auth = resp.data;
-        	$http.defaults.headers.common["Authorization"] = $auth.token;
-    	}
-    });
-})
+const app = angular.module("appCart", []);
 
 
 app.controller("cart-ctrl", function($scope, $http){
@@ -68,14 +59,14 @@ app.controller("cart-ctrl", function($scope, $http){
 	
 	// Đặt hàng
 	$scope.order = {
-			taikhoan : {email: $("#email").text()},
-			ngaytaohoadon: new Date(),
 			diachi: "",
+			ngaytaohoadon: new Date(),
+			taikhoan : {email: $("#email").val()},
 			get hoadonchitiet(){
 				return $cart.items.map(item => {
 					return {
 						sanpham:{id_sp: item.id_sp},
-						gia: item.gia,
+						gia: item.gia * item.soluongsp,
 						soluong: item.soluongsp
 					}
 				});
@@ -93,4 +84,20 @@ app.controller("cart-ctrl", function($scope, $http){
 				})
 			}
 	}
+	
+	// search
+	$scope.search = {
+    purchase() {
+        var tentheloai = $("#tentheloai").text(); 
+
+        $http.get("/rest/shop", { params: { tentheloai: tentheloai } }).then(resp => {
+			$scope.items = resp.data;
+        }).catch(error => {
+            alert("Đặt hàng lỗi!");
+            console.log(error);
+        });
+    }
+}
+
+	
 })

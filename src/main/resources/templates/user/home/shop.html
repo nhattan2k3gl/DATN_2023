@@ -1,9 +1,5 @@
 <div xmlns:th="http://www.thymeleaf.org" th:replace="~{/user/home/layout :: dynamic (~{::main})}">
 
-<title>
- 	<th:block th:text="#{user.shop}"></th:block>
- 	 | Book Co., Ltd
-</title>
 <!-- BEGIN MAIN -->
 <main class="main">
 
@@ -31,7 +27,7 @@
 							<ul class="side-nav">
 								<th:block th:each="item : ${list}">
 									<li class="side-nav__item">
-										<a class="side-nav__link" th:href="@{|/shop?=${item.tentheloai}|}">[[${item.tentheloai}]]</a>
+										<a class="side-nav__link" id="tentheloai" name="tentheloai" ng-click="search.purchase()">[[${item.tentheloai}]]</a>
 									</li>
 								</th:block>
 							</ul>
@@ -152,7 +148,7 @@
 									<a class="short-item__link" th:href="@{|/detail/${item.id_sp}|}">[[${item.ten}]]</a>
 								</h4>
 								<span class="short-item__price">
-									$[[${item.gia}]]
+									[[${item.gia}]] ₫ 
 								</span>
 							</div>
 						</article>

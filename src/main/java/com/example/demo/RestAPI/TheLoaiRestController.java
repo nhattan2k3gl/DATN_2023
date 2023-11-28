@@ -30,7 +30,7 @@ public class TheLoaiRestController {
 		return ResponseEntity.ok(TLService.findAll());
 	}
 	@GetMapping("/rest/theloai/{id}")
-	public ResponseEntity<TheLoaiEntity>getById(@PathVariable("id") String id)
+	public ResponseEntity<TheLoaiEntity>getById(@PathVariable("id") int id)
 	{
 		return ResponseEntity.ok(TLService.findById(id));
 	}
@@ -41,7 +41,7 @@ public class TheLoaiRestController {
 		return ResponseEntity.ok(theloaientity);
 	}
 	@DeleteMapping("/rest/theloai/{id}")
-	public ResponseEntity<Void>delete (@PathVariable("id") String id)
+	public ResponseEntity<Void>delete (@PathVariable("id") int id)
 	{
 		TLService.delete(id);
 		return ResponseEntity.ok().build();

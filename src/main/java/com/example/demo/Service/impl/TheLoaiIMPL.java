@@ -20,7 +20,7 @@ public class TheLoaiIMPL implements TheLoaiService{
 	}
 
 	@Override
-	public TheLoaiEntity findById(String id) {
+	public TheLoaiEntity findById(int id) {
 		// TODO Auto-generated method stub
 		return TLDao.findById(id).get();
 	}
@@ -38,7 +38,7 @@ public class TheLoaiIMPL implements TheLoaiService{
 	}
 
 	@Override
-	public void delete(String id) {
+	public void delete(int id) {
 		// TODO Auto-generated method stub
 		TLDao.deleteById(id);
 	}

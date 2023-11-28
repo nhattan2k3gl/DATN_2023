@@ -1,0 +1,35 @@
+<div xmlns:th="http://www.thymeleaf.org" th:replace="~{/user/home/layout :: dynamic (~{::main})}">
+
+<!-- BEGIN MAIN -->
+<main class="main">
+    
+
+    <!-- BEGIN PROFILE -->
+    <div class="profile-page wrapper">
+        <div class="login-form" style="max-width:100%">
+			<div class="login-form__top">
+			    <h2 class="login-form__title"><th:block th:text="#{user.profiletitle}"></th:block></h2>
+				<p class="login-form__text"><th:block th:text="#{user.profiletext}"></th:block></p>
+				<img class="wishlist__image" style="width: 100px; height: 200px;" th:src="@{|/user/img/accounts/${taiKhoanDTO.anh}|}">
+			</div>
+			<form th:action="@{|/profile/update|}" method="post" th:object="${taiKhoanDTO}" enctype="multipart/form-data">
+				<span class="login-form__label"><th:block th:text="#{user.image}"></th:block></span>
+				<input class="text-input" type="file" name="anh" th:field="*{anh}">
+				<span class="login-form__label"><th:block th:text="#{user.fullname}"></th:block></span>
+				<input class="text-input" type="text" name="hovaten" th:field="*{hovaten}" required>
+				<span class="login-form__label"><th:block th:text="#{user.email}"></th:block></span>
+				<input class="text-input" type="email" name="email" th:field="*{email}" ng-readonly="true" required>
+				<span class="login-form__label"><th:block th:text="#{user.password}"></th:block></span>
+				<input class="text-input" type="password" name="matkhau" placeholder="Nhập mật khẩu" th:field="*{matkhau}" required>
+				<span class="login-form__label"><th:block th:text="#{user.address}"></th:block></span>
+				<input class="text-input" type="text" name="diachi" th:field="*{diachi}">
+				<button class="login-form__button button" type="submit">
+				    <span class="button__text">Update</span>
+				</button>
+			</form>
+		</div>
+    </div>
+    <!-- PROFILE END -->
+</main>
+<!-- MAIN END -->
+</div>

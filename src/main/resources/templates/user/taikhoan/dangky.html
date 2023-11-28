@@ -36,20 +36,20 @@
                             <div class="text-center">
                                 <h1 class="h4 text-gray-900 mb-4">Create an Account!</h1>
                             </div>
-                            <form class="user">
+                            <form class="user" th:object="${taiKhoanDTO}" method="post" enctype="multipart/form-data">
 
                                 <div class="form-group">
                                     <input type="email" class="form-control form-control-user" id="exampleInputEmail"
-                                        placeholder="Email Address">
+                                        placeholder="Email Address" th:field="*{email}">
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-sm-6">
                                         <input type="text" class="form-control form-control-user"
-                                            id="exampleRepeatPassword" placeholder="Họ và Tên">
+                                            id="exampleRepeatPassword" placeholder="Họ và Tên" th:field="*{hovaten}">
                                     </div>
                                     <div class="col-sm-6 mb-3 mb-sm-0">
                                         <input type="password" class="form-control form-control-user"
-                                            id="exampleInputPassword" placeholder="Password">
+                                            id="exampleInputPassword" placeholder="Password" th:field="*{matkhau}">
                                     </div>
 
 
@@ -57,17 +57,16 @@
 
                                 <div class="form-group">
                                     <input type="text" class="form-control form-control-user" id="exampleInputEmail"
-                                        placeholder="Địa chỉ">
+                                        placeholder="Địa chỉ" th:field="*{diachi}">
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputEmail1" class="form-label">Ảnh</label>
                                     <div class="custom-file">
-                                        <input type="file" class="custom-file-input" id="inputGroupFile02">
-                                        <label class="custom-file-label" for="inputGroupFile02">Chọn file</label>
+                                        <input class="text-input" type="file" name="file" th:field="*{anh}">
                                     </div>
                                     <div id="emailHelp" class="form-text text-danger"></div>
                                 </div>
-                                <button class="btn btn-primary btn-user btn-block">
+                                <button class="btn btn-primary btn-user btn-block" th:formaction="@{|/register/create|}">
                                 	Thêm
                                 </button>
                                 

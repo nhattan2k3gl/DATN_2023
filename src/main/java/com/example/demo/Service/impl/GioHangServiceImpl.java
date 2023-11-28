@@ -11,7 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.Dao.SanPhamDao;
-import com.example.demo.Entity.GioHang;
+import com.example.demo.Entity.Item;
 import com.example.demo.Entity.SanPhamEntity;
 import com.example.demo.Service.GioHangService;
 @Service
@@ -20,55 +20,20 @@ public class GioHangServiceImpl implements GioHangService{
 	@Autowired
 	SanPhamDao sanPhamDao;
 	
-	Map<String, GioHang> map = new HashMap<>();
+	Map<Integer, Item> map = new HashMap<>();
 
-	ArrayList<GioHang> list = new ArrayList<GioHang>();
-	
-	@Override
-	public GioHang add(String id) {
-		GioHang gioHang = map.get(id);
-		if (gioHang == null) {
-			gioHang = new GioHang();
-			SanPhamEntity sp = new SanPhamEntity();
-			gioHang.setId_sp(sp.getId_sp());
-			gioHang.setTen(sp.getTen());
-			gioHang.setAnh(sp.getAnh());
-			gioHang.setGia(sp.getGia());
-			gioHang.setSoluongsp(1);
-			map.put(id, gioHang);
-		} else {
-			gioHang.setSoluongsp(gioHang.getSoluongsp() + 1);
-		}
-		return gioHang;
-	}
+	ArrayList<Item> list = new ArrayList<Item>();
 
 	@Override
-	public void remove(String id) {
-		map.remove(id);
-		
-	}
-
-	@Override
-	public GioHang update(String id, int qty) {
-		GioHang giohang = map.get(id);
-		giohang.setSoluongsp(qty);;
-		return giohang;
-	}
-
-	@Override
-	public void clear() {
-		map.clear();
-		
-	}
-
-	@Override
-	public Collection<GioHang> getItems() {
+	public Collection<Item> getItems() {
 		return map.values();
 	}
 
 	@Override
 	public int getCount() {
-		return map.values().stream().mapToInt(item -> item.getSoluongsp()).sum();
+		int sum = map.values().stream().mapToInt(item -> item.getSoluongsp()).sum();
+	    System.out.println("Total count: " + sum);
+	    return sum;
 	}
 
 	@Override

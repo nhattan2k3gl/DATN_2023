@@ -14,4 +14,6 @@ public interface VaiTroService {
 	public VaiTroEntity update(VaiTroEntity VTEntity);
 	
 	public void delete(String id);
+
+	public VaiTroEntity findByName();
 }

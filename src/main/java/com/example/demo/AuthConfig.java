@@ -34,8 +34,9 @@ public class AuthConfig{
 	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 		http.csrf(csrf -> csrf.disable())
 				.authorizeHttpRequests(authz -> authz
+						.requestMatchers("/assets/**").permitAll()
 						.requestMatchers("/Admin/**").hasRole("ADMIN")
-						.requestMatchers("/order/**").hasAnyRole("USER","GUEST")
+						.requestMatchers("/order/**").authenticated()
 						.anyRequest().permitAll())
 				
 				.formLogin(login -> login.loginPage("/login").loginProcessingUrl("/login/form")
