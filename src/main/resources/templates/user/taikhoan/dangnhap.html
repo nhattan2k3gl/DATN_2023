@@ -10,7 +10,7 @@
     <meta name="author" content="">
 
     <title>SB Admin 2 - Login</title>
-<script th:src="@{https://cdn.jsdelivr.net/npm/sweetalert2@11}"></script>
+    <script th:src="@{https://cdn.jsdelivr.net/npm/sweetalert2@11}"></script>
 
     <!-- Custom fonts for this template-->
     <link th:href="@{/asses/vendor/fontawesome-free/css/all.min.css}" rel="stylesheet" type="text/css">
@@ -31,7 +31,7 @@
         <div class="row justify-content-center">
 
             <div class="col-xl-10 col-lg-12 col-md-9">
-               
+
                 <div class="card o-hidden border-0 shadow-lg my-5">
                     <div class="card-body p-0">
                         <!-- Nested Row within Card Body -->
@@ -41,27 +41,31 @@
                                 <div class="p-5">
                                     <div class="text-center">
                                         <h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1>
-                                        <span class="pull-left text-danger" style="text-align: center;" th:text="${message}"></span>
+                                        <span class="pull-left text-danger" style="text-align: center;"
+                                            th:text="${message}"></span>
                                     </div>
-                                    <form class="user" action="/login/form"  method="post">
-                                    	
+                                    <form class="user" action="/login/form" method="post">
+
                                         <div class="form-group">
                                             <input type="email" class="form-control form-control-user"
                                                 id="exampleInputEmail" aria-describedby=""
-                                                placeholder="Enter Email Address..."   name="username" title="Vui lòng nhập email" required>
+                                                placeholder="Enter Email Address..." name="username"
+                                                title="Vui lòng nhập email" required>
                                         </div>
                                         <div class="form-group">
                                             <input type="password" class="form-control form-control-user"
-                                                id="exampleInputPassword" placeholder="Password"  name="password"  title="Vui lòng nhập mật khẩu" required>
+                                                id="exampleInputPassword" placeholder="Password" name="password"
+                                                title="Vui lòng nhập mật khẩu" required>
                                         </div>
                                         <div class="form-group">
                                             <div class="custom-control custom-checkbox small">
-                                                <input type="checkbox" class="custom-control-input" id="customCheck" name="rememberMe">
-                                                <label class="custom-control-label" for="customCheck">Remember  
+                                                <input type="checkbox" class="custom-control-input" id="customCheck"
+                                                    name="rememberMe">
+                                                <label class="custom-control-label" for="customCheck">Remember
                                                     Me</label>
                                             </div>
                                         </div>
-                                  
+
                                         <button class="btn btn-primary btn-user btn-block">Login</button>
                                         <hr>
                                         <a href="index.html" class="btn btn-google btn-user btn-block">
@@ -76,7 +80,7 @@
                                         <a class="small" href="forgot-password.html">Forgot Password?</a>
                                     </div>
                                     <div class="text-center">
-                                        <a class="small" href="register.html">Create an Account!</a>
+                                        <a class="small" href="/register">Create an Account!</a>
                                     </div>
                                 </div>
                             </div>
@@ -99,19 +103,19 @@
 
     <!-- Custom scripts for all pages-->
     <script th:src="@{/asses/js/sb-admin-2.min.js}"></script>
-	
-<script th:inline="javascript">
-    document.getElementById("myButton").addEventListener("click", function() {
-        var result = confirm('Bạn có chắc chắn muốn thực hiện thao tác này?');
-        if (result) {
-            // Thực hiện hành động khi người dùng đồng ý
-            alert('Thao tác đã được thực hiện.');
-        } else {
-            // Thực hiện hành động khi người dùng từ chối
-            alert('Thao tác đã bị hủy.');
-        }
-    });
-</script>
+
+    <script th:inline="javascript">
+        document.getElementById("myButton").addEventListener("click", function () {
+            var result = confirm('Bạn có chắc chắn muốn thực hiện thao tác này?');
+            if (result) {
+                // Thực hiện hành động khi người dùng đồng ý
+                alert('Thao tác đã được thực hiện.');
+            } else {
+                // Thực hiện hành động khi người dùng từ chối
+                alert('Thao tác đã bị hủy.');
+            }
+        });
+    </script>
 
 </body>
 
