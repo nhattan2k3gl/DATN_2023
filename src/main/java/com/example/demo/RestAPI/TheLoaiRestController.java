@@ -23,44 +23,27 @@ public class TheLoaiRestController {
 
 	@Autowired
 	TheLoaiService TLService;
-	
+
 	@GetMapping("/rest/theloai")
-	public ResponseEntity<Collection<TheLoaiEntity>>getAll (Model model)
-	{
+	public ResponseEntity<Collection<TheLoaiEntity>> getAll(Model model) {
 		return ResponseEntity.ok(TLService.findAll());
 	}
+
 	@GetMapping("/rest/theloai/{id}")
-	public ResponseEntity<TheLoaiEntity>getById(@PathVariable("id") int id)
-	{
+	public ResponseEntity<TheLoaiEntity> getById(@PathVariable("id") int id) {
 		return ResponseEntity.ok(TLService.findById(id));
 	}
+
 	@PostMapping("/rest/theloai")
-	public ResponseEntity<TheLoaiEntity>post(@RequestBody TheLoaiEntity theloaientity) throws Exception
-	{
+	public ResponseEntity<TheLoaiEntity> post(@RequestBody TheLoaiEntity theloaientity) throws Exception {
 		TLService.create(theloaientity);
 		return ResponseEntity.ok(theloaientity);
 	}
+
 	@DeleteMapping("/rest/theloai/{id}")
-	public ResponseEntity<Void>delete (@PathVariable("id") int id)
-	{
+	public ResponseEntity<Void> delete(@PathVariable("id") int id) {
 		TLService.delete(id);
 		return ResponseEntity.ok().build();
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
 }

@@ -1,6 +1,8 @@
 package com.example.demo.Service.impl;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -8,10 +10,11 @@ import org.springframework.stereotype.Service;
 
 import com.example.demo.Dao.TaiKhoanDao;
 import com.example.demo.Entity.TaiKhoanEntity;
-import com.example.demo.Service.TaiKhoanService; 
+import com.example.demo.Entity.VaiTroEntity;
+import com.example.demo.Service.TaiKhoanService;
 
 @Service
-public class TaiKhoanIMPL implements TaiKhoanService{
+public class TaiKhoanIMPL implements TaiKhoanService {
 
 	@Autowired
 	TaiKhoanDao TKDao;
@@ -49,9 +52,7 @@ public class TaiKhoanIMPL implements TaiKhoanService{
 	@Override
 	public void delete(String id) {
 		TKDao.deleteById(id);
-		
+
 	}
-	
-	
 
 }

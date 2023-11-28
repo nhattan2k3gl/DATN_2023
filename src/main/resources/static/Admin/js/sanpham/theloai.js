@@ -1,18 +1,15 @@
 var app = angular.module("appTL", [])
-app.controller("ctrlTL", function($scope, $http) {
+app.controller("ctlTL", function($scope, $http) {
 	$scope.items = [];
 	$scope.cates = [];
 	$scope.form = {};
 
 	$scope.initialize = function() {
 		//load product
-		$http.get("/rest/sanpham").then(resp => {
+		$http.get("/rest/theloai").then(resp => {
 			$scope.items = resp.data;
 			console.log(resp.data);
-			$scope.items.forEach(item => {
-				console.log(item.ngayxuatban)
-				item.ngayxuatban = new Date(item.ngayxuatban)
-			})
+			
 		});
 
 	}
@@ -37,7 +34,7 @@ app.controller("ctrlTL", function($scope, $http) {
 
 	$scope.updateTable = function(updatedItem) {
 		// Find the index of the updated item in the $scope.items array
-		var index = $scope.items.findIndex(item => item.id_sp === updatedItem.id_sp);
+		var index = $scope.items.findIndex(item => item.id_tl === updatedItem.id_tl);
 		// If the item is found, update it
 		if (index !== -1) {
 			$scope.items[index] = updatedItem;
@@ -51,11 +48,10 @@ app.controller("ctrlTL", function($scope, $http) {
 		var item = angular.copy($scope.form);
 		// Perform validation before submitting the data
 		if ($scope.validation(item)) {
-			$http.post(`/rest/sanpham`, item).then(resp => {
-				resp.data.createDate = new Date(resp.data.ngayxuatban);
+			$http.post(`/rest/theloai`, item).then(resp => {
 				// Update the table
 				$scope.updateTable(resp.data);
-				$scope.reset();
+
 				Swal.fire({
 					icon: 'success',
 					title: 'Thành công!',
@@ -79,8 +75,8 @@ app.controller("ctrlTL", function($scope, $http) {
 	// Function to perform validation
 	$scope.validation = function(item) {
 		// Kiểm tra xem các trường bắt buộc đã được điền đầy đủ chưa
-		console.log(item.mota)
-		if (!item.ten || !item.gia || !item.theloai || !item.theloai.id_tl || !item.soluongsp || !item.mota) {
+
+		if (!item.tentheloai) {
 			// Hiển thị thông báo lỗi
 			Swal.fire({
 				icon: 'error',
@@ -100,11 +96,10 @@ app.controller("ctrlTL", function($scope, $http) {
 		var item = angular.copy($scope.form);
 		// Perform validation before submitting the data
 		if ($scope.validation(item)) {
-			$http.post(`/rest/sanpham`, item).then(resp => {
-				resp.data.createDate = new Date(resp.data.ngayxuatban);
+			$http.post(`/rest/theloai`, item).then(resp => {
 
 				$scope.updateTable(resp.data);
-				$scope.reset();
+
 
 				Swal.fire({
 					icon: 'success',
@@ -137,8 +132,8 @@ app.controller("ctrlTL", function($scope, $http) {
 		}).then((result) => {
 			if (result.isConfirmed) {
 				// Nếu người dùng xác nhận xóa, thực hiện yêu cầu DELETE
-				$http.delete(`/rest/sanpham/${item.id_sp}`).then(resp => {
-					var index = $scope.items.findIndex(p => p.id_sp == item.id_sp);
+				$http.delete(`/rest/theloai/delete/${item.id_tl}`).then(resp => {
+					var index = $scope.items.findIndex(p => p.id_tl == item.id_tl);
 					$scope.items.splice(index, 1);
 					$scope.reset();
 					// Hiển thị thông báo xóa thành công
@@ -159,6 +154,11 @@ app.controller("ctrlTL", function($scope, $http) {
 			}
 		});
 	};
+
+	
+	
+	
+
 
 });
 

@@ -196,7 +196,7 @@
 										<tr ng-repeat="item in items">
 											<td>{{item.id_sp}}</td>
 											<td>{{item.ten}}</td>
-											<td>{{item.gia}} VNĐ</td>
+											<td>{{item.gia | number:2}} VNĐ</td>
 											<td>{{item.ngayxuatban | date:'dd-MM-yyyy'}}</td>
 											<td class="text-center"><img ng-src="{{'/assets/products/'+item.anh}}" alt="" width="50px"
 													height="50px"></td>

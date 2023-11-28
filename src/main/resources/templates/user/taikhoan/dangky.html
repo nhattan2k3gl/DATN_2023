@@ -1,30 +1,31 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" >
+<html xmlns:th="http://www.thymeleaf.org">
 
 <head>
 
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="description" content="">
+	<meta name="author" content="">
 
-    <title>SB Admin 2 - Register</title>
+	<title>SB Admin 2 - Register</title>
 
-    <!-- Custom fonts for this template-->
-    <link th:href="@{/asses/vendor/fontawesome-free/css/all.min.css}" rel="stylesheet" type="text/css">
-    <link
-        th:href="@{https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i}"
-        rel="stylesheet">
+	<!-- Custom fonts for this template-->
+	<link th:href="@{/asses/vendor/fontawesome-free/css/all.min.css}" rel="stylesheet" type="text/css">
+	<link
+		th:href="@{https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i}"
+		rel="stylesheet">
 
-    <!-- Custom styles for this template-->
-    <link th:href="@{/asses/css/sb-admin-2.min.css}" rel="stylesheet">
+	<!-- Custom styles for this template-->
+	<link th:href="@{/asses/css/sb-admin-2.min.css}" rel="stylesheet">
+	
 
 </head>
 
 <body class="bg-gradient-primary">
 
-    <div class="container">
+	<div class="container">
 
         <div class="card o-hidden border-0 shadow-lg my-5">
             <div class="card-body p-0">
@@ -53,7 +54,7 @@
                                     </div>
 
 
-                                </div>
+								</div>
 
                                 <div class="form-group">
                                     <input type="text" class="form-control form-control-user" id="exampleInputEmail"
@@ -91,24 +92,67 @@
             </div>
         </div>
 
-    </div>
+									</div>
+									<div id="emailHelp" class="form-text text-danger"></div>
+								</div>
+								<button class="btn btn-primary btn-user btn-block"
+									th:formaction="@{/register}">Thêm</button>
 
-    <!-- Bootstrap core JavaScript-->
-    <script th:src="@{/asses/vendor/jquery/jquery.min.js}"></script>
-    <script th:src="@{/asses/vendor/bootstrap/js/bootstrap.bundle.min.js}"></script>
+								<hr>
+								<a href="index.html" class="btn btn-google btn-user btn-block">
+									<i class="fab fa-google fa-fw"></i> Register with Google
+								</a> <a href="index.html" class="btn btn-facebook btn-user btn-block"> <i
+										class="fab fa-facebook-f fa-fw"></i> Register with Facebook
+								</a>
+							</form>
+							<hr>
+							<div class="text-center">
+								<a class="small" href="forgot-password.html">Forgot
+									Password?</a>
+							</div>
+							<div class="text-center">
+								<a class="small" href="/login">Already have an account?
+									Login!</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 
-    <!-- Core plugin JavaScript-->
-    <script th:src="@{/asses/vendor/jquery-easing/jquery.easing.min.js}"></script>
+	</div>
 
-    <!-- Custom scripts for all pages-->
-    <script th:src="@{/asses/js/sb-admin-2.min.js}"></script>
+	<script th:inline="javascript">
+		console.log("hicc");
+		 function updateFileName(input) {
+		        // Lấy tên của tệp tin đã chọn
+		        var fileName = input.value.split("\\").pop();
+		        console.log("hi");
+		        // Hiển thị tên tệp tin trong label
+		        input.nextElementSibling.innerHTML = fileName;
+		    }
+		    /*]]>*/
+        
+    </script>
 
-    <!-- Page level plugins -->
-    <script th:src="@{/asses/vendor/chart.js/Chart.min.js}"></script>
+	<!-- Bootstrap core JavaScript-->
+	<script th:src="@{/asses/vendor/jquery/jquery.min.js}"></script>
+	<script th:src="@{/asses/vendor/bootstrap/js/bootstrap.bundle.min.js}"></script>
 
-    <!-- Page level custom scripts -->
-    <script th:src="@{/asses/js/demo/chart-area-demo.js}"></script>
-    <script th:src="@{/asses/js/demo/chart-pie-demo.js}"></script>
+	<!-- Core plugin JavaScript-->
+	<script th:src="@{/asses/vendor/jquery-easing/jquery.easing.min.js}"></script>
+
+	<!-- Custom scripts for all pages-->
+	<script th:src="@{/asses/js/sb-admin-2.min.js}"></script>
+
+	<!-- Page level plugins -->
+	<script th:src="@{/asses/vendor/chart.js/Chart.min.js}"></script>
+
+	<!-- Page level custom scripts -->
+	<script th:src="@{/asses/js/demo/chart-area-demo.js}"></script>
+	<script th:src="@{/asses/js/demo/chart-pie-demo.js}"></script>
+	
+	
 
 
 </body>
