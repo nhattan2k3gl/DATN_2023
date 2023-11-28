@@ -15,7 +15,7 @@ public class TaiKhoanDTOForUpdate {
 	
 	private MultipartFile file;
 	
-	private String diachi;
+    private String diachi;
 
 	private String matkhau;
 }

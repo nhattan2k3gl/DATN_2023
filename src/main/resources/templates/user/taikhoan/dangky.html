@@ -41,16 +41,16 @@
 
                                 <div class="form-group">
                                     <input type="email" class="form-control form-control-user" id="exampleInputEmail"
-                                        placeholder="Email Address" th:field="*{email}">
+                                        placeholder="Email Address" th:field="*{email}" required>
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-sm-6">
                                         <input type="text" class="form-control form-control-user"
-                                            id="exampleRepeatPassword" placeholder="Họ và Tên" th:field="*{hovaten}">
+                                            id="exampleRepeatPassword" placeholder="Họ và Tên" th:field="*{hovaten}" required >
                                     </div>
                                     <div class="col-sm-6 mb-3 mb-sm-0">
                                         <input type="password" class="form-control form-control-user"
-                                            id="exampleInputPassword" placeholder="Password" th:field="*{matkhau}">
+                                            id="exampleInputPassword" placeholder="Password" th:field="*{matkhau}" required >
                                     </div>
 
 
@@ -58,12 +58,12 @@
 
                                 <div class="form-group">
                                     <input type="text" class="form-control form-control-user" id="exampleInputEmail"
-                                        placeholder="Địa chỉ" th:field="*{diachi}">
+                                        placeholder="Địa chỉ" th:field="*{diachi}" required >
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputEmail1" class="form-label">Ảnh</label>
                                     <div class="custom-file">
-                                        <input class="text-input" type="file" name="file" th:field="*{anh}">
+                                        <input class="text-input" type="file" name="file" th:field="*{anh}" required >
                                     </div>
                                     <div id="emailHelp" class="form-text text-danger"></div>
                                 </div>
@@ -72,10 +72,10 @@
                                 </button>
                                 
                                 <hr>
-                                <a href="index.html" class="btn btn-google btn-user btn-block">
+                                <a href="#" class="btn btn-google btn-user btn-block">
                                     <i class="fab fa-google fa-fw"></i> Register with Google
                                 </a>
-                                <a href="index.html" class="btn btn-facebook btn-user btn-block">
+                                <a href="#" class="btn btn-facebook btn-user btn-block">
                                     <i class="fab fa-facebook-f fa-fw"></i> Register with Facebook
                                 </a>
                             </form>

@@ -104,30 +104,34 @@ public class AccountController {
 
 	@PostMapping("/profile/update")
 	public String updateProfile(Model model, HttpServletRequest request,
-			@Valid @ModelAttribute("taiKhoanDTO") TaiKhoanDTOForUpdate taiKhoanDTO,
-			@RequestParam("anh") MultipartFile file, Errors errors) throws IOException {
-
-		if (file != null && !file.isEmpty()) {
-			String fileName = System.currentTimeMillis() + "_" + file.getOriginalFilename();
-			Path filePath = Path.of(uploadPath).resolve(fileName);
-			Files.copy(file.getInputStream(), filePath, StandardCopyOption.REPLACE_EXISTING);
-
-			TaiKhoanEntity optionalUser = taiKhoanService.findByUsername(request.getRemoteUser());
-			if (optionalUser != null) {
-				TaiKhoanEntity user = optionalUser;
-				user.setDiachi(taiKhoanDTO.getDiachi());
+			@ModelAttribute("taiKhoanDTO") TaiKhoanDTOForUpdate taiKhoanDTO,
+			@RequestParam("anh") MultipartFile file) throws IOException {
+		
+		
+		TaiKhoanEntity optionalUser = taiKhoanService.findByUsername(request.getRemoteUser());
+		if (optionalUser != null) {
+			TaiKhoanEntity user = optionalUser;
+			user.setDiachi(taiKhoanDTO.getDiachi());
+			if (file != null && !file.isEmpty()) {
+				String fileName = System.currentTimeMillis() + "_" + file.getOriginalFilename();
+				Path filePath = Path.of(uploadPath).resolve(fileName);
+				Files.copy(file.getInputStream(), filePath, StandardCopyOption.REPLACE_EXISTING);
 				user.setAnh(fileName);
-
-				String newPassword = taiKhoanDTO.getMatkhau();
-				if (newPassword != null && !newPassword.isEmpty()) {
-					user.setMatkhau(new BCryptPasswordEncoder().encode(newPassword));
-				}
-
-				taiKhoanDao.save(user);
-				return "redirect:/login";
+			} else {
+				user.setAnh("nd1.png");
 			}
+			
+
+			String newPassword = taiKhoanDTO.getMatkhau();
+			if (newPassword != null && !newPassword.isEmpty()) {
+				user.setMatkhau(new BCryptPasswordEncoder().encode(newPassword));
+			}
+
+			taiKhoanDao.save(user);
 		}
-		return "redirect:/register";
+
+		
+		return "redirect:/profile";
 	}
 
 	@GetMapping("/register")
@@ -137,8 +141,8 @@ public class AccountController {
 	}
 
 	@PostMapping("/register/create")
-	public String createNewUser(@Valid @ModelAttribute("taiKhoanDTO") TaiKhoanDTO taiKhoanDTO,
-			@RequestParam("anh") MultipartFile file, Errors errors) throws IOException {
+	public String createNewUser(@ModelAttribute("taiKhoanDTO") TaiKhoanDTO taiKhoanDTO,
+			@RequestParam("anh") MultipartFile file) throws IOException {
 
 		if (file != null && !file.isEmpty()) {
 			String fileName = System.currentTimeMillis() + "_" + file.getOriginalFilename();

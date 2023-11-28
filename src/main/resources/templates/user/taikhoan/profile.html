@@ -15,14 +15,19 @@
 			<form th:action="@{|/profile/update|}" method="post" th:object="${taiKhoanDTO}" enctype="multipart/form-data">
 				<span class="login-form__label"><th:block th:text="#{user.image}"></th:block></span>
 				<input class="text-input" type="file" name="anh" th:field="*{anh}">
+				
 				<span class="login-form__label"><th:block th:text="#{user.fullname}"></th:block></span>
-				<input class="text-input" type="text" name="hovaten" th:field="*{hovaten}" required>
+				<input class="text-input" type="text" name="hovaten" th:field="*{hovaten}" ng-readonly="true">
+				
 				<span class="login-form__label"><th:block th:text="#{user.email}"></th:block></span>
-				<input class="text-input" type="email" name="email" th:field="*{email}" ng-readonly="true" required>
+				<input class="text-input" type="email" name="email" th:field="*{email}" ng-readonly="true">
+				
 				<span class="login-form__label"><th:block th:text="#{user.password}"></th:block></span>
-				<input class="text-input" type="password" name="matkhau" placeholder="Nhập mật khẩu" th:field="*{matkhau}" required>
-				<span class="login-form__label"><th:block th:text="#{user.address}"></th:block></span>
-				<input class="text-input" type="text" name="diachi" th:field="*{diachi}">
+				<input class="text-input" type="password" name="matkhau" placeholder="***" th:field="*{matkhau}" required>
+				
+				<span class="login-form__label" for="diachi"><th:block th:text="#{user.address}"></th:block></span>
+				<input class="text-input" type="text" name="diachi" id="diachi" th:field="*{diachi}" required>
+				
 				<button class="login-form__button button" type="submit">
 				    <span class="button__text">Update</span>
 				</button>
