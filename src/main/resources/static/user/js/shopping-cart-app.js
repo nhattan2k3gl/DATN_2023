@@ -94,20 +94,6 @@ app.controller("cart-ctrl", function($scope, $http){
 			    });
 			}
 	}
-	
-	// search
-	$scope.search = {
-    purchase() {
-        var tentheloai = $("#tentheloai").text(); 
-
-        $http.get("/rest/shop", { params: { tentheloai: tentheloai } }).then(resp => {
-			$scope.items = resp.data;
-        }).catch(error => {
-            alert("Đặt hàng lỗi!");
-            console.log(error);
-        });
-    }
-}
 
 	
 })

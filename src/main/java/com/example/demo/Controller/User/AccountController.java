@@ -26,10 +26,12 @@ import com.example.demo.Dao.TaiKhoanDao;
 import com.example.demo.Dto.TaiKhoanDTO;
 import com.example.demo.Dto.TaiKhoanDTOForUpdate;
 import com.example.demo.Entity.TaiKhoanEntity;
+import com.example.demo.Service.MailerService;
 import com.example.demo.Service.TaiKhoanService;
 import com.example.demo.Service.UploadService;
 import com.example.demo.Service.VaiTroService;
 
+import jakarta.mail.MessagingException;
 import jakarta.servlet.ServletContext;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
@@ -56,6 +58,9 @@ public class AccountController {
 
 	@Autowired
 	VaiTroService vaiTroService;
+	
+	@Autowired
+	MailerService mailer;
 
 	@GetMapping("/login")
 	public String formlogin() {
@@ -163,6 +168,12 @@ public class AccountController {
 			return "redirect:/register";
 		}
 
+	}
+	
+	@GetMapping("/forgot-password")
+	public String forgot(Model model, HttpServletRequest request) {
+		model.addAttribute("request", request);
+		return "user/taikhoan/forgot-password";
 	}
 
 }
