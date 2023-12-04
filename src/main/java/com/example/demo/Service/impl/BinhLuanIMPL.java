@@ -81,8 +81,8 @@ public class BinhLuanIMPL implements BinhLuanService{
 //		TLEntity.setTentheloai(BLEntity.getSanpham().getTheloai().getTentheloai());
 //		SPEntity.setTheloai(TLEntity);
 		
-		TKService.create(BLEntity.getTaikhoan());
-		SPService.create(BLEntity.getSanpham());
+		BLEntity.setTaikhoan(BLEntity.getTaikhoan());
+		BLEntity.setSanpham(BLEntity.getSanpham());
 		
 		return BLDao.save(BLEntity);
 	}
@@ -98,5 +98,11 @@ public class BinhLuanIMPL implements BinhLuanService{
 	public Page<BinhLuanEntity> findAllCmt(Integer page, Integer limit) {
 		Pageable pageable = PageRequest.of(page, limit);
 		return BLDao.findAll(pageable);
+	}
+
+	@Override
+	public List<BinhLuanEntity> findByIDSP(int id_sp) {
+		// TODO Auto-generated method stub
+		return BLDao.findByIDSp(id_sp);
 	}
 }

@@ -1,5 +1,6 @@
 package com.example.demo.Controller.User;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,7 +44,7 @@ public class DetailController {
 		SanPhamEntity item = sanPhamDao.findById(id_sp).get();
 		model.addAttribute("request", request);
 		model.addAttribute("item", item);
-		model.addAttribute("comment", binhLuanService.findAllCmt(page.orElse(0), 2));
+		model.addAttribute("comment", binhLuanService.findByIDSP(id_sp));
 		return "user/product/detail";
 	}
 }
