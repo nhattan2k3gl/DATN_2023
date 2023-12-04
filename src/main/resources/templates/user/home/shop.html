@@ -148,7 +148,7 @@
 									<a class="short-item__link" th:href="@{|/detail/${item.id_sp}|}">[[${item.ten}]]</a>
 								</h4>
 								<span class="short-item__price">
-									[[${item.gia}]] ₫ 
+									[[${#numbers.formatDecimal(item.gia, 2, 0)}]] ₫
 								</span>
 							</div>
 						</article>

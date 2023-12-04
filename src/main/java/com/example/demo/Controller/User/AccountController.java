@@ -26,10 +26,12 @@ import com.example.demo.Dao.TaiKhoanDao;
 import com.example.demo.Dto.TaiKhoanDTO;
 import com.example.demo.Dto.TaiKhoanDTOForUpdate;
 import com.example.demo.Entity.TaiKhoanEntity;
+import com.example.demo.Service.MailerService;
 import com.example.demo.Service.TaiKhoanService;
 import com.example.demo.Service.UploadService;
 import com.example.demo.Service.VaiTroService;
 
+import jakarta.mail.MessagingException;
 import jakarta.servlet.ServletContext;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
@@ -56,6 +58,9 @@ public class AccountController {
 
 	@Autowired
 	VaiTroService vaiTroService;
+	
+	@Autowired
+	MailerService mailer;
 
 	@GetMapping("/login")
 	public String formlogin() {
@@ -104,30 +109,34 @@ public class AccountController {
 
 	@PostMapping("/profile/update")
 	public String updateProfile(Model model, HttpServletRequest request,
-			@Valid @ModelAttribute("taiKhoanDTO") TaiKhoanDTOForUpdate taiKhoanDTO,
-			@RequestParam("anh") MultipartFile file, Errors errors) throws IOException {
-
-		if (file != null && !file.isEmpty()) {
-			String fileName = System.currentTimeMillis() + "_" + file.getOriginalFilename();
-			Path filePath = Path.of(uploadPath).resolve(fileName);
-			Files.copy(file.getInputStream(), filePath, StandardCopyOption.REPLACE_EXISTING);
-
-			TaiKhoanEntity optionalUser = taiKhoanService.findByUsername(request.getRemoteUser());
-			if (optionalUser != null) {
-				TaiKhoanEntity user = optionalUser;
-				user.setDiachi(taiKhoanDTO.getDiachi());
+			@ModelAttribute("taiKhoanDTO") TaiKhoanDTOForUpdate taiKhoanDTO,
+			@RequestParam("anh") MultipartFile file) throws IOException {
+		
+		
+		TaiKhoanEntity optionalUser = taiKhoanService.findByUsername(request.getRemoteUser());
+		if (optionalUser != null) {
+			TaiKhoanEntity user = optionalUser;
+			user.setDiachi(taiKhoanDTO.getDiachi());
+			if (file != null && !file.isEmpty()) {
+				String fileName = System.currentTimeMillis() + "_" + file.getOriginalFilename();
+				Path filePath = Path.of(uploadPath).resolve(fileName);
+				Files.copy(file.getInputStream(), filePath, StandardCopyOption.REPLACE_EXISTING);
 				user.setAnh(fileName);
-
-				String newPassword = taiKhoanDTO.getMatkhau();
-				if (newPassword != null && !newPassword.isEmpty()) {
-					user.setMatkhau(new BCryptPasswordEncoder().encode(newPassword));
-				}
-
-				taiKhoanDao.save(user);
-				return "redirect:/login";
+			} else {
+				user.setAnh("nd1.png");
 			}
+			
+
+			String newPassword = taiKhoanDTO.getMatkhau();
+			if (newPassword != null && !newPassword.isEmpty()) {
+				user.setMatkhau(new BCryptPasswordEncoder().encode(newPassword));
+			}
+
+			taiKhoanDao.save(user);
 		}
-		return "redirect:/register";
+
+		
+		return "redirect:/profile";
 	}
 
 	@GetMapping("/register")
@@ -137,8 +146,8 @@ public class AccountController {
 	}
 
 	@PostMapping("/register/create")
-	public String createNewUser(@Valid @ModelAttribute("taiKhoanDTO") TaiKhoanDTO taiKhoanDTO,
-			@RequestParam("anh") MultipartFile file, Errors errors) throws IOException {
+	public String createNewUser(@ModelAttribute("taiKhoanDTO") TaiKhoanDTO taiKhoanDTO,
+			@RequestParam("anh") MultipartFile file) throws IOException {
 
 		if (file != null && !file.isEmpty()) {
 			String fileName = System.currentTimeMillis() + "_" + file.getOriginalFilename();
@@ -159,6 +168,12 @@ public class AccountController {
 			return "redirect:/register";
 		}
 
+	}
+	
+	@GetMapping("/forgot-password")
+	public String forgot(Model model, HttpServletRequest request) {
+		model.addAttribute("request", request);
+		return "user/taikhoan/forgot-password";
 	}
 
 }

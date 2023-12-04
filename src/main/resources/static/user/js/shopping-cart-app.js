@@ -75,29 +75,25 @@ app.controller("cart-ctrl", function($scope, $http){
 				var order = angular.copy(this);
 				// Thực hiện đặt hàng
 				$http.post("/rest/orders", order).then(resp => {
-					alert("Đặt hàng thành công!");
-					$cart.clear();
-					location.href = "/order/success";
-				}).catch(error => {
-					alert("Đặt hàng lỗi!")
-					console.log(error)
-				})
+			        Swal.fire({
+			            icon: 'success',
+			            title: 'Thành công!',
+			            text: 'Đặt hàng thành công!'
+			        }).then(() => {
+			            // Chuyển hướng sau khi SweetAlert đã được đóng
+			            location.href = "/order/success";
+			            $cart.clear();
+			        });
+			    }).catch(error => {
+			        Swal.fire({
+			            icon: 'error',
+			            title: 'Thât Bại!',
+			            text: 'Lỗi khi đặt hàng!'
+			            })
+			        console.log(error);
+			    });
 			}
 	}
-	
-	// search
-	$scope.search = {
-    purchase() {
-        var tentheloai = $("#tentheloai").text(); 
-
-        $http.get("/rest/shop", { params: { tentheloai: tentheloai } }).then(resp => {
-			$scope.items = resp.data;
-        }).catch(error => {
-            alert("Đặt hàng lỗi!");
-            console.log(error);
-        });
-    }
-}
 
 	
 })
