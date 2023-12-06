@@ -20,7 +20,7 @@
 				</div>
 				<div class="card-body">
 					<div class="table-responsive">
-						<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+						<table class="table table-bordered" id="dataTableBL" width="100%" cellspacing="0" >
 							<thead>
 								<tr>
 
@@ -46,8 +46,8 @@
 									<th></th>
 								</tr>
 							</tfoot>
-							<tbody ng-repeat="item in items">
-								<tr >
+							<tbody >
+								<!-- <tr >
 									<td>{{item.id_bl}}</td>
 									<td>{{item.binhluan}}</td>
 									<td>{{item.danhgia}}</td>
@@ -57,7 +57,7 @@
                                     <td>{{item.sanpham.theloai.tentheloai}}</td>
                                     
 									<td><a class="text-white bg-danger" ng-click="delete(item)" >Xóa</a></td>
-								</tr>
+								</tr> -->
 								<tr></tr>
 							</tbody>
 						</table>
