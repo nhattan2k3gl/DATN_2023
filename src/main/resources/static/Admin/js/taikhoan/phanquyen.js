@@ -14,7 +14,7 @@ app.controller("ctrlPQ", function($scope, $http) {
 			"data": data,
 			"columns": [
 				{ "data": "taikhoan.email", "title": "Email" },
-				{ "data": "taikhoan.hovaten", "title": "Họ Và Tên" },
+				{ "data": "taikhoan.hovaten", "title": "Họ và tên" },
 				{
 					"data": "taikhoan.anh",
 					"title": "Ảnh",
@@ -22,8 +22,8 @@ app.controller("ctrlPQ", function($scope, $http) {
 						return '<img src="/assets/accounts/' + data + '" alt="" width="50px" height="50px">';
 					}
 				},
-				{ "data": "taikhoan.diachi", "title": "Địa Chỉ" },
-				{ "data": "vaitro.tenvaitro", "title": "Vai Trò" },
+				{ "data": "taikhoan.diachi", "title": "Địa chỉ" },
+				{ "data": "vaitro.tenvaitro", "title": "Vai trò" },
 				{
 					"data": null, "title": "Xóa", "render": function(data, type, full, meta) {
 						return '<a class="text-white bg-danger delete-link">Xóa</a>';
@@ -95,7 +95,7 @@ app.controller("ctrlPQ", function($scope, $http) {
 					Swal.fire({
 						icon: 'success',
 						title: 'Thành công!',
-						text: 'Xóa sản phẩm thành công!',
+						text: 'Xóa tài khoản thành công!',
 						showConfirmButton: false // Ẩn nút xác nhận
 					});
 					

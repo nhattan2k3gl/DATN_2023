@@ -18,7 +18,7 @@ app.controller("ctrlSP", function($scope, $http, $filter, $window) {
 			"paging": true,
 			"data": data,
 			"columns": [
-				{ "data": "id_sp", "title": "ID Sản Phẩm" },
+				{ "data": "id_sp", "title": "ID sản phẩm" },
 				{ "data": "ten", "title": "Tên" },
 				{
 					"data": "gia",
@@ -30,7 +30,7 @@ app.controller("ctrlSP", function($scope, $http, $filter, $window) {
 				},
 				{
 					"data": "ngayxuatban",
-					"title": "Ngày Xuất Bản",
+					"title": "Ngày xuất bản",
 					"render": function(data, type, full, meta) {
 						return $scope.formatDate(data);
 					}
@@ -50,8 +50,8 @@ app.controller("ctrlSP", function($scope, $http, $filter, $window) {
 						return '<img src="/assets/products/' + data + '" alt="" width="50px" height="50px">';
 					}
 				},
-				{ "data": "soluongsp", "title": "Số Lượng Sản Phẩm" },
-				{ "data": "theloai.tentheloai", "title": "Tên Thể Loại" },
+				{ "data": "soluongsp", "title": "Số lượng sản phẩm" },
+				{ "data": "theloai.tentheloai", "title": "Tên thể loại" },
 				{
 					"data": null, "title": "Xóa", "render": function(data, type, full, meta) {
 						return '<a class="text-white bg-danger delete-link">Xóa</a>';
@@ -133,7 +133,7 @@ app.controller("ctrlSP", function($scope, $http, $filter, $window) {
 				Swal.fire({
 					icon: 'success',
 					title: 'Thành công!',
-					text: 'Thêm mới thành công!',
+					text: 'Thêm mới sản phẩm thành công!',
 					showConfirmButton: false // Ẩn nút xác nhận
 				});
 
@@ -187,7 +187,7 @@ app.controller("ctrlSP", function($scope, $http, $filter, $window) {
 				Swal.fire({
 					icon: 'success',
 					title: 'Thành công!',
-					text: 'Cập nhật thành công!',
+					text: 'Cập nhật sản phẩm thành công!',
 					showConfirmButton: false // Ẩn nút xác nhận
 				});
 				setTimeout(() => {
@@ -220,9 +220,14 @@ app.controller("ctrlSP", function($scope, $http, $filter, $window) {
 			if (result.isConfirmed) {
 				// Nếu người dùng xác nhận xóa, thực hiện yêu cầu DELETE
 				$http.delete(`/rest/sanpham/${item.id_sp}`).then(resp => {
+					
+					/// xóa trên côtj
 					var index = $scope.items.findIndex(p => p.id_sp == item.id_sp);
 					$scope.items.splice(index, 1);
 					$scope.reset();
+					var dataTable = $('#dataTableSP').DataTable();
+					dataTable.clear().rows.add($scope.items).draw();
+					
 					// Hiển thị thông báo xóa thành công
 					Swal.fire({
 						icon: 'success',
@@ -230,8 +235,7 @@ app.controller("ctrlSP", function($scope, $http, $filter, $window) {
 						text: 'Xóa sản phẩm thành công!',
 						showConfirmButton: false // Ẩn nút xác nhận
 					});
-					var dataTable = $('#dataTableSP').DataTable();
-					dataTable.clear().rows.add($scope.items).draw();
+					
 				}).catch(error => {
 					// Kiểm tra nếu là lỗi khóa chính hoặc khóa ngoại
 					if (error.status === 500 && error.data && error.data.message) {

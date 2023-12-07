@@ -58,7 +58,7 @@ app.controller("ctrlBL", function($scope, $http, $timeout) {
 		// Hiển thị thông báo xác nhận với SweetAlert2
 		Swal.fire({
 			title: 'Xác nhận xóa',
-			text: 'Bạn có chắc muốn xóa sản phẩm này?',
+			text: 'Bạn có chắc muốn xóa bình luận này?',
 			icon: 'warning',
 			showCancelButton: true,
 			confirmButtonText: 'Xóa',
@@ -73,7 +73,7 @@ app.controller("ctrlBL", function($scope, $http, $timeout) {
 					Swal.fire({
 						icon: 'success',
 						title: 'Thành công!',
-						text: 'Xóa sản phẩm thành công!'
+						text: 'Xóa bình luận thành công!'
 					});
 					
 					// Vẽ lại DataTables
@@ -85,7 +85,7 @@ app.controller("ctrlBL", function($scope, $http, $timeout) {
 					Swal.fire({
 						icon: 'error',
 						title: 'Lỗi!',
-						text: 'Lỗi xóa sản phẩm!'
+						text: 'Lỗi xóa bình luận!'
 					});
 					console.log("Error", error);
 				});
