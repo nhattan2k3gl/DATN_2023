@@ -51,7 +51,7 @@ public class RestTaiKhoan {
 		TKService.create(TaiKhoanEntity);
 		return ResponseEntity.ok(TaiKhoanEntity);
 	}
-	@DeleteMapping("/Rest/TaiKhoan/{eamil}")
+	@DeleteMapping("/Rest/TaiKhoan/{email}")
 	public ResponseEntity<Void> delete(@PathVariable("email") String email){
 		
 		TKService.delete(email);

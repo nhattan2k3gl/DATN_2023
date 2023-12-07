@@ -3,23 +3,25 @@
 
 <head>
 
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<meta name="description" content="">
-	<meta name="author" content="">
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="">
+<meta name="author" content="">
 
-	<title>SB Admin 2 - Register</title>
+<title>SB Admin 2 - Register</title>
 
-	<!-- Custom fonts for this template-->
-	<link th:href="@{/asses/vendor/fontawesome-free/css/all.min.css}" rel="stylesheet" type="text/css">
-	<link
-		th:href="@{https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i}"
-		rel="stylesheet">
+<!-- Custom fonts for this template-->
+<link th:href="@{/asses/vendor/fontawesome-free/css/all.min.css}"
+	rel="stylesheet" type="text/css">
+<link
+	th:href="@{https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i}"
+	rel="stylesheet">
 
-	<!-- Custom styles for this template-->
-	<link th:href="@{/asses/css/sb-admin-2.min.css}" rel="stylesheet">
-	
+<!-- Custom styles for this template-->
+<link th:href="@{/asses/css/sb-admin-2.min.css}" rel="stylesheet">
+
 
 </head>
 
@@ -27,92 +29,72 @@
 
 	<div class="container">
 
-        <div class="card o-hidden border-0 shadow-lg my-5">
-            <div class="card-body p-0">
-                <!-- Nested Row within Card Body -->
-                <div class="row">
-                    <div class="col-lg-5 d-none d-lg-block bg-register-image"></div>
-                    <div class="col-lg-7">
-                        <div class="p-5">
-                            <div class="text-center">
-                                <h1 class="h4 text-gray-900 mb-4">Create an Account!</h1>
-                            </div>
-                            <form class="user" th:object="${taiKhoanDTO}" method="post" enctype="multipart/form-data">
+		<div class="card o-hidden border-0 shadow-lg my-5">
+			<div class="card-body p-0">
+				<!-- Nested Row within Card Body -->
+				<div class="row">
+					<div class="col-lg-5 d-none d-lg-block bg-register-image"></div>
+					<div class="col-lg-7">
+						<div class="p-5">
+							<div class="text-center">
+                                  <h1 class="h4 text-gray-900 mb-4">Tạo Tài Khoản!</h1>
+                                  <span class="pull-left text-danger" style="text-align: center;"
+                                      th:text="${messageDK}"></span>
+							</div>
+							
+							<form class="user" th:object="${taiKhoanDTO}" method="post"
+								enctype="multipart/form-data">
 
-                                <div class="form-group">
-                                    <input type="email" class="form-control form-control-user" id="exampleInputEmail"
-                                        placeholder="Email Address" th:field="*{email}" required>
-                                </div>
-                                <div class="form-group row">
-                                    <div class="col-sm-6">
-                                        <input type="text" class="form-control form-control-user"
-                                            id="exampleRepeatPassword" placeholder="Họ và Tên" th:field="*{hovaten}" required >
-                                    </div>
-                                    <div class="col-sm-6 mb-3 mb-sm-0">
-                                        <input type="password" class="form-control form-control-user"
-                                            id="exampleInputPassword" placeholder="Password" th:field="*{matkhau}" required >
-                                    </div>
+								<div class="form-group">
+									<input type="email" class="form-control form-control-user"
+										id="exampleInputEmail" placeholder="Nhập địa chỉ email..."
+										th:field="*{email}" required>
+								</div>
+								<div class="form-group row">
+									<div class="col-sm-6">
+										<input type="text" class="form-control form-control-user"
+											id="exampleRepeatPassword" placeholder="Họ và tên"
+											th:field="*{hovaten}" required>
+									</div>
+									<div class="col-sm-6 mb-3 mb-sm-0">
+										<input type="password" class="form-control form-control-user"
+											id="exampleInputPassword" placeholder="Mật Khẩu "
+											th:field="*{matkhau}" required>
+									</div>
 
 
 								</div>
 
-                                <div class="form-group">
-                                    <input type="text" class="form-control form-control-user" id="exampleInputEmail"
-                                        placeholder="Địa chỉ" th:field="*{diachi}" required >
-                                </div>
-                                <div class="form-group">
-                                    <label for="exampleInputEmail1" class="form-label">Ảnh</label>
-                                    <div class="custom-file">
-                                        <input class="text-input" type="file" name="file" th:field="*{anh}" required >
-                                    </div>
-                                    <div id="emailHelp" class="form-text text-danger"></div>
-                                </div>
-                                <button class="btn btn-primary btn-user btn-block" th:formaction="@{|/register/create|}">
-                                	Thêm
-                                </button>
-                                
-                                <hr>
-                                <a href="#" class="btn btn-google btn-user btn-block">
-                                    <i class="fab fa-google fa-fw"></i> Register with Google
-                                </a>
-                                <a href="#" class="btn btn-facebook btn-user btn-block">
-                                    <i class="fab fa-facebook-f fa-fw"></i> Register with Facebook
-                                </a>
-                            </form>
-                            <hr>
-                            <div class="text-center">
-                                <a class="small" href="forgot-password.html">Forgot Password?</a>
-                            </div>
-                            <div class="text-center">
-                                <a class="small" href="login.html">Already have an account? Login!</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
+								<div class="form-group">
+									<input type="text" class="form-control form-control-user"
+										id="exampleInputEmail" placeholder="Địa chỉ"
+										th:field="*{diachi}" required>
+								</div>
+								<div class="form-group">
+									<label for="exampleInputEmail1" class="form-label">Ảnh</label>
+									<div class="custom-file">
+										<input class="text-input" type="file" name="file"
+											th:field="*{anh}" required>
 									</div>
 									<div id="emailHelp" class="form-text text-danger"></div>
 								</div>
 								<button class="btn btn-primary btn-user btn-block"
-									th:formaction="@{/register}">Thêm</button>
+									th:formaction="@{|/register/create|}">Thêm</button>
 
 								<hr>
-								<a href="index.html" class="btn btn-google btn-user btn-block">
-									<i class="fab fa-google fa-fw"></i> Register with Google
-								</a> <a href="index.html" class="btn btn-facebook btn-user btn-block"> <i
-										class="fab fa-facebook-f fa-fw"></i> Register with Facebook
+								<a href="#" class="btn btn-google btn-user btn-block"> <i
+									class="fab fa-google fa-fw"></i> Đăng kí bằng Google
+								</a> <a href="#" class="btn btn-facebook btn-user btn-block"> <i
+									class="fab fa-facebook-f fa-fw"></i> Đăng kí bằng Facebook
 								</a>
 							</form>
 							<hr>
 							<div class="text-center">
-								<a class="small" href="forgot-password.html">Forgot
-									Password?</a>
+								<a class="small" href="#" >Quên mật khẩu?</a>
 							</div>
 							<div class="text-center">
-								<a class="small" href="/login">Already have an account?
-									Login!</a>
+								<a class="small" href="login">Bạn đã có tài khoản rồi?
+									  Đăng nhập!</a>
 							</div>
 						</div>
 					</div>
@@ -122,18 +104,18 @@
 
 	</div>
 
+
 	<script th:inline="javascript">
 		console.log("hicc");
-		 function updateFileName(input) {
-		        // Lấy tên của tệp tin đã chọn
-		        var fileName = input.value.split("\\").pop();
-		        console.log("hi");
-		        // Hiển thị tên tệp tin trong label
-		        input.nextElementSibling.innerHTML = fileName;
-		    }
-		    /*]]>*/
-        
-    </script>
+		function updateFileName(input) {
+			// Lấy tên của tệp tin đã chọn
+			var fileName = input.value.split("\\").pop();
+			console.log("hi");
+			// Hiển thị tên tệp tin trong label
+			input.nextElementSibling.innerHTML = fileName;
+		}
+		/*]]>*/
+	</script>
 
 	<!-- Bootstrap core JavaScript-->
 	<script th:src="@{/asses/vendor/jquery/jquery.min.js}"></script>
@@ -151,8 +133,8 @@
 	<!-- Page level custom scripts -->
 	<script th:src="@{/asses/js/demo/chart-area-demo.js}"></script>
 	<script th:src="@{/asses/js/demo/chart-pie-demo.js}"></script>
-	
-	
+
+
 
 
 </body>

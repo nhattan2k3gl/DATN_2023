@@ -58,9 +58,12 @@ public class AccountController {
 
 	@Autowired
 	VaiTroService vaiTroService;
-	
+
 	@Autowired
 	MailerService mailer;
+
+	@Autowired
+	UploadService upload;
 
 	@GetMapping("/login")
 	public String formlogin() {
@@ -109,10 +112,9 @@ public class AccountController {
 
 	@PostMapping("/profile/update")
 	public String updateProfile(Model model, HttpServletRequest request,
-			@ModelAttribute("taiKhoanDTO") TaiKhoanDTOForUpdate taiKhoanDTO,
-			@RequestParam("anh") MultipartFile file) throws IOException {
-		
-		
+			@ModelAttribute("taiKhoanDTO") TaiKhoanDTOForUpdate taiKhoanDTO, @RequestParam("anh") MultipartFile file)
+			throws IOException {
+
 		TaiKhoanEntity optionalUser = taiKhoanService.findByUsername(request.getRemoteUser());
 		if (optionalUser != null) {
 			TaiKhoanEntity user = optionalUser;
@@ -125,7 +127,6 @@ public class AccountController {
 			} else {
 				user.setAnh("nd1.png");
 			}
-			
 
 			String newPassword = taiKhoanDTO.getMatkhau();
 			if (newPassword != null && !newPassword.isEmpty()) {
@@ -135,7 +136,6 @@ public class AccountController {
 			taiKhoanDao.save(user);
 		}
 
-		
 		return "redirect:/profile";
 	}
 
@@ -147,29 +147,37 @@ public class AccountController {
 
 	@PostMapping("/register/create")
 	public String createNewUser(@ModelAttribute("taiKhoanDTO") TaiKhoanDTO taiKhoanDTO,
-			@RequestParam("anh") MultipartFile file) throws IOException {
-
-		if (file != null && !file.isEmpty()) {
-			String fileName = System.currentTimeMillis() + "_" + file.getOriginalFilename();
-			Path filePath = Path.of(uploadPath).resolve(fileName);
-			Files.copy(file.getInputStream(), filePath, StandardCopyOption.REPLACE_EXISTING);
-
-			TaiKhoanEntity user = new TaiKhoanEntity();
-			user.setDiachi(taiKhoanDTO.getDiachi());
-			user.setAnh(fileName);
-			user.setHovaten(taiKhoanDTO.getHovaten());
-			user.setEmail(taiKhoanDTO.getEmail());
-			user.setMatkhau(new BCryptPasswordEncoder().encode(taiKhoanDTO.getMatkhau()));
-			user.setVaitro(List.of(vaiTroService.findByName()));
-
-			taiKhoanDao.save(user);
-			return "redirect:/login";
-		} else {
-			return "redirect:/register";
+			@RequestParam("anh") MultipartFile file, Model model) throws IOException {
+		TaiKhoanEntity TKEntity = null;
+		try {
+			TKEntity = taiKhoanService.findByUsername(taiKhoanDTO.getEmail());
+			if(TKEntity != null)
+			{
+				model.addAttribute("messageDK", "Tài khoản này đã có rồi");
+				model.addAttribute("taiKhoanDTO", new TaiKhoanEntity());
+				return "user/taikhoan/dangky";
+			}
+		} catch (Exception e) {
+			
+		} finally {
+			if (file != null && !file.isEmpty() && TKEntity == null) {
+				String fileName = System.currentTimeMillis() + "_" + file.getOriginalFilename();
+				uploadService.save(file, "accounts");
+				TaiKhoanEntity user = new TaiKhoanEntity();
+				user.setDiachi(taiKhoanDTO.getDiachi());
+				user.setAnh(fileName);
+				user.setHovaten(taiKhoanDTO.getHovaten());
+				user.setEmail(taiKhoanDTO.getEmail());
+				user.setMatkhau(new BCryptPasswordEncoder().encode(taiKhoanDTO.getMatkhau()));
+				user.setVaitro(List.of(vaiTroService.findByName()));
+				taiKhoanDao.save(user);
+				model.addAttribute("messageDK", "Đăng kí thành công");
+				return "user/taikhoan/dangnhap";
+			} 
 		}
-
+		return "redirect:/register";
 	}
-	
+
 	@GetMapping("/forgot-password")
 	public String forgot(Model model, HttpServletRequest request) {
 		model.addAttribute("request", request);
