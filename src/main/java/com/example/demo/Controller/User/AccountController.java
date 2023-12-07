@@ -78,14 +78,14 @@ public class AccountController {
 
 	@GetMapping("/login/error")
 	public String error(Model model) {
-		model.addAttribute("message", "Username or Password incorrect!");
+		model.addAttribute("message", "Email hoạc tài khoản không đúng!");
 
 		return "user/taikhoan/dangnhap";
 	}
 
 	@RequestMapping("/access/denied")
 	public String denied(Model model) {
-		model.addAttribute("message", "You do not have permission!");
+		model.addAttribute("message", "Bạn không có quyền truy cập!");
 		return "user/taikhoan/dangnhap";
 	}
 
