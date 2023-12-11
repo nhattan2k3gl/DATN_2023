@@ -83,10 +83,14 @@
 			<artifactId>hibernate-validator</artifactId>
 			<version>8.0.0.Final</version>
 		</dependency>
+		
+		<!--thư viên mail-->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-mail</artifactId>
 		</dependency>
+		
+		<!--thư viện upoad-->
 		<dependency>
 		    <groupId>commons-fileupload</groupId>
 		    <artifactId>commons-fileupload</artifactId>
@@ -97,8 +101,14 @@
 		    <artifactId>commons-io</artifactId>
 		    <version>2.11.0</version>
 		</dependency>
-
-
+		
+		<!--thư viện thanh toán-->
+		<dependency>
+			<groupId>com.paypal.sdk</groupId>
+			<artifactId>rest-api-sdk</artifactId>
+			<version>1.4.2</version>
+		</dependency>
+		
 	</dependencies>
 
 	<build>

@@ -1,7 +1,6 @@
 const app = angular.module("appCart", []);
 
-
-app.controller("cart-ctrl", function($scope, $http, $window) {
+app.controller("cart-ctrl", function($scope, $http, $window, $location) {
 	// quản lý giỏ hàng
 	var $cart = $scope.cart = {
 		items: [],
@@ -54,7 +53,6 @@ app.controller("cart-ctrl", function($scope, $http, $window) {
 	}
 
 
-
 	$cart.loadFromLocalStorage();
 
 	// Đặt hàng
@@ -93,7 +91,9 @@ app.controller("cart-ctrl", function($scope, $http, $window) {
 				console.log(error);
 			});
 		}
-	}
+
+	};
+
 
 	$scope.formBL = {};
 
