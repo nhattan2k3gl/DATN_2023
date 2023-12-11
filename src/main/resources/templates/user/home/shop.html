@@ -154,13 +154,23 @@
 						</article>
 					</th:block>
 				</div>
+				
 				<div class="page-nav">
-					<div class="page-nav__col">
-					    <a class="page-nav__button prev-button" th:href="@{shop(page=${items.number - 1})}" th:unless="${items.first}"></a>
-					</div>
-					<div class="page-nav__col">
-					    <a class="page-nav__button next-button" th:href="@{shop(page=${items.number + 1})}" th:unless="${items.last}"></a>
-					</div>
+				    <div class="page-nav__col">
+				        <a class="page-nav__button prev-button" th:href="@{shop(page=${items.number - 1})}" th:unless="${items.first}"></a>
+				    </div>
+				    <div class="page-nav__col">
+				        <ul class="page-nav__list">
+				            <!-- Generate page links dynamically -->
+				            <li th:each="pageNumber : ${#numbers.sequence(0, (items.totalPages-1))}" th:class="${'page-nav__item ' + (pageNumber == items.number ? 'active' : '')}">
+							    <a class="page-nav__link" th:href="@{shop(page=${pageNumber})}" th:text="${pageNumber + 1}"></a>
+							</li>
+
+				        </ul>
+				    </div>
+				    <div class="page-nav__col">
+				        <a class="page-nav__button next-button" th:href="@{shop(page=${items.number + 1})}" th:unless="${items.last}"></a>
+				    </div>
 				</div>
 			</div>
 			<!-- RIGHT COLUMN END -->

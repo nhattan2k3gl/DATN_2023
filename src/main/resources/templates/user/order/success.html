@@ -1,8 +1,4 @@
 <div xmlns:th="http://www.thymeleaf.org" th:replace="~{/user/home/layout :: dynamic (~{::main})}">
-<title>
- 	<th:block th:text="#{user.finish}"></th:block>
- 	 | Book Co., Ltd
-</title>
 <!-- BEGIN MAIN -->
 <main class="main">
 
@@ -24,7 +20,7 @@
                         <h2 class="thanks__title"><th:block th:text="#{user.finishtitle}"></th:block></h2>
                         <p class="thanks__top-text"><th:block th:text="#{user.finishtext}"></th:block></p>
                     </div>
-                    <div class="thanks__top-text"><th:block th:text="#{user.countdown}"></th:block> <span id="time"></span></div>
+                    <div class="thanks__top-text" id="time"><th:block th:text="#{user.countdown}"></th:block> </div>
                 </section>
 
             </div>
