@@ -15,7 +15,7 @@ public interface BinhLuanService
 	public Page<BinhLuanEntity> findAllCmt(Integer page, Integer limit);
 
 	public BinhLuanEntity findById(String id);
-
+	public List<BinhLuanEntity> findByIDSP(int id_sp);
 
 	public BinhLuanEntity create(BinhLuanEntity BLEntity) throws Exception  ;
 

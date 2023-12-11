@@ -187,7 +187,7 @@
 
 				<!-- BEGIN ADD REVIEW -->
 				<div class="product-tab__right">
-					<form>
+					<form name="myForm">
 						<section class="add-review">
 							<div class="add-review__top">
 								<h3 class="add-review__title"> 
@@ -204,9 +204,11 @@
 									<input class="star" name="add-review-rating" type="radio">
 								</div>
 							</div>
-							<textarea class="textarea" th:placeholder="#{user.feedbackph}"></textarea>
-							<input class="text-input" type="text" th:placeholder="#{user.fnameph}">
-							<button class="add-review__button button">
+							<p class="text-input" id="id_sp" th:value="${item.id_sp}"></p>
+							<p class="text-input" id="email" th:value="${request.getRemoteUser}"></p>
+							<textarea class="textarea" th:placeholder="#{user.feedbackph}" id="binhluan" ng-model="binhluan" ng-required="true"></textarea>
+							<!-- <input class="text-input" type="text" th:placeholder="#{user.fnameph}"> -->
+							<button class="add-review__button button" ng-click="comment()" ng-disabled="myForm.$invalid" >
 								<span class="button__text"> 
 									<th:block th:text="#{user.reviewspost}"></th:block>
 								</span>

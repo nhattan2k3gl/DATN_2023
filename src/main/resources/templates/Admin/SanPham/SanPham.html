@@ -10,11 +10,11 @@
 		<div class="container-fluid">
 
 			<!-- Page Heading -->
-			<h1 class="h3 mb-2 text-gray-800">Sản Phẩm</h1>
+			<h1 class="h3 mb-2 text-gray-800">Sản phẩm</h1>
 
 			<ul class="nav nav-tabs">
 				<li class="nav-item">
-					<a class="nav-link active" data-toggle="tab" id="edit-tab" href="#home">Chỉnh Sửa</a>
+					<a class="nav-link active" data-toggle="tab" id="edit-tab" href="#home">Chỉnh sửa</a>
 				</li>
 				<li class="nav-item">
 					<a class="nav-link" data-toggle="tab" href="#menu1">Bảng</a>
@@ -76,10 +76,10 @@
 								<div class="my-4">
 
 									<div class="mb-3">
-										<label for="exampleInputEmail1" class="form-label">ID Sản Phẩm </label>
+										<label for="exampleInputEmail1" class="form-label">ID sản phẩm </label>
 										<input type="text" class="form-control" id="" aria-describedby="emailHelp"
 											ng-model="form.id_sp" disabled>
-										<div class="form-text text-danger" ng-show="yourFormName.id_sp.$error.required">ID Sản Phẩm is required.</div>
+										<div class="form-text text-danger" ng-show="yourFormName.id_sp.$error.required">ID sản phẩm is required.</div>
 									</div>
 
 									<div class="mb-3">
@@ -95,7 +95,7 @@
 									</div>
 
 									<div class="mb-3">
-										<label for="exampleInputEmail1" class="form-label">Ngày Xuất Bản</label>
+										<label for="exampleInputEmail1" class="form-label">Ngày xuất bản</label>
 										<input type="date" class="form-control" ng-model="form.ngayxuatban" required>
 										<div id="" class="form-text text-danger"></div>
 									</div>
@@ -119,18 +119,18 @@
 
 
 									<div class="mb-3">
-										<label for="exampleInputEmail1" class="form-label">Số Lượng Sản Phẩm</label>
+										<label for="exampleInputEmail1" class="form-label">Số lượng sản phẩm</label>
 										<input type="text" class="form-control" ng-model="form.soluongsp" required>
 										<div id="" class="form-text text-danger"></div>
 									</div>
 									<div class="mb-3">
-										<label for="exampleInputEmail1" class="form-label">ID Thể Loại</label>
+										<label for="exampleInputEmail1" class="form-label">ID thể loại</label>
 										<input type="text" class="form-control" ng-model="form.theloai.id_tl" required>
 										<div id="" class="form-text text-danger"></div>
 									</div>
 									
 									<div class="mb-3">
-										<label for="exampleInputEmail1" class="form-label">Mô Tả</label>
+										<label for="exampleInputEmail1" class="form-label">Mô tả</label>
 										<textarea class="form-control" ng-model="form.mota"
 											style="height: 200px;" required></textarea>
 										<div id="" class="form-text text-danger"></div>
@@ -138,8 +138,8 @@
 									<button class="btn btn-success mx-2"
 										ng-click="create()">Thêm</button>
 									<button class="btn btn-success mx-2" ng-click="update()">Cập
-										Nhật</button>
-									<a class="btn btn-info mx-2" th:href="@{/Admin/SanPham}">Làm Mới</a>
+										nhật</button>
+									<a class="btn btn-info mx-2" th:href="@{/Admin/SanPham}">Làm mới</a>
 
 								</div>
 							</div>
@@ -155,14 +155,14 @@
 					<!-- DataTales Example -->
 					<div class="card shadow mb-4">
 						<div class="card-header py-3">
-							<h6 class="m-0 font-weight-bold text-primary">Bảng Dữ Liệu</h6>
+							<h6 class="m-0 font-weight-bold text-primary">Bảng dữ liệu</h6>
 						</div>
 						<div class="card-body">
 							<div class="table-responsive">
-								<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+								<table class="table table-bordered" id="dataTableSP" width="100%" cellspacing="0">
 									<thead>
 										<tr>
-											<th>ID Sản Phẩm</th>
+											<!-- <th>ID Sản Phẩm</th>
 											<th>Tên</th>
 											<th>Giá</th>
 											<th>Ngày Xuất Bản </th>
@@ -173,12 +173,12 @@
 
 											<th>ID Thể Loại</th>
 
-											<th></th>
+											<th></th> -->
 										</tr>
 									</thead>
 									<tfoot>
 										<tr>
-											<th>ID Sản Phẩm</th>
+											<!-- <th>ID Sản Phẩm</th>
 											<th>Tên</th>
 											<th>Giá</th>
 											<th>Ngày Xuất Bản </th>
@@ -188,15 +188,15 @@
 											<th>Tên Thể Loại</th>
 
 											<th></th>
-											<th></th>
+											<th></th> -->
 										</tr>
 									</tfoot>
 									<tbody>
 
-										<tr ng-repeat="item in items">
+										<!-- <tr ng-repeat="item in items">
 											<td>{{item.id_sp}}</td>
 											<td>{{item.ten}}</td>
-											<td>{{item.gia | number:2}} VNĐ</td>
+											<td>{{item.gia | number : 0 }} ₫</td>
 											<td>{{item.ngayxuatban | date:'dd-MM-yyyy'}}</td>
 											<td class="text-center"><img ng-src="{{'/assets/products/'+item.anh}}" alt="" width="50px"
 													height="50px"></td>
@@ -210,7 +210,7 @@
 												<a class="text-white bg-danger" ng-click="delete(item)" >Xóa</a>
 												<a class="text-white  bg-info" ng-click="edit(item)">Sửa</a>
 											</td>
-										</tr>
+										</tr> -->
 										<tr></tr>
 									</tbody>
 								</table>

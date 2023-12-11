@@ -26,7 +26,6 @@ public class BinhLuanEntity implements Serializable{
 	@NotBlank
 	String binhluan;
 	
-	@NotBlank
 	String danhgia;
 
 //	String email;

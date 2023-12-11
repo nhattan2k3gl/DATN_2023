@@ -76,6 +76,7 @@ public class HoaDonIMPL implements HoaDonService{
 		
 
 		TypeReference<List<HoaDonChiTietEntity>> type = new TypeReference<List<HoaDonChiTietEntity>>() {};
+		
 		List<HoaDonChiTietEntity> details = mapper.convertValue(orderData.get("hoadonchitiet"), type).stream()
 				.peek(d -> d.setHoadon(order)).collect(Collectors.toList());
 		HDDao.save(order);

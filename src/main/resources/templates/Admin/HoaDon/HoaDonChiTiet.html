@@ -10,13 +10,13 @@
         <div class="container-fluid">
 
             <!-- Page Heading -->
-            <h1 class="h3 mb-2 text-gray-800">Hóa Đơn</h1>
+            <h1 class="h3 mb-2 text-gray-800">Hóa đơn</h1>
 
             
              <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">Bảng Dữ Liệu</h6>
+                            <h6 class="m-0 font-weight-bold text-primary">Bảng dữ liệu</h6>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
@@ -24,32 +24,32 @@
                                     <thead>
                                         <tr>
                                         	
-                                            <th>ID Hóa Đơn</th>
-                                            <th>Ngày Tạo Hóa Đơn</th>
-                                            <th>Địa Chỉ</th>
+                                            <th>ID hóa đơn</th>
+                                            <th>Ngày tạo hóa đơn</th>
+                                            <th>Địa chỉ</th>
                                             <th>Email</th>
-                                            <th>Tên Sản Phẩm</th>
+                                            <th>Tên sản phẩm</th>
                                             <th>Giá</th>
-                                            <th>Số Lượng</th>
-                                            <th>Tổng Tiền</th>
+                                            <th>Số lượng</th>
+                                            <th>Tổng tiền</th>
                                             
 
                                         </tr>
                                     </thead>
                                    <tfoot>
-                                        <tr>
+                                       <!--  <tr>
                                         	
-                                            <th>ID Hóa Đơn</th>
-                                            <th>Ngày Tạo Hóa Đơn</th>
-                                            <th>Địa Chỉ</th>
+                                            <th>ID hóa đơn</th>
+                                            <th>Ngày tạo hóa đơn</th>
+                                            <th>Địa chỉ</th>
                                             <th>Email</th>
-                                            <th>Tên Sản Phẩm</th>
+                                            <th>Tên sản phẩm</th>
                                             <th>Giá</th>
-                                            <th>Số Lượng</th>
-                                            <th>Tổng Tiền</th>
+                                            <th>Số lượng</th>
+                                            <th>Tổng tiền</th>
                                             
 
-                                        </tr>
+                                        </tr> -->
                                     </tfoot>
                                     <tbody>
 
@@ -59,9 +59,9 @@
                                             <td>[[${HDCTService.hoadon.diachi}]]</td>
                                             <td>[[${HDCTService.hoadon.taikhoan.email}]]</td>
                                             <td>[[${HDCTService.sanpham.ten}]]</td>
-                                            <td>[[${HDCTService.sanpham.gia}]]</td>
+                                            <td name="gia">[[${#numbers.formatDecimal(HDCTService.sanpham.gia,2,0)}]]</td>
                                             <td>[[${HDCTService.soluong}]]</td>
-                                            <td>[[${HDCTService.soluong * HDCTService.sanpham.gia}]] VNĐ</td>
+                                            <td name="tongtien">[[${#numbers.formatDecimal(HDCTService.soluong * HDCTService.sanpham.gia ,2,0)}]] </td>
                                             <!-- <td>
                                                 <a class="text-white bg-danger"
                                                     th:href="@{|/Admin/HoaDonChiTiet/Delete/${HDCTService.id_hdct}|}">Xóa</a>
@@ -87,3 +87,49 @@
     </main>
     <!-- End of Main Content -->
 </div>
+<script>	
+	// Lấy tất cả các thẻ có thuộc tính name="tongtien"
+	var tongTienElements = document.querySelectorAll('[name="tongtien"]');
+	// Duyệt qua từng thẻ và xử lý
+	tongTienElements.forEach(function(tongTienElement) {
+	  var tongTienValue = tongTienElement.textContent || tongTienElement.innerText;
+	  // Chuyển đổi giá trị thành số và định dạng thành hàng triệu, hàng trăm triệu, hàng tỷ, chục tỷ
+	  var tongTienNumber = parseFloat(tongTienValue.replace(/\D/g, ''));
+	  var formattedTongTien = formatNumber(tongTienNumber);
+	
+	  // Hiển thị kết quả trong thẻ
+	  tongTienElement.innerHTML = formattedTongTien + ' ₫';
+	});
+	// Lấy tất cả các thẻ có thuộc tính name="tongtien"
+	var giaElements = document.querySelectorAll('[name="gia"]');
+	
+	///giá
+	giaElements.forEach(function(giaElement) {
+	  var giaValue = giaElement.textContent ||giaElement.innerText;
+	  var giaNumber = parseFloat(giaValue.replace(/\D/g, ''));
+	  var formattedgia = formatNumber(giaNumber);
+	  giaElement.innerHTML = formattedgia + ' ₫';
+	});
+	
+	 function formatNumber(number) {
+		    if (number >= 1e11) {
+		      return (number / 1e9).toFixed(3) + ' tỷ';
+		    } else if (number >= 1e10) {
+		      return (number / 1e9).toFixed(3) + ' tỷ';
+		    } else if (number >= 1e9) {
+		      return (number / 1e9).toFixed(3) + ' tỷ';
+		    } else if (number >= 1e8) {
+		      return (number / 1e6).toFixed(3) + ' triệu';
+		    } else if (number >= 1e7) {
+		      return (number / 1e6).toFixed(3) + ' triệu';
+		    } else if (number >= 1e6) {
+		      return (number / 1e6).toFixed(3) + ' triệu';
+		    } else if (number >= 1e5) {
+		      return (number / 1e3).toFixed(3) + '';
+		    } else if (number >= 1e3) {
+		      return (number / 1e3).toFixed(3) + '';
+		    } else {
+		      return number.toFixed(2) + '';
+		    }
+	}
+</script>

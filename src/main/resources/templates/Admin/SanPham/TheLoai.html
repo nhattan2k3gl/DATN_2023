@@ -14,7 +14,7 @@
 
             <ul class="nav nav-tabs">
                 <li class="nav-item">
-                    <a class="nav-link active" data-toggle="tab" id="edit-tab"  href="#home">Chỉnh Sửa</a>
+                    <a class="nav-link active" data-toggle="tab" id="edit-tab"  href="#home">Chỉnh sửa</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" data-toggle="tab" href="#menu1">Bảng</a>
@@ -28,13 +28,13 @@
                     <div class="my-4 ">
                         <form  method="post">
                             <div class="mb-3">
-                                <label for="exampleInputEmail1" class="form-label">ID Thể Loại </label>
+                                <label for="exampleInputEmail1" class="form-label">ID thể loại </label>
                                 <input type="text" class="form-control" id=""  aria-describedby="emailHelp" ng-model="form.id_tl" disabled>
                                 <div id="emailHelp" class="form-text text-danger"> </div>
                             </div>
 
                             <div class="mb-3">
-                                <label for="exampleInputEmail1" class="form-label">Tên Thể Loại</label>
+                                <label for="exampleInputEmail1" class="form-label">Tên thể loại</label>
                                 <input type="text" class="form-control" ng-model="form.tentheloai" required>
                                 <div id="emailHelp" class="form-text text-danger" ></div>
                             </div>
@@ -42,8 +42,8 @@
                             
     
                             <button  class="btn btn-success mx-2" ng-click="create()">Thêm</button>
-                            <button  class="btn btn-success mx-2"  ng-click="update()">Cập Nhật</button>
-                            <a  class="btn btn-info mx-2"th:href="@{/Admin/TheLoai}" >Làm Mới</a>
+                            <button  class="btn btn-success mx-2"  ng-click="update()">Cập nhật</button>
+                            <a  class="btn btn-info mx-2"th:href="@{/Admin/TheLoai}" >Làm mới</a>
                         </form>
                     </div>
 
@@ -53,29 +53,29 @@
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">Bảng Dữ Liệu</h6>
+                            <h6 class="m-0 font-weight-bold text-primary">Bảng dữ liệu</h6>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
-                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                <table class="table table-bordered" id="dataTableTL" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
-                                            <th>ID Thể Loại</th>
+                                            <!-- <th>ID Thể Loại</th>
                                             <th>Tên Thể Loại</th>
-                                            <th></th>
+                                            <th></th> -->
                                             
                                         </tr>
                                     </thead>
                                     <tfoot>
                                         <tr>
-                                             <th>ID Thể Loại</th>
+                                             <!-- <th>ID Thể Loại</th>
                                             <th>Tên Thể Loại</th>
-                                            <th></th>
+                                            <th></th> -->
                                         </tr>
                                     </tfoot>
-                                    <tbody ng-repeat="item in items">
+                                    <tbody >
                                         
-                                        <tr >
+                                        <!-- <tr ng-repeat="item in items" >
             								<td>{{item.id_tl}}</td>
             								<td>{{item.tentheloai}}</td>
             								
@@ -83,7 +83,9 @@
             									<a class="text-white bg-danger" ng-click="delete(item)" >Xóa</a>
             									<a class="text-white  bg-info" ng-click="edit(item)" >Sửa</a>
             								</td>
-        								 </tr>
+        								 </tr> -->
+        								 
+        								 <tr></tr>
                                     </tbody>
                                 </table>
                             </div>

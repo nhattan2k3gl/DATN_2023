@@ -41,6 +41,7 @@ public class HoaDonEntity implements Serializable{
 	@NotBlank
 	String diachi;
 	
+	
 	@ManyToOne
 	@JoinColumn(name="Email")
 	TaiKhoanEntity taikhoan;

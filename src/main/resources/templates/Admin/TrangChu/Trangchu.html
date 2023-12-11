@@ -44,7 +44,7 @@
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
                                                 Tổng Tiền</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">[[${thongKe}]] VNĐ</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800" id="thongke">[[${thongKe}]] ₫</div>
                                         </div>
                                         <div class="col-auto">
                                            <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
@@ -182,4 +182,17 @@
 
             </main>
             <!-- End of Main Content -->
+            
 </div>
+
+<script>	
+  var thongKeElement = document.getElementById('thongke');
+  var thongKeValue = thongKeElement.textContent || thongKeElement.innerText;
+
+  // Chuyển đổi giá trị thành số và định dạng thành hàng nghìn và trăm nghìn
+  var thongKeNumber = parseFloat(thongKeValue.replace(/\D/g, ''));
+  var formattedThongKe = thongKeNumber.toLocaleString('vi-VN');
+
+  // Hiển thị kết quả trong thẻ có id="thongke"
+  thongKeElement.innerHTML = formattedThongKe + ' ₫';
+</script>
