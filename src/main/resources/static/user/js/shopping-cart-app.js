@@ -51,8 +51,7 @@ app.controller("cart-ctrl", function($scope, $http, $window, $location) {
 
 
 	}
-
-
+	//load lên form
 	$cart.loadFromLocalStorage();
 
 	// Đặt hàng
@@ -69,9 +68,10 @@ app.controller("cart-ctrl", function($scope, $http, $window, $location) {
 				}
 			});
 		},
-		purchase() {
-			var order = angular.copy(this);
+		purchase(savedOrder) {
+			var order = savedOrder;
 			// Thực hiện đặt hàng
+			console.log("đây là dữ liệu order truyền xuống", order)
 			$http.post("/rest/orders", order).then(resp => {
 				Swal.fire({
 					icon: 'success',
@@ -90,13 +90,79 @@ app.controller("cart-ctrl", function($scope, $http, $window, $location) {
 				})
 				console.log(error);
 			});
+		},
+	}
+
+	var $palpay = $scope.pay = {
+		payment() {
+			$scope.vnd = 0;
+			$scope.amount = $cart.amount;
+			$scope.usd = 0;
+
+			var orderData = angular.copy($scope.order);
+			localStorage.setItem('savedOrder', JSON.stringify(orderData));
+
+			$http.get('https://v6.exchangerate-api.com/v6/f4817124b03dc83695d4eb33/latest/USD')
+				.then(function(response) {
+					// Lấy dữ liệu từ phản hồi của API
+					$scope.vnd = response.data.conversion_rates.VND;
+					// Tính toán giá trị USD sau khi nhận được dữ liệu từ API
+					$scope.usd = $scope.amount / $scope.vnd; // Làm tròn đến 2 chữ số thập phân
+					$http.get('/rest/palpay/' + $scope.usd)
+						.then(function(response) {
+							$scope.urlPalPay = response.data.redirectUrl;
+							$window.location.href = $scope.urlPalPay;
+						})
+						.catch(function(error) {
+							// Xử lý lỗi nếu có
+							console.log(error);
+						});
+				})
+				.catch(function(error) {
+					// Xử lý lỗi nếu có
+					console.log(error);
+				});
+		},
+		paySuccessOrCannel() {
+			try {
+				var paymentId = new URLSearchParams(window.location.search).get("paymentId");
+				var payerId = new URLSearchParams(window.location.search).get("PayerID");
+				var token = new URLSearchParams(window.location.search).get("token");
+				if (paymentId && payerId) {
+					var savedOrderData = localStorage.getItem('savedOrder');
+					// Kiểm tra xem savedOrderData có tồn tại hay không
+					if (savedOrderData) {
+						// Chuyển đổi chuỗi JSON thành đối tượng JavaScript
+						var savedOrder = JSON.parse(savedOrderData);
+						$scope.order.purchase(savedOrder);
+						// Sau khi sử dụng dữ liệu, xóa nó khỏi Local Storage
+						localStorage.removeItem('savedOrder');
+						console.log("sau khi xóa saveOrder", savedOrder)
+					} else {
+						console.log("Không có dữ liệu lưu trữ trong Local Storage.");
+					}
+				}
+				if (token && payerId == null && paymentId == null) {
+					Swal.fire({
+						icon: 'error',
+						title: 'Thất bại!',
+						text: 'Thanh Toán thất bại',
+					});
+					var savedOrderData = localStorage.getItem('savedOrder');
+					var cannelOrder = JSON.parse(savedOrderData);
+					localStorage.removeItem('cannelOrder');
+				}
+			}
+			catch (errors) {
+				console.log(errors)
+			}
+			return null
 		}
-
 	};
-
+	///load lên form
+	$palpay.paySuccessOrCannel();
 
 	$scope.formBL = {};
-
 	$scope.comment = function() {
 
 		if ($scope.myForm.$valid) {

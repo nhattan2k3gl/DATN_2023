@@ -27,13 +27,12 @@ public class PalpayIML implements PalpayService{
 	@Override
 	public Payment createPayment(Double total) throws PayPalRESTException {
 		// TODO Auto-generated method stub
-		
 		String currency ="USD";
 		String method ="PAYPAL";
 		String intent = "sale";
 		String description = "nhattan@gmail.com";
-		String cancelUrl = "http://localhost:6969/login";
-		String successUrl = "http://localhost:6969/register";
+		String cancelUrl = "http://localhost:6969/order/view";
+		String successUrl = "http://localhost:6969/order/view/pay";
 		
 		Amount amount = new Amount();
 		amount.setCurrency(currency);
@@ -58,15 +57,20 @@ public class PalpayIML implements PalpayService{
 		redirectUrls.setCancelUrl(cancelUrl);
 		redirectUrls.setReturnUrl(successUrl);
 		payment.setRedirectUrls(redirectUrls);
+		
+		System.out.println(total);
 
 		return payment.create(apiContext);
 	}
-	public Payment executePayment(String paymentId, String payerId) throws PayPalRESTException{
+
+	@Override
+	public Payment executePayment(String paymentId, String payerId) throws PayPalRESTException {
 		Payment payment = new Payment();
 		payment.setId(paymentId);
 		PaymentExecution paymentExecute = new PaymentExecution();
 		paymentExecute.setPayerId(payerId);
 		return payment.execute(apiContext, paymentExecute);
 	}
+	
 
 }

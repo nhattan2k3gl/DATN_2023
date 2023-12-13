@@ -30,7 +30,7 @@ public class PaypalRestController {
 	public ResponseEntity<?> getByGia(Model model, @PathVariable("gia") double gia)
 	{
 		try {
-			Payment payment = palpay.createPayment(10.0);
+			Payment payment = palpay.createPayment(gia);
 			for(Links link: payment.getLinks()) {
 				if(link.getRel().equals("approval_url")) {
 					 return ResponseEntity.ok().body("{\"redirectUrl\":\"" + link.getHref() + "\"}");
