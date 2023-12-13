@@ -121,8 +121,7 @@ public class AccountController {
 			user.setDiachi(taiKhoanDTO.getDiachi());
 			if (file != null && !file.isEmpty()) {
 				String fileName = System.currentTimeMillis() + "_" + file.getOriginalFilename();
-				Path filePath = Path.of(uploadPath).resolve(fileName);
-				Files.copy(file.getInputStream(), filePath, StandardCopyOption.REPLACE_EXISTING);
+				uploadService.save(file, "accounts");
 				user.setAnh(fileName);
 			} else {
 				user.setAnh("nd1.png");
