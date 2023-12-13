@@ -123,7 +123,7 @@ app.controller("cart-ctrl", function($scope, $http, $window, $location) {
 					console.log(error);
 				});
 		},
-		paySuccess() {
+		paySuccessOrCannel() {
 			try {
 				var paymentId = new URLSearchParams(window.location.search).get("paymentId");
 				var payerId = new URLSearchParams(window.location.search).get("PayerID");
@@ -142,7 +142,7 @@ app.controller("cart-ctrl", function($scope, $http, $window, $location) {
 						console.log("Không có dữ liệu lưu trữ trong Local Storage.");
 					}
 				}
-				if (token) {
+				if (token && payerId == null && paymentId == null) {
 					Swal.fire({
 						icon: 'error',
 						title: 'Thất bại!',
@@ -150,7 +150,6 @@ app.controller("cart-ctrl", function($scope, $http, $window, $location) {
 					});
 					var savedOrderData = localStorage.getItem('savedOrder');
 					var cannelOrder = JSON.parse(savedOrderData);
-					console.log(cannelOrder, "sau khi xóa")
 					localStorage.removeItem('cannelOrder');
 				}
 			}
@@ -159,10 +158,9 @@ app.controller("cart-ctrl", function($scope, $http, $window, $location) {
 			}
 			return null
 		}
-	}
+	};
 	///load lên form
-	$palpay.paySuccess();
-
+	$palpay.paySuccessOrCannel();
 
 	$scope.formBL = {};
 	$scope.comment = function() {
