@@ -17,4 +17,6 @@ public interface HoaDonService
 	public void delete(String id);
 	
 	public HoaDonEntity crt(JsonNode orderData);
+	
+	public List<HoaDonEntity> findByUsername(String email);
 }

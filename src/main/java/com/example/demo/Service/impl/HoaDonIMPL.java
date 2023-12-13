@@ -85,6 +85,11 @@ public class HoaDonIMPL implements HoaDonService{
 		return order;
 	}
 
+	@Override
+	public List<HoaDonEntity> findByUsername(String email) {
+		return HDDao.findByUsername(email);
+	}
+
 	
 	
 }
