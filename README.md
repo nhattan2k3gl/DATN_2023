@@ -26,25 +26,28 @@ Bạn cũng có thể tải về toàn bộ source code của DATN_2023 bằng m
 Luôn cập nhật bản mới nhất
 sau khi tải source về. Bạn cần mở   <h5>#Eclipse IDE for Enterprise Java and Web Developers - 2023-06<h5> hoặc bất kì phiên bản khác nào bạn có.
 
+       # Chọn File-> Open project.
+
 ![image](https://github.com/DoanNhatTan/DATN_2023/assets/99518851/435a1b9c-7b14-4dde-91b9-513c593ce9f5).
 
-      # Chọn File-> Open project.
+      # Chọn Directory ->(Chọn folder dự án)select folder.
 
 ![image](https://github.com/DoanNhatTan/DATN_2023/assets/99518851/1ef34362-5111-4d8d-b8a0-f3e448867a8c)
 
-    # Chọn Directory ->(Chọn folder dự án)select folder.
+       # Sau khi mở dự án thành công bạn nên* click chuột phải vào Maven->update Maven.
+
 
 ![image](https://github.com/DoanNhatTan/DATN_2023/assets/99518851/6603ab57-10e0-4b7a-b802-63222f38f350)
 
-    # Sau khi mở dự án thành công bạn nên* click chuột phải vào Maven->update Maven.
+       # Tiếp theo bạn cần chạy Database có sẵn trong folder.
 
 ![image](https://github.com/DoanNhatTan/DATN_2023/assets/99518851/cec1a197-0d6e-4af4-a0d9-dfa867ef1730)
 
-    # Tiếp theo bạn cần chạy Database có sẵn trong folder.
+       # Check file application username và password  của SQL server.
 
 ![image](https://github.com/DoanNhatTan/DATN_2023/assets/99518851/e1389934-bf70-4fd4-9215-08456e22a2b7)
 
-    # Check file application username và password  của SQL server.
+    
 
     
       
