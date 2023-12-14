@@ -7,5 +7,5 @@ import com.example.demo.Entity.HoaDonEntity;
 
 public interface HoaDonDao extends JpaRepository<HoaDonEntity, String> {
 	@Query("SELECT count(p.id_hd) FROM HoaDonEntity p")
-	Integer HoaDonCount();
+	Integer DemHD();
 }

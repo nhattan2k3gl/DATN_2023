@@ -49,8 +49,6 @@ public class SanPhamIMPL implements SanPhamService{
 		Date formattedDateAsDate = dateFormat.parse(formattedDateAsString);
 		SPEntity.setNgayxuatban(formattedDateAsDate);
 //		TLService.create(SPEntity.getTheloai());
-		System.out.println(SPEntity.getTheloai().getId_tl());
-		System.out.println(SPEntity.getTheloai().getTentheloai());
 		SPEntity.setTheloai(SPEntity.getTheloai());
 		
 		
@@ -74,7 +72,7 @@ public class SanPhamIMPL implements SanPhamService{
 	@Override
 	public Integer countAllProduct() {
 		// TODO Auto-generated method stub
-		return  SPDao.countAllProduct();
+		return  SPDao.DemSP();
 	}
 
 	@Override

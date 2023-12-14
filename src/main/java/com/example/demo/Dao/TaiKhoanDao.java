@@ -11,4 +11,7 @@ import com.example.demo.Entity.TaiKhoanEntity;
 public interface TaiKhoanDao extends JpaRepository<TaiKhoanEntity, String> {
 	@Query(value = "update taikhoan set matkhau = :matkhau where email = :email",nativeQuery=true)
 	List<TaiKhoanEntity> updatematkhau(@Param("matkhau") String matkhau, @Param("email") String email);
+	
+	@Query(value = "select count(email) from TaiKhoan ",nativeQuery=true)
+	int DemTK();
 }

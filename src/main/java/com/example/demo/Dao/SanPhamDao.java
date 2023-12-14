@@ -12,7 +12,7 @@ import com.example.demo.Entity.SanPhamEntity;
 
 public interface SanPhamDao extends JpaRepository<SanPhamEntity, Integer>  {
 	@Query("SELECT count(p.id_sp) FROM SanPhamEntity p")
-	Integer countAllProduct();
+	Integer DemSP();
 
 	@Query("SELECT p FROM SanPhamEntity p join p.theloai t where lower(t.tentheloai) like lower(:name)")
 	Page<SanPhamEntity> findAllByTheLoai(@Param("name") String string, Pageable pageable);
