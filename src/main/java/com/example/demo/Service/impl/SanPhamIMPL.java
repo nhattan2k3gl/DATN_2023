@@ -10,6 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.Dao.SanPhamDao;
@@ -24,6 +26,8 @@ public class SanPhamIMPL implements SanPhamService{
 	
 	@Autowired
 	TheLoaiService TLService;
+	
+	Boolean count = true;
 
 	@Override
 	public List<SanPhamEntity> findAll() {
@@ -86,5 +90,26 @@ public class SanPhamIMPL implements SanPhamService{
 	@Override
 	public List<SanPhamEntity> findAllByTentheLoai(String categoryName) {
 		return SPDao.findAllByTentheLoai(categoryName);
+	}
+
+	@Override
+	public Page<SanPhamEntity> findByField(Integer page, Integer limit, String field, String ten) {
+		if (!ten.isEmpty()) {
+			Pageable pageable = PageRequest.of(page, limit, Sort.by(Direction.ASC, "id_sp"));
+			return SPDao.findAllByTenLike(ten, pageable);
+		} else if (field.equals("")) {
+			Pageable pageable = PageRequest.of(page, limit);
+			return SPDao.findAll(pageable);
+		} else {
+			if (count) {
+				count = false;
+				Pageable pageable = PageRequest.of(page, limit, Sort.by(Direction.ASC, field));
+				return SPDao.findAll(pageable);
+			} else {
+				count = true;
+				Pageable pageable = PageRequest.of(page, limit, Sort.by(Direction.DESC, field));
+				return SPDao.findAll(pageable);
+			}
+		}
 	}
 }

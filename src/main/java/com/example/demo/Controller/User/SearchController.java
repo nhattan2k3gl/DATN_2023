@@ -65,36 +65,9 @@ public class SearchController {
 		model.addAttribute("request", request);
 		model.addAttribute("list", list);
 		model.addAttribute("items", items);
-		model.addAttribute("product", sanPhamService.countAllProduct());
+		model.addAttribute("product", sanPhamDao.countAllProductLike(kwords));
 		return "user/home/shop";
 	}
-	
-//	@PostMapping("/shop/search")
-//	public String search(Model model, HttpServletRequest request,
-//	        @RequestParam("keywords") Optional<String> kw,
-//	        @RequestParam("category") Optional<String> category,
-//	        @RequestParam("page") Optional<Integer> page) {
-//
-//	    Pageable pageable = PageRequest.of(page.orElse(0), 9);
-//	    String kwords = kw.orElse(session.get("keywords", ""));
-//	    String categoryName = category.orElse(""); // Lấy tên danh mục từ tham số
-//	    Page<SanPhamEntity> items;
-//
-//	    // Nếu có danh mục được chọn, thực hiện tìm kiếm theo danh mục
-//	    if (!categoryName.isEmpty()) {
-//	        items = sanPhamDao.findAllByTenLikeAndTheLoaiTentheloai("%" + kwords + "%", categoryName, pageable);
-//	    } else {
-//	        // Nếu không có danh mục, thực hiện tìm kiếm theo từ khóa
-//	        items = sanPhamDao.findAllByTenLike("%" + kwords + "%", pageable);
-//	    }
-//
-//	    List<TheLoaiEntity> list = theLoaiDao.findAll();
-//	    model.addAttribute("request", request);
-//	    model.addAttribute("list", list);
-//	    model.addAttribute("items", items);
-//	    model.addAttribute("product", sanPhamService.countAllProduct());
-//	    return "user/home/shop";
-//	}
 
 	
 }
