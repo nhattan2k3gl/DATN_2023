@@ -1,52 +1,48 @@
 <div xmlns:th="http://www.thymeleaf.org" th:replace="~{/user/home/layout :: dynamic (~{::main})}">
-	<main th:object="${order}">
+	<main  class="main">
+	<div th:object="${hoadon}" style="padding : 30px 40px 2px">
 		<div class="panel panel-primary">
-			<div class="panel-heading">ORDER INFORMATION</div>
+			<div class="panel-heading" th:text="#{user.orderInfo}" style="text-align: center"></div>
 			<div class="panel-body">
 				<div class="row">
-					<div class="form-group col-sm-4">
-						<div>Order Number:</div>
-						<input th:field="*{id}" class="form-control" readonly>
+					<div class="form-group col-sm-6">
+						<div th:text="#{user.username}"></div>
+						<input th:field="*{taikhoan.email}" class="form-control" readonly>
 					</div>
-					<div class="form-group col-sm-4">
-						<div>Purchaser:</div>
-						<input th:field="*{account.username}" class="form-control" readonly>
-					</div>
-					<div class="form-group col-sm-4">
-						<div>Purchased Date:</div>
-						<input th:field="*{createDate}" class="form-control" readonly>
+					<div class="form-group col-sm-6">
+						<div th:text="#{user.dateOrder}"></div>
+						<input th:field="*{ngaytaohoadon}" class="form-control" readonly>
 					</div>
 				</div>
 				<div class="row">
 					<div class="form-group col-sm-12">
-						<div>Shipping Address:</div>
-						<textarea th:field="*{address}" class="form-control" readonly></textarea>
+						<div th:text="#{user.orderAddress}"></div>
+						<textarea th:field="*{diachi}" class="form-control" readonly></textarea>
 					</div>
 				</div>
 			</div>
 		</div>
 		<div class="panel panel-primary">
-			<div class="panel-heading">ORDER LINES</div>
+			<div class="panel-heading" th:text="#{user.orderLine}" style="text-align: center"></div>
 			<table class="table table-collapse table-bordered">
 				<thead class="bg-success" style="font-size:14px">
 					<tr>
-						<th>Id</th>
-						<th>Name</th>
-						<th>Price</th>
-						<th>Quantity</th>
-						<th>Amount</th>
+						<th th:text="#{user.name}"></th>
+						<th th:text="#{user.price}"></th>
+						<th th:text="#{user.quantity}"></th>
+						<th th:text="#{user.amount}"></th>
 					</tr>
 				</thead>
 				<tbody style="font-size:14px">
-					<tr th:each="detail: *{orderDetails}" th:object="${detail}">
-						<th style="vertical-align:middle;">[[*{product.id}]]</th>
-						<td style="vertical-align:middle;">[[*{product.name}]]</td>
-						<td style="vertical-align:middle;">$[[*{#numbers.formatDecimal(price, 0, 'COMMA', 2, 'POINT')}]]</td>
-						<td style="vertical-align:middle;">[[*{quantity}]]</td>
-						<td style="vertical-align:middle;">$[[*{#numbers.formatDecimal(price*quantity, 0, 'COMMA', 2, 'POINT')}]]</td>
+					<tr th:each="detail: *{hoadonchitiet}" th:object="${detail}">
+						<td style="vertical-align:middle;">[[*{sanpham.ten}]]</td>
+						<td style="vertical-align:middle;">[[*{#numbers.formatDecimal(gia, 0, 'COMMA', 0, 'POINT')}]] ₫</td>
+						<td style="vertical-align:middle;">[[*{soluong}]]</td>
+						<td style="vertical-align:middle;">[[*{#numbers.formatDecimal(gia*soluong, 0, 'COMMA', 0, 'POINT')}]] ₫</td>
 					</tr>
 				</tbody>
 			</table>
+		</div>
 		</div>
 	</main>
 </div>

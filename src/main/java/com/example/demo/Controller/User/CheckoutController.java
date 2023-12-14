@@ -52,7 +52,7 @@ public class CheckoutController {
 	@Autowired
 	PalpayService service;
 
-	@RequestMapping("/order/view")
+	@GetMapping("/order/view")
 	public String index(Model model, HttpServletRequest request) {
 		model.addAttribute("request", request);
 		return "user/order/checkout";
@@ -81,6 +81,21 @@ public class CheckoutController {
 	public String hiiii(Model model, HttpServletRequest request) {
 		model.addAttribute("request", request);
 		return "user/order/success";
+	}
+
+	@RequestMapping("/order/detail/{id}")
+	public String detail(Model model, @PathVariable("id") String id, HttpServletRequest request) {
+		model.addAttribute("request", request);
+		model.addAttribute("hoadon", hoaDonService.findById(id));
+		return "user/order/detail";
+	}
+
+	@RequestMapping("/order/list")
+	public String detail(Model model, HttpServletRequest request) {
+		String email = request.getRemoteUser();
+		model.addAttribute("request", request);
+		model.addAttribute("dshoadon", hoaDonService.findByUsername(email));
+		return "user/order/list";
 	}
 
 }

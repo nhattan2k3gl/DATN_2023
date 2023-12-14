@@ -10,7 +10,7 @@
 			<div class="login-form__top">
 			    <h2 class="login-form__title"><th:block th:text="#{user.profiletitle}"></th:block></h2>
 				<p class="login-form__text"><th:block th:text="#{user.profiletext}"></th:block></p>
-				<img class="wishlist__image" style="width: 100px; height: 200px;" th:src="@{|/assets/accounts/${taiKhoanDTO.anh}|}">
+				<img class="wishlist__image" style="width: 100px; height: 200px;" th:src="@{|/user/img/accounts/${taiKhoanDTO.anh}|}">
 			</div>
 			<form th:action="@{|/profile/update|}" method="post" th:object="${taiKhoanDTO}" enctype="multipart/form-data">
 				<span class="login-form__label"><th:block th:text="#{user.image}"></th:block></span>

@@ -84,11 +84,11 @@ public class HomeController {
 		if (field.equals("")) {
 			model.addAttribute("items", sanPhamService.findAll(page.orElse(0), 9));
 		} else {
-			model.addAttribute("items", sanPhamService.findAll(page.orElse(0), 9));
+			model.addAttribute("items", sanPhamService.findByField(page.orElse(0), 9, field, ""));
 		}
 		List<TheLoaiEntity> list = theLoaiService.findAll();
 		model.addAttribute("list", list);
-		model.addAttribute("product", sanPhamService.countAllProduct());
+		model.addAttribute("product", sanPhamDao.countAllProduct());
 		return "user/home/shop";
 	}
 	

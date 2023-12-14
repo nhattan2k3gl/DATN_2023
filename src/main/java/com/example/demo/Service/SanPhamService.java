@@ -23,4 +23,6 @@ public interface SanPhamService {
 	public void delete(int id);
 
 	List<SanPhamEntity> findAllByTentheLoai(String categoryName);
+
+	Page<SanPhamEntity> findByField(Integer page, Integer limit, String field, String ten);
 }
