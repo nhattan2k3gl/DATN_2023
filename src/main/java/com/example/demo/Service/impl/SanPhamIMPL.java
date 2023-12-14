@@ -76,7 +76,7 @@ public class SanPhamIMPL implements SanPhamService{
 	@Override
 	public Integer countAllProduct() {
 		// TODO Auto-generated method stub
-		return  SPDao.DemSP();
+		return  SPDao.countAllProduct();
 	}
 
 	@Override

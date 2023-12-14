@@ -33,13 +33,13 @@ public class TrangChuController {
 	public String TrangChuGet(Model model)
 	{
 		model.addAttribute("TongTienHDCT",HDCTDao.ThongKeTongHDCT());
-		model.addAttribute("DemSP",SPDao.DemSP());
+		model.addAttribute("DemSP",SPDao.countAllProduct());
 		model.addAttribute("DemBL",BLDao.DemBL());
 		model.addAttribute("DemHD",HDDao.DemHD());
 		
 		System.out.println(TKDao.DemTK());
 		
-//		for(ThongKeHDCTTheoThangDTO hd : HDCTDao.ThongKeHDCTTheoThang())
+//		for(ThongKeHDCTTheoThangDTO hd : HDCTDao.ThongKeHDCTTheoThang12())
 //		{
 //			System.out.println(hd.getGia());
 //		}

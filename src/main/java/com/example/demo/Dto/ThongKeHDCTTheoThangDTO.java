@@ -8,10 +8,12 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+@Entity
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 public class ThongKeHDCTTheoThangDTO {
+	@Id
 	double gia;
 	int soluong;
 }

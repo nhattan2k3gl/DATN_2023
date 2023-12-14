@@ -13,9 +13,12 @@ import com.example.demo.Entity.HoaDonChiTietEntity;
 public interface HoaDonChiTietDao extends JpaRepository<HoaDonChiTietEntity, String> {
 	@Query(value = "select SUM(HoaDonChiTiet.gia*HoaDonChiTiet.SoLuong) as N'Tổng Tiền' from HoaDonChiTiet join SanPham on HoaDonChiTiet.ID_HD=sanpham.ID_SP", nativeQuery = true)
 	Integer ThongKeTongHDCT();
-
+	
+//  Cánh này cũng dùng được
 //	@Query(value = "SELECT HoaDonChiTiet.gia, HoaDonChiTiet.SoLuong FROM HoaDonChiTiet LEFT JOIN HoaDon ON HoaDonChiTiet.ID_HD = HoaDon.ID_HD WHERE month(HoaDon.NgayTaoHoaDon) = '12' AND YEAR(HoaDon.NgayTaoHoaDon) = '2023'", nativeQuery = true)
 //	List<Object[]> ThongKeHDCTTheoThang();
-//	@Query(value = "SELECT new ThongKeHDCTTheoThangDTO(ThongKeHDCTTheoThangDTO.gia, ThongKeHDCTTheoThangDTO.SoLuong) FROM HoaDonEntity")
-//    List<ThongKeHDCTTheoThangDTO> ThongKeHDCTTheoThang();
+
+//	Cánh dưới này cũng dùng được
+	@Query(value = "SELECT new ThongKeHDCTTheoThangDTO(ThongKeHDCTTheoThangDTO.gia, ThongKeHDCTTheoThangDTO.SoLuong) FROM HoaDonChiTiet", nativeQuery = true)
+    List<ThongKeHDCTTheoThangDTO> ThongKeHDCTTheoThang();
 }
