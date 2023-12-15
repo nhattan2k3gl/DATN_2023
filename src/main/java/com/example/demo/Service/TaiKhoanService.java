@@ -1,6 +1,7 @@
 package com.example.demo.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 import com.example.demo.Entity.TaiKhoanEntity; 
 
@@ -17,4 +18,10 @@ public interface TaiKhoanService {
 	public TaiKhoanEntity update(TaiKhoanEntity TKEntity);
 
 	public void delete(String id);
+
+	public void updateToken(String token, String email) throws Exception;
+
+	public void updatePassword(TaiKhoanEntity user, String password);
+
+	public Optional<TaiKhoanEntity> getByToken(String token);
 }

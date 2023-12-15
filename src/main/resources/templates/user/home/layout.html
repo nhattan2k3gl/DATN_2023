@@ -20,7 +20,30 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.9/angular.min.js"></script>
 
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400&family=Raleway:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+	<style>
+        .loaded .load-icon{display:block;}
+        .loaded *{-webkit-transition:none; -ms-transition:none; transition:none;}
+        .load-icon{width:100%; height:100%; margin:0; padding:0; display:none; z-index:99999; position:absolute; top:0; left:0; background:#fff;}
+        .load-icon:before{content:""; width:64px; height:64px; margin:-32px 0 0 -32px; position:absolute; top:50%; left:50%; background:url(assets/img/loader.gif) no-repeat left top;}
+    </style> 
+
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.6.5/dist/sweetalert2.min.css">
+
+<style type="text/css">
+.custab{
+    border: 1px solid #ccc;
+    padding: 5px;
+    margin: 5% 0;
+    box-shadow: 3px 3px 2px #ccc;
+    transition: 0.5s;
+    }
+.custab:hover{
+    box-shadow: 3px 3px 0px transparent;
+    transition: 0.5s;
+    }
+</style>
 
 <!-- script
 		================================================== -->
@@ -92,6 +115,7 @@ setInterval(function() {
 <script th:src="@{/user/js/shopping-cart-app.js}"></script>
 
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.6.5/dist/sweetalert2.all.min.js"></script>
+
 
 </body>
 </html>

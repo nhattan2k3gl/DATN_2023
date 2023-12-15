@@ -83,19 +83,19 @@ public class CheckoutController {
 		return "user/order/success";
 	}
 
-	@RequestMapping("/order/detail/{id}")
-	public String detail(Model model, @PathVariable("id") String id, HttpServletRequest request) {
-		model.addAttribute("request", request);
-		model.addAttribute("hoadon", hoaDonService.findById(id));
-		return "user/order/detail";
-	}
-
-	@RequestMapping("/order/list")
-	public String detail(Model model, HttpServletRequest request) {
-		String email = request.getRemoteUser();
-		model.addAttribute("request", request);
-		model.addAttribute("dshoadon", hoaDonService.findByUsername(email));
-		return "user/order/list";
-	}
+//	@RequestMapping("/order/detail/{id}")
+//	public String detail(Model model, @PathVariable("id") String id, HttpServletRequest request) {
+//		model.addAttribute("request", request);
+//		model.addAttribute("hoadon", hoaDonService.findById(id));
+//		return "user/order/detail";
+//	}
+//
+//	@RequestMapping("/order/list")
+//	public String detail(Model model, HttpServletRequest request) {
+//		String email = request.getRemoteUser();
+//		model.addAttribute("request", request);
+//		model.addAttribute("dshoadon", hoaDonService.findByUsername(email));
+//		return "user/order/list";
+//	}
 
 }

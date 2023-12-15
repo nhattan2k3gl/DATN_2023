@@ -6,9 +6,11 @@ import java.nio.file.Path;
 import java.nio.file.StandardCopyOption;
 import java.util.List;
 import java.util.Optional;
+import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.repository.query.Param;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -26,14 +28,17 @@ import com.example.demo.Dao.TaiKhoanDao;
 import com.example.demo.Dto.TaiKhoanDTO;
 import com.example.demo.Dto.TaiKhoanDTOForUpdate;
 import com.example.demo.Entity.TaiKhoanEntity;
+import com.example.demo.Service.HoaDonService;
 import com.example.demo.Service.MailerService;
 import com.example.demo.Service.TaiKhoanService;
 import com.example.demo.Service.UploadService;
 import com.example.demo.Service.VaiTroService;
 
+import ch.qos.logback.core.testUtil.RandomUtil;
 import jakarta.mail.MessagingException;
 import jakarta.servlet.ServletContext;
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
 
@@ -64,6 +69,9 @@ public class AccountController {
 
 	@Autowired
 	UploadService upload;
+	
+	@Autowired
+	HoaDonService hoaDonService;
 
 	@GetMapping("/login")
 	public String formlogin() {
@@ -107,6 +115,7 @@ public class AccountController {
 		model.addAttribute("taiKhoanDTO", taiKhoanService.findByUsername(request.getRemoteUser()));
 		model.addAttribute("request", request);
 		model.addAttribute("items", taiKhoanDao.findAll());
+		model.addAttribute("dshoadon", hoaDonService.findByUsername(request.getRemoteUser()));
 		return "user/taikhoan/profile";
 	}
 
@@ -182,5 +191,74 @@ public class AccountController {
 		model.addAttribute("request", request);
 		return "user/taikhoan/forgot-password";
 	}
+	
+	@PostMapping("/forgot-password")
+	public String forgotPassword(@RequestParam("email") String email, HttpServletRequest request, Model model)
+			throws Exception {
+		try {
+			String token = generateRandomString(10);
+			taiKhoanService.updateToken(token, email);
+			String resetLink = getSiteURL(request) + "/reset-password?token=" + token;
+			mailer.sendEmail(email, resetLink);
+			model.addAttribute("request", request);
+			model.addAttribute("message", "We have sent a reset password link to your email. "
+					+ "If you don't see the email, check your spam folder.");
+		} catch (MessagingException e) {
+			e.printStackTrace();
+			model.addAttribute("request", request);
+			model.addAttribute("error", "Error while sending email");
+		}
+		return "user/taikhoan/forgot-password";
+	}
+	
+	@GetMapping("/reset-password")
+	public String resetPasswordForm(@Param(value = "token") String token, Model model, HttpServletRequest request) {
+		Optional<TaiKhoanEntity> account = taiKhoanService.getByToken(token);
+		model.addAttribute("request", request);
+		model.addAttribute("token", token);
+		if (account.isEmpty()) {
+			model.addAttribute("message", "Invalid token!");
+			return "redirect:/login";
+		}
+		return "user/taikhoan/reset-password";
+	}
+	
+	@PostMapping("/reset-password")
+	public String resetPassword(@RequestParam("token") String token, @RequestParam("password") String password,
+	                                   HttpServletResponse response, Model model, HttpServletRequest request) {
+		Optional<TaiKhoanEntity> user = taiKhoanService.getByToken(request.getParameter("token"));
+	    System.out.println(token);
+	    model.addAttribute("request", request);
+
+	    if (user.isEmpty()) {
+			model.addAttribute("message", "Invalid token!");
+		} else {
+	        taiKhoanService.updatePassword(user.get(), password);
+	        model.addAttribute("message", "You have successfully changed your password!");
+	        response.addHeader("refresh", "3;url=/login");
+	    }
+
+	    return "user/taikhoan/reset-password";
+	}
+
+	
+	public String getSiteURL(HttpServletRequest request) {
+		String siteURL = request.getRequestURL().toString();
+		return siteURL.replace(request.getServletPath(), "");
+	}
+	
+	public static String generateRandomString(int length) {
+        String characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+        StringBuilder randomString = new StringBuilder();
+
+        Random random = new Random();
+        for (int i = 0; i < length; i++) {
+            int randomIndex = random.nextInt(characters.length());
+            char randomChar = characters.charAt(randomIndex);
+            randomString.append(randomChar);
+        }
+
+        return randomString.toString();
+    }
 
 }

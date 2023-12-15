@@ -92,4 +92,20 @@ public class HomeController {
 		return "user/home/shop";
 	}
 	
+	@GetMapping("/shop/category")
+	public String shopCategory(Model model, HttpServletRequest request
+						, @RequestParam(name = "field", defaultValue = "") String field,
+						@RequestParam(name = "page") Optional<Integer> page) {
+		model.addAttribute("request", request);
+		if (field.equals("")) {
+			model.addAttribute("items", sanPhamService.findAll(page.orElse(0), 9));
+		} else {
+			model.addAttribute("items", sanPhamService.findByField(page.orElse(0), 9, field, ""));
+		}
+		List<TheLoaiEntity> list = theLoaiService.findAll();
+		model.addAttribute("list", list);
+		model.addAttribute("product", sanPhamDao.countAllProduct());
+		return "user/home/shop";
+	}
+	
 }

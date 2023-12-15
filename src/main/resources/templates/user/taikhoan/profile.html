@@ -1,40 +1,128 @@
-<div xmlns:th="http://www.thymeleaf.org" th:replace="~{/user/home/layout :: dynamic (~{::main})}">
+<div xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{/user/home/layout :: dynamic (~{::main})}">
 
-<!-- BEGIN MAIN -->
-<main class="main">
-    
+	<!-- BEGIN MAIN -->
+	<main class="main">
 
-    <!-- BEGIN PROFILE -->
-    <div class="profile-page wrapper">
-        <div class="login-form" style="max-width:100%">
-			<div class="login-form__top">
-			    <h2 class="login-form__title"><th:block th:text="#{user.profiletitle}"></th:block></h2>
-				<p class="login-form__text"><th:block th:text="#{user.profiletext}"></th:block></p>
-				<img class="wishlist__image" style="width: 100px; height: 200px;" th:src="@{|/user/img/accounts/${taiKhoanDTO.anh}|}">
+
+		<!-- BEGIN PROFILE -->
+		<div class="profile-page wrapper">
+			<div class="profile-nav tabs-nav js-line">
+				<ul class="profile-nav__list tabs-nav__list tabs-nav__list_left">
+					<li class="tabs-nav__item js-tabs-item js-line-item active"><a
+						class="tabs-nav__link js-line-link js-tabs-link"
+						href="#profile-tab-1">my profile</a></li>
+					<li class="tabs-nav__item js-line-item js-tabs-item"><a
+						class="tabs-nav__link js-line-link js-tabs-link"
+						href="#profile-tab-2">my orders</a></li>
+				</ul>
+				<div class="tabs-nav__line js-line-element"></div>
 			</div>
-			<form th:action="@{|/profile/update|}" method="post" th:object="${taiKhoanDTO}" enctype="multipart/form-data">
-				<span class="login-form__label"><th:block th:text="#{user.image}"></th:block></span>
-				<input class="text-input" type="file" name="anh" th:field="*{anh}">
-				
-				<span class="login-form__label"><th:block th:text="#{user.fullname}"></th:block></span>
-				<input class="text-input" type="text" name="hovaten" th:field="*{hovaten}" ng-readonly="true">
-				
-				<span class="login-form__label"><th:block th:text="#{user.email}"></th:block></span>
-				<input class="text-input" type="email" name="email" th:field="*{email}" ng-readonly="true">
-				
-				<span class="login-form__label"><th:block th:text="#{user.password}"></th:block></span>
-				<input class="text-input" type="password" name="matkhau" placeholder="***" th:field="*{matkhau}" required>
-				
-				<span class="login-form__label" for="diachi"><th:block th:text="#{user.address}"></th:block></span>
-				<input class="text-input" type="text" name="diachi" id="diachi" th:field="*{diachi}" required>
-				
-				<button class="login-form__button button" type="submit">
-				    <span class="button__text">Update</span>
-				</button>
-			</form>
+			<div class="profile-tab js-tabs-content active" id="profile-tab-1">
+				<div class="login-form" style="max-width: 100%">
+					<div class="login-form__top">
+						<h2 class="login-form__title">
+							<th:block th:text="#{user.profiletitle}"></th:block>
+						</h2>
+						<p class="login-form__text">
+							<th:block th:text="#{user.profiletext}"></th:block>
+						</p>
+						<img class="wishlist__image" style="width: 100px; height: 200px;"th:src="@{|/assets/accounts/${taiKhoanDTO.anh}|}">
+					</div>
+					<form th:action="@{|/profile/update|}" method="post" th:object="${taiKhoanDTO}" enctype="multipart/form-data">
+						<span class="login-form__label"><th:block th:text="#{user.image}"></th:block></span> 
+						<input class="text-input" type="file" name="anh" th:field="*{anh}"> 
+						<span class="login-form__label"><th:block th:text="#{user.fullname}"></th:block></span> 
+						<input class="text-input" type="text" name="hovaten" th:field="*{hovaten}" ng-readonly="true"> 
+						<span class="login-form__label"><th:block th:text="#{user.email}"></th:block></span> 
+						<input class="text-input"type="email" name="email" th:field="*{email}" ng-readonly="true">
+
+						<span class="login-form__label"><th:block th:text="#{user.password}"></th:block></span> 
+						<input class="text-input" type="password" name="matkhau" placeholder="***" th:field="*{matkhau}" required> 
+						<span class="login-form__label" for="diachi"><th:block th:text="#{user.address}"></th:block></span> 
+						<input class="text-input" type="text" name="diachi" id="diachi" th:field="*{diachi}" required>
+
+						<button class="login-form__button button" type="submit">
+							<span class="button__text">Update</span>
+						</button>
+					</form>
+				</div>
+			</div>
+			<div class="profile-tab js-tabs-content active" id="profile-tab-2">
+
+				<div class="orders js-faq" th:each="hoadon, state: ${dshoadon}">
+
+					<div class="order js-faq-item">
+						<div class="order__top">
+							<a class="order__button js-faq-button" href="javascript:void(0);">
+								<div class="order-header">
+									<div class="order-header__col">
+										<span class="order-header__number">[[${state.index +
+											1}]]</span>
+									</div>
+									<div class="order-header__col" style="white-space: nowrap;">
+										<span class="order-header__date"
+											th:text="#{user.dateOrder} +': ' + ${hoadon.ngaytaohoadon}"></span>
+									</div>
+
+								</div>
+							</a>
+						</div>
+						<div class="order__hide js-faq-hide">
+							<div class="order__content"
+								th:each="detail: ${hoadon.hoadonchitiet}">
+								<div class="order-table">
+									<article class="order-table__item">
+										<div class="order-table__cols">
+											<div class="order-table__col">
+												<a class="order-table__image-link" href="product_page.html">
+													<img class="order-table__image"
+													th:src="@{|/assets/products/${detail.sanpham.anh}|}">
+												</a>
+											</div>
+											<div class="order-table__col">
+												<h4 class="order-table__title">
+													<a class="order-table__link" href="product_page.html">[[${detail.sanpham.ten}]]</a>
+												</h4>
+												<span class="order-table__text">:
+													x[[${detail.soluong}]]</span>
+											</div>
+											<div class="order-table__col">
+												<span class="order-table__price">[[${#numbers.formatDecimal(detail.gia,
+													0, 'COMMA', 0, 'POINT')}]] ₫</span>
+											</div>
+										</div>
+									</article>
+								</div>
+								<div class="order-total">
+									<div class="order-total__item">
+										<div class="order-total__col" style="white-space: nowrap;">
+											<span class="order-total__title"
+												th:text="#{user.amount} + ': '"></span>
+										</div>
+										<div class="order-total__col">
+											<div class="order-total__price">[[${#numbers.formatDecimal(detail.gia * detail.soluong, 0, 'COMMA', 0, 'POINT')}]] ₫</div>
+										</div>
+									</div>
+									<div class="order-total__item">
+										<div class="order-total__col">
+											<span class="order-total__title"
+												th:text="#{user.orderAddress} + ': '"></span>
+										</div>
+										<div class="order-total__col">
+											<div class="order-total__text">[[${hoadon.diachi}]]</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+				</div>
+			</div>
+			<!-- TAB 2 END -->
 		</div>
-    </div>
-    <!-- PROFILE END -->
-</main>
-<!-- MAIN END -->
+		<!-- PROFILE END -->
+	</main>
+	<!-- MAIN END -->
 </div>

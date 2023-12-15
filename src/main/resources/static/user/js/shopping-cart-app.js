@@ -51,6 +51,16 @@ app.controller("cart-ctrl", function($scope, $http, $window, $location) {
 
 
 	}
+	
+	$history = $scope.history = {
+		items: [],
+		get amount() { // tổng thành tiền các mặt hàng trong giỏ
+			return this.items
+				.map(item => item.soluong * item.gia)
+				.reduce((total, amt) => total += amt, 0);
+		},
+	}
+	
 	//load lên form
 	$cart.loadFromLocalStorage();
 

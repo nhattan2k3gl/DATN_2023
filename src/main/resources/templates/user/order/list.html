@@ -1,31 +1,28 @@
 <div xmlns:th="http://www.thymeleaf.org" th:replace="~{/user/home/layout :: dynamic (~{::main})}">
 	<main>
-	<div style="padding : 100px 40px 2px">
-		<div class="panel panel-primary">
-			<div class="panel-heading" th:text="#{user.orderHistory}" style="text-align: center"></div>
-			<table class="table table-collapse table-bordered">
-				<thead class="bg-success" style="font-size:14px">
-					<tr>
-						<th></th>
-						<th th:text="#{user.dateOrder}"></th>
-						<th th:text="#{user.orderAddress}"></th>
-						<th th:text="#{user.orderDetail}"></th>
-					</tr>
-				</thead>
-				<tbody style="font-size:14px">
-					<tr th:each="hoadon, state: ${dshoadon}">
-						<th style="vertical-align:middle;">[[${state.index + 1}]]</th>
-						<td style="vertical-align:middle;">[[${hoadon.ngaytaohoadon}]]</td>
-						<td style="vertical-align:middle;">[[${hoadon.diachi}]]</td>
-						<td style="vertical-align:middle;">
+		<div class="container" style="padding : 50px 40px 2px">
+		    <div class="row col-12 custyle">
+			    <table class="table table-striped custab">
+				    <thead>
+				        <tr>
+				            <th></th>
+							<th th:text="#{user.dateOrder}"></th>
+							<th th:text="#{user.orderAddress}"></th>
+							<th th:text="#{user.orderDetail}"></th>
+				        </tr>
+				    </thead>
+			            <tr th:each="hoadon, state: ${dshoadon}">
+							<th style="vertical-align:middle;">[[${state.index + 1}]]</th>
+							<td style="vertical-align:middle;">[[${hoadon.ngaytaohoadon}]]</td>
+							<td style="vertical-align:middle;">[[${hoadon.diachi}]]</td>
+							<td style="vertical-align:middle;">
 							<a th:href="@{|/order/detail/${hoadon.id_hd}|}" class="btn btn-default">
 								<b class="glyphicon glyphicon-eye-open"></b>
 							</a>
-						</td>
-					</tr>
-				</tbody>
-			</table>
-		</div>
+							</td>
+						</tr>
+			    </table>
+		    </div>
 		</div>
 	</main>
 </div>
