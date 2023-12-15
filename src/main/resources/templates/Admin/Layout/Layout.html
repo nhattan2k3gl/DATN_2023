@@ -10,9 +10,10 @@
     <meta name="author" content="">
 
     <title>Quản Lý Bán Sách</title>
+    
+    <!-- this is title icon and a library icon -->
     <link rel="icon" th:href="@{https://pantado.edu.vn/storage/media/J4NYFXsKcVTHILWiTfiw5dIDSRXQ57n9SHWLnjEx.jpeg}" type="image/x-icon">
 	<link rel="shortcut icon" th:href="@{https://pantado.edu.vn/storage/media/J4NYFXsKcVTHILWiTfiw5dIDSRXQ57n9SHWLnjEx.jpeg}" type="image/x-icon">
-
     <!-- Custom fonts for this template-->
     <link th:href="@{/asses/vendor/fontawesome-free/css/all.min.css}" rel="stylesheet" type="text/css">
     <link
@@ -22,20 +23,17 @@
     <!-- Custom styles for this template-->
     <link th:href="@{/asses/css/sb-admin-2.min.css}" rel="stylesheet">
     
-    <!-- Custom styles for this page -->
+    <!-- this is a library datatable -->
     <link th:href="@{/asses/vendor/datatables/dataTables.bootstrap4.min.css}" rel="stylesheet">
-    
     <script type="text/javascript" charset="utf8" th:src="@{https://code.jquery.com/jquery-3.7.0.js}"></script>
     <script type="text/javascript" charset="utf8" th:src="@{https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js}"></script>
     <script type="text/javascript" charset="utf8" th:src="@{https://cdn.datatables.net/1.13.7/js/dataTables.bootstrap.min.js}"></script>
     
+    <!-- this is angularjs -->
     <script type="text/javascript" charset="utf8" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.0/angular.min.js"></script>
-    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.24/js/dataTables.angular.min.js"></script>
     
+    <!-- this is a library notification -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.6.5/dist/sweetalert2.min.css">
-    
-     
-
 </head>
 
 <body id="page-top">
@@ -90,13 +88,13 @@
     </div>
 
     <!-- Bootstrap core JavaScript-->
-    
     <!-- <script th:src="@{/asses/vendor/jquery/jquery.min.js}"></script> -->
     <!-- <script th:src="@{/asses/vendor/jquery/jquery.js}"></script> -->
     
-    
+    <!-- Bootstrap -->
     <script th:src="@{/asses/vendor/bootstrap/js/bootstrap.bundle.min.js}"></script>
-
+	<script th:src="@{/asses/vendor/datatables/dataTables.bootstrap4.min.js}"></script>
+    
     <!-- Core plugin JavaScript-->
     <script th:src="@{/asses/vendor/jquery-easing/jquery.easing.min.js}"></script>
 
@@ -106,25 +104,21 @@
     <!-- Page level plugins -->
     <!-- <script th:src="@{/asses/vendor/datatables/jquery.dataTables.min.js}"></script> -->
     <!-- <script th:src="@{/asses/vendor/datatables/jquery.dataTables.js}"></script> -->
-    
-    
-    
-    <script th:src="@{/asses/vendor/datatables/dataTables.bootstrap4.min.js}"></script>
-    
 
     <!-- Page level custom scripts -->
-   <script th:src="@{/asses/js/demo/datatables-demo.js}"></script>
+   	<!-- <script th:src="@{/asses/js/demo/datatables-demo.js}"></script> -->
+    <!-- Đường dẫn đến tệp ngôn ngữ Tiếng Việt in datatable-->
+    <script src="path/to/vi.json"></script> 
     
-    <script src="path/to/vi.json"></script> <!-- Đường dẫn đến tệp ngôn ngữ Tiếng Việt -->
-    
-    <!-- Page level plugins -->
+    <!-- this is a library chart.js-->
     <script src="vendor/chart.js/Chart.min.js"></script>
 
-    <!-- Page level custom scripts -->
+    <!-- Here is the link of the chart.js -->
     <script src="js/demo/chart-area-demo.js"></script>
     <script src="js/demo/chart-pie-demo.js"></script>
 
-     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.6.5/dist/sweetalert2.all.min.js"></script>
+	<!-- this is a library notification -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.6.5/dist/sweetalert2.all.min.js"></script>
 
 </body>
 

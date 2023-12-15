@@ -1,5 +1,8 @@
 package com.example.demo.Controller.Admin;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,7 +15,6 @@ import com.example.demo.Dao.HoaDonChiTietDao;
 import com.example.demo.Dao.HoaDonDao;
 import com.example.demo.Dao.SanPhamDao;
 import com.example.demo.Dao.TaiKhoanDao;
-import com.example.demo.Dto.ThongKeHDCTTheoThangDTO;
 import com.example.demo.Entity.HoaDonChiTietEntity;
 
 @Controller
@@ -37,19 +39,14 @@ public class TrangChuController {
 		model.addAttribute("DemBL",BLDao.DemBL());
 		model.addAttribute("DemHD",HDDao.DemHD());
 		
-		System.out.println(TKDao.DemTK());
-		
-//		for(ThongKeHDCTTheoThangDTO hd : HDCTDao.ThongKeHDCTTheoThang12())
-//		{
-//			System.out.println(hd.getGia());
-//		}
-//		for (Object[] result : HDCTDao.ThongKeHDCTTheoThang()) {
-//		    Double gia = (Double) result[0];
-//		    Integer soLuong = (Integer) result[1];
-//
-//		    // Bạn có thể sử dụng gia và soLuong ở đây để thực hiện các thao tác khác
-//		    System.out.println("Gia: " + gia + ", SoLuong: " + soLuong);
-//		}
+		List<HoaDonChiTietEntity> HDCTThongKeTheoNam= new ArrayList<>();
+		for (Object[] result : HDCTDao.ThongKeHDCTTheoThang("2023")) {
+		    Double gia = (Double) result[0];
+		    Integer soLuong = (Integer) result[1];
+		    HoaDonChiTietEntity hdct = new HoaDonChiTietEntity(0, soLuong, gia, null, null);
+		    HDCTThongKeTheoNam.add(hdct);
+		}
+		model.addAttribute("HDCTThongKeTheoNam", HDCTThongKeTheoNam);
 		
 		return "Admin/TrangChu/TrangChu";
 	}
