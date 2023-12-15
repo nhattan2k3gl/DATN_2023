@@ -63,10 +63,10 @@ public class CheckoutController {
 			@RequestParam("token") String token, Model model, HttpServletRequest request) {
 		try {
 			if (!paymentId.equals("") && !payerId.equals("")) {
-				System.out.println(" đã thanh toán thành công");
 				Payment payment = service.executePayment(paymentId, payerId);
-				System.out.println(payment.toJSON());
+//				System.out.println(payment.toJSON()); in hoa don chi tiet ve thanh toan
 				if (payment.getState().equals("approved")) {
+					
 				}
 			}
 

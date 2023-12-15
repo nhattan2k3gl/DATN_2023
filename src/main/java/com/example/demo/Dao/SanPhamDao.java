@@ -13,7 +13,6 @@ import com.example.demo.Entity.SanPhamEntity;
 public interface SanPhamDao extends JpaRepository<SanPhamEntity, Integer>  {
 	@Query("SELECT count(p.id_sp) FROM SanPhamEntity p")
 	Integer countAllProduct();
-	
 	@Query("SELECT COUNT(p.id_sp) FROM SanPhamEntity p WHERE p.ten LIKE %:kw%")
 	Integer countAllProductLike(@Param("kw") String kw);
 

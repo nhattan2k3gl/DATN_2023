@@ -32,6 +32,7 @@ public class TaiKhoanController {
 	public String TaiKhoanGet(Model model) {
 		TaiKhoanEntity TKEntity = new TaiKhoanEntity();
 		model.addAttribute("TKEntity", TKEntity);
+		
 		List<TaiKhoanEntity> ListTKService = TKService.findAll();
 		model.addAttribute("TKService", ListTKService);
 		return "Admin/TaiKhoan/TaiKhoan";

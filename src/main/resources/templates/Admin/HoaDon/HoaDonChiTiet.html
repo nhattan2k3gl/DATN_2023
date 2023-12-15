@@ -59,9 +59,9 @@
                                             <td>[[${HDCTService.hoadon.diachi}]]</td>
                                             <td>[[${HDCTService.hoadon.taikhoan.email}]]</td>
                                             <td>[[${HDCTService.sanpham.ten}]]</td>
-                                            <td name="gia">[[${#numbers.formatDecimal(HDCTService.sanpham.gia,2,0)}]]</td>
+                                            <td name="gia">[[${#numbers.formatDecimal(HDCTService.gia,2,0)}]]</td>
                                             <td>[[${HDCTService.soluong}]]</td>
-                                            <td name="tongtien">[[${#numbers.formatDecimal(HDCTService.soluong * HDCTService.sanpham.gia ,2,0)}]] </td>
+                                            <td name="tongtien">[[${#numbers.formatDecimal(HDCTService.soluong * HDCTService.gia ,2,0)}]] </td>
                                             <!-- <td>
                                                 <a class="text-white bg-danger"
                                                     th:href="@{|/Admin/HoaDonChiTiet/Delete/${HDCTService.id_hdct}|}">Xóa</a>
