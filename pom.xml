@@ -121,8 +121,6 @@
 			<version>5.1.1</version>
 		</dependency>
 		
-
-
 		<!--export xml -->
 		<dependency>
 			<groupId>org.apache.poi</groupId>
@@ -135,18 +133,13 @@
 			<version>5.2.2</version>
 		</dependency>
 
-		<!-- take a pohto in testng -->
+		<!-- take a photo in testng -->
 		<dependency>
 			<groupId>ru.yandex.qatools.ashot</groupId>
 			<artifactId>ashot</artifactId>
 			<version>1.5.4</version>
 		</dependency>
-		<dependency>
-			<groupId>org.projectlombok</groupId>
-			<artifactId>lombok</artifactId>
-			<version>1.18.20</version>
-			<scope>provided</scope>
-		</dependency>
+
 
 	</dependencies>
 

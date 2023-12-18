@@ -258,7 +258,7 @@ public class TestLogin {
 		}
 
 		// Đóng WebDriver
-		driver.close();
+//		driver.close();
 
 	}
 
@@ -313,8 +313,8 @@ public class TestLogin {
 							password, "Test Login", expected, actualTitle, "PASS", formattedDate, "" });
 				} else {
 					// Xử lý khi đăng nhập không thành công, chụp ảnh và ghi lại thông tin lỗi
-					driver.findElement(By.xpath("//*[@id=\"exampleInputEmail\"]")).sendKeys(username);
-					driver.findElement(By.xpath("//*[@id=\"exampleInputPassword\"]")).sendKeys(password);
+//					driver.findElement(By.xpath("//*[@id=\"exampleInputEmail\"]")).sendKeys(username);
+//					driver.findElement(By.xpath("//*[@id=\"exampleInputPassword\"]")).sendKeys(password);
 					String path = IMAGE_DIR + "failure-" + System.currentTimeMillis() + ".png";
 					// Chụp ảnh màn hình và lưu lại đường dẫn
 					takeScreenShot(driver, path);

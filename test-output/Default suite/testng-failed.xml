@@ -5,9 +5,9 @@
     <classes>
       <class name="com.example.demo.TestLogin">
         <methods>
-          <include name="afterTest"/>
-          <include name="beforeTest"/>
-          <include name="lmsTest"/>
+          <include name="suiteTest"/>
+          <include name="LoginTest"/>
+          <include name="suiteTearDown"/>
         </methods>
       </class> <!-- com.example.demo.TestLogin -->
     </classes>
