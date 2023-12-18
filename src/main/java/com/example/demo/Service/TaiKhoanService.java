@@ -24,4 +24,6 @@ public interface TaiKhoanService {
 	public void updatePassword(TaiKhoanEntity user, String password);
 
 	public Optional<TaiKhoanEntity> getByToken(String token);
+
+	public boolean existsByEmail(String email);
 }

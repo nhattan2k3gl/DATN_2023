@@ -83,4 +83,10 @@ public class TaiKhoanIMPL implements TaiKhoanService {
 		return TKDao.findByToken(token);
 	}
 
+	@Override
+	public boolean existsByEmail(String email) {
+		// TODO Auto-generated method stub
+		return TKDao.existsByEmail(email);
+	}
+
 }
