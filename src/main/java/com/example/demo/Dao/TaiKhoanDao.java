@@ -21,4 +21,6 @@ public interface TaiKhoanDao extends JpaRepository<TaiKhoanEntity, String> {
 
 	@Query(value = "select count(email) from TaiKhoan ", nativeQuery = true)
 	int DemTK();
+
+	boolean existsByEmail(String email);
 }

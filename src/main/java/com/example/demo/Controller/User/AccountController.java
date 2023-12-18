@@ -196,13 +196,20 @@ public class AccountController {
 	public String forgotPassword(@RequestParam("email") String email, HttpServletRequest request, Model model)
 			throws Exception {
 		try {
-			String token = generateRandomString(10);
-			taiKhoanService.updateToken(token, email);
-			String resetLink = getSiteURL(request) + "/reset-password?token=" + token;
-			mailer.sendEmail(email, resetLink);
-			model.addAttribute("request", request);
-			model.addAttribute("message", "We have sent a reset password link to your email. "
-					+ "If you don't see the email, check your spam folder.");
+			if (taiKhoanService.existsByEmail(email)) {
+	            String token = generateRandomString(10);
+	            taiKhoanService.updateToken(token, email);
+	            String resetLink = getSiteURL(request) + "/reset-password?token=" + token;
+	            mailer.sendEmail(email, resetLink);
+
+	            model.addAttribute("request", request);
+	            model.addAttribute("message", "We have sent a reset password link to your email. "
+	                    + "If you don't see the email, check your spam folder.");
+	        } else {
+	        	model.addAttribute("request", request);
+	            model.addAttribute("message", "Email does not exist. Please check the provided email address.");
+	            return "user/taikhoan/forgot-password";
+	        }
 		} catch (MessagingException e) {
 			e.printStackTrace();
 			model.addAttribute("request", request);
