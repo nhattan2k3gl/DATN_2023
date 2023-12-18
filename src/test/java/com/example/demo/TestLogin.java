@@ -168,7 +168,7 @@ public class TestLogin {
 
 			// Tạo workbook và worksheet mới cho kết quả kiểm thử
 			workbook = new XSSFWorkbook();
-			worksheet = workbook.createSheet("TestNG Result Summary");
+			worksheet = workbook.createSheet("ResultTestLogin");
 
 			// Tạo kiểu cho các ô trong bảng tính
 			CellStyle rowStyle = workbook.createCellStyle();
@@ -248,7 +248,7 @@ public class TestLogin {
 
 			// Ghi file Excel vào đường dẫn đã chỉ định
 			try {
-				FileOutputStream out = new FileOutputStream(new File(EXCEL_DIR + "RESULT_TEST_LOGIN.xlsx"));
+				FileOutputStream out = new FileOutputStream(new File(EXCEL_DIR + "ResultsTestNGLogin.xlsx"));
 				workbook.write(out);
 				out.close();
 				System.out.println("Lưu Thành Công vào File Excel!!!");

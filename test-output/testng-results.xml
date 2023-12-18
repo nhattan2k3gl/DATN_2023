@@ -2,20 +2,20 @@
 <testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2023-12-18T10:07:22 ICT" name="Default suite" finished-at="2023-12-18T10:09:02 ICT" duration-ms="99425">
+  <suite started-at="2023-12-18T16:08:45 ICT" name="Default suite" finished-at="2023-12-18T16:09:57 ICT" duration-ms="72376">
     <groups>
     </groups>
-    <test started-at="2023-12-18T10:07:22 ICT" name="Default test" finished-at="2023-12-18T10:09:02 ICT" duration-ms="99425">
+    <test started-at="2023-12-18T16:08:45 ICT" name="Default test" finished-at="2023-12-18T16:09:57 ICT" duration-ms="72376">
       <class name="com.example.demo.TestLogin">
-        <test-method is-config="true" signature="suiteTest()[pri:0, instance:com.example.demo.TestLogin@4c1909a3]" started-at="2023-12-18T10:07:22 ICT" name="suiteTest" finished-at="2023-12-18T10:07:25 ICT" duration-ms="3163" status="PASS">
+        <test-method is-config="true" signature="suiteTest()[pri:0, instance:com.example.demo.TestLogin@4c1909a3]" started-at="2023-12-18T16:08:45 ICT" name="suiteTest" finished-at="2023-12-18T16:08:48 ICT" duration-ms="3355" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- suiteTest -->
-        <test-method signature="LoginTest()[pri:0, instance:com.example.demo.TestLogin@4c1909a3]" started-at="2023-12-18T10:07:25 ICT" name="LoginTest" finished-at="2023-12-18T10:09:00 ICT" duration-ms="94897" status="PASS">
+        <test-method signature="LoginTest()[pri:0, instance:com.example.demo.TestLogin@4c1909a3]" started-at="2023-12-18T16:08:48 ICT" name="LoginTest" finished-at="2023-12-18T16:09:55 ICT" duration-ms="66554" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- LoginTest -->
-        <test-method is-config="true" signature="suiteTearDown()[pri:0, instance:com.example.demo.TestLogin@4c1909a3]" started-at="2023-12-18T10:09:00 ICT" name="suiteTearDown" finished-at="2023-12-18T10:09:02 ICT" duration-ms="1318" status="PASS">
+        <test-method is-config="true" signature="suiteTearDown()[pri:0, instance:com.example.demo.TestLogin@4c1909a3]" started-at="2023-12-18T16:09:55 ICT" name="suiteTearDown" finished-at="2023-12-18T16:09:57 ICT" duration-ms="2417" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- suiteTearDown -->
