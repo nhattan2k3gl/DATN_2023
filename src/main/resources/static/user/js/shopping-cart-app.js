@@ -1,6 +1,6 @@
-const app = angular.module("appCart", []);
+const app = angular.module("app", []);
 
-app.controller("cart-ctrl", function($scope, $http, $window, $location) {
+app.controller("app-ctrl", function($scope, $http, $window, $location) {
 	// quản lý giỏ hàng
 	var $cart = $scope.cart = {
 		items: [],

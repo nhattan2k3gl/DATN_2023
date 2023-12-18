@@ -54,27 +54,30 @@ public class MailerServiceImpl implements MailerService {
 
 	@Override
 	public void sendEmail(String email, String link) throws MessagingException, UnsupportedEncodingException {
-		MimeMessage message = sender.createMimeMessage();
-		MimeMessageHelper helper = new MimeMessageHelper(message, true, "utf-8");
-		helper.setFrom("namnhps23039@fpt.edu.vn", "Book Store");
-		helper.setTo(email);
-		String button = "background-color:#783ecf;color:#fff;padding:12px 10px;text-decoration:none;border-radius:3px";
-		String subject = "Request to reset your password";
-		String content = ""
-		+ "<div style='font-family:Roboto,sans-serif;width:50%;margin:0 auto;text-align:center'>"
-			+ "<div style='font-size:3em;padding:0.5em 1em'><b>Password reset</b></div>"
-			+ "<div style='background-color:#f0f8ff;font-size:16px;padding:1em 3em'>"
-				+ "<p><b style='font-size:18px;'>Someone requested that the password be reset for the following account.</b></p>"
-				+ "<p>To reset your password, visit the following address:</p>"
-				+ "<p style='margin-top:2em'><a href=\""+link+"\" style='"+button+"'>Reset your password</a></p>"
-				+ "<p style='margin-bottom:2em'>Your mail: <a href=\""+"mailto:"+email+"\" style='color:#b745dd;text-decoration:none'>"+email+"</a></p>"
-				+ "<p>If this was a mistake, just ignore this email and nothing will happen.</p>"
-			+ "</div>"
-			+ "<div style='font-size:14px;padding:2em'>Copyright © 2022 <b>Mollee</b>. All Rights Reserved.</div>"
-		+ "</div>";
-		helper.setSubject(subject);
-		helper.setText(content, true);
-		sender.send(message);
+	    MimeMessage message = sender.createMimeMessage();
+	    MimeMessageHelper helper = new MimeMessageHelper(message, true, "utf-8");
+
+	    helper.setFrom("namnhps23039@fpt.edu.vn", "BOOKSAW");
+	    helper.setTo(email);
+	    helper.setSubject("Request to reset your password");
+
+	    String buttonStyle = "background-color:#783ecf;color:#fff;padding:12px 10px;text-decoration:none;border-radius:3px";
+	    String content = "<div style='font-family:Roboto,sans-serif;width:50%;margin:0 auto;text-align:center'>" +
+	            "<div style='font-size:3em;padding:0.5em 1em'><b>Password reset</b></div>" +
+	            "<div style='background-color:#f0f8ff;font-size:16px;padding:1em 3em'>" +
+	            "<p><b style='font-size:18px;'>Someone requested that the password be reset for the following account.</b></p>" +
+	            "<p>To reset your password, visit the following address:</p>" +
+	            "<p style='margin-top:2em'><a href=\"" + link + "\" style='" + buttonStyle + "'>Reset your password</a></p>" +
+	            "<p style='margin-bottom:2em'>Your mail: <a href=\"" + "mailto:" + email + "\" style='color:#b745dd;text-decoration:none'>" + email + "</a></p>" +
+	            "<p>If this was a mistake, just ignore this email and nothing will happen.</p>" +
+	            "</div>" +
+	            "<div style='font-size:14px;padding:2em'>Copyright © 2023 <b>NguyenHoaiNam_PS23039</b>. All Rights Reserved.</div>" +
+	            "</div>";
+
+	    helper.setText(content, true);
+
+	    sender.send(message);
 	}
+
 
 }
