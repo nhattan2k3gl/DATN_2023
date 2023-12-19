@@ -197,51 +197,51 @@ public class AccountController {
 			throws Exception {
 		try {
 			if (taiKhoanService.existsByEmail(email)) {
-	            String token = generateRandomString(10);
-	            taiKhoanService.updateToken(token, email);
-	            String resetLink = getSiteURL(request) + "/reset-password?token=" + token;
+	            String tokenn = generateRandomString(10);
+	            taiKhoanService.updateToken(tokenn, email);
+	            String resetLink = getSiteURL(request) + "/reset-password?tokenn=" + tokenn;
 	            mailer.sendEmail(email, resetLink);
 
 	            model.addAttribute("request", request);
-	            model.addAttribute("message", "We have sent a reset password link to your email. "
-	                    + "If you don't see the email, check your spam folder.");
+	            model.addAttribute("message", "Chúng tôi đã gửi liên kết đặt lại mật khẩu đến email của bạn. "
+	            		+ "Nếu không thấy email, hãy kiểm tra thư mục spam.");
 	        } else {
 	        	model.addAttribute("request", request);
-	            model.addAttribute("message", "Email does not exist. Please check the provided email address.");
+	            model.addAttribute("message", "Email không tồn tại. Vui lòng kiểm tra địa chỉ email được cung cấp.");
 	            return "user/taikhoan/forgot-password";
 	        }
 		} catch (MessagingException e) {
 			e.printStackTrace();
 			model.addAttribute("request", request);
-			model.addAttribute("error", "Error while sending email");
+			model.addAttribute("error", "Lỗi khi gửi email");
 		}
 		return "user/taikhoan/forgot-password";
 	}
 	
 	@GetMapping("/reset-password")
-	public String resetPasswordForm(@Param(value = "token") String token, Model model, HttpServletRequest request) {
-		Optional<TaiKhoanEntity> account = taiKhoanService.getByToken(token);
+	public String resetPasswordForm(@Param(value = "tokenn") String tokenn, Model model, HttpServletRequest request) {
+		Optional<TaiKhoanEntity> account = taiKhoanService.getByToken(tokenn);
 		model.addAttribute("request", request);
-		model.addAttribute("token", token);
+		model.addAttribute("tokenn", tokenn);
 		if (account.isEmpty()) {
-			model.addAttribute("message", "Invalid token!");
+			model.addAttribute("message", "Không hợp lệ token!");
 			return "redirect:/login";
 		}
 		return "user/taikhoan/reset-password";
 	}
 	
 	@PostMapping("/reset-password")
-	public String resetPassword(@RequestParam("token") String token, @RequestParam("password") String password,
+	public String resetPassword(@RequestParam("tokenn") String tokenn, @RequestParam("password") String password,
 	                                   HttpServletResponse response, Model model, HttpServletRequest request) {
-		Optional<TaiKhoanEntity> user = taiKhoanService.getByToken(request.getParameter("token"));
-	    System.out.println(token);
+		Optional<TaiKhoanEntity> user = taiKhoanService.getByToken(request.getParameter("tokenn"));
+	    System.out.println(tokenn);
 	    model.addAttribute("request", request);
 
 	    if (user.isEmpty()) {
-			model.addAttribute("message", "Invalid token!");
+			model.addAttribute("message", "Không hợp lệ token!");
 		} else {
 	        taiKhoanService.updatePassword(user.get(), password);
-	        model.addAttribute("message", "You have successfully changed your password!");
+	        model.addAttribute("message", "Bạn đã đổi mật khẩu thành công!");
 	        response.addHeader("refresh", "3;url=/login");
 	    }
 

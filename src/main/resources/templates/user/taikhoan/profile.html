@@ -101,7 +101,8 @@
 												th:text="#{user.amount} + ': '"></span>
 										</div>
 										<div class="order-total__col">
-											<div class="order-total__price">[[${#numbers.formatDecimal(detail.gia * detail.soluong, 0, 'COMMA', 0, 'POINT')}]] ₫</div>
+											<div class="order-total__price">[[${#numbers.formatDecimal(detail.gia * detail.soluong,
+													 0, 'COMMA', 0, 'POINT')}]] ₫</div>
 										</div>
 									</div>
 									<div class="order-total__item">
