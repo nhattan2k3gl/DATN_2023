@@ -51,5 +51,10 @@ sau khi tải source về. Bạn cần mở   <h5>#Eclipse IDE for Enterprise Ja
        # Chuột phải vào dự án và chọn run as -> spring boot ap
 ![image](https://github.com/DoanNhatTan/DATN_2023/assets/99518851/dae09935-d077-473b-b59c-dd775c87fb2c)
 
-    
+
+    # Chạy local http://localhost:6969/login 
+![image](https://github.com/DoanNhatTan/DATN_2023/assets/99518851/4845fcc9-a71a-4218-8ee8-066cfec4461c)
+
+       #Đăng nhập với quyền admin taikhoan:nguyenhoainam@gmail.com   matkhau:123
+
       
