@@ -198,14 +198,28 @@
 </div>
 
 <script>
+	//Lấy phần tử có id 'thongke' từ DOM
 	var thongKeElement = document.getElementById('thongke');
-	var thongKeValue = thongKeElement.textContent || thongKeElement.innerText;
-
-	// Chuyển đổi giá trị thành số và định dạng thành hàng nghìn và trăm nghìn
-	var thongKeNumber = parseFloat(thongKeValue.replace(/\D/g, ''));
-	var formattedThongKe = thongKeNumber.toLocaleString('vi-VN');
 	
-	var hdctData = /*[[${HDCTThongKeTheoNam}]]*/ null;
-	console.log("Dữ liệu từ Thymeleaf:", hdctData);
+	// Kiểm tra xem phần tử có tồn tại không
+	if (thongKeElement) {
+	    // Lấy giá trị văn bản từ phần tử
+	    var thongKeValue = thongKeElement.textContent || thongKeElement.innerText;
+	
+	    // Chuyển đổi giá trị thành số và định dạng thành hàng nghìn và trăm nghìn
+	    var thongKeNumber = parseFloat(thongKeValue.replace(/\D/g, ''));
+	    
+	    // Kiểm tra xem giá trị có là một số hợp lệ hay không
+	    if (!isNaN(thongKeNumber)) {
+	        // Sử dụng 'vi-VN' để định dạng số thành chuỗi có dấu chấm phân cách hàng nghìn và đơn vị tiền tệ
+	        var formattedThongKe = thongKeNumber.toLocaleString('vi-VN');
+	        thongKeElement.textContent = formattedThongKe;
+	        console.log("Số đã định dạng: " + formattedThongKe);
+	    } else {
+	        console.error("Giá trị không phải là số.");
+	    }
+	} else {
+	    console.error("Không tìm thấy phần tử có id 'thongke'.");
+	}
 	
 </script>
