@@ -50,8 +50,8 @@ public class TestProduct {
 	private Map<String, Object[]> TestNGResult;
 	private Map<String, String[]> dataLoginTest;
 
-	private final String EXCEL_DIR = "D:\\DoanNhatTan_Ki7\\Java\\backend_java6\\DATN_2023\\rideExcel\\data\\";
-	private final String IMAGE_DIR = "D:\\DoanNhatTan_Ki7\\Java\\backend_java6\\DATN_2023\\rideExcel\\images\\";
+	private final String EXCEL_DIR = "C:\\Users\\ADMIN\\Documents\\GitHub\\DATN_2023\\rideExcel\\data\\";
+	private final String IMAGE_DIR = "C:\\Users\\ADMIN\\Documents\\GitHub\\DATN_2023\\rideExcel\\images\\";
 
 	// đọc dữ liệu từ file excel
 	private void readDataFromExcel() {
