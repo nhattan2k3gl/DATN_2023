@@ -53,8 +53,11 @@ sau khi tải source về. Bạn cần mở   <h5>#Eclipse IDE for Enterprise Ja
 
 
     # Chạy local http://localhost:6969/login 
+    #Đăng nhập với quyền admin taikhoan:nguyenhoainam@gmail.com   matkhau:123
 ![image](https://github.com/DoanNhatTan/DATN_2023/assets/99518851/4845fcc9-a71a-4218-8ee8-066cfec4461c)
 
-       #Đăng nhập với quyền admin taikhoan:nguyenhoainam@gmail.com   matkhau:123
+       # Đăng nhập thanh toán qua palpay với taikhoan:sb-oqzic28763840@business.example.com  matkhau:$x6ZX!dO
 
-      
+![image](https://github.com/DoanNhatTan/DATN_2023/assets/99518851/ce5b1752-87b4-4ae0-a204-570ab5ed3e15)
+
+
