@@ -39,14 +39,14 @@ public class TrangChuController {
 		model.addAttribute("DemBL",BLDao.DemBL());
 		model.addAttribute("DemHD",HDDao.DemHD());
 		
-		List<HoaDonChiTietEntity> HDCTThongKeTheoNam= new ArrayList<>();
-		for (Object[] result : HDCTDao.ThongKeHDCTTheoThang("2023")) {
-		    Double gia = (Double) result[0];
-		    Integer soLuong = (Integer) result[1];
-		    HoaDonChiTietEntity hdct = new HoaDonChiTietEntity(0, soLuong, gia, null, null);
-		    HDCTThongKeTheoNam.add(hdct);
-		}
-		model.addAttribute("HDCTThongKeTheoNam", HDCTThongKeTheoNam);
+//		List<HoaDonChiTietEntity> HDCTThongKeTheoNam= new ArrayList<>();
+//		for (Object[] result : HDCTDao.ThongKeHDCTTheoThang("2023")) {
+//		    Double gia = (Double) result[0];
+//		    Integer soLuong = (Integer) result[1];
+//		    HoaDonChiTietEntity hdct = new HoaDonChiTietEntity(0, soLuong, gia, null, null);
+//		    HDCTThongKeTheoNam.add(hdct);
+//		}
+//		model.addAttribute("HDCTThongKeTheoNam", HDCTThongKeTheoNam);
 		
 		return "Admin/TrangChu/TrangChu";
 	}

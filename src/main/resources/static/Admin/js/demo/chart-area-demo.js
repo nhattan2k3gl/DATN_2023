@@ -2,7 +2,27 @@
 // Set new default font family and font color to mimic Bootstrap's default styling
 Chart.defaults.global.defaultFontFamily = 'Nunito', '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
 Chart.defaults.global.defaultFontColor = '#858796';
+var TongTien =null;
+var Thang =null;
+fetch('/rest/thongketheothang')
+	.then(response => response.json())
+	.then(data => {
+		// Dữ liệu từ API
+		TongTien = data.map(item => item.tong); // Thay "yourApiProperty" bằng tên thuộc tính thích hợp từ API
+		Thang = data.map(item => item.thang);
+		// Cập nhật dữ liệu của biểu đồ
+		myLineChart.data.datasets[0].data = TongTien;
+/*		myLineChart.data.datasets[0].data = Thang;*/
+		myLineChart.data.labels = Thang;
+		// Cập nhật biểu đồ
+		myLineChart.update();
 
+		// Log dữ liệu từ API
+		console.log('API Data:', apiData);
+	})
+	.catch(error => {
+		console.error('Error fetching data:', error);
+	});
 
 function number_format(number, decimals, dec_point, thousands_sep) {
   // *     example: number_format(1234.56, 2, ',', ' ');
@@ -34,7 +54,7 @@ var ctx = document.getElementById("myAreaChart");
 var myLineChart = new Chart(ctx, {
   type: 'line',
   data: {
-    labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+    labels: Thang,
     datasets: [{
       label: "Earnings",
       lineTension: 0.3,
@@ -48,7 +68,7 @@ var myLineChart = new Chart(ctx, {
       pointHoverBorderColor: "rgba(78, 115, 223, 1)",
       pointHitRadius: 10,
       pointBorderWidth: 2,
-      data: [0, 10000, 5000, 15000, 10000, 20000, 15000, 25000, 20000, 30000, 25000, 40000],
+      data: TongTien,
     }],
   },
   options: {
@@ -112,7 +132,7 @@ var myLineChart = new Chart(ctx, {
       callbacks: {
         label: function(tooltipItem, chart) {
           var datasetLabel = chart.datasets[tooltipItem.datasetIndex].label || '';
-          return datasetLabel + ': $' + number_format(tooltipItem.yLabel);
+          return datasetLabel + ': ₫' + number_format(tooltipItem.yLabel);
         }
       }
     }
