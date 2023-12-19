@@ -48,6 +48,8 @@ sau khi tải source về. Bạn cần mở   <h5>#Eclipse IDE for Enterprise Ja
 ![image](https://github.com/DoanNhatTan/DATN_2023/assets/99518851/e1389934-bf70-4fd4-9215-08456e22a2b7)
 
     
+       # Chuột phải vào dự án và chọn run as -> spring boot ap
+![image](https://github.com/DoanNhatTan/DATN_2023/assets/99518851/dae09935-d077-473b-b59c-dd775c87fb2c)
 
     
       
