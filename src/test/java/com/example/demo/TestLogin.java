@@ -57,8 +57,8 @@ public class TestLogin {
 	private Map<String, Object[]> TestNGResult;
 	private Map<String, String[]> dataLoginTest;
 
-	private final String EXCEL_DIR = "C:\\Users\\ADMIN\\Documents\\GitHub\\DATN_2023\\rideExcel\\data\\";
-	private final String IMAGE_DIR = "C:\\Users\\ADMIN\\Documents\\GitHub\\DATN_2023\\rideExcel\\images\\";
+	private final String EXCEL_DIR = "D:\\DoanNhatTan_Ki7\\Java\\backend_java6\\DATN_2023\\rideExcel\\data\\";
+	private final String IMAGE_DIR = "D:\\DoanNhatTan_Ki7\\Java\\backend_java6\\DATN_2023\\rideExcel\\images\\";
 
 	// đọc dữ liệu từ file excel
 	private void readDataFromExcel() {
@@ -291,7 +291,8 @@ public class TestLogin {
 				Thread.sleep(2000);
 
 				// Tương tác với nút đăng nhập bằng Selenium WebDriver Actions
-				WebElement btnLogin = driver.findElement(By.xpath("/html/body/div[1]/div/div/div/div/div/div[2]/div/form/button"));
+				WebElement btnLogin = driver
+						.findElement(By.xpath("/html/body/div[1]/div/div/div/div/div/div[2]/div/form/button"));
 				Actions actions = new Actions(driver).click(btnLogin);
 				actions.build().perform();
 
@@ -309,8 +310,11 @@ public class TestLogin {
 				// Kiểm tra kết quả và ghi vào Map (`TestNGResult`)
 				if (actualTitle.equalsIgnoreCase(expected)) {
 					// Ghi lại kết quả "PASS" nếu đăng nhập thành công
-					TestNGResult.put(String.valueOf(index + 1), new Object[] { String.valueOf(index), username,
-							password, "Test Login", expected, actualTitle, "PASS", formattedDate, "" });
+					String path = IMAGE_DIR + "failure-" + System.currentTimeMillis() + ".png";
+					takeScreenShot(driver, path);
+					TestNGResult.put(String.valueOf(index + 1),
+							new Object[] { String.valueOf(index), username, password, "Test Login", expected,
+									actualTitle, "PASS", formattedDate, path.replace("\\", "/") });
 				} else {
 					// Xử lý khi đăng nhập không thành công, chụp ảnh và ghi lại thông tin lỗi
 //					driver.findElement(By.xpath("//*[@id=\"exampleInputEmail\"]")).sendKeys(username);
