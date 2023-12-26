@@ -100,10 +100,10 @@
 								<option value="">
 									<th:block th:text="#{user.sortby}"></th:block> 
 								</option>
-								<option value="shop?field=ten">
+								<option th:value="@{/shop?field=ten}">
 									<th:block th:text="#{user.byname}"></th:block> 
 								</option>
-								<option value="shop?field=gia">
+								<option th:value="@{/shop?field=gia}">
 									<th:block th:text="#{user.byprice}"></th:block> 
 								</option>
 							</select>
