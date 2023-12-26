@@ -59,10 +59,13 @@
                                             <td>[[${HDCTService.hoadon.diachi}]]</td>
                                             <td>[[${HDCTService.hoadon.taikhoan.email}]]</td>
                                             <td>[[${HDCTService.sanpham.ten}]]</td>
-                                            <td name="gia">[[${#numbers.formatDecimal(HDCTService.gia,2,0)}]]</td>
+                                            <td>[[${#numbers.formatDecimal(HDCTService.gia,2,0)}]]</td>
                                             <td>[[${HDCTService.soluong}]]</td>
-                                            <td name="tongtien">[[${#numbers.formatDecimal(HDCTService.soluong * HDCTService.gia ,2,0)}]] </td>
-                                            <!-- <td>
+                                            <!-- <td name="tongtien">[[${#numbers.formatDecimal(HDCTService.gia,2,0)}]]</td> -->
+                                            <td name="tongtien">[[${HDCTService.gia * HDCTService.soluong}]]</td>
+                                            
+<!--                                            <td name="tongtien">[[${#numbers.formatDecimal(HDCTService.soluong * HDCTService.gia ,2,0)}]] </td>
+-->                                            <!-- <td>
                                                 <a class="text-white bg-danger"
                                                     th:href="@{|/Admin/HoaDonChiTiet/Delete/${HDCTService.id_hdct}|}">Xóa</a>
                                                 <a class="text-white  bg-info"
@@ -119,15 +122,15 @@
 		    } else if (number >= 1e9) {
 		      return (number / 1e9).toFixed(3) + ' tỷ';
 		    } else if (number >= 1e8) {
-		      return (number / 1e6).toFixed(3) + ' triệu';
+		      return (number / 1e7).toFixed(3) + ' triệu';
 		    } else if (number >= 1e7) {
-		      return (number / 1e6).toFixed(3) + ' triệu';
+		      return (number / 1e7).toFixed(3) + ' triệu';
 		    } else if (number >= 1e6) {
-		      return (number / 1e6).toFixed(3) + ' triệu';
+		      return (number / 1e4).toFixed(3) + '';
 		    } else if (number >= 1e5) {
 		      return (number / 1e3).toFixed(3) + '';
 		    } else if (number >= 1e3) {
-		      return (number / 1e3).toFixed(3) + '';
+		      return (number / 1e4).toFixed(3) + '';
 		    } else {
 		      return number.toFixed(2) + '';
 		    }

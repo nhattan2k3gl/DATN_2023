@@ -48,6 +48,16 @@ sau khi tải source về. Bạn cần mở   <h5>#Eclipse IDE for Enterprise Ja
 ![image](https://github.com/DoanNhatTan/DATN_2023/assets/99518851/e1389934-bf70-4fd4-9215-08456e22a2b7)
 
     
+       # Chuột phải vào dự án và chọn run as -> spring boot ap
+![image](https://github.com/DoanNhatTan/DATN_2023/assets/99518851/dae09935-d077-473b-b59c-dd775c87fb2c)
 
-    
-      
+
+    # Chạy local http://localhost:6969/login 
+    #Đăng nhập với quyền admin taikhoan:nguyenhoainam@gmail.com   matkhau:123
+![image](https://github.com/DoanNhatTan/DATN_2023/assets/99518851/4845fcc9-a71a-4218-8ee8-066cfec4461c)
+
+       # Đăng nhập thanh toán qua palpay với taikhoan:sb-oqzic28763840@business.example.com  matkhau:$x6ZX!dO
+
+![image](https://github.com/DoanNhatTan/DATN_2023/assets/99518851/ce5b1752-87b4-4ae0-a204-570ab5ed3e15)
+
+
