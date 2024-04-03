@@ -10,7 +10,7 @@ import org.springframework.stereotype.Repository;
 import com.example.demo.Entity.HoaDonChiTietEntity;
 
 @Repository
-public interface HoaDonChiTietDao extends JpaRepository<HoaDonChiTietEntity, String> {
+public interface HoaDonChiTietDao extends JpaRepository<HoaDonChiTietEntity, Integer> {
 	@Query(value = "select SUM(HoaDonChiTiet.gia*HoaDonChiTiet.SoLuong) as N'Tổng Tiền' from HoaDonChiTiet join SanPham on HoaDonChiTiet.ID_HD=sanpham.ID_SP", nativeQuery = true)
 	int ThongKeTongHDCT();
 

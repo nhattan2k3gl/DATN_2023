@@ -7,7 +7,7 @@ import org.springframework.data.jpa.repository.Query;
 
 import com.example.demo.Entity.HoaDonEntity;
 
-public interface HoaDonDao extends JpaRepository<HoaDonEntity, String> {
+public interface HoaDonDao extends JpaRepository<HoaDonEntity, Integer> {
 	@Query("SELECT count(p.id_hd) FROM HoaDonEntity p")
 	Integer DemHD();
 	@Query("SELECT o FROM HoaDonEntity o WHERE o.taikhoan.email=?1")
